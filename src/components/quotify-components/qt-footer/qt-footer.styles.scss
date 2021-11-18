@@ -1,0 +1,10 @@
+.qt-footer { 
+    background-color: rgb(18, 18, 18);
+    border-top:  1px solid rgba(255, 255, 255, 0.144);
+}
+
+@media only screen and (min-width: 768px) {
+    .qt-footer {
+        height: 10vh;
+    }
+  }

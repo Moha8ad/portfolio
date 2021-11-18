@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom'; 
+
+import HomePage from './pages/homepage/homepage.component';
+import Rolodex from './pages/rolodex/rolodex.component';
+import QuoteApp from './pages/quote-app/quote-app.component';
+import Quotify from './pages/quotify/quotify.component';
+
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return(
+    <div>      
+      <Switch>  
+        <Route exact path='/profile/' component={HomePage}/>
+        <Route path= '/profile/rolodex' component={Rolodex}/>
+        <Route path='/profile/quotes' component={QuoteApp}/>
+        <Route path='/profile/quotify' component={Quotify}/>
+      </Switch>
     </div>
-  );
+  )
 }
 
 export default App;

@@ -1,0 +1,12 @@
+.qt-main {
+    height: 90vh;
+    position: fixed;
+    overflow-y: scroll;
+    background-color: rgb(18, 18, 18);
+}
+
+@media only screen and (max-width: 768px) {
+    .qt-main {
+        height: 100vh;
+    }
+  }

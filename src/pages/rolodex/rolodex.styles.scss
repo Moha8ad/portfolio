@@ -1,0 +1,39 @@
+  .rolodex {
+    text-align: center;
+  }
+  
+  .rolodex-title {
+    font-family: Fjalla One;
+    
+    -webkit-text-stroke: 1px rgb(51, 51, 51);
+    font-size: 4vw;
+    padding: 5%;
+    color: #ffffff;
+  }
+  
+  .rolodex {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: 
+    linear-gradient(217deg, rgba(70, 83, 255, 0.8), rgba(0, 132, 255, 0.342) 70.71%),
+    linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, rgba(255,0,0,.8), rgba(0,0,255,0) 70.71%);  
+  }
+  
+  .rolodex-homepage-logo {
+    width: 14%;
+    height: 7%;
+    padding-left: 2%;
+    position: absolute;
+  }
+
+  .blinking {
+    animation: blinkingText 5s infinite;
+  }
+  @keyframes blinkingText {
+    25%{     color: rgb(255, 206, 244);    }
+    50%{    color: rgb(255, 249, 172); }
+    75%{    color: rgb(190, 216, 255);  }
+    100%{    color: rgb(200, 255, 175);  }
+  }
