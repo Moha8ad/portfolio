@@ -5,9 +5,7 @@ import QuotifyDirectory from "../../components/quotify-components/qt-directory/q
 import './quotify.styles.scss'
 
 const Quotify = () => (
-  <div class='container-fluid'>
-    <QuotifyDirectory />
-  </div>
+  <QuotifyDirectory />
 )
 
 export default Quotify;

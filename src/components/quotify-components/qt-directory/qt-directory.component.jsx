@@ -1,36 +1,48 @@
 import React from 'react';
 
+import QuotifySearchPage from '../qt-search-page/qt-search-page.component';
 
-import QuotifyNavbar from '../qt-navbar/qt-navbar.component';
-import QuotifyMain from '../qt-main/qt-main.component';
-import QuotifyFooter from '../qt-footer/qt-footer.component';
+import QUOTES_DATA from './qt.data';
 
-import QUOTES_DATA from './qt.data'
-
-import './qt-directory.styles.scss'
+import './qt-directory.styles.scss';
 
 class QuotifyDirectory extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            quotesDB: []
+            quotesDB: [],
+            searchField: ''
         };
     }
-
+    changeHandle = e => {
+        this.setState({
+          searchField: e.target.value
+        })
+      }
     componentDidMount() {
         this.setState({
             quotesDB: QUOTES_DATA
         })
     }
     render() {
+        const { quotesDB, searchField } = this.state;
+    
+        const quotesText = quotesDB.map(text => text)
+
+        const randomQuoteId = Math.floor(Math.random()*quotesDB.length);
+
+        const searchByName = quotesText.filter(name => (
+        name.author.toLowerCase().includes(searchField.toLowerCase())
+        ))
         return(
-                <div class="row quotify-container">
-                    <QuotifyNavbar />
-                    <QuotifyMain />
-                    <QuotifyFooter />
-                </div>
+            <QuotifySearchPage
+                changeHandle={this.changeHandle}
+                searchField={searchField}
+                searchByName={searchByName}
+                randomQuoteId={randomQuoteId}
+            />
         )
     }
 }
 
-export default QuotifyDirectory
+export default QuotifyDirectory;
