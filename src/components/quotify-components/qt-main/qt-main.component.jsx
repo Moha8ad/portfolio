@@ -1,19 +1,50 @@
 import React from 'react';
 
-import QuotifyTopbar from '../qt-topbar/qt-topbar.component';
-import QuoteBox from '../../qt-components/qt-box/qt-box.component';
+import SearchPage from '../search-page/search-page.component';
+
+import QUOTES_DATA from './qt.data';
 
 import './qt-main.styles.scss';
 
-const QuotifyMain = ({ changeHandle, searchField, searchByName, randomQuoteId}) => ( 
-  <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0">
-    <QuotifyTopbar changeHandle={changeHandle}/>
-    <QuoteBox 
-      searchField={searchField}
-      searchByName={searchByName} 
-      randomQuoteId={randomQuoteId}
-    />     
-  </div>
-)
+class QuotifyMain extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            quotesDB: [],
+            searchField: ''
+        };
+    }
+    changeHandle = e => {
+        this.setState({
+          searchField: e.target.value
+        })
+      }
+    componentDidMount() {
+        this.setState({
+            quotesDB: QUOTES_DATA
+        })
+    }
+    render() {
+        const { quotesDB, searchField } = this.state;
+    
+        const quotesText = quotesDB.map(text => text)
+
+        const randomQuoteId = Math.floor(Math.random()*quotesDB.length);
+
+        const searchByName = quotesText.filter(name => (
+        name.author.toLowerCase().includes(searchField.toLowerCase())
+        ))
+        return(
+            <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0">
+                <SearchPage
+                    changeHandle={this.changeHandle}
+                    searchField={searchField}
+                    searchByName={searchByName}
+                    randomQuoteId={randomQuoteId}
+                />
+            </div>
+        )
+    }
+}
 
 export default QuotifyMain;

@@ -10,7 +10,7 @@ const QuotifyFooter = () => (
         <div class="container-fluid">
             <div class="row justify-content-between align-items-center">
                 <div class="col-auto">
-                    © 2021 AsAr Web Development Studio
+                    © 2021 AsAr Web Development
                 </div>
                 <div class="col-auto d-none d-md-block">
                     <AsArLogoSmWt />

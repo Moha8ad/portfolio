@@ -17,17 +17,17 @@ class Directory extends React.Component {
           id: 1
         },
         {
-          title: 'Quo',
+          title: 'Quotify',
           subtitle: 'Get Inspired!',
           imageUrl: 'https://illlustrations.co/static/e6b84e6be05378ec8aa056315aba888d/day71-designer-tool-essential.png',
-          linkUrl: 'quotes',
+          linkUrl: 'quotify',
           id: 2
         },
         {
-          title: 'Quotify',
-          subtitle: 'Quote Library',
+          title: 'App3',
+          subtitle: 'App3',
           imageUrl: 'https://illlustrations.co/static/76e32463a2c518d3bbd3c1fb970e5c1b/day74-stationary-set.png',
-          linkUrl: 'quotify',
+          linkUrl: 'app3',
           id: 3
         },
         {
@@ -42,7 +42,7 @@ class Directory extends React.Component {
           title: 'app5',
           subtitle: 'to be built',
           imageUrl: 'https://illlustrations.co/static/e7437dc17b93ae7c667b8c640fa446f5/day75-stationary-set-2.png',
-          linkUrl: 'app4',
+          linkUrl: 'app5',
           size: 'large',
           id: 5
         }

@@ -1,11 +1,17 @@
 import React from "react";
 
-import QuotifyDirectory from "../../components/quotify-components/qt-directory/qt-directory.component";
+import QuotifyNavbar from "../../components/quotify-components/qt-navbar/qt-navbar.component";
+import QuotifyMain from "../../components/quotify-components/qt-main/qt-main.component";
+import QuotifyFooter from "../../components/quotify-components/qt-footer/qt-footer.component";
 
 import './quotify.styles.scss'
 
 const Quotify = () => (
-  <QuotifyDirectory />
+  <div class="text-light">
+    <QuotifyNavbar />
+    <QuotifyMain/>
+    <QuotifyFooter />
+  </div>
 )
 
 export default Quotify;
