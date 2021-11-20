@@ -3,6 +3,12 @@
     background-color: rgb(0, 0, 0);   
 }
 
+@media only screen and (max-width: 576px) {
+    .qt-navbar {
+        position: relative;    
+    }
+  }
+
 @media only screen and (min-width: 576px) {
     .qt-navbar {
         height: 100vh;
