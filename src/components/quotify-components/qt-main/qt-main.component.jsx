@@ -6,7 +6,7 @@ import QuoteBox from '../../qt-components/qt-box/qt-box.component';
 import './qt-main.styles.scss';
 
 const QuotifyMain = ({ changeHandle, searchField, searchByName, randomQuoteId}) => ( 
-  <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0 text-light">
+  <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0">
     <QuotifyTopbar changeHandle={changeHandle}/>
     <QuoteBox 
       searchField={searchField}

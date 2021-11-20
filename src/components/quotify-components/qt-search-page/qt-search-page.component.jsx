@@ -5,7 +5,7 @@ import QuotifyMain from '../qt-main/qt-main.component';
 import QuotifyFooter from '../qt-footer/qt-footer.component'
 
 const QuotifySearchPage = ({ changeHandle, searchField, searchByName, randomQuoteId}) => (
-    <div class='container-fluid p-0'>
+    <div class="text-light">
         <QuotifyNavbar />
         <QuotifyMain 
             changeHandle={changeHandle}

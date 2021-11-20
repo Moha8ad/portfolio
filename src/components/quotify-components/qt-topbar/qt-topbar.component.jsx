@@ -5,18 +5,18 @@ import SearchBox from '../../all-reusable-components/search-box/search-box.compo
 import './qt-topbar.styles.scss'
 
 const QuotifyTopbar = ({ changeHandle }) => (
-    <div class="qt-topbar container-fluid d-none d-sm-block sticky-top me-auto pt-2 pb-2">
+    <div class="qt-topbar container-fluid sticky-top me-auto pt-2 pb-2">
         <div class="row d-flex flex-wrap-reverse align-items-center fs-5 fw-bold">
-            <div class="col-12 col-sm-4 col-md-auto">
+            <div class="col-auto">
                 <span><i class="bi bi-arrow-left-circle fs-2"></i></span>
                 <span><i class="bi bi-arrow-right-circle fs-2 ps-3"></i></span>
             </div>
-            <div class="col-12 col-sm-8 col-md-5 pt-sm-2 me-auto">
+            <div class="col-auto me-auto">
                 <SearchBox placeholder={"Search for Authors or Words"} changeHandle={changeHandle}/>
             </div>
-            <div class="col-auto d-none d-sm-block">
+            <div class="col-auto">
                 <i class="bi bi-person-circle fs-4"></i>
-                <span class="d-lg-inline ms-2 fw-bold">User</span>
+                <span class="d-none d-sm-inline ms-2 fw-bold">User</span>
             </div>
         </div>
     </div>
