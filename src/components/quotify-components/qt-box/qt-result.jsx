@@ -10,10 +10,10 @@ const ResultQuote = ({ result }) => (
             <Author alt='img' />
         </div>
         <div class="col-auto">
-        <p>{result.quote}</p>
+            <p> {result.author}</p>
         </div>
         <div class="col-auto">
-        <p> {result.author}</p>
+            <p>{result.quote}</p>
         </div>
     </div>
 </div>
