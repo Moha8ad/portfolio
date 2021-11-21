@@ -7,7 +7,7 @@ import QuotifyFooter from "../../components/quotify-components/qt-footer/qt-foot
 import './quotify.styles.scss'
 
 const Quotify = () => (
-  <div class="text-light">
+  <div class="quotify text-light">
     <QuotifyNavbar />
     <QuotifyMain/>
     <QuotifyFooter />

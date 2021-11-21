@@ -35,7 +35,7 @@ class QuotifyMain extends React.Component {
         name.author.toLowerCase().includes(searchField.toLowerCase())
         ))
         return(
-            <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0">
+            <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0 pb-5 mb-5">
                 <SearchPage
                     changeHandle={this.changeHandle}
                     searchField={searchField}

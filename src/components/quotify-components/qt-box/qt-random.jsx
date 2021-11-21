@@ -8,7 +8,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText }) => (
             <div class="col-4">
                 <Author alt='img' />
             </div>
-            <div class="col-8 fs-5 py-4">
+            <div class="col-6 fs-5 py-4">
                 {authorsText[randomQuoteId]}
             </div>
             <div class="col-12 fs-4">
