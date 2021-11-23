@@ -1,1 +1,17 @@
-export const randomColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
+const colorArr = [ 
+    '#a7c957',
+    '#fcbf49',
+    '#72efdd',
+    '#9e2a2b',
+    '#e5383b',
+    '#f15bb5',
+    '#00bbf9',
+    '#00f5d4',
+    '#fb8b24',
+    '#f72585',
+    '#4c956c',
+    '#c0fdff',
+    '#c77dff'
+    
+]
+export const randomColor = colorArr[Math.floor(Math.random() * colorArr.length)]
