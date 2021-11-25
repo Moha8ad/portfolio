@@ -1,4 +1,4 @@
-const colorArr = [ 
+const COLOR_PALETTE = [ 
     '#a7c957',
     '#fcbf49',
     '#72efdd',
@@ -14,4 +14,4 @@ const colorArr = [
     '#c77dff'
     
 ]
-export const randomColor = colorArr[Math.floor(Math.random() * colorArr.length)]
+export default COLOR_PALETTE;

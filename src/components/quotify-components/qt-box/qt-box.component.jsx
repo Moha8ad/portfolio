@@ -6,11 +6,15 @@ import ResultQuote from './qt-result';
 const QuoteBox = ({ 
         searchField,
         searchByName, 
-        randomQuoteId
+        randomQuoteId,
+        handleClick,
+        randomColor
         }) => (
             <div>
                 {searchField === '' ?
-                    <RandomQuote 
+                    <RandomQuote
+                        randomColor = {randomColor}
+                        handleClick={handleClick}
                         authorsText={searchByName.map(i => i.author)} 
                         quotesText={searchByName.map(i => i.quote)} 
                         randomQuoteId={randomQuoteId}

@@ -3,12 +3,14 @@ import React from 'react';
 import QuotifyTopbar from '../qt-topbar/qt-topbar.component';
 import QuoteBox from '../qt-box/qt-box.component'
 
-const SearchPage = ({ changeHandle, searchField, searchByName, randomQuoteId}) => (
+const SearchPage = ({  randomColor, handleChange, handleClick, searchField, searchByName, randomQuoteId}) => (
     <div>
         <QuotifyTopbar 
-            changeHandle={changeHandle} 
+            handleChange={handleChange} 
         />
         <QuoteBox
+            randomColor = {randomColor}
+            handleClick={handleClick}
             searchField={searchField}
             searchByName={searchByName} 
             randomQuoteId={randomQuoteId}

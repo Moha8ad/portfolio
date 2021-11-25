@@ -3,6 +3,7 @@ import React from 'react';
 import SearchPage from '../search-page/search-page.component';
 
 import QUOTES_DATA from './qt.data';
+import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component'
 
 import './qt-main.styles.scss';
 
@@ -11,25 +12,36 @@ class QuotifyMain extends React.Component {
         super(props);
         this.state = {
             quotesDB: [],
+            colorArr: [],
             searchField: ''
         };
     }
-    changeHandle = e => {
+    handleChange = e => {
         this.setState({
-          searchField: e.target.value
+            searchField: e.target.value
         })
       }
+    handleClick = () => {
+        this.setState({
+            
+        })
+    }
     componentDidMount() {
         this.setState({
-            quotesDB: QUOTES_DATA
+            quotesDB: QUOTES_DATA,
+            colorArr: COLOR_PALETTE
         })
     }
     render() {
-        const { quotesDB, searchField } = this.state;
-    
-        const quotesText = quotesDB.map(text => text)
+        const { quotesDB, searchField, colorArr } = this.state;
+        const handleChange= this.handleChange;
+        const handleClick = this.handleClick;
 
-        const randomQuoteId = Math.floor(Math.random()*quotesDB.length);
+        const randomColor = colorArr[Math.floor(Math.random() * colorArr.length)]
+    
+        const randomQuoteId = Math.floor(Math.random()*quotesDB.length)
+
+        const quotesText = quotesDB.map(text => text)
 
         const searchByName = quotesText.filter(name => (
         name.author.toLowerCase().includes(searchField.toLowerCase())
@@ -37,7 +49,9 @@ class QuotifyMain extends React.Component {
         return(
             <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0 pb-5 mb-5">
                 <SearchPage
-                    changeHandle={this.changeHandle}
+                    randomColor = {randomColor}
+                    handleChange={handleChange}
+                    handleClick={handleClick}
                     searchField={searchField}
                     searchByName={searchByName}
                     randomQuoteId={randomQuoteId}
