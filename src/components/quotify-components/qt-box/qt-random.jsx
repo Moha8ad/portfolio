@@ -2,17 +2,20 @@ import React from "react";
 
 const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, randomColor }) => ( 
     <div >    
-    
-        <div class="row flex-wrap m-4 fw-bold pt-5">
 
-            {/* Author & Panel DIV */}
-            <div class='col-6 col-sm-5 col-lg-3 p-lg-4'>
-          
-                <div ``
-                    class="row border border-3 rounded-2 border-light" 
+        {/* Quote BOX DIV */}
+        <div class="row m-4 fw-bold pt-5">
+
+            {/* Author BOX & Button BOX DIVs */}
+            <div class='d-flex flex-wrap col-12 col-md-4 col-lg-3 
+                        align-items-center mb-4 mb-md-0'>
+                
+                {/* Author BOX DIV */}
+                <div
+                    class="row col-5 col-md-12 me-auto border border-3 rounded-2 border-light" 
                     style={{backgroundColor: `${randomColor}`}}
                 >
-            
+                    {/* Image DIV */}
                     <div 
                         class="col-12" 
                         style={{marginTop: "-80px"}}
@@ -24,7 +27,8 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                         />
                     
                     </div>
-
+                    
+                    {/* Author DIV */}
                     <div 
                         class="col-12 fs-4" 
                         style={{
@@ -38,12 +42,14 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                     </div>
 
                 </div>
-
+                
+                {/* Button BOX DIV */}
                 <div 
-                    class='row mt-4 border border-2 rounded-2 border-light justify-content-center'
+                    class='row col-7 col-md-12 mt-4 border border-2 rounded-2 border-light 
+                           d-flex justify-content-center align-self-end'
                     style={{backgroundColor: randomColor}}
                 >
-                    {/* Button Panel */}
+                    {/* Button BOX */}
                     <div
                         class="row justify-content-center"
                         style={{backgroundColor:"rgba(26, 21, 25, 0.834)"}}
@@ -62,11 +68,26 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                             <i class="bi bi-share fs-4"></i>
 
                         </button>
+
+                        {/* Copy Button */}
+                        <button 
+                            type="button" 
+                            class="col-auto btn btn-lg mx-2"
+                            style={{color: randomColor}}
+                            data-toggle="tooltip" 
+                            data-placement="left" 
+                            title="Copy"
+                            onClick={() =>  navigator.clipboard.writeText(`${quotesText[randomQuoteId]} --${authorsText[randomQuoteId]}`)}
+                        > 
+
+                            <i class="bi bi-clipboard fs-4" />
+                            
+                        </button> 
                         
                         {/* Repeat Button */}
                         <button 
                             type="button" 
-                            class="col-auto mx-2 btn btn-lg"
+                            class="col-auto btn btn-lg"
                             style={{color: randomColor}} 
                             data-toggle="tooltip" 
                             data-placement="left" 
@@ -78,21 +99,6 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                         
                         </button>
 
-                        {/* Copy Button */}
-                        <button 
-                            type="button" 
-                            class="col-auto btn btn-lg"
-                            style={{color: randomColor}}
-                            data-toggle="tooltip" 
-                            data-placement="left" 
-                            title="Copy"
-                            onClick={() =>  navigator.clipboard.writeText(`${quotesText[randomQuoteId]} --${authorsText[randomQuoteId]}`)}
-                        > 
-
-                            <i class="bi bi-clipboard fs-4" />
-                            
-                        </button> 
-
                     </div>
 
                 </div>
@@ -100,22 +106,20 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
             </div>
             
             {/* Quote DIV */}
-            <div class="col-12 col-sm-10 col-md-7 col-lg-8 fs-2 m-4 
-                        border border-3 border-light rounded-2"
+            <div class="col-12 col-md-8 col-lg-8 fs-2 
+                        border border-3 border-light rounded-2
+                        d-flex align-items-center"
             >
                 
-                <div class="row">
+                <div class="col-12">
+                    
+                    {/* Quote Text */}
+                    <i class="bi bi-quote fs-1" style={{color: randomColor}}></i>
+                    
+                    {quotesText[randomQuoteId]} 
                 
-                    <div class="col-12">
-                        
-                        {/* Quote Text */}
-                        <i class="bi bi-quote fs-1" style={{color: randomColor}}></i>
-                        {quotesText[randomQuoteId]} 
-                   
-                    </div>       
+                </div>       
                 
-                </div>   
-            
             </div>  
         
         </div>
