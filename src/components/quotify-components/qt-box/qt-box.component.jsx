@@ -11,7 +11,7 @@ const QuoteBox = ({
         randomColor
         }) => (
             <div>
-                {searchField =``== '' ?
+                {searchField !== '' ?
                     <RandomQuote
                         randomColor = {randomColor}
                         handleClick={handleClick}
