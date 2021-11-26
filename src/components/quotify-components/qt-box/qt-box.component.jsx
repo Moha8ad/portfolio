@@ -11,7 +11,7 @@ const QuoteBox = ({
         randomColor
         }) => (
             <div>
-                {searchField === '' ?
+                {searchField =``== '' ?
                     <RandomQuote
                         randomColor = {randomColor}
                         handleClick={handleClick}
@@ -23,7 +23,7 @@ const QuoteBox = ({
                     searchByName.length > 0 ?
                     <div>
                         {searchByName.map(result => 
-                            <ResultQuote key={result.id} result={result} /> 
+                            <ResultQuote key={result.id} result={result} randomColor = {randomColor}/> 
                         )}
                     </div>
                     :

@@ -21,11 +21,11 @@ class QuotifyMain extends React.Component {
             searchField: e.target.value
         })
       }
-    handleClick = () => {
+      handleClick = () => {
         this.setState({
-            
+            searchField: ''
         })
-    }
+      }
     componentDidMount() {
         this.setState({
             quotesDB: QUOTES_DATA,
@@ -34,8 +34,6 @@ class QuotifyMain extends React.Component {
     }
     render() {
         const { quotesDB, searchField, colorArr } = this.state;
-        const handleChange= this.handleChange;
-        const handleClick = this.handleClick;
 
         const randomColor = colorArr[Math.floor(Math.random() * colorArr.length)]
     
@@ -50,9 +48,8 @@ class QuotifyMain extends React.Component {
             <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0 pb-5 mb-5">
                 <SearchPage
                     randomColor = {randomColor}
-                    handleChange={handleChange}
-                    handleClick={handleClick}
-                    searchField={searchField}
+                    handleChange={this.handleChange}
+                    handleClick={this.handleClick}
                     searchByName={searchByName}
                     randomQuoteId={randomQuoteId}
                 />

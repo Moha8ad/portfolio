@@ -16,7 +16,7 @@ export class Rolodex extends Component {
     };
   }
 
-  changeHandle = e => {
+  handleChange = e => {
     this.setState({
       searchField: e.target.value
     })
@@ -43,7 +43,7 @@ export class Rolodex extends Component {
         </p>
         <SearchBox 
         placeholder="Search Characters"
-        changeHandle={this.changeHandle}
+        handleChange={this.handleChange}
         />
         <CardList characters={filteredCharacters}/>
       </div>
