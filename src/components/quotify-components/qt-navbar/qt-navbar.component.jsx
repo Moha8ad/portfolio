@@ -23,7 +23,7 @@ const QuotifyNavbar = () => (
                        align-items-center align-items-lg-start 
                        fw-bold py-3 p-sm-3">
                 <li>
-                <Link to='/profile/' class="nav-link pb-sm-0">
+                <Link to='/profile/quotify' class="nav-link pb-sm-0">
                     <i class="bi bi-house-door fs-4 text-light"></i>
                     <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 
                 </Link>

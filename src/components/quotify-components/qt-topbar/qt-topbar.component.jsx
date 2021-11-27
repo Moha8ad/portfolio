@@ -16,7 +16,7 @@ const QuotifyTopbar = ({ handleChange }) => (
             </div>
             <div class="col-auto">
                 <i class="bi bi-person-circle fs-4"></i>
-                <span class="d-inline ms-2 fw-bold">User</span>
+                <span class="d-none d-lg-inline ms-2 fw-bold">User</span>
             </div>  
         </div>
     </div>

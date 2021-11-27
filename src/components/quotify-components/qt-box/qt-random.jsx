@@ -4,7 +4,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
     <div >    
 
         {/* Quote BOX DIV */}
-        <div class="row m-4 fw-bold pt-5">
+        <div class="row m-4 fw-bold m-5 p-5 border border-1 rounded-2 border-light bg-secondary">
 
             {/* Author BOX & Button BOX DIVs */}
             <div class='d-flex flex-wrap col-12 col-md-4 col-lg-3 
@@ -12,7 +12,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                 
                 {/* Author BOX DIV */}
                 <div
-                    class="row col-5 col-md-12 me-auto border border-3 rounded-2 border-light" 
+                    class="row col-5 col-md-12 me-auto border border-2 rounded-2 border-light shadow" 
                     style={{backgroundColor: `${randomColor}`}}
                 >
                     {/* Image DIV */}
@@ -46,7 +46,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                 {/* Button BOX DIV */}
                 <div 
                     class='row col-7 col-md-12 mt-4 border border-2 rounded-2 border-light 
-                           d-flex justify-content-center align-self-end'
+                           d-flex justify-content-center align-self-end shadow'
                     style={{backgroundColor: randomColor}}
                 >
                     {/* Button BOX */}
@@ -72,7 +72,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                         {/* Copy Button */}
                         <button 
                             type="button" 
-                            class="col-auto btn btn-lg mx-2"
+                            class="col-auto btn btn-lg"
                             style={{color: randomColor}}
                             data-toggle="tooltip" 
                             data-placement="left" 
@@ -106,9 +106,10 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
             </div>
             
             {/* Quote DIV */}
-            <div class="col-12 col-md-8 col-lg-8 fs-2 
+            <div class="col-12 col-md-8 col-lg-9 fs-2 
                         border border-3 border-light rounded-2
-                        d-flex align-items-center"
+                        d-flex align-items-center
+                        shadow-lg"
             >
                 
                 <div class="col-12">
