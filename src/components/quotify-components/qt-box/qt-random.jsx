@@ -107,7 +107,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
             
             {/* Quote DIV */}
             <div class="col-12 col-md-8 col-lg-9 fs-2 
-                        border border-3 border-light rounded-2
+                        border border-2 border-light rounded-2
                         d-flex align-items-center
                         shadow-lg"
             >
