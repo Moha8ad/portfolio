@@ -1,113 +1,150 @@
 import React from 'react';
 
-import './qt-library.styles.scss'
+import COLOR_PALETTE from '../../components/all-reusable-components/random-color/random-color-component';
 
-const Library = () => (
-  <div class="box-container">
-    <div class="box"> 
-      <div className="item1">1</div>
-      <div className="item2">2</div>
-      <div className="item3">3</div>
-      <div className="item4">4</div>
-      <div className="item5">5</div>
-      <div className="item6">6</div>
-      <div className="item7">7</div>
-      <div className="item8">8</div>
-      <div className="item9">9</div>
-      <div className="item10">10</div>
-      <div className="item11">11</div>
-      <div className="item12">12</div>
-      <div className="item13">13</div>
-      <div className="item14">14</div>
-      <div className="item15">15</div>
-      <div className="item16">16</div>
-      <div className="item17">17</div>
-      <div className="item18">18</div>
-      <div className="item19">19</div>
-      <div className="item20">20</div>
-      <div className="item21">21</div>
-      <div className="item22">22</div>
-      <div className="item23">23</div>
-      <div className="item24">24</div>
-      <div className="item25">25</div>
-      <div className="item26">26</div>
-      <div className="item27">27</div>
-      <div className="item28">28</div>
-      <div className="item29">29</div>
-      <div className="item30">30</div>
-      <div className="item31">31</div>
-      <div className="item32">32</div>
-      <div className="item33">33</div>
-      <div className="item34">34</div>
-      <div className="item35">35</div>
-      <div className="item36">36</div>
-      <div className="item37">37</div>
-      <div className="item38">38</div>
-      <div className="item39">39</div>
-      <div className="item40">40</div>
-      <div className="item41">41</div>
-      <div className="item42">42</div>
-      <div className="item43">43</div>
-      <div className="item44">44</div>
-      <div className="item45">45</div>
-      <div className="item46">46</div>
-      <div className="item47">47</div>
-      <div className="item48">48</div>
-      <div className="item49">49</div>
-      <div className="item50">50</div>
-      <div className="item51">51</div>
-      <div className="item52">52</div>
-      <div className="item53">53</div>
-      <div className="item54">54</div>
-      <div className="item55">55</div>
-      <div className="item56">56</div>
-      <div className="item57">57</div>
-      <div className="item58">58</div>
-      <div className="item59">59</div>
-      <div className="item60">60</div>
-      <div className="item61">61</div>
-      <div className="item62">62</div>
-      <div className="item63">63</div>
-      <div className="item64">64</div>
-      <div className="item65">65</div>
-      <div className="item66">66</div>
-      <div className="item67">67</div>
-      <div className="item68">68</div>
-      <div className="item69">69</div>
-      <div className="item70">70</div>
-      <div className="item71">71</div>
-      <div className="item72">72</div>
-      <div className="item73">73</div>
-      <div className="item74">74</div>
-      <div className="item75">75</div>
-      <div className="item76">76</div>
-      <div className="item77">77</div>
-      <div className="item78">78</div>
-      <div className="item79">79</div>
-      <div className="item80">80</div>
-      <div className="item81">81</div>
-      <div className="item82">82</div>
-      <div className="item83">83</div>
-      <div className="item84">84</div>
-      <div className="item85">85</div>
-      <div className="item86">86</div>
-      <div className="item87">87</div>
-      <div className="item88">88</div>
-      <div className="item89">89</div>
-      <div className="item90">90</div>
-      <div className="item91">91</div>
-      <div className="item92">92</div>
-      <div className="item93">93</div>
-      <div className="item94">94</div>
-      <div className="item95">95</div>
-      <div className="item96">96</div>
-      <div className="item97">97</div>
-      <div className="item98">98</div>
-      <div className="item99">99</div>
-      <div className="item100">100</div>
-    </div>
-  </div>
-)
+import QUOTES_DATA from './qt-library.data';
+
+class QuotifyMain extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            quotesDB: [],
+            colorArr: [],
+            searchField: ''
+        };
+    }
+    handleChange = e => {
+        this.setState({
+            searchField: e.target.value
+        })
+      }
+      handleClick = () => {
+        this.setState({
+            
+        })
+      }
+    componentDidMount() {
+        this.setState({
+            quotesDB: QUOTES_DATA,
+            colorArr: COLOR_PALETTE
+        })
+    }
+    render() {
+        const { quotesDB, searchField, colorArr} = this.state;
+
+        const randomColor = colorArr[Math.floor(Math.random() * colorArr.length)]
+
+        const randomQuoteId = Math.floor(Math.random()*quotesDB.length)
+
+        const searchByName = quotesDB.filter(name => (
+        name.author.toLowerCase().includes(searchField.toLowerCase())
+        ))
+
+        const result = quotesDB.map(item => item)
 
 
-export default Library;
+        const quotes = searchByName.map((item, id) => item.quote)
+        const authors = searchByName.map((item, id) => item.author)
+
+        return(
+            <div class="container-fluid" >
+                <div class="row">
+                    
+                    <div class="col-12 col-sm-3 py-sm-4 bg-dark text-warning">
+                        <div class="col-12 text-warning d-flex justify-content-center fs-1">Quotify</div>
+                        <div class="col-12 text-light d-flex justify-content-center fs-5">Get Inspired!</div>
+                    </div>
+              
+                    <div class="col-12 col-sm-9 bg-black py-4 min-vh-100">
+                        <div class="row d-flex justify-content-center ">
+
+                            <form class="d-flex col-8 col-sm-10 col-md-8 col-lg-6" >
+                                <input 
+                                    class="form-control me-2" 
+                                    type="search" 
+                                    placeholder="Search for Authors or Words" 
+                                    aria-label="Search" 
+                                    onChange={this.handleChange}
+                                />
+                                <button 
+                                    class="btn btn-outline-warning" 
+                                    type="submit"
+                                    onClick={this.handleClick}
+                                >Random Quote</button>
+                              
+                            </form>
+
+                            <span class="my-sm-2"/>
+
+                            {searchField === '' ?
+                            
+                                <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4">
+                                    <hr class="text-light"/>
+
+                                        <div class="col-12 fs-3 text-light">
+                                            <i class="bi bi-quote fs-1" style={{color: randomColor}}></i>
+                                            {quotes[randomQuoteId]}
+                                            
+                                        </div>
+
+                                        <div class="col-12 d-flex justify-content-end fs-4" style={{color: randomColor}}>
+                                            {authors[randomQuoteId]}
+
+                                        </div>
+                                    <hr class="text-light"/>
+                                </div>
+
+                                :
+
+                                <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4">
+                                    
+                                    
+                                        {searchByName.map((item, id) => 
+                                            
+                                            <div class="col-12 fs-3 text-light">
+                                                <hr class="text-light"/>
+                                                <div class="col-12 fs-3 text-light">
+                                                    <i class="bi bi-quote fs-1" style={{color: randomColor}}></i>
+                                                    {item.quote}
+                                                </div>
+                                                <div
+                                                    class="col-12 d-flex justify-content-end fs-4" 
+                                                    style={{color: randomColor}}>{item.author}
+                                                </div>
+                                                <hr class="text-light mb-5"/>
+                                            </div>
+                                            
+                                        )}
+
+                                    
+                                </div>
+                            
+                            }
+                            
+                            
+                                
+                        </div>
+                    </div>
+
+                    <div class="col-12 fixed-bottom">
+                        <div class="row bg-dark">
+
+                            <hr class="text-light"/>
+                            <div class="col-3 me-auto p-4 text-light">
+                                Left-footer
+                            </div>
+                            <div class="col-3 d-flex text-light justify-content-end p-4">
+                                
+                                Right-footer
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        )
+    }
+}
+
+export default QuotifyMain;

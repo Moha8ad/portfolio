@@ -36,9 +36,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                             backgroundColor:"rgba(26, 21, 25, 0.534)"
                         }}
                     >
-
                         {authorsText[randomQuoteId]}
-                    
                     </div>
 
                 </div>
@@ -92,7 +90,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                             data-toggle="tooltip" 
                             data-placement="left" 
                             title="Get Inspired!"
-                            onClick={() => handleClick()}
+                            onClick={() => handleClick(authorsText.length)}
                         >
 
                             <i class="bi bi-arrow-repeat fs-2"></i>        
