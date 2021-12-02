@@ -14,7 +14,7 @@ class QuotifyMain extends React.Component {
             quotesDB: [],
             colorArr: [],
             searchField: '',
-            randomQuoteId: Math.floor(Math.random()*props.length)
+            randomQuoteId: Math.floor(Math.random()*20)
         };
     }
     handleChange = e => {
@@ -22,11 +22,13 @@ class QuotifyMain extends React.Component {
             searchField: e.target.value
         })
       }
-      handleClick = (length) => {
+    handleClick = (e) => {
+        e.preventDefault()
         this.setState({
-            randomQuoteId: Math.floor(Math.random()*length)
+            randomQuoteId: Math.floor(Math.random()*this.state.quotesDB.length)
         })
-      }
+    }
+
     componentDidMount() {
         this.setState({
             quotesDB: QUOTES_DATA,
@@ -37,12 +39,11 @@ class QuotifyMain extends React.Component {
         const { quotesDB, searchField, colorArr, randomQuoteId } = this.state;
 
         const randomColor = colorArr[Math.floor(Math.random() * colorArr.length)]
-
-        const quotesText = quotesDB.map(text => text)
-
-        const searchByName = quotesText.filter(name => (
-        name.author.toLowerCase().includes(searchField.toLowerCase())
+        
+        const searchByName = quotesDB.filter(name => (
+            name.author.toLowerCase().includes(searchField.toLowerCase())
         ))
+
         return(
             <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0 pb-5 mb-5">
                 <SearchPage

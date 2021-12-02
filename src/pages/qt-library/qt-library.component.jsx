@@ -55,23 +55,26 @@ class QuotifyMain extends React.Component {
 
         return(
             <div class="container-fluid" >
+                {/* Quotify App*/}
                 <div class="row">
-                    
+
                     <div class="col-12 col-sm-4 col-md-3 py-sm-4 bg-dark text-warning">
-                        
+                        {/* Navbar */}
                         <div class="row p-2 justify-content-between">
-                        
+
+                            {/* Logo */}
                             <div class='col-auto col-sm-12'>
                                 <div class="d-none d-sm-block col-12 fs-1"><AsArLogoLgWt /></div>
                                 <div class="d-sm-none p-2 col-12 fs-1"><AsArLogoMdWt /></div>
                             </div>
+                            
+
+                            {/* Content Icon */}
                             <div class='col-auto col-sm-12 text-center pt-sm-4'>
                                 <div class="col-12 text-warning fs-1">Quotify</div>
                                 <div class="col-12 text-light fs-5">Get Inspired!</div>
                             </div>
-                            
                         </div>
-
                     </div>
               
                     <div class="col-12 col-sm-8 col-md-9 bg-black py-4 min-vh-100">

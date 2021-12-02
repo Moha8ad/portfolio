@@ -1,6 +1,6 @@
 import React from "react";
 
-const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, randomColor }) => ( 
+const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor, key }) => ( 
     <div >    
 
         {/* Quote BOX DIV */}
@@ -23,7 +23,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                     
                         <img 
                             alt='img' 
-                            src={`https://robohash.org/${[randomQuoteId]}?&&size=180x180`}
+                            src={`https://robohash.org/${[key]}?&&size=180x180`}
                         />
                     
                     </div>
@@ -36,7 +36,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                             backgroundColor:"rgba(26, 21, 25, 0.534)"
                         }}
                     >
-                        {authorsText[randomQuoteId]}
+                        {randomAuthors[randomQuoteId]}
                     </div>
 
                 </div>
@@ -75,7 +75,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                             data-toggle="tooltip" 
                             data-placement="left" 
                             title="Copy"
-                            onClick={() =>  navigator.clipboard.writeText(`${quotesText[randomQuoteId]} --${authorsText[randomQuoteId]}`)}
+                            onClick={() =>  navigator.clipboard.writeText(`${randomQuotes[randomQuoteId]} --${randomAuthors[randomQuoteId]}`)}
                         > 
 
                             <i class="bi bi-clipboard fs-4" />
@@ -90,7 +90,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                             data-toggle="tooltip" 
                             data-placement="left" 
                             title="Get Inspired!"
-                            onClick={() => handleClick(authorsText.length)}
+                            onClick={handleClick}
                         >
 
                             <i class="bi bi-arrow-repeat fs-2"></i>        
@@ -115,7 +115,7 @@ const RandomQuote = ({ randomQuoteId, authorsText, quotesText, handleClick, rand
                     {/* Quote Text */}
                     <i class="bi bi-quote fs-1" style={{color: randomColor}}></i>
                     
-                    {quotesText[randomQuoteId]} 
+                    {randomQuotes[randomQuoteId]} 
                 
                 </div>       
                 

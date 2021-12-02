@@ -1,6 +1,6 @@
 import React from "react";
 
-const ResultQuote = ({ result, randomColor }) => (
+const ResultQuote = ({ resultQuote, resultAuthor, result, randomColor }) => (
     <div >    
 
         {/* Quote BOX DIV */}
@@ -23,7 +23,7 @@ const ResultQuote = ({ result, randomColor }) => (
                     
                         <img 
                             alt='img' 
-                            src={`https://robohash.org/${result.id}?&&size=180x180`}
+                            src={`https://robohash.org/${result}?&&size=180x180`}
                         />
                     
                     </div>
@@ -37,7 +37,7 @@ const ResultQuote = ({ result, randomColor }) => (
                         }}
                     >
 
-                        {result.author}
+                        {resultAuthor}
                     
                     </div>
 
@@ -101,7 +101,7 @@ const ResultQuote = ({ result, randomColor }) => (
                     {/* Quote Text */}
                     <i class="bi bi-quote fs-1" style={{color: randomColor}}></i>
                     
-                    {result.quote} 
+                    {resultQuote} 
                 
                 </div>       
                 
