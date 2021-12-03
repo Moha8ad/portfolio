@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SearchPage from '../search-page/search-page.component';
+import HomePage from '../../../pages/qt-home/qt-home.component';
 
 import QUOTES_DATA from './qt.data';
 import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component'
@@ -54,6 +55,7 @@ class QuotifyMain extends React.Component {
                     searchByName={searchByName}
                     randomQuoteId={randomQuoteId}
                 />
+                
             </div>
         )
     }
