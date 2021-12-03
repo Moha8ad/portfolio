@@ -101,7 +101,7 @@ class QuotifyMain extends React.Component {
                             {searchField === '' ?
                             
                                 <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4">
-                                    <hr class="text-light"/>
+                                    <hr class="text-light" />
 
                                         <div class="col-12 fs-3 text-light">
                                             <i class="bi bi-quote fs-1" style={{color: randomColor}}></i>
@@ -115,8 +115,9 @@ class QuotifyMain extends React.Component {
                                         </div>
                                     <hr class="text-light"/>
                                 </div>
-
                                 :
+                                (searchByName.length > 0) 
+                                ?
 
                                 <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4">
                                     
@@ -138,6 +139,13 @@ class QuotifyMain extends React.Component {
                                     )}
 
                                 </div>
+
+                                :
+
+                                <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4 text-light">
+                                        <h1>Result Not Found</h1>
+                                </div>
+
                             
                             }
                             

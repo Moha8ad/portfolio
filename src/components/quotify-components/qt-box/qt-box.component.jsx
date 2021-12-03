@@ -14,13 +14,22 @@ const QuoteBox = ({ searchField, searchByName, randomQuoteId, handleClick, rando
                 randomQuoteId={randomQuoteId}
             />
             :
+            (searchByName.length > 0) 
+            ?
             <div>
                 {searchByName.map(result => 
                     <ResultQuote key={result.id} 
-                        resultQuote={result.quote} 
-                        resultAuthor={result.author}
-                        randomColor = {randomColor}/> 
+                        result={result}
+                        randomColor = {randomColor}
+                        randomQuoteId={randomQuoteId}
+                        /> 
                 )}
+            </div>
+
+            :
+
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4 text-light">
+                    <h1>Result Not Found</h1>
             </div>
         }
     </div>

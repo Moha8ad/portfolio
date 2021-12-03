@@ -9,6 +9,7 @@ const SearchPage = ({  randomColor, handleChange, handleClick, searchField, sear
             handleChange={handleChange} 
         />
         <QuoteBox
+            handleChange={handleChange}
             randomColor = {randomColor}
             handleClick={handleClick}
             searchField={searchField}

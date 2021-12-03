@@ -48,6 +48,7 @@ class QuotifyMain extends React.Component {
             <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0 pb-5 mb-5">
                 <SearchPage
                     randomColor = {randomColor}
+                    searchField={searchField}
                     handleChange={this.handleChange}
                     handleClick={this.handleClick}
                     searchByName={searchByName}

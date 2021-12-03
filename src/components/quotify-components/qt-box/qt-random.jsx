@@ -23,7 +23,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     
                         <img 
                             alt='img' 
-                            src={`https://robohash.org/${[key]}?&&size=180x180`}
+                            src={`https://robohash.org/${[randomAuthors[randomQuoteId]]}?&&size=180x180`}
                         />
                     
                     </div>
