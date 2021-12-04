@@ -12,7 +12,7 @@ const QuotifyNavbar = () => (
             <div class="d-none d-lg-block pt-4 pb-3">
                 <AsArLogoLgWt />
             </div>
-            <div class="d-none d-sm-block d-md-none p-3 pt-sm-4 pb-sm-4">
+            <div class="d-none d-sm-block d-md-none p-3 pt-sm-2 pb-sm-4">
                 <AsArLogoMdWt />
             </div>
             <ul class="nav 
@@ -21,7 +21,7 @@ const QuotifyNavbar = () => (
                        d-flex 
                        flex-wrap 
                        align-items-center align-items-lg-start 
-                       fw-bold py-3 p-sm-3">
+                       fw-bold py-2 p-sm-2">
                 <li>
                 <Link to='/profile/quotify/home' class="nav-link pb-sm-0">
                     <i class="bi bi-house-door fs-4 text-light"></i>
@@ -40,7 +40,7 @@ const QuotifyNavbar = () => (
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Library</span> 
                     </Link>
                 </li>
-                <hr />
+                
                 <li>
                     <Link to='/profile/' class="nav-link pt-sm-4 pb-sm-0">
                         <i class="bi bi-bookmark-plus fs-4 text-light"></i>
