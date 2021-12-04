@@ -1,16 +1,16 @@
 import React from "react";
 
-import HomeQuotifyMain from '../../components/quotify-components/qt-main/qt-home-main.component';
+import SearchQuotifyMain from '../../components/quotify-components/qt-main/qt-search-main.component';
 import QuotifyNavbar from '../../components/quotify-components/qt-navbar/qt-navbar.component';
 import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-footer.component';
 
 
-const QuotifyHome = () => (
+const QuotifySearch = () => (
   <div class="quotify text-light">
     <QuotifyNavbar />
-    <HomeQuotifyMain />
+    <SearchQuotifyMain />
     <QuotifyFooter />
   </div>
 )
 
-export default QuotifyHome;
+export default QuotifySearch;

@@ -10,7 +10,7 @@ import COLOR_PALETTE from '../../components/all-reusable-components/random-color
 
 import QUOTES_DATA from './qt-library.data';
 
-class QuotifyMain extends React.Component {
+class QuotifyTest extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -176,4 +176,4 @@ class QuotifyMain extends React.Component {
     }
 }
 
-export default QuotifyMain;
+export default QuotifyTest;

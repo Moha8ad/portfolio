@@ -1,6 +1,6 @@
 import React from "react";
 
-const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor, key }) => ( 
+const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
     <div >    
 
         {/* Quote BOX DIV */}

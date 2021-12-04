@@ -4,7 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from './pages/homepage/homepage.component';
 import Rolodex from './pages/rolodex/rolodex.component';
 import Quotify from './pages/quotify/quotify.component';
-import Library from './pages/qt-library/qt-library.component'
+import QuotifyHome from './pages/qt-home/qt-home.component';
+import QuotifySearch from './pages/qt-search/qt-search.component';
+import QuotifyTest from './pages/qt-library/qt-library.component';
 
 import './App.css';
 
@@ -15,7 +17,9 @@ function App() {
         <Route exact path='/profile/' component={HomePage}/>
         <Route path= '/profile/rolodex' component={Rolodex}/>
         <Route path='/profile/quotify' component={Quotify}/>
-        <Route path='/profile/app3' component={Library} />
+        <Route path='/profile/home' component={QuotifyHome}/>
+        <Route path='/profile/search' component={QuotifySearch} />
+        <Route path='/profile/app3' component={QuotifyTest} />
       </Switch>
     </div>
   )

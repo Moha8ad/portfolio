@@ -1,13 +1,12 @@
 import React from 'react';
 
-import RandomQuote from './qt-random';
-import ResultQuote from './qt-result';
+import ResultQuote from './qt-search';
 
-const QuoteBox = ({ searchField, searchByName, randomQuoteId, handleClick, randomColor }) => (
+const SearchQuoteBox = ({ searchField, searchByName, randomQuoteId, randomColor }) => (
     <div>
         {searchField === '' ?
             <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4 text-secondary">
-                <h1><i class="bi bi-person-bounding-box text-success"></i> Search For Your Favorite Authors!</h1>
+                <h1><i class="bi bi-person-bounding-box text-success"></i> Search For Authors!</h1>
             </div>
             :
             (searchByName.length > 0) 
@@ -31,4 +30,4 @@ const QuoteBox = ({ searchField, searchByName, randomQuoteId, handleClick, rando
     </div>
 )
 
-export default QuoteBox;
+export default SearchQuoteBox;

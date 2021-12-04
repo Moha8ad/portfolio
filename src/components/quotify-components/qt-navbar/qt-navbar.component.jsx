@@ -23,13 +23,13 @@ const QuotifyNavbar = () => (
                        align-items-center align-items-lg-start 
                        fw-bold py-3 p-sm-3">
                 <li>
-                <Link to='/profile/quotify' class="nav-link pb-sm-0">
+                <Link to='/profile/quotify/home' class="nav-link pb-sm-0">
                     <i class="bi bi-house-door fs-4 text-light"></i>
                     <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 
                 </Link>
                 </li>
                 <li>
-                    <Link to='/profile/' class="nav-link pb-sm-0">
+                    <Link to='/profile/search' class="nav-link pb-sm-0">
                         <i class="bi bi-search fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Search</span> 
                     </Link>
@@ -40,6 +40,7 @@ const QuotifyNavbar = () => (
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Library</span> 
                     </Link>
                 </li>
+                <hr />
                 <li>
                     <Link to='/profile/' class="nav-link pt-sm-4 pb-sm-0">
                         <i class="bi bi-bookmark-plus fs-4 text-light"></i>

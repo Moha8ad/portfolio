@@ -1,14 +1,15 @@
 import React from 'react';
 
-import SearchPage from '../search-page/search-page.component';
-import HomePage from '../../../pages/qt-home/qt-home.component';
+import SearchQuoteBox from '../qt-box/qt-search-box.component';
 
 import QUOTES_DATA from './qt.data';
-import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component'
+import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component';
 
 import './qt-main.styles.scss';
+import QuotifyTopbar from '../qt-topbar/qt-topbar.component';
 
-class QuotifyMain extends React.Component {
+
+class SearchQuotifyMain extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,13 +48,16 @@ class QuotifyMain extends React.Component {
 
         return(
             <div className="qt-main col-12 col-sm-10 offset-sm-2 p-0 pb-5 mb-5">
-                <SearchPage
-                    randomColor = {randomColor}
-                    searchField={searchField}
+                <QuotifyTopbar 
+                    midPart={"searchBox"}
                     handleChange={this.handleChange}
+                />
+                <SearchQuoteBox
                     handleClick={this.handleClick}
                     searchByName={searchByName}
                     randomQuoteId={randomQuoteId}
+                    randomColor = {randomColor}
+                    searchField={searchField}
                 />
                 
             </div>
@@ -61,4 +65,4 @@ class QuotifyMain extends React.Component {
     }
 }
 
-export default QuotifyMain;
+export default SearchQuotifyMain;
