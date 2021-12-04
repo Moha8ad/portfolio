@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import AsArLogoLgWt from '../../all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component';
-import AsArLogoMdWt from '../../all-reusable-components/asar-logo-md-wt/asar-logo-md-wt.component'
+import AsArLogoMdWt from '../../all-reusable-components/asar-logo-md-wt/asar-logo-md-wt.component';
+import AsArLogoSmWt from '../../all-reusable-components/asar-logo-sm-wt/asar-logo-sm-wt.component';
 
 import './qt-navbar.styles.scss'
 
@@ -12,9 +13,10 @@ const QuotifyNavbar = () => (
             <div class="d-none d-lg-block pt-4 pb-3">
                 <AsArLogoLgWt />
             </div>
-            <div class="d-lg-none p-3 pt-sm-4 pb-sm-4">
+            <div class="d-none d-sm-block d-md-none p-3 pt-sm-4 pb-sm-4">
                 <AsArLogoMdWt />
-            </div>          
+            </div>
+            
             <ul class="nav 
                        flex-sm-column 
                        flex-row
