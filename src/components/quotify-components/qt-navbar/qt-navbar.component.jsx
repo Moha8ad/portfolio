@@ -15,7 +15,6 @@ const QuotifyNavbar = () => (
             <div class="d-none d-sm-block d-md-none p-3 pt-sm-4 pb-sm-4">
                 <AsArLogoMdWt />
             </div>
-            
             <ul class="nav 
                        flex-sm-column 
                        flex-row
