@@ -19,8 +19,7 @@ const SearchQuoteBox = ({ searchField, searchByName, randomQuoteId, randomColor 
                         randomQuoteId={randomQuoteId}
                         /> 
                 )}
-                <div class="mb-5"/>
-                <div class="mb-4"/>
+                <div class="mb-5 pb-5"/>
             </div>
 
             :
