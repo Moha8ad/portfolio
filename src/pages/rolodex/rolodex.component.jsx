@@ -41,10 +41,12 @@ export class Rolodex extends Component {
         <p className='blinking rolodex-title'>
         Character Rolodex
         </p>
-        <SearchBox 
-        placeholder="Search Characters"
-        handleChange={this.handleChange}
-        />
+        <div class="offset-4 col-4 d-flex justify-content-center">
+          <SearchBox 
+          placeholder="Search Characters"
+          handleChange={this.handleChange}
+          />
+        </div>
         <CardList characters={filteredCharacters}/>
       </div>
     )

@@ -1,105 +1,46 @@
 import React from "react";
 
 const ResultQuote = ({ result, randomColor }) => (
-    <div >    
-
-        {/* Quote BOX DIV */}
-        <div class="row m-4 fw-bold pt-5">
-
-            {/* Author BOX & Button BOX DIVs */}
-            <div class='d-flex flex-wrap col-12 col-md-4 col-lg-3 
-                        align-items-center mb-4 mb-md-0'>
-                
-                {/* Author BOX DIV */}
-                <div
-                    class="row col-5 col-md-12 me-auto border border-3 rounded-2 border-light" 
-                    style={{backgroundColor: `${randomColor}`}}
-                >
-                    
-                    {/* Author DIV */}
-                    <div 
-                        class="col-12 fs-4" 
-                        style={{
-                            color: randomColor, 
-                            backgroundColor:"rgba(26, 21, 25, 0.534)"
-                        }}
-                    >
-
-                        {result.author}
-                    
-                    </div>
-
-                </div>
-                
-                {/* Button BOX DIV */}
-                <div 
-                    class='row col-7 col-md-12 mt-4 border border-2 rounded-2 border-light 
-                           d-flex justify-content-center align-self-end'
-                    style={{backgroundColor: randomColor}}
-                >
-                    {/* Button BOX */}
-                    <div
-                        class="row justify-content-center"
-                        style={{backgroundColor:"rgba(26, 21, 25, 0.834)"}}
-                    >
-                    
-                        {/* Share Button */}
-                        <button 
-                            type="submit" 
-                            class="col-auto btn btn-lg"
-                            style={{color: randomColor}}
-                            data-toggle="tooltip" 
-                            data-placement="left" 
-                            title="Inspire Others!"
-                        >
-                                
-                            <i class="bi bi-share fs-4"></i>
-
-                        </button>
-
+    <div class="row d-flex justify-content-center p-0 m-0">  
+            <div class="col-12 col-sm-10 col-md-8 col-xl-6 d-flex justify-content-center">
+                <div class="row">
+                    <div class="col-12 my-3 py-3 p-5 fs-3">
+                        {/* Quote Text */}
+                        <i class="bi bi-quote fs-1 d-inline" style={{color: randomColor}}>
+                        <span class="text-light fst-normal">{result.quote}</span>
+                        <span class="fs-4"> {result.author}</span>
+                        </i>
                         {/* Copy Button */}
-                        <button 
+                        <div class="col-12">
+                            <button 
                             type="button" 
-                            class="col-auto btn btn-lg mx-2"
+                            class="btn"
                             style={{color: randomColor}}
                             data-toggle="tooltip" 
                             data-placement="left" 
                             title="Copy"
                             onClick={() =>  navigator.clipboard.writeText(`${result.quote} --${result.author}`)}
-                        > 
-
-                            <i class="bi bi-clipboard fs-4" />
-                            
-                        </button> 
+                            > 
+                                <i class="bi bi-clipboard fs-4" />
+                            </button>
+                            {/* Share Button */}               
+                            <button 
+                            type="submit" 
+                            class="btn my-sm-3"
+                            style={{color: randomColor}}
+                            data-toggle="tooltip" 
+                            data-placement="left" 
+                            title="Inspire Others!"
+                            >        
+                                <i class="bi bi-share fs-4"></i>
+                            </button>
+                            <hr />
+                        </div>
                         
                     </div>
-
                 </div>
-
             </div>
-            
-            {/* Quote DIV */}
-            <div class="col-12 col-md-8 col-lg-8 fs-2 
-                        border border-3 border-light rounded-2
-                        d-flex align-items-center"
-            >
-                
-                <div class="col-12">
-                    
-                    {/* Quote Text */}
-                    <i class="bi bi-quote fs-1" style={{color: randomColor}}></i>
-                    
-                    {result.quote} 
-                
-                </div>       
-                
-            </div>  
-        
         </div>
-        {/* BLOCK SPACE */}
-        <span class="d-block p-4 m-4"/>
-
-    </div>
    
 )
 
