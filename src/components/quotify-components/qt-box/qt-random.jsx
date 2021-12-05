@@ -1,10 +1,7 @@
 import React from "react";
 
-import './qt-random.styles.scss'
-
 const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
-    <div > 
-        <div class="row d-flex justify-content-center"> 
+        <div class="row d-flex justify-content-center p-0 m-0"> 
             <div class="col-12 mt-5 d-flex justify-content-center"> 
                 <div class="row d-flex justify-content-center" >
                     <div class="col-7 col-sm-auto d-flex align-items-end border border-2 border-light rounded-1" 
@@ -65,7 +62,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     </div>
                 </div> 
             </div>  
-            <div class="col-12 col-sm-10 col-lg-8 col-xl-6 col-xxl-4 d-flex justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-xl-6 d-flex justify-content-center">
                 <div class="row">
                     <div class="col-12 my-3 mb-5 pt-3 p-5 fs-3">
                         {/* Quote Text */}
@@ -76,7 +73,6 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                 </div>
             </div>
         </div>
-    </div>
 )
 
 export default RandomQuote;

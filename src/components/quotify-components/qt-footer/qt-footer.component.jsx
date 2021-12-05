@@ -5,7 +5,7 @@ import AsArLogoSmWt from '../../all-reusable-components/asar-logo-sm-wt/asar-log
 import './qt-footer.styles.scss';
 
 const QuotifyFooter = () => (
-    <div class="qt-footer fixed-bottom p-2">        
+    <div class="qt-footer col-12 fixed-bottom p-2 d-flex align-items-center">        
         <div class="container-fluid">
             <div class="row justify-content-between align-items-center">
                 <div class="col-auto">
