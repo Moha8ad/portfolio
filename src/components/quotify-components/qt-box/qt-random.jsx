@@ -1,5 +1,7 @@
 import React from "react";
 
+import './qt-random.styles.scss'
+
 const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
     <div > 
         <div class="row fw-bold m-3 m-sm-5 d-flex justify-content-start align-items-start"> 
