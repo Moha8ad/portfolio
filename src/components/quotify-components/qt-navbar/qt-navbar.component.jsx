@@ -12,7 +12,7 @@ const QuotifyNavbar = () => (
             <div class="d-none d-lg-block pt-4 pb-3">
                 <AsArLogoLgWt />
             </div>
-            <div class="d-none d-sm-block d-md-none p-3 pt-sm-2 pb-sm-4">
+            <div class="d-none d-sm-block d-lg-none p-3 pt-sm-2 pb-sm-4">
                 <AsArLogoMdWt />
             </div>
             <ul class="nav 
