@@ -4,30 +4,27 @@ import './qt-random.styles.scss'
 
 const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
     <div > 
-        <div class="row fw-bold m-3 m-sm-5 d-flex justify-content-start align-items-start"> 
-                        
-            <div class="col-8 col-sm-6 col-md-4 p-2 px-sm-4 text-center" >
-                <div class="row" >
-                    <div class="col-12 mx-2 mt-5 mb-2 px-2 d-flex justify-content-center border border-1 rounded-2"
-                         style={{ backgroundColor: randomColor }} 
-                    >
-                        <img 
-                        style={{marginTop: "-75px"}} 
-                        alt='img'
-                        src={`https://robohash.org/${[randomAuthors[randomQuoteId]]}?&&size=180x180`}/>
+        <div class="row d-flex justify-content-center"> 
+            <div class="col-12 mt-5 d-flex justify-content-center"> 
+                <div class="row d-flex justify-content-center" >
+                    <div class="col-7 col-sm-auto d-flex align-items-end border border-2 border-light rounded-1" 
+                        style={{backgroundColor: randomColor}}>
+                        <div class="row d-flex justify-content-center" >
+                            <div class="col-12 d-flex justify-content-center px-2">
+                                <img 
+                                    style={{marginTop: "-80px"}} 
+                                    alt='img'
+                                    src={`https://robohash.org/${[randomAuthors[randomQuoteId]]}?&&size=180x180`}
+                                />
+                            </div>
+                            <div class="col-12 text-center fs-4" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.534)"}}>
+                                {randomAuthors[randomQuoteId]}
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 mx-2 p-2 fs-4 border border-1 rounded-2" 
-                        style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.534)"}}
-                    >
-                        {randomAuthors[randomQuoteId]}
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-2 col-sm-1 ms-2 mt-5 d-flex justify-content-center align-items-end" 
-                    >
-                    <div class="row" 
-                         style={{ color: randomColor}} >
+                    <div class="col-2">
+                        <div class="row" 
+                            style={{ color: randomColor}} >
                             {/* Repeat Button */}
                             <button 
                             type="button" 
@@ -51,6 +48,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                             >        
                                 <i class="bi bi-share fs-4"></i>
                             </button>
+                            
                             {/* Copy Button */}
                             <button 
                             type="button" 
@@ -63,24 +61,21 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                             > 
                                 <i class="bi bi-clipboard fs-4" />
                             </button>
+                        </div>
                     </div>
-                </div>
-                  
-            <div class="col-12">
+                </div> 
+            </div>  
+            <div class="col-12 col-sm-10 col-lg-8 col-xl-6 col-xxl-4 d-flex justify-content-center">
                 <div class="row">
-                    
-                    <div class="col-12 my-3 mb-5 pb-5 fs-3">
+                    <div class="col-12 my-3 mb-5 pt-3 p-5 fs-3">
                         {/* Quote Text */}
                         <i class="bi bi-quote fs-1 d-inline" style={{color: randomColor}}>
                         <span class="text-light">{randomQuotes[randomQuoteId]}</span>
                         </i>
                     </div>
                 </div>
-                 
             </div>
         </div>
-
-
     </div>
 )
 
