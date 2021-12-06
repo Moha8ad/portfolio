@@ -31,15 +31,15 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                                     style={{color: randomColor}}
                                     onClick={() =>  navigator.clipboard.writeText(`${result.quote} --${result.author}`)}
                                     > 
-                                        <i class="bi bi-clipboard fs-4" />
+                                        <i class="bi bi-clipboard fs-5" />
                                     </button>
                                     {/* Share Button */}               
                                     <button 
                                     type="submit" 
-                                    class="btn my-sm-3"
+                                    class="btn p-0"
                                     style={{color: randomColor}}
                                     >        
-                                        <i class="bi bi-share fs-4"></i>
+                                        <i class="bi bi-share fs-5"></i>
                                     </button>
                                 </div>
                             </div>
