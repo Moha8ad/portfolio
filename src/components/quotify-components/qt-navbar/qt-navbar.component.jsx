@@ -60,6 +60,14 @@ const QuotifyNavbar = ({ history, match }) => (
                     </div>
                 </li>
             </ul>
+            <ul class="nav d-sm-none ms-auto  py-2">
+                <li>
+                    <div class="nav-link">
+                        <i class="bi bi-person-circle fs-4 text-light"></i>
+                        <span class="d-none d-lg-inline ms-3 text-secondary"> User</span>  
+                    </div>
+                </li> 
+            </ul>
         </div>
     </div>
 )

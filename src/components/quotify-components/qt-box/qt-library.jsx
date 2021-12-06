@@ -23,7 +23,25 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                                     style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.534)"}}>
                                 
                                     {result.author}
-                                <div class="text-light text-left fst-normal">{result.quote}</div>
+                                <div class="text-light">
+                                    {result.quote}
+                                    <button 
+                                    type="button" 
+                                    class="btn"
+                                    style={{color: randomColor}}
+                                    onClick={() =>  navigator.clipboard.writeText(`${result.quote} --${result.author}`)}
+                                    > 
+                                        <i class="bi bi-clipboard fs-4" />
+                                    </button>
+                                    {/* Share Button */}               
+                                    <button 
+                                    type="submit" 
+                                    class="btn my-sm-3"
+                                    style={{color: randomColor}}
+                                    >        
+                                        <i class="bi bi-share fs-4"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
