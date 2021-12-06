@@ -38,14 +38,20 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                                                 > 
                                                     <i class="bi bi-clipboard" />
                                                 </button>
-                                                {/* Share Button */}               
-                                                <button 
-                                                type="submit" 
-                                                class="btn p-0 text-secondary"
-                                                >        
-                                                    <i class="bi bi-share"></i>
-                                                </button>
-                                           
+                                                
+                                                <a class="twitter-share-button"
+                                                    href="https://twitter.com/intent/tweet?text=">
+                                                    {/* Share Button */}               
+                                                    <button 
+                                                    type="submit" 
+                                                    class="btn p-0 text-secondary"
+                                                    >        
+                                                        <i class="bi bi-share"></i>
+                                                    </button>
+                                                </a>
+                                                <a class="twitter-share-button text-light" 
+                                                href={`https://twitter.com/intent/tweet?text=${result.quote} -${result.author}`}>Tweet this!</a>
+                                                    
                                         </div>
                                     </div>
                                 </div>
