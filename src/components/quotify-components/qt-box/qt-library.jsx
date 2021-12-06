@@ -5,7 +5,7 @@ import './qt-library.styles.scss'
 const LibraryQuote = ({ randomColor, searchByName }) => ( 
     <div class="row d-flex justify-content-center">
     {searchByName.map((result, id) => (
-        <div class="col-5 m-4"> 
+        <div class="col-10 col-sm-5 m-4"> 
             <div class="row" >
                 <div class="col-12 border border-2 border-light rounded-1" 
                     
