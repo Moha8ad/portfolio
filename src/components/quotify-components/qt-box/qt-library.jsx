@@ -6,10 +6,10 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
     <div class="container-fluid">
         <div class="row d-flex justify-content-center">
             {searchByName.map((result, id) => (
-                <div class="col-10 col-sm-9 col-md-5 m-4"> 
+                <div class="col-10 col-sm-9 col-md-4 px-4 py-1 border border-secondary"> 
                     <div class="row" >
-                        <div class="col-12 border border-2 border-light rounded-1 bg-info">
-                            <div class="row d-flex justify-content-center bg-dark">
+                        <div class="col-12">
+                            <div class="row d-flex justify-content-center ">
                                 <div class="col-4 col-sm-3 px-2">
                                     <img
                                         alt='img'
@@ -21,33 +21,31 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                                         {result.author}
                                     </div>
                                 </div>
-                                <div className="d-flex justify-content-end align-self-end col-2 ms-auto">
-                                    <button 
-                                    type="button" 
-                                    class="btn"
-                                    style={{color: randomColor}}
-                                    onClick={() =>  navigator.clipboard.writeText(`${result.quote} --${result.author}`)}
-                                    > 
-                                        <i class="bi bi-clipboard fs-5" />
-                                    </button>
-                                    {/* Share Button */}               
-                                    <button 
-                                    type="submit" 
-                                    class="btn p-0"
-                                    style={{color: randomColor}}
-                                    >        
-                                        <i class="bi bi-share fs-5"></i>
-                                    </button>
-                                </div>
-                                <div class="row p-0" style={{backgroundColor: randomColor, minHeight: "200px"}}>
+                                
+                                <div class="row p-0" style={{minHeight: "200px"}}>
                                     <div class="col-12 p-0" 
-                                        style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.300)"}}
                                     >
-                                        <div class="fs-4 px-2 d-md-none" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.700)"}}>
+                                        <div class="fs-5 px-2 d-md-none" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.700)"}}>
                                             {result.author}
                                         </div>
-                                        <div class="text-light p-2 fs-3">
+                                        <div class="text-secondary p-2 fs-4">
                                             {result.quote}
+                                            
+                                                <button 
+                                                type="button" 
+                                                class="btn text-secondary"
+                                                onClick={() =>  navigator.clipboard.writeText(`${result.quote} --${result.author}`)}
+                                                > 
+                                                    <i class="bi bi-clipboard" />
+                                                </button>
+                                                {/* Share Button */}               
+                                                <button 
+                                                type="submit" 
+                                                class="btn p-0 text-secondary"
+                                                >        
+                                                    <i class="bi bi-share"></i>
+                                                </button>
+                                           
                                         </div>
                                     </div>
                                 </div>
