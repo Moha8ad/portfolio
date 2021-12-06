@@ -1,7 +1,17 @@
 .collection {
-   width: 90%;
-   display: flex;
-   flex-direction: column;
-   height: 350px;
-   align-items: center;
+   transform: translateZ(0);
+   transition: transform 0.25s ease-out;    
+ }
+
+.collection:hover {
+      transform: scale(1.05);
 }
+
+.collection2 {
+      transform: translateZ(0);
+      transition: transform 0.25s ease-out;    
+    }
+   
+   .collection2:hover {
+         transform: scale(1.10);
+   }

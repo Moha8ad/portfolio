@@ -1,9 +1,9 @@
 import React from "react";
 
 const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
-        <div class="row d-flex justify-content-center p-0 m-0"> 
+        <div class="row d-flex justify-content-center p-0 m-0 "> 
             <div class="col-12 mt-5 d-flex justify-content-center"> 
-                <div class="row d-flex justify-content-center" >
+                <div class="row d-flex justify-content-center collection" >
                     <div class="col-7 col-sm-auto d-flex align-items-end border border-2 border-light rounded-1" 
                         style={{backgroundColor: randomColor}}>
                         <div class="row d-flex justify-content-center" >
@@ -14,12 +14,12 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                                     src={`https://robohash.org/${[randomAuthors[randomQuoteId]]}?&&size=180x180`}
                                 />
                             </div>
-                            <div class="col-12 text-center fs-4" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.534)"}}>
-                                {randomAuthors[randomQuoteId]}
+                            <div class="col-12 text-center fs-5" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.534)"}}>
+                               <div> {randomAuthors[randomQuoteId]} </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 collection2">
                         <div class="row" 
                             style={{ color: randomColor}} >
                             {/* Repeat Button */}
@@ -37,7 +37,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                            {/* Share Button */}               
                             <button 
                             type="submit" 
-                            class="btn my-sm-3"
+                            class="btn my-sm-2"
                             style={{color: randomColor}}
                             data-toggle="tooltip" 
                             data-placement="left" 
@@ -62,12 +62,12 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     </div>
                 </div> 
             </div>  
-            <div class="col-12 col-sm-10 col-md-8 col-xl-6 d-flex justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-xl-6 d-flex justify-content-center collection">
                 <div class="row">
-                    <div class="col-12 my-3 mb-5 pt-3 p-5 fs-3">
+                    <div class="col-12 my-3 mb-5 pt-3 p-5">
                         {/* Quote Text */}
                         <i class="bi bi-quote fs-1 d-inline" style={{color: randomColor}}>
-                        <span class="text-light fst-normal">{randomQuotes[randomQuoteId]}</span>
+                        <span class="text-light fst-normal fs-3">{randomQuotes[randomQuoteId]}</span>
                         </i>
                         
                     </div>
