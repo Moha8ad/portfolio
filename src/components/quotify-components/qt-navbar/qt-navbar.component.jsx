@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import AsArLogoLgWt from '../../all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component';
 import AsArLogoMdWt from '../../all-reusable-components/asar-logo-md-wt/asar-logo-md-wt.component';
 
 import './qt-navbar.styles.scss'
 
-const QuotifyNavbar = () => (
+const QuotifyNavbar = ({ history, match }) => (
     <div class="qt-navbar col-12 col-sm-2 p-0">    
         <div class="d-flex flex-row flex-sm-column flex-wrap justify-content-between">  
             <div class="d-none d-lg-block pt-4 pb-3">
@@ -23,39 +23,45 @@ const QuotifyNavbar = () => (
                        align-items-center align-items-lg-start 
                        fw-bold py-2 p-sm-2">
                 <li>
-                <Link to='/profile/quotify/home' class="nav-link pb-sm-0">
+                <div class="nav-link pb-sm-0"
+                    onClick={() => history.push('/profile/quotify')}
+                >
                     <i class="bi bi-house-door fs-4 text-light"></i>
                     <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 
-                </Link>
+                </div>
                 </li>
                 <li>
-                    <Link to='/profile/search' class="nav-link pb-sm-0">
+                    <div class="nav-link pb-sm-0"
+                        onClick={() => history.push('/profile/search')}
+                    >
                         <i class="bi bi-search fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Search</span> 
-                    </Link>
+                    </div>
                 </li>
                 <li>
-                    <Link to='/profile/' class="nav-link">
+                    <div class="nav-link"
+                        onClick={() => history.push('/profile/library')}
+                    >
                         <i class="bi bi-journal-bookmark fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Library</span> 
-                    </Link>
+                    </div>
                 </li>
                 
                 <li>
-                    <Link to='/profile/' class="nav-link pt-sm-4 pb-sm-0">
+                    <div class="nav-link pt-sm-4 pb-sm-0">
                         <i class="bi bi-bookmark-plus fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Bookmark</span>   
-                    </Link>
+                    </div>
                 </li>
                 <li>
-                    <Link to='/profile/' class="nav-link">
+                    <div class="nav-link">
                         <i class="bi bi-heart fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Liked</span>  
-                    </Link>
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
 )
                 
-export default QuotifyNavbar;
+export default withRouter(QuotifyNavbar);

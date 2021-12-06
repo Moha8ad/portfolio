@@ -5,9 +5,9 @@ import QuotifyNavbar from '../../components/quotify-components/qt-navbar/qt-navb
 import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-footer.component';
 
 
-const QuotifyHome = () => (
+const QuotifyHome = ({history, match}) => (
   <div class="quotify">
-    <QuotifyNavbar />
+    <QuotifyNavbar history={history} match={match}/>
     <HomeQuotifyMain />
     <QuotifyFooter />
   </div>
