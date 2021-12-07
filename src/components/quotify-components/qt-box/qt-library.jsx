@@ -41,7 +41,7 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                                                 <a
                                                     rel="noopener noreferrer"
                                                     target="_blank"
-                                                    href={`https://twitter.com/intent/tweet?text=${result.quote} -${result.author}`}>
+                                                    href={`https://twitter.com/intent/tweet?text=${result.quote} - ${result.author}`}>
                                                 <i class="bi bi-twitter text-light fs-5"></i>
                                                 </a>
                                                     

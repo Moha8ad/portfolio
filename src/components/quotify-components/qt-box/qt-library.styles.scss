@@ -1,6 +1,5 @@
 .hover-scale {
-   transform: translateZ(0);
-   transition: transform 0.25s ease-out;   
+      transition: transform 0.25s ease-out;   
 }
 
 .hover-scale:hover {
@@ -8,10 +7,18 @@
 }
 
 .hover-scale2 {
-      transform: translateZ(0);
-      transition: transform 0.25s ease-out;    
+      transition: transform 0.25s ease-out;
 }
    
 .hover-scale2:hover {
-   transform: scale(1.10);
+      transform: scale(1.20);
+}
+
+.hover-scale-rotate {
+      transition: transform 0.25s ease-out;
+}
+
+.hover-scale-rotate:hover {
+      transform: rotate(20deg);
+      transform: rotate(180deg);
 }

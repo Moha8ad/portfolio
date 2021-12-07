@@ -5,8 +5,9 @@ import RandomQuoteBox from '../qt-box/qt-random-box.component';
 import QUOTES_DATA from './qt.data';
 import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component'
 
-import './qt-main.styles.scss';
 import QuotifyTopbar from '../qt-topbar/qt-topbar.component';
+
+import './qt-main.styles.scss';
 
 
 class HomeQuotifyMain extends React.Component {
