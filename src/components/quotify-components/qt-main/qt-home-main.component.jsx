@@ -17,7 +17,7 @@ class HomeQuotifyMain extends React.Component {
             quotesDB: [],
             colorArr: [],
             searchField: '',
-            randomQuoteId: Math.floor(Math.random()*20)
+            randomQuoteId: Math.floor(Math.random()*30)
         };
     }
     handleChange = e => {

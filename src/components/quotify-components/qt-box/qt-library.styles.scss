@@ -14,11 +14,42 @@
       transform: scale(1.20);
 }
 
+.hover-scale-change {
+      transition: transform 0.25s ease-out;
+}
+   
+.hover-scale-change:hover {
+      transform: scale(1.20);
+}
+
+.hover-scale-change:active {
+      transform: scale(1.20);
+      color: rgb(0, 255, 128);
+
+}
+
 .hover-scale-rotate {
       transition: transform 0.25s ease-out;
 }
 
 .hover-scale-rotate:hover {
-      transform: rotate(20deg);
-      transform: rotate(180deg);
+      transform: rotate(120deg);
+}
+
+.hover-scale-rotate:active {
+      transform: rotate(270deg);
+}
+
+.fade-in {
+	animation: fadeIn 2s;
+  	opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+  	opacity: 0;
+  }
+  to {
+ 	opacity: 1;
+  }
 }
