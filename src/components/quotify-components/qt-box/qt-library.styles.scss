@@ -1,17 +1,17 @@
-.collection {
+.hover-scale {
    transform: translateZ(0);
-   transition: transform 0.25s ease-out;    
- }
+   transition: transform 0.25s ease-out;   
+}
 
-.collection:hover {
+.hover-scale:hover {
       transform: scale(1.05);
 }
 
-.collection2 {
+.hover-scale2 {
       transform: translateZ(0);
       transition: transform 0.25s ease-out;    
-    }
+}
    
-   .collection2:hover {
-         transform: scale(1.10);
-   }
+.hover-scale2:hover {
+   transform: scale(1.10);
+}

@@ -1,17 +1,18 @@
 import React from "react";
 
 const ResultQuote = ({ result, randomColor }) => (
-    <div class="row d-flex justify-content-center p-0 m-0">  
-        <div class="col-12 col-sm-10 col-md-8 col-xl-6 d-flex justify-content-center">
+    <div class="row d-flex justify-content-center m-3">  
+        <div class="col-12 col-sm-10 col-md-8 col-xl-6">
             <div class="row">
-                <div class="col-12 my-3 py-3 p-5 fs-3">
+                <div class="col-12 p-3 fs-4 border border-2 rounded-2 hover-scale">
                     {/* Quote Text */}
-                    <i class="bi bi-quote fs-1 d-inline" style={{color: randomColor}}>
+                    <i class="bi bi-quote fs-3 d-inline" style={{color: randomColor}}>
                     <span class="text-light fst-normal">{result.quote}</span>
-                    <span class="fs-4"> {result.author}</span>
+                   
                     </i>
+                    <div class="col-12 fs-5 fst-italic" style={{color: randomColor}}> {result.author}</div>
                     {/* Copy Button */}
-                    <div class="col-12">
+                    <div class="col-12 d-flex justify-content-end align-items-end">
                         <button 
                         type="button" 
                         class="btn"
@@ -21,7 +22,7 @@ const ResultQuote = ({ result, randomColor }) => (
                         title="Copy"
                         onClick={() =>  navigator.clipboard.writeText(`${result.quote} --${result.author}`)}
                         > 
-                            <i class="bi bi-clipboard fs-4" />
+                            <i class="bi bi-clipboard fs-5" />
                         </button>
                         {/* Share Button */}               
                         <button 
@@ -32,7 +33,7 @@ const ResultQuote = ({ result, randomColor }) => (
                         data-placement="left" 
                         title="Inspire Others!"
                         >        
-                            <i class="bi bi-share fs-4"></i>
+                            <i class="bi bi-share fs-5"></i>
                         </button>
                         
                     </div>

@@ -6,10 +6,12 @@ import LibraryQuotifyMain from "../../components/quotify-components/qt-main/qt-l
 
 
 const QuotifyLibrary = () => (
-  <div class="quotify text-light">
-    <QuotifyNavbar />
-    <LibraryQuotifyMain />
-    <QuotifyFooter />
+  <div class=" text-light container-fluid">
+    <div class="row">
+      <QuotifyNavbar />
+      <LibraryQuotifyMain />
+      <QuotifyFooter />
+    </div>
   </div>
 )
 

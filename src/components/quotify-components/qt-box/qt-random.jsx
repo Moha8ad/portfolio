@@ -3,7 +3,7 @@ import React from "react";
 const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
         <div class="row d-flex justify-content-center p-0 m-0 "> 
             <div class="col-12 mt-5 d-flex justify-content-center"> 
-                <div class="row d-flex justify-content-center collection" >
+                <div class="row d-flex justify-content-center hover-scale" >
                     <div class="col-7 col-sm-auto d-flex align-items-end border border-2 border-light rounded-1" 
                         style={{backgroundColor: randomColor}}>
                         <div class="row d-flex justify-content-center" >
@@ -19,7 +19,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                             </div>
                         </div>
                     </div>
-                    <div class="col-2 collection2">
+                    <div class="col-2 hover-scale2">
                         <div class="row" 
                             style={{ color: randomColor}} >
                             {/* Repeat Button */}
@@ -62,7 +62,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     </div>
                 </div> 
             </div>  
-            <div class="col-12 col-sm-10 col-md-8 col-xl-6 d-flex justify-content-center collection">
+            <div class="col-12 col-sm-10 col-md-8 col-xl-6 d-flex justify-content-center hover-scale">
                 <div class="row">
                     <div class="col-12 my-3 mb-5 pt-3 p-5">
                         {/* Quote Text */}

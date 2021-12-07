@@ -9,7 +9,7 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                 <div class="col-10 col-sm-9 col-md-4 px-4 py-3"> 
                     <div class="row" >
                         <div class="col-12 ">
-                            <div class="collection row d-flex justify-content-center border border-secondary bg-dark border-2 rounded-2">
+                            <div class="hover-scale row d-flex justify-content-center border border-secondary bg-dark border-2 rounded-2">
                                 <div class="col-12 col-sm-3 px-2">
                                     <img
                                         alt='img'
@@ -22,7 +22,7 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                                     </div>
                                 </div>
                                 
-                                <div class="row p-1 border-2 rounded-2" style={{backgroundColor: randomColor, minHeight: "200px"}}>
+                                <div class="row p-1 border-2 rounded-2 overflow-scroll" style={{backgroundColor: randomColor, height: "150px"}}>
                                     <div class="col-12 p-0 border-2 rounded-2" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
                                         <div class="fs-5 px-2 d-md-none" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
                                             {result.author}

@@ -6,10 +6,12 @@ import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-foot
 
 
 const QuotifySearch = () => (
-  <div class="quotify text-light">
-    <QuotifyNavbar />
-    <SearchQuotifyMain />
-    <QuotifyFooter />
+  <div class="quotify text-light container-fluid">
+    <div class="row">
+      <QuotifyNavbar />
+      <SearchQuotifyMain />
+      <QuotifyFooter />
+    </div>
   </div>
 )
 

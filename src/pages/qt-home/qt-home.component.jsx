@@ -6,10 +6,12 @@ import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-foot
 
 
 const QuotifyHome = ({history, match}) => (
-  <div class="quotify">
-    <QuotifyNavbar history={history} match={match}/>
-    <HomeQuotifyMain />
-    <QuotifyFooter />
+  <div class="quotify container-fluid">
+    <div class="row">
+      <QuotifyNavbar history={history} match={match}/>
+      <HomeQuotifyMain />
+      <QuotifyFooter />
+    </div>
   </div>
 )
 
