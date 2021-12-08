@@ -23,13 +23,14 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     >
                         <i class="bi bi-arrow-repeat fs-2" />
                     </div>
+                    {/* repeat button tooltip hover*/}
                     <ReactTooltip class="col-auto fs-6" id="repeat-btn" place="right" effect="float">
                         Get Inspired!
                     </ReactTooltip>
 
                     {/* share button */}
                     <a
-                        className="col-auto hover-scale2"
+                        className="col-auto hover-scale-change"
                         style={{color: randomColor}}
                         data-tip data-for="share-btn"
                         rel="noopener noreferrer"
@@ -38,6 +39,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     >
                         <i class="bi bi-twitter fs-5"></i>
                     </a>
+                    {/* share button tooltip hover*/}
                     <ReactTooltip class="col-auto fs-6" id="share-btn" place="left" effect="float">
                         Inpire Others!
                     </ReactTooltip>
@@ -51,10 +53,11 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                         <i class="bi bi-clipboard fs-5" data-tip data-for="copy-btn"/>
 
                     </div>
+                    {/* copy button tooltip hover*/}
                     <ReactTooltip class="col-auto fs-6" id="copy-btn" place="bottom" effect="float">
                         Copy the Quote!
                     </ReactTooltip>
-                    
+                    {/* copy button tooltip onClick*/}
                     <ReactTooltip class="col-auto bg-success fs-6" globalEventOff='click'/>
 
                 </div>
@@ -65,7 +68,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
         
                 <img
                     alt={`${randomAuthors[randomQuoteId]}`}
-                    src={`https://robohash.org/${[randomQuoteId]}?&&size=180x180`}
+                    src={`https://robohash.org/${[randomQuoteId]}?&&size=220x220`}
                     />        
             
             </div>
