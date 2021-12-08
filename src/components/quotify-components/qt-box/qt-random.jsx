@@ -24,7 +24,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                         <i class="bi bi-arrow-repeat fs-2" />
                     </div>
                     {/* repeat button tooltip hover*/}
-                    <ReactTooltip class="col-auto fs-6" id="repeat-btn" place="right" effect="float">
+                    <ReactTooltip class="col-auto fs-6" id="repeat-btn" place="right" effect="solid">
                         Get Inspired!
                     </ReactTooltip>
 
@@ -40,7 +40,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                         <i class="bi bi-twitter fs-5"></i>
                     </a>
                     {/* share button tooltip hover*/}
-                    <ReactTooltip class="col-auto fs-6" id="share-btn" place="left" effect="float">
+                    <ReactTooltip class="col-auto fs-6" id="share-btn" place="left" effect="solid">
                         Inpire Others!
                     </ReactTooltip>
 
@@ -54,17 +54,17 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
 
                     </div>
                     {/* copy button tooltip hover*/}
-                    <ReactTooltip class="col-auto fs-6" id="copy-btn" place="bottom" effect="float">
+                    <ReactTooltip class="col-auto fs-6" id="copy-btn" place="bottom" effect="solid">
                         Copy the Quote!
                     </ReactTooltip>
                     {/* copy button tooltip onClick*/}
-                    <ReactTooltip class="col-auto bg-success fs-6" globalEventOff='click'/>
+                    <ReactTooltip class="col-auto bg-success fs-6" globalEventOff='click' place="right" effect="solid"/>
 
                 </div>
             </div>
 
             {/* author image */}
-            <div className="col-12 d-flex justify-content-center align-items-center author-animation">
+            <div className="col-12 d-flex justify-content-center align-items-center author-home-animation">
         
                 <img
                     alt={`${randomAuthors[randomQuoteId]}`}

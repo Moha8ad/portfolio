@@ -10,14 +10,14 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                     <div class="row" >
                         <div class="col-12 ">
                             <div class="hover-scale row d-flex justify-content-center border border-secondary bg-dark border-2 rounded-2">
-                                <div class="col-12 col-sm-5 px-2 author-animation zindex-dropdown">
+                                <div class="col-12 col-sm-7 px-2 author-library-animation">
                                     <img
                                         alt='img'
                                         src={`https://robohash.org/${[id]}?&&size=180x180`}
                                     />
                                 </div>
-                                <div class="col-auto col-sm-7 d-flex align-self-end fs-4 py-2 d-none d-md-block">
-                                    <div class="px-2 border-2 rounded-2 zindex-fixed" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.700)"}}>
+                                <div class="col-auto col-sm-5 d-flex align-self-end fs-4 py-2 d-none d-md-block">
+                                    <div class="px-2 border-2 rounded-2" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.700)"}}>
                                         {result.author}
                                     </div>
                                 </div>

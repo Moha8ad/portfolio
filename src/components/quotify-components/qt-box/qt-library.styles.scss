@@ -47,21 +47,34 @@
       }
 }
 
-.author-animation {
+.author-library-animation {
+      
+      filter: grayscale(100%);
+
+      &:hover {
+            filter: grayscale(0%);
+      }
+
       &:active {
-            animation: myAnim 2s linear 0s 1 normal none;
+            animation: authorLibraryAnimation 1s ease 0s 1 normal forwards;
+
       }
 }
 
-@keyframes myAnim {
-      0%,
-      50%,
-      100% {
-        opacity: 1;
+@keyframes authorLibraryAnimation {
+      0% {
+        transform: translateX(0);
       }
     
-      25%,
-      75% {
-        opacity: 0;
+      100% {
+        transform: translateX(40px);
       }
     }
+
+.author-home-animation {
+      filter: grayscale(100%);
+
+      &:hover {
+            filter: grayscale(0%)
+      }
+}
