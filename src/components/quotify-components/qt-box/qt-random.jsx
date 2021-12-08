@@ -8,7 +8,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
     <div class="row d-flex justify-content-center align-items-center">
  
         {/* quote box */}
-        <div class="col-10 col-sm-8 border border-2 border-light rounded-2 m-4" style={{backgroundColor: randomColor}}>
+        <div class="col-10 col-sm-8 border border-2 border-light rounded-2 m-4 box-animation" style={{backgroundColor: randomColor}}>
             <div class="row d-flex justify-content-center align-items-center" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.200)"}}>
 
                 {/* buttons */}
@@ -64,7 +64,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
             </div>
 
             {/* author image */}
-            <div className="col-12 d-flex justify-content-center align-items-center">
+            <div className="col-12 d-flex justify-content-center align-items-center author-animation">
         
                 <img
                     alt={`${randomAuthors[randomQuoteId]}`}

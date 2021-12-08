@@ -1,31 +1,67 @@
 .hover-scale {
       transition: transform 0.25s ease-out;   
-}
 
-.hover-scale:hover {
+      &:hover {
       transform: scale(1.05);
+      }
 }
 
 .hover-scale-change {
       transition: transform 0.25s ease-out;
-}
    
-.hover-scale-change:hover {
+      &:hover {
       transform: scale(1.20);
-}
+      }
 
-.hover-scale-change:active {
+      :active {
       color: rgb(255, 255, 255);
+      }
 }
 
 .hover-scale-rotate {
       transition: transform 0.25s ease-out;
-}
-
-.hover-scale-rotate:hover {
+      
+      &:hover {
       transform: rotate(120deg);
+      }
+
+      &:active {
+      transform: rotate(270deg);
+      }
 }
 
-.hover-scale-rotate:active {
-      transform: rotate(270deg);
+.box-animation {
+
+      &:active {
+            animation: boxAnimation 1s linear 0s 1 normal none;
+      }
 }
+
+@keyframes boxAnimation {
+      0% {
+        opacity: 0;
+      }
+    
+      100% {
+        opacity: 1;
+      }
+}
+
+.author-animation {
+      &:active {
+            animation: myAnim 2s linear 0s 1 normal none;
+      }
+}
+
+@keyframes myAnim {
+      0%,
+      50%,
+      100% {
+        opacity: 1;
+      }
+    
+      25%,
+      75% {
+        opacity: 0;
+      }
+    }
