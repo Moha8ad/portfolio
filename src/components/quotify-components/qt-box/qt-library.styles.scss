@@ -47,29 +47,48 @@
       }
 }
 
-.author-library-animation {
-      
+.auth-img-library-animation {
+
       filter: grayscale(100%);
 
       &:hover {
             filter: grayscale(0%);
-      }
-
-      &:active {
-            animation: authorLibraryAnimation 1s ease 0s 1 normal forwards;
-
+            animation: authImgLibraryAnimation 1s ease 0s 1 normal forwards;
       }
 }
 
-@keyframes authorLibraryAnimation {
+
+@keyframes authImgLibraryAnimation {
       0% {
         transform: translateX(0);
       }
     
       100% {
-        transform: translateX(40px);
+        transform: translateX(20px);
       }
-    }
+}
+
+
+.auth-name-library-animation {
+
+      filter: grayscale(100%);
+
+      &:hover {
+            filter: grayscale(0%);
+            animation: authNameLibraryAnimation 1s ease 0s 1 normal forwards;
+      }
+
+}
+
+@keyframes authNameLibraryAnimation {
+      0% {
+        transform: translateX(0);
+      }
+    
+      100% {
+        transform: translateX(-20px);
+      }
+}
 
 .author-home-animation {
       filter: grayscale(100%);
