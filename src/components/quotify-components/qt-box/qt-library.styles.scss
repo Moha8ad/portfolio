@@ -55,6 +55,10 @@
             filter: grayscale(0%);
             animation: authImgLibraryAnimation 1s ease 0s 1 normal forwards;
       }
+
+      &:active {
+            filter: grayscale(50%)
+      }
 }
 
 
@@ -77,8 +81,8 @@
             filter: grayscale(0%);
             animation: authNameLibraryAnimation 1s ease 0s 1 normal forwards;
       }
-
 }
+
 
 @keyframes authNameLibraryAnimation {
       0% {

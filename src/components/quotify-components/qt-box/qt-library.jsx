@@ -16,8 +16,8 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                                         src={`https://robohash.org/${[id]}?&&size=180x180`}
                                     />
                                 </div>
-                                <div class="col-auto col-sm-5 d-flex align-self-end fs-4 py-2 d-none d-lg-block auth-name-library-animation">
-                                    <div class="px-2 border-2 rounded-2" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.700)"}}>
+                                <div class="col-auto col-sm-6 d-flex align-self-end fs-4 py-2 d-none d-lg-block auth-name-library-animation">
+                                    <div class="px-2 border-2 rounded-2" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
                                         {result.author}
                                     </div>
                                 </div>
