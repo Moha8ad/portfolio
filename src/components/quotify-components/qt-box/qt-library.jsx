@@ -32,17 +32,17 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                                             
                                                 <button 
                                                 type="button" 
-                                                class="btn text-light"
+                                                class="btn"
                                                 onClick={() =>  navigator.clipboard.writeText(`${result.quote} --${result.author}`)}
                                                 > 
-                                                    <i class="bi bi-clipboard fs-5" />
+                                                    <i class="bi bi-clipboard fs-5"  style={{color: randomColor}}/>
                                                 </button>
                                                 {/* Share Button */}
                                                 <a
                                                     rel="noopener noreferrer"
                                                     target="_blank"
                                                     href={`https://twitter.com/intent/tweet?text=${result.quote} - ${result.author}`}>
-                                                <i class="bi bi-twitter text-light fs-5"></i>
+                                                <i class="bi bi-twitter fs-5" style={{color: randomColor}}/>
                                                 </a>
                                                     
                                         </div>
