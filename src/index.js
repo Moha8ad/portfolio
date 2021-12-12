@@ -7,6 +7,7 @@
 
  import './index.css';
  import App from './App';
+ import Presentational from './pages/redux-page.jsx';
  import reportWebVitals from './reportWebVitals';
 
  ReactDOM.render(
