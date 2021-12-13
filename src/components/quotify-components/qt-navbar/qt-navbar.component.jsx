@@ -6,7 +6,7 @@ import AsArLogoMdWt from '../../all-reusable-components/asar-logo-md-wt/asar-log
 
 import './qt-navbar.styles.scss'
 
-const QuotifyNavbar = ({ history, match }) => (
+const QuotifyNavbar = ({ history }) => (
     <div class="qt-navbar col-12 col-sm-2 p-0">    
         <div class="d-flex flex-row flex-sm-column flex-wrap justify-content-between">  
             <div class="d-none d-lg-block pt-4 pb-3">
@@ -23,8 +23,9 @@ const QuotifyNavbar = ({ history, match }) => (
                        align-items-center align-items-lg-start 
                        fw-bold py-2 p-sm-2">
                 <li>
+
                 <div class="nav-link pb-sm-0"
-                    onClick={() => history.push('/profile/quotify')}
+                onClick={() => history.push('/profile/quotify')}
                 >
                     <i class="bi bi-house-door fs-4 text-light"></i>
                     <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 
@@ -32,7 +33,7 @@ const QuotifyNavbar = ({ history, match }) => (
                 </li>
                 <li>
                     <div class="nav-link pb-sm-0"
-                        onClick={() => history.push('/profile/search')}
+                    onClick={() => history.push('/profile/search')}
                     >
                         <i class="bi bi-search fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Search</span> 

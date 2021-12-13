@@ -5,7 +5,7 @@ import QuotifyHome from "../qt-home/qt-home.component";
 import './quotify.styles.scss'
 
 const Quotify = () => (
-  <div class="quotify text-light">
+  <div class="quotify container-fluid text-light">
     <QuotifyHome />
   </div>
 )
