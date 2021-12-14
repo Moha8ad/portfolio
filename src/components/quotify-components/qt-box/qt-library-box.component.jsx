@@ -1,14 +1,17 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import QuotifyTopbar from "../qt-topbar/qt-topbar.component";
 
 import LibraryQuote from './qt-library';
 
-const LibraryQuoteBox = ({ searchByName, randomQuoteId, randomColor, handleClick, handleChange}) => (
+const LibraryQuoteBox = ({ history, searchByName, randomQuoteId, randomColor, handleClick, handleChange}) => (
     <div class="row">
         <div className="qt-topbar col-12 sticky-top me-auto py-2">
             <QuotifyTopbar 
                 midPart={"searchBox"}
+                back={() => history.goBack()}
+                forward={() => history.goForward()}
                 handleChange={handleChange}
             />
         </div>
@@ -33,4 +36,4 @@ const LibraryQuoteBox = ({ searchByName, randomQuoteId, randomColor, handleClick
     </div>
 )
 
-export default LibraryQuoteBox;
+export default withRouter(LibraryQuoteBox);

@@ -1,13 +1,20 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
+
 
 import QuotifyTopbar from '../qt-topbar/qt-topbar.component';
 
 import RandomQuote from './qt-random';
 
-const RandomQuoteBox = ({ handleClick, searchByName, randomQuoteId, randomColor }) => (
+const RandomQuoteBox = ({ history, handleClick, searchByName, randomQuoteId, randomColor }) => (
     <div class="row">
         <div className="qt-topbar col-12 sticky-top me-auto py-2">
-            <QuotifyTopbar />
+            <QuotifyTopbar 
+            forward={() => history.goForward()}
+            />
+            
+
         </div>
         <div className="col-12">
             <RandomQuote
@@ -21,4 +28,4 @@ const RandomQuoteBox = ({ handleClick, searchByName, randomQuoteId, randomColor 
     </div>
 )
 
-export default RandomQuoteBox;
+export default withRouter(RandomQuoteBox);

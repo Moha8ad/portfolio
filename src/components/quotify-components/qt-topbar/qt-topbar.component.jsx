@@ -1,14 +1,20 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
 
 import SearchBox from '../../all-reusable-components/search-box/search-box.component';
 
 import './qt-topbar.styles.scss'
 
-const QuotifyTopbar = ({ handleChange, midPart }) => (
+const QuotifyTopbar = ({ handleChange, midPart, history, back, forward }) => (
         <div class="row d-flex flex-wrap align-items-center fs-5 fw-bold">
             <div class="col-auto">
-                <span><i class="bi bi-arrow-left-circle fs-2"></i></span>
-                <span><i class="bi bi-arrow-right-circle fs-2 ps-3"></i></span>
+                <i class="bi bi-arrow-left-circle fs-2" 
+                   onClick={back}
+                />
+                <i class="bi bi-arrow-right-circle fs-2 ps-3"
+                   onClick={forward}
+                />
             </div>
             <div class="col-8 col-sm-auto me-auto">
                 { midPart === "searchBox" ?
@@ -24,4 +30,4 @@ const QuotifyTopbar = ({ handleChange, midPart }) => (
         </div>
 )
 
-export default QuotifyTopbar;
+export default withRouter(QuotifyTopbar);
