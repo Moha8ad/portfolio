@@ -13,8 +13,6 @@ const RandomQuoteBox = ({ history, handleClick, searchByName, randomQuoteId, ran
             <QuotifyTopbar 
             forward={() => history.goForward()}
             />
-            
-
         </div>
         <div className="col-12">
             <RandomQuote

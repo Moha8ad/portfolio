@@ -10,7 +10,6 @@ const SearchQuoteBox = ({ history, searchField, handleChange, searchByName, rand
         <div className="qt-topbar col-12 sticky-top me-auto py-2">
             <QuotifyTopbar 
                 midPart={"searchBox"}
-                
                 back={() => history.goBack()}
                 forward={() => history.goForward()}
                 handleChange={handleChange}

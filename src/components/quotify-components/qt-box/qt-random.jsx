@@ -10,7 +10,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
         {/* quote box */}
         <div class="col-10 col-sm-8 border border-2 border-light rounded-2 m-4 box-animation" style={{backgroundColor: randomColor}}>
             <div class="row d-flex justify-content-center align-items-center" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.200)"}}>
-
+            
                 {/* buttons */}
                 <div class="col-12 mt-4 mb-0 px-4">
                     <div class="row d-flex align-items-center">
@@ -45,20 +45,26 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     </ReactTooltip>
 
                     {/* copy button */}
-                    <div className="col-auto hover-scale-change"
-                        
+                    <div className="col-auto hover-scale-change" 
                         data-tip='saved!' data-event='click focus'
-                        
                     >
-                        <i class="bi bi-clipboard fs-5" data-tip data-for="copy-btn"/>
-
+                   
+                        <i class="bi bi-clipboard fs-5" data-tip data-for="copy-btn">
+                        
+                        </i>
                     </div>
                     {/* copy button tooltip hover*/}
                     <ReactTooltip class="col-auto fs-6" id="copy-btn" place="bottom" effect="solid">
                         Copy the Quote!
                     </ReactTooltip>
                     {/* copy button tooltip onClick*/}
-                    <ReactTooltip class="col-auto bg-success fs-6" globalEventOff='click' place="right" effect="solid"/>
+                    <ReactTooltip 
+                        class="col-auto bg-success fs-6" 
+                        place="right" effect="solid"
+                        afterShow = {() => navigator.clipboard.writeText(`${randomQuotes[randomQuoteId]} - ${randomAuthors[randomQuoteId]}`)}
+                        globalEventOff={"click"}
+
+                    />
 
                 </div>
             </div>
