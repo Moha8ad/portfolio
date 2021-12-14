@@ -1,6 +1,6 @@
 import React from "react";
 
-import './qt-box.styles.scss'
+import '../qt-box.styles.scss'
 
 const LibraryQuote = ({ randomColor, searchByName }) => ( 
     <div class="container-fluid">

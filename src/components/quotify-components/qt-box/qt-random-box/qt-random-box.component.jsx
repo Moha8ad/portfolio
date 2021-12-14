@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 
 
-import QuotifyTopbar from '../qt-topbar/qt-topbar.component';
+import QuotifyTopbar from '../../qt-topbar/qt-topbar.component';
 
 import RandomQuote from './qt-random';
 

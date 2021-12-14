@@ -1,16 +1,16 @@
 import React from 'react';
 import { withRouter } from "react-router";
 
-import RandomQuoteBox from '../qt-box/qt-random-box.component';
-import SearchQuoteBox from '../qt-box/qt-search-box.component';
-import LibraryQuoteBox from '../qt-box/qt-library-box.component';
+import RandomQuoteBox from '../qt-box/qt-random-box/qt-random-box.component';
+import SearchQuoteBox from '../qt-box/qt-search-box/qt-search-box.component';
+import LibraryQuoteBox from '../qt-box/qt-library-box/qt-library-box.component';
 
 import QuotifyNavbar from '../qt-navbar/qt-navbar.component';
 import QuotifyFooter from '../qt-footer/qt-footer.component';
 
 
 import QUOTES_DATA from './qt.data';
-import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component'
+import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component';
 
 import './qt-main.styles.scss';
 
@@ -21,18 +21,21 @@ class QuotifyMain extends React.Component {
             quotesDB: [],
             colorArr: [],
             searchField: '',
-            randomQuoteId: Math.floor(Math.random()*30)
+            randomQuoteId: Math.floor(Math.random()*30),
+            randomNum: Math.floor(Math.random()*13)
         };
     }
     handleChange = e => {
         this.setState({
-            searchField: e.target.value
+            searchField: e.target.value,
         })
       }
     handleClick = (e) => {
         e.preventDefault()
         this.setState({
-            randomQuoteId: Math.floor(Math.random()*this.state.quotesDB.length)
+            randomQuoteId: Math.floor(Math.random()*this.state.quotesDB.length),
+            randomNum: Math.floor(Math.random()*13)
+
         })
     }
 
@@ -43,9 +46,9 @@ class QuotifyMain extends React.Component {
         })
     }
     render() {
-        const { quotesDB, searchField, colorArr, randomQuoteId } = this.state;
+        const { quotesDB, searchField, colorArr, randomQuoteId, randomNum } = this.state;
 
-        const randomColor = colorArr[Math.floor(Math.random() * colorArr.length)]
+        const randomColor = colorArr[randomNum]
         
         const searchByName = quotesDB.filter(name => (
             name.author.toLowerCase().includes(searchField.toLowerCase())

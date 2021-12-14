@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import QuotifyTopbar from "../qt-topbar/qt-topbar.component";
+import QuotifyTopbar from "../../qt-topbar/qt-topbar.component";
 
 import LibraryQuote from './qt-library';
 

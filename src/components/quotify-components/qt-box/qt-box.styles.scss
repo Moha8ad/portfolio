@@ -39,7 +39,7 @@
 
 @keyframes boxAnimation {
       0% {
-        opacity: 0;
+        opacity: 0.8;
       }
     
       100% {
@@ -53,22 +53,10 @@
 
       &:hover {
             filter: grayscale(0%);
-            animation: authImgLibraryAnimation 1s ease 0s 1 normal forwards;
       }
 
       &:active {
             filter: grayscale(50%)
-      }
-}
-
-
-@keyframes authImgLibraryAnimation {
-      0% {
-        transform: translateX(0);
-      }
-    
-      100% {
-        transform: translateX(20px);
       }
 }
 
@@ -79,25 +67,5 @@
 
       &:hover {
             filter: grayscale(0%);
-            animation: authNameLibraryAnimation 1s ease 0s 1 normal forwards;
-      }
-}
-
-
-@keyframes authNameLibraryAnimation {
-      0% {
-        transform: translateX(0);
-      }
-    
-      100% {
-        transform: translateX(-20px);
-      }
-}
-
-.author-home-animation {
-      filter: grayscale(100%);
-
-      &:hover {
-            filter: grayscale(0%)
       }
 }
