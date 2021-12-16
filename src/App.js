@@ -7,7 +7,7 @@ import Quotify from './pages/quotify/quotify.component';
 import QuotifyHome from './pages/qt-home/qt-home.component';
 import QuotifySearch from './pages/qt-search/qt-search.component';
 import QuotifyLibrary from './pages/qt-library/qt-library.component';
-import QuotifyTest from './pages/qt-test/qt-test.component';
+import SnakesAndLadders from './pages/snakes-and-ladders/snakes-and-ladders.component';
 import Presentational from './pages/redux-page';
 import Move from './pages/move.component';
 
@@ -23,7 +23,7 @@ function App() {
         <Route path='/profile/home' component={QuotifyHome} />
         <Route path='/profile/search' component={QuotifySearch} />
         <Route path='/profile/library' component={QuotifyLibrary} />
-        <Route path='/profile/app3' component={QuotifyTest} />
+        <Route path='/profile/app3' component={SnakesAndLadders} />
         <Route path='/profile/app4' component={Presentational} />
         <Route path='/profile/app5' component={Move} />
       </Switch>
