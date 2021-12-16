@@ -65,7 +65,7 @@ class Move extends React.Component {
             } else if ( this.state.currentPos + rand === 100) {
                 this.setState({
                     rand: rand,
-                    currentPos: 'GEWINNEN!',
+                    currentPos: 100,
                     prevMove: this.state.currentPos + rand,
                     prevPos: this.state.prevMove,
                     hint: 'Du bist der Gewinner!'
@@ -79,6 +79,7 @@ class Move extends React.Component {
     }
 
     render(){
+
         return(
             <div class="row">   
                 <QuotifyNavbar />
@@ -186,15 +187,14 @@ class Move extends React.Component {
                     <div className="item" id="10">10</div>
                     </div> 
                     <div>
-                        <div className="item bg-warning col-1" id="0"></div>
+                        <div className="item bg-warning col-1"></div>
                     </div>
-                    <div class="mt-5 d-flex justify-content-center align-items-center text-center">
+                    <div class="mt-5 d-flex justify-content-center align-items-center text-center" id="0">
                         <h3>M8</h3>
-                        <i class="bi bi-person-fill text-warning me-5"></i>
+                        <i class="bi bi-person-fill text-warning me-5" ></i>
                         <h4>currentPose : {this.state.currentPos}</h4>
                         <h2 class="bg-danger text-light text center mx-5" style={{width: '50px'}}>{this.state.rand}</h2>
                         <h4>prevPose : {this.state.prevPos}</h4>
-                        
                     </div>
 
                     <button class='col-2 mt-5' onClick={this.handleSubmit}>{this.state.hint}</button>
