@@ -14,10 +14,17 @@ class Move extends React.Component {
             currentPos: 0,
             prevPos: 0,
             rand: 0,
+            dice: 0,
             hint: 'START and Roll the Dice',
             userOnecurrentPos: '',
             userOneprevPos: ''
         }
+    }
+    rollDice = () => {
+        const rand =  Math.floor(Math.random() *  6) + 1
+        this.setState({
+            dice: rand
+        })
     }
     handleSubmit = () => {
         const rand =  Math.floor(Math.random() *  6) + 1
@@ -377,8 +384,40 @@ class Move extends React.Component {
                             <div class="d-flex justify-content-center align-items-center text-center">
                                 <div id="0" class="text-dark d-none"></div> 
                                 <h3>Pari</h3>
-                                <i class="bi bi-person-fill text-warning me-5" ></i> 
-                                <h1 class='mx-5'>{this.state.rand}</h1>      
+                                <i class="bi bi-person-fill text-warning me-5" ></i>
+                                <h1 class='mx-5'>
+                                    {
+                                        this.state.rand === 1 
+                                        ?
+                                            <i class="bi bi-dice-1-fill"></i>                                        
+                                        :
+                                        this.state.rand === 2 
+                                        ?
+                                            <i class="bi bi-dice-2-fill"></i>
+                                        :
+                                        this.state.rand === 3 
+                                        ?
+                                            <i class="bi bi-dice-3-fill"></i>
+                                        :
+                                        this.state.rand === 4 
+                                        ?
+                                            <i class="bi bi-dice-4-fill"></i>
+                                        :
+                                        this.state.rand === 5 
+                                        ?
+                                            <i class="bi bi-dice-5-fill"></i>
+                                        :
+                                        this.state.rand === 6 
+                                        ?
+                                            <i class="bi bi-dice-6-fill"></i>
+                                        :
+                                            "Roll the Dice" 
+                            
+                                    }
+                                    {}
+                                </h1> 
+                                <h3>{this.state.currentPos}</h3>
+                                <h3 class="mx-4">{this.state.prevPos}</h3>   
                                 <button class='col-5 ms-5' onClick={this.handleSubmit}>{this.state.hint}</button>
  
                             </div>
