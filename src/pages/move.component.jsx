@@ -16,7 +16,7 @@ class Move extends React.Component {
         }
     }
     handleSubmit = () => {
-        const rand =  Math.floor(Math.random() * 6) + 1;
+        const rand =  6
         if ( this.state.currentPos < 1 && rand === 6 ) {
             this.setState({
                 rand: rand,
@@ -42,22 +42,88 @@ class Move extends React.Component {
                 hint: 'go forward: ' + rand
             })
         } else if (this.state.currentPos < 94 && this.state.prevPos >= 1) {
-            this.setState({
-                rand: rand,
-                currentPos: this.state.currentPos + rand,
-                prevMove: this.state.currentPos + rand,
-                prevPos: this.state.prevMove,
-                hint: 'nice job, go forward: ' + rand
-            })
-        } else if (this.state.currentPos >= 94 && this.state.currentPos <= 100) {
-            if ( this.state.currentPos + rand < 100) {
+            if ( this.state.currentPos === 7 ) {
+                this.setState({
+                    rand: rand,
+                    currentPos: 10,
+                    prevMove: 10,
+                    prevPos: this.state.prevMove,
+                    hint: 'LUCKY!!! Jump to ' + 10
+                })
+
+            } else if ( this.state.currentPos === 16 ) {
+                this.setState({
+                    rand: rand,
+                    currentPos: 20,
+                    prevMove: 20,
+                    prevPos: this.state.prevMove,
+                    hint: 'LUCKY!!! Jump to ' + 20
+                })
+
+            } else if ( this.state.currentPos === 26 ) {
+                this.setState({
+                    rand: rand,
+                    currentPos: 5,
+                    prevMove: 5,
+                    prevPos: this.state.prevMove,
+                    hint: 'OOPS!!! Go back to ' + 5
+                })
+
+            } else if ( this.state.currentPos === 17 ) {
+                this.setState({
+                    rand: rand,
+                    currentPos: 30,
+                    prevMove: 30,
+                    prevPos: this.state.prevMove,
+                    hint: 'LUCKY!!! Jump to ' + 30
+                })
+
+            }  else if ( this.state.currentPos === 42 ) {
+                this.setState({
+                    rand: rand,
+                    currentPos: 25,
+                    prevMove: 25,
+                    prevPos: this.state.prevMove,
+                    hint: 'OOPS!!! Go back to ' + 25
+                })
+
+            } else if ( this.state.currentPos === 37 ) {
+                this.setState({
+                    rand: rand,
+                    currentPos: 92,
+                    prevMove: 92,
+                    prevPos: this.state.prevMove,
+                    hint: 'LUCKY!!! Jump to ' + 92
+                })
+            } else {
                 this.setState({
                     rand: rand,
                     currentPos: this.state.currentPos + rand,
                     prevMove: this.state.currentPos + rand,
                     prevPos: this.state.prevMove,
-                    hint: 'TOLL, fortfahren: ' + rand
+                    hint: 'nice job, go forward: ' + rand
                 })
+            }
+        } else if (this.state.currentPos === 98 ) {
+                this.setState({
+                    rand: rand,
+                    currentPos: 1,
+                    prevMove: 1,
+                    prevPos: this.state.prevMove,
+                    hint: 'OOPS!!! Go back to ' + 1
+                })
+
+            }       
+        
+        else if (this.state.currentPos >= 94 && this.state.currentPos < 100) {
+            if ( this.state.currentPos + rand < 100) {
+                    this.setState({
+                        rand: rand,
+                        currentPos: this.state.currentPos + rand,
+                        prevMove: this.state.currentPos + rand,
+                        prevPos: this.state.prevMove,
+                        hint: 'TOLL, fortfahren: ' + rand
+                    })``
             } else if ( this.state.currentPos + rand > 100) {
                 this.setState({
                     hint: 'SO KNAPP, Nochmal Versuchen!'
