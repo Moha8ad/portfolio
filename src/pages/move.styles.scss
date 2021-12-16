@@ -15,4 +15,21 @@
       ". . . . . . . . . ."
       ". . . . . . . . . ."
       ". . . . . . . . . .";
+      
+      height: 600px;
+      width: 600px;
+      padding: 0px;
+      align-items: center;
+      color: rgba(204, 204, 215, 0);
+}
+
+.game-board {
+  background-image: url("../assets/game-board.png");
+  background-repeat: no-repeat;
+  background-size: 600px 600px;
+}
+
+.board {
+  height: 780px;
+  width: 800px;
 }
