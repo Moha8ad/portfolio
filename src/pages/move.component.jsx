@@ -22,6 +22,7 @@ class Move extends React.Component {
     }
     rollDice = () => {
         const rand =  Math.floor(Math.random() *  6) + 1
+        
         this.setState({
             dice: rand
         })

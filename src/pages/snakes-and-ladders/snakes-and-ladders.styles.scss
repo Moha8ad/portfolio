@@ -1,3 +1,7 @@
+.snakes-and-ladders-page {
+  height: 100vh;
+}
+
 .snakes-and-ladders-box {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -16,8 +20,8 @@
       ". . . . . . . . . ."
       ". . . . . . . . . .";
       
-      height: 600px;
-      width: 600px;
+      height: 500px;
+      width: 500px;
       padding: 0px;
       align-items: center;
       color: rgba(204, 204, 215, 0);
@@ -26,10 +30,5 @@
 .snakes-and-ladders-board {
   background-image: url("../../assets//game-board.png");
   background-repeat: no-repeat;
-  background-size: 600px 600px;
-}
-
-.snakes-and-ladders-panel {
-  height: 780px;
-  width: 800px;
+  background-size: 500px 500px;
 }
