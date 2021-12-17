@@ -1,14 +1,32 @@
 import React from 'react';
 
-import QuotifyNavbar from '../../components/quotify-components/qt-navbar/qt-navbar.component'
+import QuotifyNavbar from '../../components/quotify-components/qt-navbar/qt-navbar.component';
 
-import './snakes-and-ladders.styles.scss'
+import './snakes-and-ladders.styles.scss';
 
 const playerOne = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info'></i>`
 const playerOneIn = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info player-fade-in'></i>`
 const playerOneOut = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info player-fade-out'></i>`
 
 const playerTwo = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning'></i>`
+
+const oneDiceCube = `<div><i class="bi bi-box"></i></div>`
+const oneDiceOne = `<div class="animated flip"><i class="bi bi-dice-1-fill"></i></div>`
+const oneDiceTwo = `<div class="animated flip"><i class="bi bi-dice-2-fill"></i></div>`
+const oneDiceThree = `<div class="animated flip"><i class="bi bi-dice-3-fill"></i></div>`
+const oneDiceFour = `<div class="animated flip"><i class="bi bi-dice-4-fill"></i></div>`
+const oneDiceFive = `<div class="animated flip"><i class="bi bi-dice-5-fill"></i></div>`
+const oneDiceSix = `<div class="animated flip"><i class="bi bi-dice-6-fill"></i></div>`
+
+const twoDiceCube = `<div><i class="bi bi-box"></i></div>`
+const twoDiceOne = `<div class="animated flip"><i class="bi bi-dice-1-fill"></i></div>`
+const twoDiceTwo = `<div class="animated flip"><i class="bi bi-dice-2-fill"></i></div>`
+const twoDiceThree = `<div class="animated flip"><i class="bi bi-dice-3-fill"></i></div>`
+const twoDiceFour = `<div class="animated flip"><i class="bi bi-dice-4-fill"></i></div>`
+const twoDiceFive = `<div class="animated flip"><i class="bi bi-dice-5-fill"></i></div>`
+const twoDiceSix = `<div class="animated flip"><i class="bi bi-dice-6-fill"></i></div>`
+
+
 
 class SnakesAndLadders extends React.Component {
     constructor(props){
@@ -35,8 +53,26 @@ class SnakesAndLadders extends React.Component {
     }
 
     oneDice = () => {
-        const rand =  Math.floor(Math.random() *  6) + 1
+        document.getElementById(222).innerHTML = twoDiceCube
+        const rand =  Math.floor(Math.random() *  6) + 1;
+        const randd = 6
+
         if ( this.state.turn === 'one'){
+
+            if ( rand === 1 ) {
+                document.getElementById(111).innerHTML = oneDiceOne
+            } else if ( rand === 2 ) {
+                document.getElementById(111).innerHTML = oneDiceTwo
+            } else if ( rand === 3 ) {
+                document.getElementById(111).innerHTML = oneDiceThree
+            } else if ( rand === 4 ) {
+                document.getElementById(111).innerHTML = oneDiceFour
+            } else if ( rand === 5 ) {
+                document.getElementById(111).innerHTML = oneDiceFive
+            } else {
+                document.getElementById(111).innerHTML = oneDiceSix
+            }
+
             if ( rand === 6 && this.state.oneMove < 1 ) {
                 this.setState({
                     oneDice: rand,
@@ -71,6 +107,7 @@ class SnakesAndLadders extends React.Component {
     oneMove = () => {
         if (this.state.oneMove === 7) {
             this.setState({
+                oneMove: 45,
                 oneCurrentPos: document.getElementById(7).innerHTML = playerOneOut,
                 oneNextPos: document.getElementById(45).innerHTML = playerOneIn,
                 onePrevPos: setTimeout(function() {document.getElementById(7).innerHTML = ' '}, 3000)
@@ -90,14 +127,30 @@ class SnakesAndLadders extends React.Component {
     }
 
 twoDice = () => {
+    document.getElementById(111).innerHTML = oneDiceCube
     const rand =  Math.floor(Math.random() *  6) + 1
     if ( this.state.turn === 'two'){
+
+        if ( rand === 1 ) {
+            document.getElementById(222).innerHTML = twoDiceOne
+        } else if ( rand === 2 ) {
+            document.getElementById(222).innerHTML = twoDiceTwo
+        } else if ( rand === 3 ) {
+            document.getElementById(222).innerHTML = twoDiceThree
+        } else if ( rand === 4 ) {
+            document.getElementById(222).innerHTML = twoDiceFour
+        } else if ( rand === 5 ) {
+            document.getElementById(222).innerHTML = twoDiceFive
+        } else {
+            document.getElementById(222).innerHTML = twoDiceSix
+        }
+
         if ( rand === 6 && this.state.twoMove < 1 ) {
             this.setState({
                 twoDice: rand,
                 twoMove: 1,
                 twoCurrentPos: document.getElementById(1).innerHTML = playerTwo,
-                oneDice: 0,
+                oneDice: 0
                 })
         } else if (rand === 6 && this.state.twoMove >= 1) {
             this.setState({
@@ -125,7 +178,6 @@ twoDice = () => {
 }
 
     render(){
-
         return(
             <div class="container-fluid">
             <div class="row bg-secondary">   
@@ -136,10 +188,9 @@ twoDice = () => {
                     <div class='row'>
 
                         {/* header  */}
-                        <div class="col-12 fs-2 text-warning text-center pt-2">
+                        <div class="col-12 fs-2 text-warning text-center py-2">
                             SNAKES AND LADDERS
                         </div>
-                        {this.state.hint}
                         {/* game board  */}
                         <div className="col-12 d-flex justify-content-center">
                             <div className='snakes-and-ladders-board row d-flex justify-content-center justify-self-center
@@ -270,35 +321,8 @@ twoDice = () => {
 
                                         {/* player one dice */}
                                         <div className="col-12 text-center py-2">
-                                            <div class='fs-3 animated flip' onClick={this.oneDice}>
-                                                {
-                                                    this.state.oneDice === 1 
-                                                    ?
-                                                        <i class="bi bi-dice-1-fill"></i>                                      
-                                                    :
-                                                    this.state.oneDice === 2 
-                                                    ?
-                                                        <i class="bi bi-dice-2-fill"></i>
-                                                    :
-                                                    this.state.oneDice === 3 
-                                                    ?
-                                                        <i class="bi bi-dice-3-fill"></i>
-                                                    :
-                                                    this.state.oneDice === 4 
-                                                    ?
-                                                        <i class="bi bi-dice-4-fill"></i>
-                                                    :
-                                                    this.state.oneDice === 5 
-                                                    ?
-                                                        <i class="bi bi-dice-5-fill"></i>
-                                                    :
-                                                    this.state.oneDice === 6 
-                                                    ?
-                                                        <div class="animated flip"><i class="bi bi-dice-6-fill"></i></div>
-                                                    :
-                                                        <i class="bi bi-box"></i> 
-                                        
-                                                }
+                                            <div id="111" class="fs-3 animated flip">
+                                                <i class="bi bi-box"></i>
                                             </div>
                                         </div>
                                         
@@ -330,36 +354,9 @@ twoDice = () => {
                                         </div>
 
                                         {/* player two dice */}
-                                        <div className="col-12 text-center animated flip py-2 ">
-                                            <div class='fs-3' onClick={this.twoDice}>
-                                                {
-                                                    this.state.twoDice === 1 
-                                                    ?
-                                                        <i class="bi bi-dice-1-fill"></i>                                      
-                                                    :
-                                                    this.state.twoDice === 2 
-                                                    ?
-                                                        <i class="bi bi-dice-2-fill"></i>
-                                                    :
-                                                    this.state.twoDice === 3 
-                                                    ?
-                                                        <i class="bi bi-dice-3-fill"></i>
-                                                    :
-                                                    this.state.twoDice === 4 
-                                                    ?
-                                                        <i class="bi bi-dice-4-fill"></i>
-                                                    :
-                                                    this.state.twoDice === 5 
-                                                    ?
-                                                        <i class="bi bi-dice-5-fill"></i>
-                                                    :
-                                                    this.state.twoDice === 6 
-                                                    ?
-                                                        <i class="bi bi-dice-6-fill"></i>
-                                                    :
-                                                        <i class="bi bi-box"></i> 
-                                        
-                                                }
+                                        <div className="col-12 text-center py-2">
+                                            <div id="222" class="fs-3 animated flip">
+                                                <i class="bi bi-box"></i>
                                             </div>
                                         </div>
                                         
