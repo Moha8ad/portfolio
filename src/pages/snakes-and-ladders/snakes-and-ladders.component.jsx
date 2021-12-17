@@ -5,6 +5,9 @@ import QuotifyNavbar from '../../components/quotify-components/qt-navbar/qt-navb
 import './snakes-and-ladders.styles.scss'
 
 const playerOne = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info'></i>`
+const playerOneIn = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info player-fade-in'></i>`
+const playerOneOut = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info player-fade-out'></i>`
+
 const playerTwo = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning'></i>`
 
 class SnakesAndLadders extends React.Component {
@@ -38,34 +41,39 @@ class SnakesAndLadders extends React.Component {
                 this.setState({
                     oneDice: rand,
                     oneMove: 1,
-                    oneCurrentPos: document.getElementById(1).innerHTML = playerOne
+                    oneCurrentPos: document.getElementById(1).innerHTML = playerOne,
+                    twoDice: 0
                     })
             } else if (rand === 6 && this.state.oneMove >= 1) {
                 this.setState({
                     oneDice: rand,
-                    oneMove: this.state.oneMove + rand
+                    oneMove: this.state.oneMove + rand,
+                    twoDice: 0
                     })
 
             } else if (rand !== 6 && this.state.oneMove < 1) {
                     this.setState({
                     oneDice: rand,
                     oneMove: 0,
-                    turn: 'two'
+                    turn: 'two',
+                    twoDice: 0
                     })
             } else {
                 this.setState({
                 oneDice: rand,
                 oneMove: this.state.oneMove + rand,
-                turn: 'two'
+                turn: 'two',
+                twoDice: 0
                 })
             }
         }
     }
     oneMove = () => {
-        if (this.state.oneMove === 2) {
+        if (this.state.oneMove === 7) {
             this.setState({
-                oneCurrentPos: document.getElementById(2).innerHTML = playerOne,
-                oneNextPos: document.getElementById(23).innerHTML = playerOne,
+                oneCurrentPos: document.getElementById(7).innerHTML = playerOneOut,
+                oneNextPos: document.getElementById(45).innerHTML = playerOneIn,
+                onePrevPos: setTimeout(function() {document.getElementById(7).innerHTML = ' '}, 3000)
 
             })
         } else if (this.state.oneMove === 4) {
@@ -81,19 +89,57 @@ class SnakesAndLadders extends React.Component {
         }
     }
 
+twoDice = () => {
+    const rand =  Math.floor(Math.random() *  6) + 1
+    if ( this.state.turn === 'two'){
+        if ( rand === 6 && this.state.twoMove < 1 ) {
+            this.setState({
+                twoDice: rand,
+                twoMove: 1,
+                twoCurrentPos: document.getElementById(1).innerHTML = playerTwo,
+                oneDice: 0,
+                })
+        } else if (rand === 6 && this.state.twoMove >= 1) {
+            this.setState({
+                twoDice: rand,
+                twoMove: this.state.twoMove + rand,
+                oneDice: 0,
+                })
+
+        } else if (rand !== 6 && this.state.twoMove < 1) {
+                this.setState({
+                twoDice: rand,
+                twoMove: 0,
+                oneDice: 0,
+                turn: 'one'
+                })
+        } else {
+            this.setState({
+            twoDice: rand,
+            twoMove: this.state.twoMove + rand,
+            oneDice: 0,
+            turn: 'one'
+            })
+        }
+    }
+}
+
     render(){
 
         return(
+            <div class="container-fluid">
             <div class="row bg-secondary">   
                 <QuotifyNavbar />
 
                 {/* game page  */}
-                <div class='snakes-and-ladders-page col-10 bg-dark'>
+                <div class='snakes-and-ladders-page col-12 col-sm-10 bg-dark'>
                     <div class='row'>
 
-                        {/* hint for all  */}
-                        <div class="col-12 fs-2 text-warning text-center py-4">{this.state.hint}</div>
-                        
+                        {/* header  */}
+                        <div class="col-12 fs-2 text-warning text-center pt-2">
+                            SNAKES AND LADDERS
+                        </div>
+                        {this.state.hint}
                         {/* game board  */}
                         <div className="col-12 d-flex justify-content-center">
                             <div className='snakes-and-ladders-board row d-flex justify-content-center justify-self-center
@@ -209,7 +255,7 @@ class SnakesAndLadders extends React.Component {
                             <div className='row'>
 
                                 {/* player one panel */}
-                                <div className="col-6 text-info">
+                                <div className="col-3 text-info">
                                     <div className="row">
                                         
                                         {/* player one hint */}
@@ -223,8 +269,8 @@ class SnakesAndLadders extends React.Component {
                                         </div>
 
                                         {/* player one dice */}
-                                        <div className="col-12 text-center">
-                                            <div class='fs-3' onClick={this.oneDice}>
+                                        <div className="col-12 text-center py-2">
+                                            <div class='fs-3 animated flip' onClick={this.oneDice}>
                                                 {
                                                     this.state.oneDice === 1 
                                                     ?
@@ -248,7 +294,7 @@ class SnakesAndLadders extends React.Component {
                                                     :
                                                     this.state.oneDice === 6 
                                                     ?
-                                                        <i class="bi bi-dice-6-fill"></i>
+                                                        <div class="animated flip"><i class="bi bi-dice-6-fill"></i></div>
                                                     :
                                                         <i class="bi bi-box"></i> 
                                         
@@ -257,15 +303,20 @@ class SnakesAndLadders extends React.Component {
                                         </div>
                                         
                                         {/* player one control buttons */}
-                                        <div className="col-12 d-flex justify-content-center flex-wrap ">
-                                            <button class='me-2' onClick={this.oneMove}>Move</button>
-                                            <button onClick={this.oneDice}>Roll</button>
+                                        <div className="col-12 d-flex justify-content-center flex-wrap py-1">
+                                            <button class="me-2 btn btn-outline-info" type="button" onClick={this.oneMove}>Move</button>
+                                            <button class="btn btn-outline-info" type="button" onClick={this.oneDice}>Roll</button>
                                         </div>
                                     </div>
                                 </div>
+                                
+                                {/* hints for all */}
+                                <div class="col-6 text-light d-flex justify-content-center align-items-center fs-3">
+                                    {this.state.hint}
+                                </div>
 
                                 {/* player two panel */}
-                                <div className="col-6 text-warning">
+                                <div className="col-3 text-warning">
                                     <div className="row">
                                         
                                         {/* player two hint */}
@@ -279,7 +330,7 @@ class SnakesAndLadders extends React.Component {
                                         </div>
 
                                         {/* player two dice */}
-                                        <div className="col-12 text-center">
+                                        <div className="col-12 text-center animated flip py-2 ">
                                             <div class='fs-3' onClick={this.twoDice}>
                                                 {
                                                     this.state.twoDice === 1 
@@ -313,9 +364,9 @@ class SnakesAndLadders extends React.Component {
                                         </div>
                                         
                                         {/* player two control buttons */}
-                                        <div className="col-12 d-flex justify-content-center flex-wrap ">
-                                            <button class='me-2' onClick={this.twoMove}>Move</button>
-                                            <button onClick={this.twoDice}>Roll</button>
+                                        <div className="col-12 d-flex justify-content-center flex-wrap py-1">
+                                            <button class="me-2 btn btn-outline-warning" type="button" onClick={this.twoMove}>Move</button>
+                                            <button class="btn btn-outline-warning" type="button" onClick={this.twoDice}>Roll</button>
                                         </div>
                                     </div>
                                 </div>
@@ -324,6 +375,7 @@ class SnakesAndLadders extends React.Component {
                         </div>
                     </div> 
                 </div>
+            </div>
             </div>
         )
     }
