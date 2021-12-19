@@ -37,13 +37,16 @@ class SnakesAndLadders extends React.Component {
             
             oneHint: 'Your Turn',
             oneDice: 0,
+            oneDiceCube: '',
             oneMove: 0,
+            onePrevMove: 0,
             onePrevPos: 0,
             oneCurrentPos: 0,
             oneNextPos: 0,
             
             twoHint: 'Wait',
             twoDice: 0,
+            twoDiceCube: '',
             twoMove: 0,
             twoPrevPos: 0,
             twoCurrentPos: 0,
@@ -53,9 +56,8 @@ class SnakesAndLadders extends React.Component {
     }
 
     oneDice = () => {
-        document.getElementById(222).innerHTML = twoDiceCube
-        const rand =  Math.floor(Math.random() *  6) + 1;
-        const randd = 6
+        const randd =  Math.floor(Math.random() *  6) + 1;
+        const rand = 6
 
         if ( this.state.turn === 'one'){
 
@@ -78,33 +80,70 @@ class SnakesAndLadders extends React.Component {
                     oneDice: rand,
                     oneMove: 1,
                     oneCurrentPos: document.getElementById(1).innerHTML = playerOne,
-                    twoDice: 0
+                    onePrevMove: 0,
+
+                    twoDice: 0,
+                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+
+                    turn: 'one'
                     })
-            } else if (rand === 6 && this.state.oneMove >= 1) {
+            } else if (rand === 6 && this.state.oneMove >= 1 && this.state.oneMove < 80) {
                 this.setState({
                     oneDice: rand,
                     oneMove: this.state.oneMove + rand,
-                    twoDice: 0
+                    onePrevMove: this.state.oneMove,
+
+                    twoDice: 0,
+                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+
+                    turn: ''
+
                     })
 
-            } else if (rand !== 6 && this.state.oneMove < 1) {
-                    this.setState({
+            }  else if (rand === 6  && this.state.oneMove >= 80 && this.state.oneMove <= 100)  {
+                this.setState({
                     oneDice: rand,
-                    oneMove: 0,
-                    turn: 'two',
-                    twoDice: 0
+                    oneMove: this.state.oneMove + 1,
+                    onePrevMove: this.state.oneMove,
+    
+                    twoDice: 0,
+                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+    
+                    turn: ''
                     })
-            } else {
+            } else if (rand !== 6 && this.state.oneMove < 1) {
                 this.setState({
                 oneDice: rand,
-                oneMove: this.state.oneMove + rand,
-                turn: 'two',
-                twoDice: 0
+                oneMove: 0,
+                onePrevMove: this.state.oneMove,
+
+
+                twoDice: 0,
+                twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+
+                turn: 'two'
                 })
-            }
+        }
         }
     }
     oneMove = () => {
+        if (this.state.oneDice === 6 ) {
+            this.setState({
+                turn: 'one'
+            })
+        } else {
+            this.setState({
+                turn: 'two'
+            })
+        }
+
+        if (this.state.oneMove > 1 && this.state.onePrevMove === 1) {
+            this.setState({
+                oneCurrentPos: document.getElementById(this.state.oneMove).innerHTML = playerOne,
+                onePrevPos: document.getElementById(1).innerHTML = ' '
+            })
+        }
+        
         if (this.state.oneMove === 7) {
             this.setState({
                 oneMove: 45,
@@ -120,14 +159,16 @@ class SnakesAndLadders extends React.Component {
 
             })
         } else {
-            this.setState({
-                oneCurrentPos: document.getElementById(this.state.oneMove).innerHTML = playerOne
-            })
+            
+                this.setState({
+                    oneCurrentPos: document.getElementById(this.state.oneMove).innerHTML = playerOne,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' '
+                })
+            
         }
     }
 
 twoDice = () => {
-    document.getElementById(111).innerHTML = oneDiceCube
     const rand =  Math.floor(Math.random() *  6) + 1
     if ( this.state.turn === 'two'){
 
@@ -150,27 +191,37 @@ twoDice = () => {
                 twoDice: rand,
                 twoMove: 1,
                 twoCurrentPos: document.getElementById(1).innerHTML = playerTwo,
-                oneDice: 0
+
+                oneDice: 0,
+                oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
                 })
         } else if (rand === 6 && this.state.twoMove >= 1) {
             this.setState({
                 twoDice: rand,
                 twoMove: this.state.twoMove + rand,
+
                 oneDice: 0,
+                oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
                 })
 
         } else if (rand !== 6 && this.state.twoMove < 1) {
                 this.setState({
                 twoDice: rand,
                 twoMove: 0,
+
                 oneDice: 0,
+                oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
+
                 turn: 'one'
                 })
         } else {
             this.setState({
             twoDice: rand,
             twoMove: this.state.twoMove + rand,
+
             oneDice: 0,
+            oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
+
             turn: 'one'
             })
         }
