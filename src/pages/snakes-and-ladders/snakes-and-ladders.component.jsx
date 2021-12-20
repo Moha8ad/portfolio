@@ -37,7 +37,7 @@ class SnakesAndLadders extends React.Component {
         super(props);
         this.state = {
             hint: "Let's Start! Player One Roll", //hint for all players
-            oneHint: 'Your Turn', // hint specific for player one 
+            oneHint: 'Roll', // hint specific for player one 
             twoHint: 'Wait', // hint specific for player two 
 
             oneDice: 0, // stores random number for player one in state to be used in other functions 
@@ -102,8 +102,8 @@ class SnakesAndLadders extends React.Component {
             if ( rand === 6 && this.state.oneCurrentMove < 1 ) {
                 this.setState({
                     hint: 'player one starts! roll again',
-                    oneHint: 'Hooray, roll again for more',
-                    twoHint: 'wait a sec more',
+                    oneHint: 'Hooray, roll again',
+                    twoHint: 'wait',
                     
                     oneDice: rand,
                     oneCurrentMove: 1,
@@ -134,9 +134,9 @@ class SnakesAndLadders extends React.Component {
             // guide: this rules will remain up to number 94, since 95 + 6 is greater than 100
             else if (rand === 6 && this.state.oneCurrentMove >= 1 && this.state.oneCurrentMove < 94) {
                 this.setState({
-                    hint: 'player one move forward',
-                    oneHint: 'great, move',
-                    twoHint: 'again wait',
+                    hint: 'player one, move',
+                    oneHint: 'lucky, move',
+                    twoHint: 'wait',
 
                     oneDice: rand,
                     oneCurrentMove: this.state.oneCurrentMove + rand,
@@ -157,8 +157,8 @@ class SnakesAndLadders extends React.Component {
             // guide: current move and previous move are declared directly to prevent any unwanted outcome!
             } else if (rand === 6  && this.state.oneCurrentMove === 94)  {
                 this.setState({
-                    hint: 'player one, congrads! move!',
-                    oneHint: 'lucky you, go ahead',
+                    hint: 'player one, move!',
+                    oneHint: 'great, move',
                     twoHint: 'OOOPS!',
 
                     oneDice: rand,
@@ -176,9 +176,9 @@ class SnakesAndLadders extends React.Component {
             // rule: player one will be rewarded another roll without any need to click move --if oneMove clickd, same result 
             } else if (rand === 6  && this.state.oneCurrentMove > 94)  {
                 this.setState({
-                    hint: 'player one, roll roll',
-                    oneHint: 'so close, roll once again',
-                    twoHint: 'oh, wait',
+                    hint: 'player one, roll',
+                    oneHint: 'so close, roll again',
+                    twoHint: 'wait',
                     oneDice: rand,
                     oneCurrentMove: this.state.oneCurrentMove,
                     onePrevMove: 0,
@@ -195,9 +195,9 @@ class SnakesAndLadders extends React.Component {
             // guide: the following conditions are related to random numbers between 1 and 5 
             } else if (rand !== 6 && this.state.oneCurrentMove < 1) {
                 this.setState({
-                    hint: 'player two, you roll',
+                    hint: 'player two, roll',
                     oneHint: 'wait',
-                    twoHint: 'your turn',
+                    twoHint: 'roll',
 
                     oneDice: rand,
                     oneCurrentMove: 0,
@@ -213,9 +213,9 @@ class SnakesAndLadders extends React.Component {
             // rule: turn should change to player two
             } else if (rand !== 6 && this.state.oneCurrentMove >= 1 && this.state.oneCurrentMove < 95) {
                 this.setState({
-                    hint: 'player one, move forward',
-                    oneHint: 'move forward',
-                    twoHint: 'wait wait',
+                    hint: 'player one, move',
+                    oneHint: 'move',
+                    twoHint: 'wait',
 
                     oneDice: rand,
                     oneCurrentMove: this.state.oneCurrentMove + rand,
@@ -239,9 +239,9 @@ class SnakesAndLadders extends React.Component {
                 // rule: turn should change to player two
                 if (rand + this.state.oneCurrentMove > 100) {
                     this.setState({
-                        hint: 'player two, roll roll',
-                        oneHint: 'maybe next time',
-                        twoHint: 'yes, your turn',
+                        hint: 'player two, roll',
+                        oneHint: 'wait',
+                        twoHint: 'roll',
 
                         oneDice: rand,
                         oneCurrentMove: this.state.oneCurrentMove,
@@ -259,9 +259,9 @@ class SnakesAndLadders extends React.Component {
                 // rule: turn should change to player two
                 } else {
                     this.setState({
-                        hint: 'player one, move ahead',
-                        oneHint: 'ok, go',
-                        twoHint: 'wait a sec',
+                        hint: 'player one, move',
+                        oneHint: 'move',
+                        twoHint: 'wait',
 
                         oneDice: rand,
                         oneCurrentMove: this.state.oneCurrentMove + rand,
@@ -283,17 +283,17 @@ class SnakesAndLadders extends React.Component {
 
             if (this.state.oneDice === 6 ) {
                 this.setState({
-                    hint: 'player one please roll',
-                    oneHint: 'your turn now, roll',
-                    twoHint: 'wait a moment',
+                    hint: 'player one, roll',
+                    oneHint: 'roll',
+                    twoHint: 'wait',
                     
                     turn: 'one'
                 })
             } else {
                 this.setState({
-                    hint: 'player two roll',
+                    hint: 'player two, roll',
                     oneHint: 'wait',
-                    twoHint: 'your turn now',
+                    twoHint: 'roll',
                     
                     turn: 'two'
                 })
@@ -309,7 +309,7 @@ class SnakesAndLadders extends React.Component {
                 this.setState({
                     oneCurrentMove: 23,
                     oneCurrentPos: document.getElementById(2).innerHTML = playerOneOut,
-                    onePrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
     
                     oneAfterPos: document.getElementById(23).innerHTML = playerOneIn,
                     oneBeforePos: setTimeout(function() {document.getElementById(2).innerHTML = ' '}, 3000)
@@ -318,7 +318,7 @@ class SnakesAndLadders extends React.Component {
                 this.setState({
                     oneCurrentMove: 68,
                     oneCurrentPos: document.getElementById(4).innerHTML = playerOneOut,
-                    onePrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
     
                     oneAfterPos: document.getElementById(68).innerHTML = playerOneIn,
                     oneBeforePos: setTimeout(function() {document.getElementById(4).innerHTML = ' '}, 3000)
@@ -327,10 +327,118 @@ class SnakesAndLadders extends React.Component {
                 this.setState({
                     oneCurrentMove: 45,
                     oneCurrentPos: document.getElementById(6).innerHTML = playerOneOut,
-                    onePrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
     
                     oneAfterPos: document.getElementById(45).innerHTML = playerOneIn,
                     oneBeforePos: setTimeout(function() {document.getElementById(6).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 20) {
+                this.setState({
+                    oneCurrentMove: 59,
+                    oneCurrentPos: document.getElementById(20).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(59).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(20).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 30) {
+                this.setState({
+                    oneCurrentMove: 96,
+                    oneCurrentPos: document.getElementById(30).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(96).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(30).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 43) {
+                this.setState({
+                    oneCurrentMove: 17,
+                    oneCurrentPos: document.getElementById(43).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(17).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(43).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 50) {
+                this.setState({
+                    oneCurrentMove: 5,
+                    oneCurrentPos: document.getElementById(50).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(5).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(50).innerHTML = ' '}, 3000)
+                })
+            }  else if (this.state.oneCurrentMove === 52) {
+                this.setState({
+                    oneCurrentMove: 72,
+                    oneCurrentPos: document.getElementById(52).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(72).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(52).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 56) {
+                this.setState({
+                    oneCurrentMove: 8,
+                    oneCurrentPos: document.getElementById(56).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(8).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(56).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 57) {
+                this.setState({
+                    oneCurrentMove: 96,
+                    oneCurrentPos: document.getElementById(57).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(96).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(57).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 71) {
+                this.setState({
+                    oneCurrentMove: 92,
+                    oneCurrentPos: document.getElementById(71).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(92).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(71).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 73) {
+                this.setState({
+                    oneCurrentMove: 15,
+                    oneCurrentPos: document.getElementById(73).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(15).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(73).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 84) {
+                this.setState({
+                    oneCurrentMove: 58,
+                    oneCurrentPos: document.getElementById(84).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(58).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(84).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 87) {
+                this.setState({
+                    oneCurrentMove: 49,
+                    oneCurrentPos: document.getElementById(87).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(49).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(87).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 98) {
+                this.setState({
+                    oneCurrentMove: 40,
+                    oneCurrentPos: document.getElementById(98).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(40).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(98).innerHTML = ' '}, 3000)
                 })
             } else if (this.state.oneCurrentMove < 100) {
                 
@@ -341,9 +449,9 @@ class SnakesAndLadders extends React.Component {
                 
             } else if (this.state.oneCurrentMove === 100) {
                 this.setState({
-                    hint: '1 gewinnt!',
+                    hint: 'player one, WINNER!',
                     oneHint: 'Hoooray!!!',
-                    twoHint: 'maybe next time!',
+                    twoHint: 'Maybe next time!',
 
                     oneCurrentPos: document.getElementById(100).innerHTML = playerOne,
                     onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = '',
@@ -354,7 +462,7 @@ class SnakesAndLadders extends React.Component {
                     turn: ''
                 })
             } else {
-                alert('play again?')
+                alert('Play again?')
             }
         
         }
@@ -397,9 +505,9 @@ class SnakesAndLadders extends React.Component {
             // guide: conditions specific to random number 6 are defined firstly and then for random numbers btw 1 and 5 
             if ( rand === 6 && this.state.twoCurrentMove < 1 ) {
                 this.setState({
-                    hint: 'player one starts! roll again',
-                    twoHint: 'Hooray, roll again for more',
-                    oneHint: 'wait a sec more',
+                    hint: 'player two starts! roll again',
+                    twoHint: 'Hooray, roll',
+                    oneHint: 'wait',
                     
                     twoDice: rand,
                     twoCurrentMove: 1,
@@ -430,9 +538,9 @@ class SnakesAndLadders extends React.Component {
             // guide: this rules will remain up to number 94, since 95 + 6 is greater than 100
             else if (rand === 6 && this.state.twoCurrentMove >= 1 && this.state.twoCurrentMove < 94) {
                 this.setState({
-                    hint: 'player one move forward',
-                    twoHint: 'great, move',
-                    oneHint: 'again wait',
+                    hint: 'player two, move',
+                    twoHint: 'lucky, move',
+                    oneHint: 'wait',
 
                     twoDice: rand,
                     twoCurrentMove: this.state.twoCurrentMove + rand,
@@ -453,8 +561,8 @@ class SnakesAndLadders extends React.Component {
             // guide: current move and previous move are declared directly to prevent any unwanted outcome!
             } else if (rand === 6  && this.state.twoCurrentMove === 94)  {
                 this.setState({
-                    hint: 'player one, congrads! move!',
-                    twoHint: 'lucky you, go ahead',
+                    hint: 'player two, congrads! move!',
+                    twoHint: 'great, move',
                     oneHint: 'OOOPS!',
 
                     twoDice: rand,
@@ -472,8 +580,8 @@ class SnakesAndLadders extends React.Component {
             // rule: player one will be rewarded another roll without any need to click move --if oneMove clickd, same result 
             } else if (rand === 6  && this.state.twoCurrentMove > 94)  {
                 this.setState({
-                    hint: 'player one, roll roll',
-                    twoHint: 'so close, roll once again',
+                    hint: 'player two, roll',
+                    twoHint: 'so close, roll',
                     oneHint: 'oh, wait',
 
                     twoDice: rand,
@@ -492,9 +600,9 @@ class SnakesAndLadders extends React.Component {
             // guide: the following conditions are related to random numbers between 1 and 5 
             } else if (rand !== 6 && this.state.twoCurrentMove < 1) {
                 this.setState({
-                    hint: 'player two, you roll',
+                    hint: 'player one, roll',
                     twoHint: 'wait',
-                    oneHint: 'your turn',
+                    oneHint: 'roll',
 
                     twoDice: rand,
                     twoCurrentMove: 0,
@@ -510,9 +618,9 @@ class SnakesAndLadders extends React.Component {
             // rule: turn should change to player two
             } else if (rand !== 6 && this.state.twoCurrentMove >= 1 && this.state.twoCurrentMove < 95) {
                 this.setState({
-                    hint: 'player one, move forward',
-                    twoHint: 'move forward',
-                    oneHint: 'wait wait',
+                    hint: 'player two, move',
+                    twoHint: 'move',
+                    oneHint: 'wait',
 
                     twoDice: rand,
                     twoCurrentMove: this.state.twoCurrentMove + rand,
@@ -536,9 +644,9 @@ class SnakesAndLadders extends React.Component {
                 // rule: turn should change to player two
                 if (rand + this.state.twoCurrentMove > 100) {
                     this.setState({
-                        hint: 'player two, roll roll',
-                        twoHint: 'maybe next time',
-                        oneHint: 'yes, your turn',
+                        hint: 'player one, roll',
+                        twoHint: 'wait',
+                        oneHint: 'roll',
 
                         twoDice: rand,
                         twoCurrentMove: this.state.twoCurrentMove,
@@ -556,9 +664,9 @@ class SnakesAndLadders extends React.Component {
                 // rule: turn should change to player two
                 } else {
                     this.setState({
-                        hint: 'player one, move ahead',
-                        twoHint: 'ok, go',
-                        oneHint: 'wait a sec',
+                        hint: 'player two, move',
+                        twoHint: 'move',
+                        oneHint: 'wait',
 
                         twoDice: rand,
                         twoCurrentMove: this.state.twoCurrentMove + rand,
@@ -580,17 +688,17 @@ class SnakesAndLadders extends React.Component {
 
             if (this.state.twoDice === 6 ) {
                 this.setState({
-                    hint: 'player two please roll',
-                    twoHint: 'your turn now, roll',
-                    oneHint: 'wait a moment',
+                    hint: 'player two, roll',
+                    twoHint: 'roll',
+                    oneHint: 'wait',
 
                     turn: 'two'
                 })
             } else {
                 this.setState({
-                    hint: 'player one roll',
+                    hint: 'player one, roll',
                     twoHint: 'wait',
-                    oneHint: 'your turn now',
+                    oneHint: 'roll',
                     
                     turn: 'one'
                 })
@@ -629,6 +737,114 @@ class SnakesAndLadders extends React.Component {
                 twoAfterPos: document.getElementById(45).innerHTML = playerTwoIn,
                 twoBeforePos: setTimeout(function() {document.getElementById(6).innerHTML = ' '}, 3000)
             })
+        } else if (this.state.twoCurrentMove === 20) {
+            this.setState({
+                twoCurrentMove: 59,
+                twoCurrentPose: document.getElementById(20).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(59).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(20).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove === 30) {
+            this.setState({
+                twoCurrentMove: 96,
+                twoCurrentPose: document.getElementById(30).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(96).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(30).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove === 43) {
+            this.setState({
+                twoCurrentMove: 17,
+                twoCurrentPose: document.getElementById(43).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(17).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(43).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove === 50) {
+            this.setState({
+                twoCurrentMove: 5,
+                twoCurrentPose: document.getElementById(50).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(5).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(50).innerHTML = ' '}, 3000)
+            })
+        }  else if (this.state.twoCurrentMove === 52) {
+            this.setState({
+                twoCurrentMove: 72,
+                twoCurrentPose: document.getElementById(52).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(72).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(52).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove === 56) {
+            this.setState({
+                twoCurrentMove: 8,
+                twoCurrentPose: document.getElementById(56).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(8).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(56).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove === 57) {
+            this.setState({
+                twoCurrentMove: 96,
+                twoCurrentPose: document.getElementById(57).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(96).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(57).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove === 71) {
+            this.setState({
+                twoCurrentMove: 92,
+                twoCurrentPose: document.getElementById(71).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(92).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(71).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove === 73) {
+            this.setState({
+                twoCurrentMove: 15,
+                twoCurrentPose: document.getElementById(73).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(15).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(73).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove === 84) {
+            this.setState({
+                twoCurrentMove: 58,
+                twoCurrentPose: document.getElementById(84).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(58).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(84).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove === 87) {
+            this.setState({
+                twoCurrentMove: 49,
+                twoCurrentPose: document.getElementById(87).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(49).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(87).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove === 98) {
+            this.setState({
+                twoCurrentMove: 40,
+                twoCurrentPose: document.getElementById(98).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(40).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(98).innerHTML = ' '}, 3000)
+            })
         } else if (this.state.twoCurrentMove < 100) {
             
                 this.setState({
@@ -638,9 +854,9 @@ class SnakesAndLadders extends React.Component {
             
         } else if (this.state.twoCurrentMove === 100) {
             this.setState({
-                hint: '1 gewinnt!',
+                hint: 'player 2, WINNER!',
                 twoHint: 'Hoooray!!!',
-                oneHint: 'maybe next time!',
+                oneHint: 'Maybe next time!',
 
                 twoCurrentPos: document.getElementById(100).innerHTML = playerTwo,
                 twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = '',
@@ -653,7 +869,7 @@ class SnakesAndLadders extends React.Component {
 
             })
         } else {
-            alert('play again?')
+            alert('Play again?')
         }
     }
 }
