@@ -6,13 +6,13 @@ import './snakes-and-ladders.styles.scss';
 
 // icons for player one in normal, fading in, and fading out situtions
 const playerOne = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info'></i>`
-const playerOneIn = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info player-fade-in'></i>`
-const playerOneOut = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info player-fade-out'></i>`
+const playerOneIn = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info fade-in'></i>`
+const playerOneOut = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info fade-out'></i>`
 
 // icons for player two in normal, fading in, and fading out situtions
 const playerTwo = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning'></i>`
-const playerTwoIn = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning player-fade-in'></i>`
-const playerTwoOut = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning player-fade-out'></i>`
+const playerTwoIn = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning fade-in'></i>`
+const playerTwoOut = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning fade-out'></i>`
 
 // icons for player one dice in different situations
 const oneDiceCube = `<div><i class="bi bi-box"></i></div>`
@@ -35,7 +35,7 @@ const twoDiceSix = `<div class="animated flip"><i class="bi bi-dice-6-fill"></i>
 const playAgainBtn = 
 `<div>
     <button 
-        class='btn btn-success d-flex justify-content-center align-items-center fs-3'
+        class='btn btn-success d-flex justify-content-center align-items-center fs-3 fade-in'
         type="button"
         onClick={location.reload()}
     >
@@ -118,8 +118,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'wait',
                     
                     oneDice: rand,
-                    oneCurrentMove: 100,
-                    oneCurrentPos: document.getElementById(100).innerHTML = playerOne,
+                    oneCurrentMove: 1,
+                    oneCurrentPos: document.getElementById(1).innerHTML = playerOne,
                     onePrevMove: this.state.oneCurrentMove,
 
                     twoDice: 0,
@@ -472,7 +472,7 @@ class SnakesAndLadders extends React.Component {
                     twoAfterPos: document.getElementById(222).innerHTML = 'Not Lucky',
 
                     turn: '',
-                    playAgain: setTimeout(function() {document.getElementById('hintForAll').innerHTML = playAgainBtn}, 3000)
+                    playAgain: setTimeout(function() {document.getElementById('hintForAll').innerHTML = playAgainBtn}, 2000)
                 })
                 
 
@@ -878,7 +878,7 @@ class SnakesAndLadders extends React.Component {
 
 
                 turn: '',
-                playAgain: setTimeout(function() {document.getElementById('hintForAll').innerHTML = playAgainBtn}, 3000)
+                playAgain: setTimeout(function() {document.getElementById('hintForAll').innerHTML = playAgainBtn}, 2000)
             })
         } 
     }
