@@ -441,7 +441,6 @@ class SnakesAndLadders extends React.Component {
                     oneBeforePos: setTimeout(function() {document.getElementById(98).innerHTML = ' '}, 3000)
                 })
             } else if (this.state.oneCurrentMove < 100) {
-                
                     this.setState({
                         oneCurrentPos: document.getElementById(this.state.oneCurrentMove).innerHTML = playerOne,
                         onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' '
