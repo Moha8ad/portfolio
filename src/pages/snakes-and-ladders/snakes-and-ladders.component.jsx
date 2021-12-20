@@ -4,12 +4,17 @@ import QuotifyNavbar from '../../components/quotify-components/qt-navbar/qt-navb
 
 import './snakes-and-ladders.styles.scss';
 
+// icons for player one in normal, fading in, and fading out situtions
 const playerOne = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info'></i>`
 const playerOneIn = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info player-fade-in'></i>`
 const playerOneOut = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info player-fade-out'></i>`
 
+// icons for player two in normal, fading in, and fading out situtions
 const playerTwo = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning'></i>`
+const playerTwoIn = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning player-fade-in'></i>`
+const playerTwoOut = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning player-fade-out'></i>`
 
+// icons for player one dice in different situations
 const oneDiceCube = `<div><i class="bi bi-box"></i></div>`
 const oneDiceOne = `<div class="animated flip"><i class="bi bi-dice-1-fill"></i></div>`
 const oneDiceTwo = `<div class="animated flip"><i class="bi bi-dice-2-fill"></i></div>`
@@ -18,6 +23,7 @@ const oneDiceFour = `<div class="animated flip"><i class="bi bi-dice-4-fill"></i
 const oneDiceFive = `<div class="animated flip"><i class="bi bi-dice-5-fill"></i></div>`
 const oneDiceSix = `<div class="animated flip"><i class="bi bi-dice-6-fill"></i></div>`
 
+// icons for player two dice in different situations
 const twoDiceCube = `<div><i class="bi bi-box"></i></div>`
 const twoDiceOne = `<div class="animated flip"><i class="bi bi-dice-1-fill"></i></div>`
 const twoDiceTwo = `<div class="animated flip"><i class="bi bi-dice-2-fill"></i></div>`
@@ -26,41 +32,48 @@ const twoDiceFour = `<div class="animated flip"><i class="bi bi-dice-4-fill"></i
 const twoDiceFive = `<div class="animated flip"><i class="bi bi-dice-5-fill"></i></div>`
 const twoDiceSix = `<div class="animated flip"><i class="bi bi-dice-6-fill"></i></div>`
 
-
-
 class SnakesAndLadders extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            hint: "Let's Start! Player One Roll",
-            turn: 'one',
-            
-            oneHint: 'Your Turn',
-            oneDice: 0,
-            oneDiceCube: '',
-            oneMove: 0,
-            onePrevMove: 0,
-            onePrevPos: 0,
-            oneCurrentPos: 0,
-            oneNextPos: 0,
-            
-            twoHint: 'Wait',
-            twoDice: 0,
-            twoDiceCube: '',
-            twoMove: 0,
-            twoPrevPos: 0,
-            twoCurrentPos: 0,
-            twoNextPos: 0,
+            hint: "Let's Start! Player One Roll", //hint for all players
+            oneHint: 'Your Turn', // hint specific for player one 
+            twoHint: 'Wait', // hint specific for player two 
 
+            oneDice: 0, // stores random number for player one in state to be used in other functions 
+            oneDiceCube: '', // shows the dice cube, informing player one that turn has changed 
+            oneCurrentMove: 0, // stores accumulative number of current move plus latest random number to share with oneMove function to move forward
+            onePrevMove: 0, // stores the previous accumulative number to share with oneMove function to remove the track of the last move 
+            oneCurrentPos: 0, //moves forward based on oneCurrentMove data in oneMove function
+            onePrevPos: 0, //removes the last move based on onePrevMove data in oneMove function
+            oneAfterPos: 0, //to be used for jumping or falling effect when snakes or ladders are confronted
+            oneBeforePos: 0,  //to be used for jumping or falling effect when snakes or ladders are confronted
+
+            twoDice: 0, // everything in this pary for player two is a repetition of the above for player one
+            twoDiceCube: '',
+            twoCurrentMove: 0,
+            twoPrevMove: 0,
+            twoCurrentPos: 0,
+            twoPrevPos: 0,
+            twoAfterPos: 0, //to be used for jumping or falling effect when snakes or ladders are confronted
+            twoBeforePos: 0,  //to be used for jumping or falling effect when snakes or ladders are confronted
+
+
+            turn: 'one', //changes turn between player one and player two 
         }
     }
-
+    
+    // executes when player one clicks the Roll button
+    // one is abbr. for player one
     oneDice = () => {
-        const randd =  Math.floor(Math.random() *  6) + 1;
-        const rand = 6
 
+        // executes if it is player one's turn
         if ( this.state.turn === 'one'){
+            
+            // generates new random number between 1 and 6, inclusive
+            const rand =  Math.floor(Math.random() *  6) + 1;
 
+            // shows dice number based on random number
             if ( rand === 1 ) {
                 document.getElementById(111).innerHTML = oneDiceOne
             } else if ( rand === 2 ) {
@@ -75,158 +88,576 @@ class SnakesAndLadders extends React.Component {
                 document.getElementById(111).innerHTML = oneDiceSix
             }
 
-            if ( rand === 6 && this.state.oneMove < 1 ) {
+            // situation: player one is not yet in and random number is 6
+            // rule: player one moves to number 1 and starts the game
+            // rule: plyer one is already rewarded another roll without clicking move button
+            // guide: turn is already set to 'one', no need to do anything -- oneMove function will handle it accordingly
+            // guide: turn will be declared in case needed for other purposes elsewhere
+            // guide: to begin from square one, oneCurrentMove is set directly to 1 --because random number is 6
+            // guide: oneCurrentPose should also be set directly to 1 so that player one automatically enter the game board
+            // guide: onePrevMove is set to the oneCurrentMove -- for more info go to onePrevMove in state guidance
+            // guide: player two dice is declared 0 in order to change turn in oneMove and twoMove functions
+            // guide: to inform change of turn, player two's dice is set to twoDiceCube, default cube showing no number 
+            // guide: conditions specific to random number 6 are defined firstly and then for random numbers btw 1 and 5 
+            if ( rand === 6 && this.state.oneCurrentMove < 1 ) {
                 this.setState({
+                    hint: 'player one starts! roll again',
+                    oneHint: 'Hooray, roll again for more',
+                    twoHint: 'wait a sec more',
+                    
                     oneDice: rand,
-                    oneMove: 1,
+                    oneCurrentMove: 1,
                     oneCurrentPos: document.getElementById(1).innerHTML = playerOne,
+                    onePrevMove: this.state.oneCurrentMove,
+
+                    twoDice: 0,
+                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+
+                    turn: 'one'
+                })
+
+            } 
+            
+            // situation: player one is already in and random number is 6
+            // rule: player one moves 6 numbers forward 
+            // rule: player one will be rewarded another roll after clicking move --oneMove will handle
+            /* guide: oneMove function already set turn to 'one' but it should be changed to empty string 
+                in order to prevent rolling the dice for both players and the reward to role once more 
+                will be given to player one after clicking move and going ahead 6 square ahead
+            */
+            /* changing the turn takes place in oneDice, oneMove, twoDice, and twoMove functions because
+                in different situtions, each of them should have the access to manage it. 
+                In particular, moving automatically when the player enters the board or jumps up the ladders 
+                or goes down because of snakes and moving manually in regular situations makes managing turn
+                a bit complicated 
+            */
+            // guide: this rules will remain up to number 94, since 95 + 6 is greater than 100
+            else if (rand === 6 && this.state.oneCurrentMove >= 1 && this.state.oneCurrentMove < 94) {
+                this.setState({
+                    hint: 'player one move forward',
+                    oneHint: 'great, move',
+                    twoHint: 'again wait',
+
+                    oneDice: rand,
+                    oneCurrentMove: this.state.oneCurrentMove + rand,
+                    onePrevMove: this.state.oneCurrentMove,
+
+                    twoDice: 0, //refer to above condition information for guidance
+                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube, //refer to above condition for guidance
+
+                    turn: ''
+                })
+
+            
+            // situation: player one's currentMove is 94 and random number is 6
+            // rule: player one moves 6 numbers forward 
+            // rule: player one will be rewarded another roll after clicking move --oneMove will handle
+            // guide: twoDice/twoCurrentMove functions already set turn to 'one', no need to do anything
+            // guide: since player one's current move is 94 and rand number is 6, number one wins when move is clicked
+            // guide: current move and previous move are declared directly to prevent any unwanted outcome!
+            } else if (rand === 6  && this.state.oneCurrentMove === 94)  {
+                this.setState({
+                    hint: 'player one, congrads! move!',
+                    oneHint: 'lucky you, go ahead',
+                    twoHint: 'OOOPS!',
+
+                    oneDice: rand,
+                    oneCurrentMove: 100,
+                    onePrevMove: 94,
+
+                    twoDice: 0,
+                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+    
+                    turn: ''
+                })
+
+            // situation: player one's currentMove is greater than 94 and random number is 6, result will be greater than 100
+            // rule: player one must remain where it is
+            // rule: player one will be rewarded another roll without any need to click move --if oneMove clickd, same result 
+            } else if (rand === 6  && this.state.oneCurrentMove > 94)  {
+                this.setState({
+                    hint: 'player one, roll roll',
+                    oneHint: 'so close, roll once again',
+                    twoHint: 'oh, wait',
+                    oneDice: rand,
+                    oneCurrentMove: this.state.oneCurrentMove,
                     onePrevMove: 0,
 
                     twoDice: 0,
                     twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
 
                     turn: 'one'
-                    })
-            } else if (rand === 6 && this.state.oneMove >= 1 && this.state.oneMove < 80) {
-                this.setState({
-                    oneDice: rand,
-                    oneMove: this.state.oneMove + rand,
-                    onePrevMove: this.state.oneMove,
-
-                    twoDice: 0,
-                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
-
-                    turn: ''
-
-                    })
-
-            }  else if (rand === 6  && this.state.oneMove >= 80 && this.state.oneMove <= 100)  {
-                this.setState({
-                    oneDice: rand,
-                    oneMove: this.state.oneMove + 1,
-                    onePrevMove: this.state.oneMove,
-    
-                    twoDice: 0,
-                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
-    
-                    turn: ''
-                    })
-            } else if (rand !== 6 && this.state.oneMove < 1) {
-                this.setState({
-                oneDice: rand,
-                oneMove: 0,
-                onePrevMove: this.state.oneMove,
-
-
-                twoDice: 0,
-                twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
-
-                turn: 'two'
                 })
-        }
+            // situation: player one is not yet in and random number is not 6
+            // rule: player one must cannot enter the game board
+            // rule: turn should change to player two
+            // guide: no move and random is not allowed to effect anything but oneDice for the sake of turn change managment
+            // guide: the following conditions are related to random numbers between 1 and 5 
+            } else if (rand !== 6 && this.state.oneCurrentMove < 1) {
+                this.setState({
+                    hint: 'player two, you roll',
+                    oneHint: 'wait',
+                    twoHint: 'your turn',
+
+                    oneDice: rand,
+                    oneCurrentMove: 0,
+                    onePrevMove: this.state.oneCurrentMove,
+
+                    twoDice: 0,
+                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+
+                    turn: 'two'
+                })
+            // situation: player one is already in and stands somewhere before 95 and random number is not 6
+            // rule: player one moves according to oneCurrentMove added by generated random number
+            // rule: turn should change to player two
+            } else if (rand !== 6 && this.state.oneCurrentMove >= 1 && this.state.oneCurrentMove < 95) {
+                this.setState({
+                    hint: 'player one, move forward',
+                    oneHint: 'move forward',
+                    twoHint: 'wait wait',
+
+                    oneDice: rand,
+                    oneCurrentMove: this.state.oneCurrentMove + rand,
+                    onePrevMove: this.state.oneCurrentMove,
+
+                    twoDice: 0,
+                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+
+                    turn: ''
+
+                })
+            // situation: player one is already in and stands either in 95 square or greater and random number is btw 1 and 5
+            /* guide: in this situation there will be three conditions, two of them will be managed here and 
+                one in oneMove function. These two conditions are more straightforward and less repetetive to be coded. */
+            /* guide: these two conditions makes easier to manage the different conditions when the current move plus 
+                generated random number equalls to 100, which will be handle in oneMove function. */
+            } else if (rand !== 6 && this.state.oneCurrentMove >= 95) {
+
+                // situtaion: if the current move plus generated random number is above 100
+                // rule: player one is prevented to move forward
+                // rule: turn should change to player two
+                if (rand + this.state.oneCurrentMove > 100) {
+                    this.setState({
+                        hint: 'player two, roll roll',
+                        oneHint: 'maybe next time',
+                        twoHint: 'yes, your turn',
+
+                        oneDice: rand,
+                        oneCurrentMove: this.state.oneCurrentMove,
+                        onePrevMove: 0,
+
+                        twoDice: 0,
+                        twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+
+                        turn: ''
+
+                        })
+
+                // situtaion: if the current move plus generated random number is above 100
+                // rule: player one is prevented to move forward
+                // rule: turn should change to player two
+                } else {
+                    this.setState({
+                        hint: 'player one, move ahead',
+                        oneHint: 'ok, go',
+                        twoHint: 'wait a sec',
+
+                        oneDice: rand,
+                        oneCurrentMove: this.state.oneCurrentMove + rand,
+                        onePrevMove: this.state.oneCurrentMove,
+
+                        twoDice: 0,
+                        twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+
+                        turn: ''
+                    })
+                }
+            }
         }
     }
-    oneMove = () => {
-        if (this.state.oneDice === 6 ) {
-            this.setState({
-                turn: 'one'
-            })
-        } else {
-            this.setState({
-                turn: 'two'
-            })
-        }
 
-        if (this.state.oneMove > 1 && this.state.onePrevMove === 1) {
+    oneMove = () => {
+
+        if (this.state.oneDice > 0 && this.state.twoDice === 0) {
+
+            if (this.state.oneDice === 6 ) {
+                this.setState({
+                    hint: 'player one please roll',
+                    oneHint: 'your turn now, roll',
+                    twoHint: 'wait a moment',
+                    
+                    turn: 'one'
+                })
+            } else {
+                this.setState({
+                    hint: 'player two roll',
+                    oneHint: 'wait',
+                    twoHint: 'your turn now',
+                    
+                    turn: 'two'
+                })
+            }
+
+            if (this.state.oneCurrentMove > 1 && this.state.onePrevMove === 1) {
+                this.setState({
+                    onePrevPos: document.getElementById(1).innerHTML = ' ',
+                })
+            }
+        
+            if (this.state.oneCurrentMove === 2) {
+                this.setState({
+                    oneCurrentMove: 23,
+                    oneCurrentPos: document.getElementById(2).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(23).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(2).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 4) {
+                this.setState({
+                    oneCurrentMove: 68,
+                    oneCurrentPos: document.getElementById(4).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(68).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(4).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove === 6) {
+                this.setState({
+                    oneCurrentMove: 45,
+                    oneCurrentPos: document.getElementById(6).innerHTML = playerOneOut,
+                    onePrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+    
+                    oneAfterPos: document.getElementById(45).innerHTML = playerOneIn,
+                    oneBeforePos: setTimeout(function() {document.getElementById(6).innerHTML = ' '}, 3000)
+                })
+            } else if (this.state.oneCurrentMove < 100) {
+                
+                    this.setState({
+                        oneCurrentPos: document.getElementById(this.state.oneCurrentMove).innerHTML = playerOne,
+                        onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' '
+                    })
+                
+            } else if (this.state.oneCurrentMove === 100) {
+                this.setState({
+                    hint: '1 gewinnt!',
+                    oneHint: 'Hoooray!!!',
+                    twoHint: 'maybe next time!',
+
+                    oneCurrentPos: document.getElementById(100).innerHTML = playerOne,
+                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = '',
+                    
+                    oneAfterPos: document.getElementById(111).innerHTML = 'Winner',
+                    twoAfterPos: document.getElementById(222).innerHTML = 'Not Lucky',
+
+                    turn: ''
+                })
+            } else {
+                alert('play again?')
+            }
+        
+        }
+    }
+
+   // executes when player one clicks the Roll button
+    // one is abbr. for player one
+    twoDice = () => {
+
+        // executes if it is player one's turn
+        if ( this.state.turn === 'two'){
+            
+            // generates new random number between 1 and 6, inclusive
+            const rand =  Math.floor(Math.random() *  6) + 1;
+            // shows dice number based on random number
+            if ( rand === 1 ) {
+                document.getElementById(222).innerHTML = twoDiceOne
+            } else if ( rand === 2 ) {
+                document.getElementById(222).innerHTML = twoDiceTwo
+            } else if ( rand === 3 ) {
+                document.getElementById(222).innerHTML = twoDiceThree
+            } else if ( rand === 4 ) {
+                document.getElementById(222).innerHTML = twoDiceFour
+            } else if ( rand === 5 ) {
+                document.getElementById(222).innerHTML = twoDiceFive
+            } else {
+                document.getElementById(222).innerHTML = twoDiceSix
+            }
+
+            // situation: player one is not yet in and random number is 6
+            // rule: player one moves to number 1 and starts the game
+            // rule: plyer one is already rewarded another roll without clicking move button
+            // guide: turn is already set to 'one', no need to do anything -- oneMove function will handle it accordingly
+            // guide: turn will be declared in case needed for other purposes elsewhere
+            // guide: to begin from square one, oneCurrentMove is set directly to 1 --because random number is 6
+            // guide: oneCurrentPose should also be set directly to 1 so that player one automatically enter the game board
+            // guide: onePrevMove is set to the oneCurrentMove -- for more info go to onePrevMove in state guidance
+            // guide: player two dice is declared 0 in order to change turn in oneMove and twoMove functions
+            // guide: to inform change of turn, player two's dice is set to twoDiceCube, default cube showing no number 
+            // guide: conditions specific to random number 6 are defined firstly and then for random numbers btw 1 and 5 
+            if ( rand === 6 && this.state.twoCurrentMove < 1 ) {
+                this.setState({
+                    hint: 'player one starts! roll again',
+                    twoHint: 'Hooray, roll again for more',
+                    oneHint: 'wait a sec more',
+                    
+                    twoDice: rand,
+                    twoCurrentMove: 1,
+                    twoCurrentPos: document.getElementById(1).innerHTML = playerTwo,
+                    twoPrevMove: this.state.twoCurrentMove,
+
+                    oneDice: 0,
+                    oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
+
+                    turn: 'two'
+                })
+
+            } 
+            
+            // situation: player one is already in and random number is 6
+            // rule: player one moves 6 numbers forward 
+            // rule: player one will be rewarded another roll after clicking move --oneMove will handle
+            /* guide: oneMove function already set turn to 'one' but it should be changed to empty string 
+                in order to prevent rolling the dice for both players and the reward to role once more 
+                will be given to player one after clicking move and going ahead 6 square ahead
+            */
+            /* changing the turn takes place in oneDice, oneMove, twoDice, and twoMove functions because
+                in different situtions, each of them should have the access to manage it. 
+                In particular, moving automatically when the player enters the board or jumps up the ladders 
+                or goes down because of snakes and moving manually in regular situations makes managing turn
+                a bit complicated 
+            */
+            // guide: this rules will remain up to number 94, since 95 + 6 is greater than 100
+            else if (rand === 6 && this.state.twoCurrentMove >= 1 && this.state.twoCurrentMove < 94) {
+                this.setState({
+                    hint: 'player one move forward',
+                    twoHint: 'great, move',
+                    oneHint: 'again wait',
+
+                    twoDice: rand,
+                    twoCurrentMove: this.state.twoCurrentMove + rand,
+                    twoPrevMove: this.state.twoCurrentMove,
+
+                    oneDice: 0, //refer to above condition information for guidance
+                    oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube, //refer to above condition for guidance
+
+                    turn: ''
+                })
+
+            
+            // situation: player one's currentMove is 94 and random number is 6
+            // rule: player one moves 6 numbers forward 
+            // rule: player one will be rewarded another roll after clicking move --oneMove will handle
+            // guide: twoDice/twoCurrentMove functions already set turn to 'one', no need to do anything
+            // guide: since player one's current move is 94 and rand number is 6, number one wins when move is clicked
+            // guide: current move and previous move are declared directly to prevent any unwanted outcome!
+            } else if (rand === 6  && this.state.twoCurrentMove === 94)  {
+                this.setState({
+                    hint: 'player one, congrads! move!',
+                    twoHint: 'lucky you, go ahead',
+                    oneHint: 'OOOPS!',
+
+                    twoDice: rand,
+                    twoCurrentMove: 100,
+                    twoPrevMove: 94,
+
+                    oneDice: 0,
+                    oneDiceCube: document.getElementById(222).innerHTML = oneDiceCube,
+    
+                    turn: ''
+                })
+
+            // situation: player one's currentMove is greater than 94 and random number is 6, result will be greater than 100
+            // rule: player one must remain where it is
+            // rule: player one will be rewarded another roll without any need to click move --if oneMove clickd, same result 
+            } else if (rand === 6  && this.state.twoCurrentMove > 94)  {
+                this.setState({
+                    hint: 'player one, roll roll',
+                    twoHint: 'so close, roll once again',
+                    oneHint: 'oh, wait',
+
+                    twoDice: rand,
+                    twoCurrentMove: this.state.twoCurrentMove,
+                    twoPrevMove: 0,
+
+                    oneDice: 0,
+                    oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
+
+                    turn: 'two'
+                })
+            // situation: player one is not yet in and random number is not 6
+            // rule: player one must cannot enter the game board
+            // rule: turn should change to player two
+            // guide: no move and random is not allowed to effect anything but oneDice for the sake of turn change managment
+            // guide: the following conditions are related to random numbers between 1 and 5 
+            } else if (rand !== 6 && this.state.twoCurrentMove < 1) {
+                this.setState({
+                    hint: 'player two, you roll',
+                    twoHint: 'wait',
+                    oneHint: 'your turn',
+
+                    twoDice: rand,
+                    twoCurrentMove: 0,
+                    twoPrevMove: this.state.twoCurrentMove,
+
+                    oneDice: 0,
+                    oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
+
+                    turn: 'one'
+                })
+            // situation: player one is already in and stands somewhere before 95 and random number is not 6
+            // rule: player one moves according to oneCurrentMove added by generated random number
+            // rule: turn should change to player two
+            } else if (rand !== 6 && this.state.twoCurrentMove >= 1 && this.state.twoCurrentMove < 95) {
+                this.setState({
+                    hint: 'player one, move forward',
+                    twoHint: 'move forward',
+                    oneHint: 'wait wait',
+
+                    twoDice: rand,
+                    twoCurrentMove: this.state.twoCurrentMove + rand,
+                    twoPrevMove: this.state.twoCurrentMove,
+
+                    oneDice: 0,
+                    oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
+
+                    turn: ''
+
+                })
+            // situation: player one is already in and stands either in 95 square or greater and random number is btw 1 and 5
+            /* guide: in this situation there will be three conditions, two of them will be managed here and 
+                one in oneMove function. These two conditions are more straightforward and less repetetive to be coded. */
+            /* guide: these two conditions makes easier to manage the different conditions when the current move plus 
+                generated random number equalls to 100, which will be handle in oneMove function. */
+            } else if (rand !== 6 && this.state.twoCurrentMove >= 95) {
+
+                // situtaion: if the current move plus generated random number is above 100
+                // rule: player one is prevented to move forward
+                // rule: turn should change to player two
+                if (rand + this.state.twoCurrentMove > 100) {
+                    this.setState({
+                        hint: 'player two, roll roll',
+                        twoHint: 'maybe next time',
+                        oneHint: 'yes, your turn',
+
+                        twoDice: rand,
+                        twoCurrentMove: this.state.twoCurrentMove,
+                        twoPrevMove: 0,
+
+                        oneDice: 0,
+                        oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
+
+                        turn: ''
+
+                        })
+
+                // situtaion: if the current move plus generated random number is above 100
+                // rule: player one is prevented to move forward
+                // rule: turn should change to player two
+                } else {
+                    this.setState({
+                        hint: 'player one, move ahead',
+                        twoHint: 'ok, go',
+                        oneHint: 'wait a sec',
+
+                        twoDice: rand,
+                        twoCurrentMove: this.state.twoCurrentMove + rand,
+                        twoPrevMove: this.state.twoCurrentMove,
+
+                        oneDice: 0,
+                        oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
+
+                        turn: ''
+                    })
+                }
+            }
+        }
+    }
+
+    twoMove = () => {
+
+        if (this.state.twoDice > 0 && this.state.oneDice === 0) {
+
+            if (this.state.twoDice === 6 ) {
+                this.setState({
+                    hint: 'player two please roll',
+                    twoHint: 'your turn now, roll',
+                    oneHint: 'wait a moment',
+
+                    turn: 'two'
+                })
+            } else {
+                this.setState({
+                    hint: 'player one roll',
+                    twoHint: 'wait',
+                    oneHint: 'your turn now',
+                    
+                    turn: 'one'
+                })
+            }
+
+        if (this.state.twoCurrentMove > 1 && this.state.twoPrevMove === 1) {
             this.setState({
-                oneCurrentPos: document.getElementById(this.state.oneMove).innerHTML = playerOne,
-                onePrevPos: document.getElementById(1).innerHTML = ' '
+                twoPrevPos: document.getElementById(1).innerHTML = ' ',
             })
         }
         
-        if (this.state.oneMove === 7) {
+        if (this.state.twoCurrentMove === 2) {
             this.setState({
-                oneMove: 45,
-                oneCurrentPos: document.getElementById(7).innerHTML = playerOneOut,
-                oneNextPos: document.getElementById(45).innerHTML = playerOneIn,
-                onePrevPos: setTimeout(function() {document.getElementById(7).innerHTML = ' '}, 3000)
+                twoCurrentMove: 23,
+                twoCurrentPos: document.getElementById(2).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
 
+                twoAfterPos: document.getElementById(23).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(2).innerHTML = ' '}, 3000)
             })
-        } else if (this.state.oneMove === 4) {
+        } else if (this.state.twoCurrentMove === 4) {
             this.setState({
-                oneCurrentPos: document.getElementById(4).innerHTML = playerOne,
-                oneNextPos: document.getElementById(68).innerHTML = playerOne,
+                twoCurrentMove: 68,
+                twoCurrentPos: document.getElementById(4).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
 
+                twoAfterPos: document.getElementById(68).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(4).innerHTML = ' '}, 3000)
             })
-        } else {
+        } else if (this.state.twoCurrentMove === 6) {
+            this.setState({
+                twoCurrentMove: 45,
+                twoCurrentPos: document.getElementById(6).innerHTML = playerTwoOut,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' ',
+
+                twoAfterPos: document.getElementById(45).innerHTML = playerTwoIn,
+                twoBeforePos: setTimeout(function() {document.getElementById(6).innerHTML = ' '}, 3000)
+            })
+        } else if (this.state.twoCurrentMove < 100) {
             
                 this.setState({
-                    oneCurrentPos: document.getElementById(this.state.oneMove).innerHTML = playerOne,
-                    onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = ' '
+                    twoCurrentPos: document.getElementById(this.state.twoCurrentMove).innerHTML = playerTwo,
+                    twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = ' '
                 })
             
-        }
-    }
-
-twoDice = () => {
-    const rand =  Math.floor(Math.random() *  6) + 1
-    if ( this.state.turn === 'two'){
-
-        if ( rand === 1 ) {
-            document.getElementById(222).innerHTML = twoDiceOne
-        } else if ( rand === 2 ) {
-            document.getElementById(222).innerHTML = twoDiceTwo
-        } else if ( rand === 3 ) {
-            document.getElementById(222).innerHTML = twoDiceThree
-        } else if ( rand === 4 ) {
-            document.getElementById(222).innerHTML = twoDiceFour
-        } else if ( rand === 5 ) {
-            document.getElementById(222).innerHTML = twoDiceFive
-        } else {
-            document.getElementById(222).innerHTML = twoDiceSix
-        }
-
-        if ( rand === 6 && this.state.twoMove < 1 ) {
+        } else if (this.state.twoCurrentMove === 100) {
             this.setState({
-                twoDice: rand,
-                twoMove: 1,
-                twoCurrentPos: document.getElementById(1).innerHTML = playerTwo,
+                hint: '1 gewinnt!',
+                twoHint: 'Hoooray!!!',
+                oneHint: 'maybe next time!',
 
-                oneDice: 0,
-                oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
-                })
-        } else if (rand === 6 && this.state.twoMove >= 1) {
-            this.setState({
-                twoDice: rand,
-                twoMove: this.state.twoMove + rand,
+                twoCurrentPos: document.getElementById(100).innerHTML = playerTwo,
+                twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = '',
 
-                oneDice: 0,
-                oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
-                })
+                twoAfterPos: document.getElementById(222).innerHTML = 'Winner',
+                oneAfterPos: document.getElementById(111).innerHTML = 'Not Lucky',
 
-        } else if (rand !== 6 && this.state.twoMove < 1) {
-                this.setState({
-                twoDice: rand,
-                twoMove: 0,
 
-                oneDice: 0,
-                oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
+                turn: ''
 
-                turn: 'one'
-                })
-        } else {
-            this.setState({
-            twoDice: rand,
-            twoMove: this.state.twoMove + rand,
-
-            oneDice: 0,
-            oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
-
-            turn: 'one'
             })
+        } else {
+            alert('play again?')
         }
     }
 }
+
 
     render(){
         return(
