@@ -32,6 +32,17 @@ const twoDiceFour = `<div class="animated flip"><i class="bi bi-dice-4-fill"></i
 const twoDiceFive = `<div class="animated flip"><i class="bi bi-dice-5-fill"></i></div>`
 const twoDiceSix = `<div class="animated flip"><i class="bi bi-dice-6-fill"></i></div>`
 
+const playAgainBtn = 
+`<div>
+    <button 
+        class='btn btn-success d-flex justify-content-center align-items-center fs-3'
+        type="button"
+        onClick={location.reload()}
+    >
+        Play Again
+    </button>
+</div>`
+
 class SnakesAndLadders extends React.Component {
     constructor(props){
         super(props);
@@ -60,6 +71,7 @@ class SnakesAndLadders extends React.Component {
 
 
             turn: 'one', //changes turn between player one and player two 
+            playAgain: '' //shows up after a player wins
         }
     }
     
@@ -106,14 +118,15 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'wait',
                     
                     oneDice: rand,
-                    oneCurrentMove: 1,
-                    oneCurrentPos: document.getElementById(1).innerHTML = playerOne,
+                    oneCurrentMove: 100,
+                    oneCurrentPos: document.getElementById(100).innerHTML = playerOne,
                     onePrevMove: this.state.oneCurrentMove,
 
                     twoDice: 0,
                     twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
 
                     turn: 'one'
+                    
                 })
 
             } 
@@ -458,12 +471,12 @@ class SnakesAndLadders extends React.Component {
                     oneAfterPos: document.getElementById(111).innerHTML = 'Winner',
                     twoAfterPos: document.getElementById(222).innerHTML = 'Not Lucky',
 
-                    turn: ''
+                    turn: '',
+                    playAgain: setTimeout(function() {document.getElementById('hintForAll').innerHTML = playAgainBtn}, 3000)
                 })
-            } else {
-                alert('Play again?')
-            }
-        
+                
+
+            } 
         }
     }
 
@@ -864,12 +877,10 @@ class SnakesAndLadders extends React.Component {
                 oneAfterPos: document.getElementById(111).innerHTML = 'Not Lucky',
 
 
-                turn: ''
-
+                turn: '',
+                playAgain: setTimeout(function() {document.getElementById('hintForAll').innerHTML = playAgainBtn}, 3000)
             })
-        } else {
-            alert('Play again?')
-        }
+        } 
     }
 }
 
@@ -1032,7 +1043,7 @@ class SnakesAndLadders extends React.Component {
                                 </div>
                                 
                                 {/* hints for all */}
-                                <div class="col-6 text-light d-flex justify-content-center align-items-center fs-3">
+                                <div id="hintForAll" class="col-6 text-light d-flex justify-content-center align-items-center fs-3">
                                     {this.state.hint}
                                 </div>
 
