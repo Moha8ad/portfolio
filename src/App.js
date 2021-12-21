@@ -23,7 +23,7 @@ function App() {
         <Route path='/profile/home' component={QuotifyHome} />
         <Route path='/profile/search' component={QuotifySearch} />
         <Route path='/profile/library' component={QuotifyLibrary} />
-        <Route path='/profile/app3' component={SnakesAndLadders} />
+        <Route path='/profile/snakes-and-ladders' component={SnakesAndLadders} />
         <Route path='/profile/app4' component={Presentational} />
         <Route path='/profile/app5' component={Move} />
       </Switch>

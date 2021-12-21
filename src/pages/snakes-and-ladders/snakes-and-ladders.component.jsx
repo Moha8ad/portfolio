@@ -1042,7 +1042,7 @@ class SnakesAndLadders extends React.Component {
                     </div>
 
                     {/* player two panel */}
-                    <div className="col-3 d-flex align-self-center">
+                    <div className="col-3 d-flex align-self-center text-warning">
                             <div className="row">
                                                 
                             {/* player two hint */}

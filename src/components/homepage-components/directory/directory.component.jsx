@@ -19,21 +19,21 @@ class Directory extends React.Component {
         {
           title: 'Quotify',
           subtitle: 'Get Inspired!',
-          imageUrl: 'https://illlustrations.co/static/e6b84e6be05378ec8aa056315aba888d/day71-designer-tool-essential.png',
+          imageUrl: 'http://michaelcriner.com/wp-content/uploads/2013/06/QuotePostLogo.jpg',
           linkUrl: 'quotify',
           id: 2
         },
         {
-          title: 'App3',
-          subtitle: 'App3',
-          imageUrl: 'https://illlustrations.co/static/76e32463a2c518d3bbd3c1fb970e5c1b/day74-stationary-set.png',
-          linkUrl: 'app3',
+          title: 'Snakes and Ladders',
+          subtitle: 'Game of Chance!',
+          imageUrl: 'https://st2.depositphotos.com/2485347/8466/v/950/depositphotos_84668354-stock-illustration-background-of-cartoon-dices.jpg',
+          linkUrl: 'snakes-and-ladders',
           id: 3
         },
         {
           title: 'app4',
           subtitle: 'will be constructed',
-          imageUrl: 'https://illlustrations.co/static/c91b38b0696ee92de685b539144ecdad/day72-designer-tool-war.png',
+          imageUrl: 'https://i.pinimg.com/736x/aa/7d/1f/aa7d1fbe563a7d1ebfb438537ea0206a.jpg',
           linkUrl: 'app4',
           size: 'large',
           id: 4
@@ -41,7 +41,7 @@ class Directory extends React.Component {
         {
           title: 'app5',
           subtitle: 'to be built',
-          imageUrl: 'https://illlustrations.co/static/e7437dc17b93ae7c667b8c640fa446f5/day75-stationary-set-2.png',
+          imageUrl: 'https://cdn.dribbble.com/users/56427/screenshots/6003020/budio_hero_illustration_for_animation_2_still_2x.gif?compress=1&resize=400x300',
           linkUrl: 'app5',
           size: 'large',
           id: 5
