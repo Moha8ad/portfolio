@@ -883,21 +883,21 @@ class SnakesAndLadders extends React.Component {
 
     render(){
         return(
-            <div class="container-fluid">
-                <div class="snakes-and-ladders-page row d-flex justify-content-center align-items-start bg-dark text-light">
-
+            <div class="snakes-and-ladders-page container-fluid">
+                <div class="page-shadow row d-flex justify-content-center align-items-start text-light">
                     {/* player one panel */}
-                    <div className="col-3 d-flex align-self-center text-info">
-                            <div className="row">
-                                                
+                    <div className="box-shadow col-2 d-flex align-self-center text-info border rounded-2 p-4 bounce-in-left">
+                        <div className="row">
+                            <div className="col-12 text-center fs-3 pb-5">
+                                Player One
+                            </div>
                             {/* player one hint */}
-                            <div className="col-12 text-center">
+                            <div className="col-12 text-center heartbeat-2">
                                 <div id="101">
-                                    <i class="bi bi-person-fill border-1 rounded-2">
+                                    <i class="bi bi-person-fill">
                                         {this.state.oneHint}
                                     </i>
                                 </div>
-                                
                             </div>
 
                             {/* player one dice */}
@@ -918,7 +918,7 @@ class SnakesAndLadders extends React.Component {
                         <div className="row">
                             
                             {/* header  */}
-                            <div className="col-12 text-center fs-3 py-4">
+                            <div className="col-12 text-center fs-2 py-4 text-flicker-in-glow">
                                 SNAKES AND LADDERS
                             </div>
 
@@ -1033,8 +1033,8 @@ class SnakesAndLadders extends React.Component {
                             </div>
 
                             {/* hints for all */}
-                            <div className="col-12 d-flex justify-content-center">
-                                <div id="hintForAll" class="text-center fs-4 py-4">
+                            <div className="col-12 d-flex justify-content-center heartbeat bounce-in-bottom">
+                                <div id="hintForAll" class="text-center fs-4 pt-4 pb-5">
                                     {this.state.hint}
                                 </div>
                             </div>
@@ -1042,11 +1042,16 @@ class SnakesAndLadders extends React.Component {
                     </div>
 
                     {/* player two panel */}
-                    <div className="col-3 d-flex align-self-center text-warning">
-                            <div className="row">
-                                                
+                    <div className="box-shadow col-2 d-flex align-self-center text-warning border rounded-2 p-4 bounce-in-right">
+                        <div className="row">
+                        
+                        {/* player two header */}
+                        <div className="col-12 text-center fs-3 pb-5">
+                            Player Two
+                        </div>
+                                            
                             {/* player two hint */}
-                            <div className="col-12 text-center">
+                            <div className="col-12 text-center heartbeat-2">
                                 <div id="102">
                                     <i class="bi bi-person-fill border-1 rounded-2">
                                         {this.state.twoHint}
