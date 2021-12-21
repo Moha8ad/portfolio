@@ -11,8 +11,9 @@ const ResultQuote = ({ result, randomColor }) => (
                    
                     </i>
                     <div class="col-12 fs-5 fst-italic" style={{color: randomColor}}> {result.author}</div>
-                    {/* Copy Button */}
                     <div class="col-12 d-flex justify-content-end align-items-end">
+                        
+                        {/* Copy Button */}
                         <button 
                         type="button" 
                         class="btn"
@@ -24,17 +25,15 @@ const ResultQuote = ({ result, randomColor }) => (
                         > 
                             <i class="bi bi-clipboard fs-5" />
                         </button>
-                        {/* Share Button */}               
-                        <button 
-                        type="submit" 
-                        class="btn my-sm-3"
-                        style={{color: randomColor}}
-                        data-toggle="tooltip" 
-                        data-placement="left" 
-                        title="Inspire Others!"
-                        >        
-                            <i class="bi bi-share fs-5"></i>
-                        </button>
+                        
+                        {/* Share Button */}
+                        <a
+                            class="btn my-sm-3"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            href={`https://twitter.com/intent/tweet?text=${result.quote} - ${result.author}`}>
+                        <i class="bi bi-twitter fs-5" style={{color: randomColor}}/>
+                        </a>
                         
                     </div>
                 </div>

@@ -104,7 +104,6 @@ class SnakesAndLadders extends React.Component {
             // rule: player one moves to number 1 and starts the game
             // rule: plyer one is already rewarded another roll without clicking move button
             // guide: turn is already set to 'one', no need to do anything -- oneMove function will handle it accordingly
-            // guide: turn will be declared in case needed for other purposes elsewhere
             // guide: to begin from square one, oneCurrentMove is set directly to 1 --because random number is 6
             // guide: oneCurrentPose should also be set directly to 1 so that player one automatically enter the game board
             // guide: onePrevMove is set to the oneCurrentMove -- for more info go to onePrevMove in state guidance
@@ -123,10 +122,7 @@ class SnakesAndLadders extends React.Component {
                     onePrevMove: this.state.oneCurrentMove,
 
                     twoDice: 0,
-                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
-
-                    turn: 'one'
-                    
+                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,             
                 })
 
             } 
