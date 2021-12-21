@@ -1033,11 +1033,7 @@ class SnakesAndLadders extends React.Component {
                             </div>
 
                             {/* hints for all */}
-                            <div className="col-12 d-flex justify-content-center heartbeat bounce-in-bottom">
-                                <div id="hintForAll" class="text-center fs-4 pt-4 pb-5">
-                                    {this.state.hint}
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 
