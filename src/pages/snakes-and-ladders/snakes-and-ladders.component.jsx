@@ -2,6 +2,8 @@ import React from 'react'
 
 import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-footer.component';
 
+import rollSF from '../../assets/dice.wav'
+
 import './snakes-and-ladders.styles.scss';
 
 // icons for player one in normal, fading in, and fading out situtions
@@ -182,8 +184,8 @@ class SnakesAndLadders extends React.Component {
         if (this.state.turn === 'one'){
 
             if (this.state.soundVolume === 'ON') {
-                var audio = new Audio("https://soundbible.com/mp3/Shake%20And%20Roll%20Dice-SoundBible.com-591494296.mp3")
-                audio.play()
+                const dice = new Audio(rollSF)
+                dice.play()
             } 
             
             // generates new oneRandom number between 1 and 6, inclusive
@@ -215,6 +217,12 @@ class SnakesAndLadders extends React.Component {
             // guide: to inform change of turn, player two's dice is set to twoDiceCube, default cube showing no number 
             // guide: conditions specific to oneRandom number 6 are defined firstly and then for oneRandom numbers btw 1 and 5 
             if ( oneRand === 6 && this.state.oneCurrentMove < 1 ) {
+
+                if (this.state.soundVolume === 'ON') {
+                    var enter = new Audio("https://soundbible.com/mp3/Shake%20And%20Roll%20Dice-SoundBible.com-591494296.mp3")
+                    enter.play()
+                } 
+
                 this.setState({
                     hint: 'player one starts! roll again',
                     oneHint: 'Hooray, roll again',
@@ -619,6 +627,11 @@ class SnakesAndLadders extends React.Component {
 
         // executes if it is player one's turn
         if ( this.state.turn === 'two'){
+
+            if (this.state.soundVolume === 'ON') {
+                var dice = new Audio(rollSF)
+                dice.play()
+            } 
             
             // generates new twoRandom number between 1 and 6, inclusive
             const twoRand =  Math.floor(Math.random() * 6) + 1;
