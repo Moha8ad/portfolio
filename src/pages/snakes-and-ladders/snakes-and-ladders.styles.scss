@@ -16,12 +16,12 @@
 }
 
 .box-cover-color{
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
 
 }
 
 .box-shadow {
-  box-shadow: 0px 0px 21px rgb(0, 255, 125);
+  box-shadow: 0px 0px 60px rgb(155, 155, 155);
   @extend .box-cover-color
 }
 

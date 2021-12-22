@@ -5,14 +5,14 @@ import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-foot
 import './snakes-and-ladders.styles.scss';
 
 // icons for player one in normal, fading in, and fading out situtions
-const playerOne = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light fade-in-fwd'></i>`
-const playerOneIn = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light text-flicker-in-glow-2'></i>`
-const playerOneOut = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light text-flicker-in-glow'></i>`
+const playerOne = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
+const playerOneIn = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
+const playerOneOut = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
 
 // icons for player two in normal, fading in, and fading out situtions
-const playerTwo = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light fade-in-fwd'></i>`
-const playerTwoIn = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light text-flicker-in-glow-2'></i>`
-const playerTwoOut = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light text-flicker-in-glow'></i>`
+const playerTwo = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
+const playerTwoIn = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
+const playerTwoOut = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
 
 // icons for player one dice in different situations
 const oneDiceCube = `<div><i class="bi bi-box"></i></div>`
@@ -32,17 +32,6 @@ const twoDiceFour = `<div class="animated flip"><i class="bi bi-dice-4-fill"></i
 const twoDiceFive = `<div class="animated flip"><i class="bi bi-dice-5-fill"></i></div>`
 const twoDiceSix = `<div class="animated flip"><i class="bi bi-dice-6-fill"></i></div>`
 
-const playAgainBtn = 
-`<div>
-    <button 
-        class='btn btn-success d-flex justify-content-center align-items-center fs-4 text-flicker-in-glow'
-        type="button"
-        onClick={location.reload()}
-    >
-        Play Again
-    </button>
-</div>`
-
 class SnakesAndLadders extends React.Component {
     constructor(props){
         super(props);
@@ -51,8 +40,11 @@ class SnakesAndLadders extends React.Component {
             oneHint: 'Roll', // hint specific for player one 
             twoHint: 'Wait', // hint specific for player two
 
+            oneNamePanelDisplay: '', // controls player one name panel appearance 
+            twoNamePanelDisplay: '',  // controls player two name panel appearance 
+
             oneBoxShadow: '', // helps to change player one panel box shadow based on turn
-            twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`, // helps to change player two panel box shadow based on turn
+            twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`, // helps to change player two panel box shadow based on turn
 
             oneNameInput: '', // player one name entered by user
             oneName: '', // player one name based on the user input
@@ -61,9 +53,9 @@ class SnakesAndLadders extends React.Component {
             twoName: '', // player two name based on the user input
 
 
-            oneDice: 0, // stores random number for player one in state to be used in other functions 
+            oneDice: 0, // stores oneRandom number for player one in state to be used in other functions 
             oneDiceCube: '', // shows the dice cube, informing player one that turn has changed 
-            oneCurrentMove: 0, // stores accumulative number of current move plus latest random number to share with oneMove function to move forward
+            oneCurrentMove: 0, // stores accumulative number of current move plus latest oneRandom number to share with oneMove function to move forward
             onePrevMove: 0, // stores the previous accumulative number to share with oneMove function to remove the track of the last move 
             oneCurrentPos: 0, //moves forward based on oneCurrentMove data in oneMove function
             onePrevPos: 0, //removes the last move based on onePrevMove data in oneMove function
@@ -81,7 +73,7 @@ class SnakesAndLadders extends React.Component {
 
 
             turn: 'one', //changes turn between player one and player two 
-            playAgain: '' //shows up after a player wins
+            playAgainBtnDisplay: 'd-none' //shows up after a player wins
         }
     }
 
@@ -94,9 +86,9 @@ class SnakesAndLadders extends React.Component {
     }
     // submits player one name based on user one input
     oneNameHandleSubmit = () => {
-        document.getElementById('oneNamePanel').innerHTML = ''
         this.setState({
-            oneName: this.state.oneNameInput
+            oneName: this.state.oneNameInput,
+            oneNamePanelDisplay: 'd-none'
         })
     }
 
@@ -109,57 +101,98 @@ class SnakesAndLadders extends React.Component {
     }
     // submits player two name based on user two input
     twoNameHandleSubmit = () => {
-        document.getElementById('twoNamePanel').innerHTML = ''
         this.setState({
-            twoName: this.state.twoNameInput
+            twoName: this.state.twoNameInput,
+            twoNamePanelDisplay: 'd-none'
+        })
+    }
+
+    handlePlayAgain = () => {
+        this.setState({
+            hint: "Let's Start! Player One Roll",
+            oneHint: 'Roll',
+            twoHint: 'Wait', 
+
+            oneBoxShadow: '', 
+            twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`, 
+
+            oneNamePanelDisplay: '',
+            twoNamePanelDisplay: '',
+
+            oneNameInput: '', 
+            oneName: '', 
+
+            twoNameInput: '', 
+            twoName: '', 
+
+
+            oneDice: 0, 
+            oneDiceCube: document.getElementById(111).innerHTML = oneDiceCube,
+            oneCurrentMove: 0, 
+            onePrevMove: 0, 
+            oneCurrentPos: document.getElementById(this.state.oneCurrentMove).innerHTML = '',
+            onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = '',
+            oneAfterPos: 0, 
+            oneBeforePos: 0, 
+
+            twoDice: 0, 
+            twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
+            twoCurrentMove: 0,
+            twoPrevMove: 0,
+            twoCurrentPos: document.getElementById(this.state.twoCurrentMove).innerHTML = '',
+            twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = '',
+            twoAfterPos: 0, 
+            twoBeforePos: 0, 
+
+
+            turn: 'one',
+            playAgainBtnDisplay: 'd-none' 
         })
     }
     
-    // executes when player one clicks the Roll button
-    // one is abbr. for player one
     oneDice = () => {
 
         // executes if it is player one's turn
         if ( this.state.turn === 'one'){
             
-            // generates new random number between 1 and 6, inclusive
-            const rand =  Math.floor(Math.random() *  6) + 1;
+            // generates new oneRandom number between 1 and 6, inclusive
+            const oneRand =  Math.floor(Math.random() * 6) + 1;
 
-            // shows dice number based on random number
-            if ( rand === 1 ) {
+            // shows dice number based on oneRandom number
+            if ( oneRand === 1 ) {
                 document.getElementById(111).innerHTML = oneDiceOne
-            } else if ( rand === 2 ) {
+            } else if ( oneRand === 2 ) {
                 document.getElementById(111).innerHTML = oneDiceTwo
-            } else if ( rand === 3 ) {
+            } else if ( oneRand === 3 ) {
                 document.getElementById(111).innerHTML = oneDiceThree
-            } else if ( rand === 4 ) {
+            } else if ( oneRand === 4 ) {
                 document.getElementById(111).innerHTML = oneDiceFour
-            } else if ( rand === 5 ) {
+            } else if ( oneRand === 5 ) {
                 document.getElementById(111).innerHTML = oneDiceFive
             } else {
                 document.getElementById(111).innerHTML = oneDiceSix
             }
 
-            // situation: player one is not yet in and random number is 6
+            // situation: player one is not yet in and oneRandom number is 6
             // rule: player one moves to number 1 and starts the game
             // rule: plyer one is already rewarded another roll without clicking move button
             // guide: turn is already set to 'one', no need to do anything -- oneMove function will handle it accordingly
-            // guide: to begin from square one, oneCurrentMove is set directly to 1 --because random number is 6
+            // guide: to begin from square one, oneCurrentMove is set directly to 1 --because oneRandom number is 6
             // guide: oneCurrentPose should also be set directly to 1 so that player one automatically enter the game board
             // guide: onePrevMove is set to the oneCurrentMove -- for more info go to onePrevMove in state guidance
             // guide: player two dice is declared 0 in order to change turn in oneMove and twoMove functions
             // guide: to inform change of turn, player two's dice is set to twoDiceCube, default cube showing no number 
-            // guide: conditions specific to random number 6 are defined firstly and then for random numbers btw 1 and 5 
-            if ( rand === 6 && this.state.oneCurrentMove < 1 ) {
+            // guide: conditions specific to oneRandom number 6 are defined firstly and then for oneRandom numbers btw 1 and 5 
+            if ( oneRand === 6 && this.state.oneCurrentMove < 1 ) {
                 this.setState({
                     hint: 'player one starts! roll again',
                     oneHint: 'Hooray, roll again',
                     twoHint: 'wait',
 
-                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
                     
-                    oneDice: rand,
+                    oneDice: oneRand,
                     oneCurrentMove: 1,
                     oneCurrentPos: document.getElementById(1).innerHTML = playerOne,
                     onePrevMove: this.state.oneCurrentMove,
@@ -170,7 +203,7 @@ class SnakesAndLadders extends React.Component {
 
             } 
             
-            // situation: player one is already in and random number is 6
+            // situation: player one is already in and oneRandom number is 6
             // rule: player one moves 6 numbers forward 
             // rule: player one will be rewarded another roll after clicking move --oneMove will handle
             /* guide: oneMove function already set turn to 'one' but it should be changed to empty string 
@@ -184,17 +217,17 @@ class SnakesAndLadders extends React.Component {
                 a bit complicated 
             */
             // guide: this rules will remain up to number 94, since 95 + 6 is greater than 100
-            else if (rand === 6 && this.state.oneCurrentMove >= 1 && this.state.oneCurrentMove < 94) {
+            else if (oneRand === 6 && this.state.oneCurrentMove >= 1 && this.state.oneCurrentMove < 94) {
                 this.setState({
                     hint: 'player one, move',
                     oneHint: 'lucky, move',
                     twoHint: 'wait',
 
-                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
 
-                    oneDice: rand,
-                    oneCurrentMove: this.state.oneCurrentMove + rand,
+                    oneDice: oneRand,
+                    oneCurrentMove: this.state.oneCurrentMove + oneRand,
                     onePrevMove: this.state.oneCurrentMove,
 
                     twoDice: 0, //refer to above condition information for guidance
@@ -204,22 +237,22 @@ class SnakesAndLadders extends React.Component {
                 })
 
             
-            // situation: player one's currentMove is 94 and random number is 6
+            // situation: player one's currentMove is 94 and oneRandom number is 6
             // rule: player one moves 6 numbers forward 
             // rule: player one will be rewarded another roll after clicking move --oneMove will handle
             // guide: twoDice/twoCurrentMove functions already set turn to 'one', no need to do anything
-            // guide: since player one's current move is 94 and rand number is 6, number one wins when move is clicked
+            // guide: since player one's current move is 94 and oneRand number is 6, number one wins when move is clicked
             // guide: current move and previous move are declared directly to prevent any unwanted outcome!
-            } else if (rand === 6  && this.state.oneCurrentMove === 94)  {
+            } else if (oneRand === 6  && this.state.oneCurrentMove === 94)  {
                 this.setState({
                     hint: 'player one, move!',
                     oneHint: 'great, move',
                     twoHint: 'OOOPS!',
 
-                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
 
-                    oneDice: rand,
+                    oneDice: oneRand,
                     oneCurrentMove: 100,
                     onePrevMove: 94,
 
@@ -229,19 +262,19 @@ class SnakesAndLadders extends React.Component {
                     turn: ''
                 })
 
-            // situation: player one's currentMove is greater than 94 and random number is 6, result will be greater than 100
+            // situation: player one's currentMove is greater than 94 and oneRandom number is 6, result will be greater than 100
             // rule: player one must remain where it is
             // rule: player one will be rewarded another roll without any need to click move --if oneMove clickd, same result 
-            } else if (rand === 6  && this.state.oneCurrentMove > 94)  {
+            } else if (oneRand === 6  && this.state.oneCurrentMove > 94)  {
                 this.setState({
                     hint: 'player one, roll',
                     oneHint: 'so close, roll again',
                     twoHint: 'wait',
 
-                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
 
-                    oneDice: rand,
+                    oneDice: oneRand,
                     oneCurrentMove: this.state.oneCurrentMove,
                     onePrevMove: 0,
 
@@ -250,21 +283,21 @@ class SnakesAndLadders extends React.Component {
 
                     turn: 'one'
                 })
-            // situation: player one is not yet in and random number is not 6
+            // situation: player one is not yet in and oneRandom number is not 6
             // rule: player one must cannot enter the game board
             // rule: turn should change to player two
-            // guide: no move and random is not allowed to effect anything but oneDice for the sake of turn change managment
-            // guide: the following conditions are related to random numbers between 1 and 5 
-            } else if (rand !== 6 && this.state.oneCurrentMove < 1) {
+            // guide: no move and oneRandom is not allowed to effect anything but oneDice for the sake of turn change managment
+            // guide: the following conditions are related to oneRandom numbers between 1 and 5 
+            } else if (oneRand !== 6 && this.state.oneCurrentMove < 1) {
                 this.setState({
                     hint: 'player two, roll',
                     oneHint: 'wait',
                     twoHint: 'roll',
 
-                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
-                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
 
-                    oneDice: rand,
+                    oneDice: oneRand,
                     oneCurrentMove: 0,
                     onePrevMove: this.state.oneCurrentMove,
 
@@ -273,20 +306,20 @@ class SnakesAndLadders extends React.Component {
 
                     turn: 'two'
                 })
-            // situation: player one is already in and stands somewhere before 95 and random number is not 6
-            // rule: player one moves according to oneCurrentMove added by generated random number
+            // situation: player one is already in and stands somewhere before 95 and oneRandom number is not 6
+            // rule: player one moves according to oneCurrentMove added by generated oneRandom number
             // rule: turn should change to player two
-            } else if (rand !== 6 && this.state.oneCurrentMove >= 1 && this.state.oneCurrentMove < 95) {
+            } else if (oneRand !== 6 && this.state.oneCurrentMove >= 1 && this.state.oneCurrentMove < 95) {
                 this.setState({
                     hint: 'player one, move',
                     oneHint: 'move',
                     twoHint: 'wait',
 
-                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
 
-                    oneDice: rand,
-                    oneCurrentMove: this.state.oneCurrentMove + rand,
+                    oneDice: oneRand,
+                    oneCurrentMove: this.state.oneCurrentMove + oneRand,
                     onePrevMove: this.state.oneCurrentMove,
 
                     twoDice: 0,
@@ -295,26 +328,26 @@ class SnakesAndLadders extends React.Component {
                     turn: ''
 
                 })
-            // situation: player one is already in and stands either in 95 square or greater and random number is btw 1 and 5
+            // situation: player one is already in and stands either in 95 square or greater and oneRandom number is btw 1 and 5
             /* guide: in this situation there will be three conditions, two of them will be managed here and 
                 one in oneMove function. These two conditions are more straightforward and less repetetive to be coded. */
             /* guide: these two conditions makes easier to manage the different conditions when the current move plus 
-                generated random number equalls to 100, which will be handle in oneMove function. */
-            } else if (rand !== 6 && this.state.oneCurrentMove >= 95) {
+                generated oneRandom number equalls to 100, which will be handle in oneMove function. */
+            } else if (oneRand !== 6 && this.state.oneCurrentMove >= 95) {
 
-                // situtaion: if the current move plus generated random number is above 100
+                // situtaion: if the current move plus generated oneRandom number is above 100
                 // rule: player one is prevented to move forward
                 // rule: turn should change to player two
-                if (rand + this.state.oneCurrentMove > 100) {
+                if (oneRand + this.state.oneCurrentMove > 100) {
                     this.setState({
                         hint: 'player two, roll',
                         oneHint: 'wait',
                         twoHint: 'roll',
 
-                        oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
-                        twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                        oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                        twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
 
-                        oneDice: rand,
+                        oneDice: oneRand,
                         oneCurrentMove: this.state.oneCurrentMove,
                         onePrevMove: 0,
 
@@ -325,7 +358,7 @@ class SnakesAndLadders extends React.Component {
 
                         })
 
-                // situtaion: if the current move plus generated random number is above 100
+                // situtaion: if the current move plus generated oneRandom number is above 100
                 // rule: player one is prevented to move forward
                 // rule: turn should change to player two
                 } else {
@@ -334,11 +367,11 @@ class SnakesAndLadders extends React.Component {
                         oneHint: 'move',
                         twoHint: 'wait',
 
-                        oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                        twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                        oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                        twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
 
-                        oneDice: rand,
-                        oneCurrentMove: this.state.oneCurrentMove + rand,
+                        oneDice: oneRand,
+                        oneCurrentMove: this.state.oneCurrentMove + oneRand,
                         onePrevMove: this.state.oneCurrentMove,
 
                         twoDice: 0,
@@ -361,8 +394,8 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'roll',
                     twoHint: 'wait',
 
-                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
                     
                     turn: 'one'
                 })
@@ -372,8 +405,8 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'wait',
                     twoHint: 'roll',
 
-                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
-                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
                     
                     turn: 'two'
                 })
@@ -381,7 +414,7 @@ class SnakesAndLadders extends React.Component {
 
             if (this.state.oneCurrentMove > 1 && this.state.onePrevMove === 1) {
                 this.setState({
-                    onePrevPos: document.getElementById(1).innerHTML = ' '
+                    onePrevPos: document.getElementById(1).innerHTML = ' ',
                 })
             }
         
@@ -539,7 +572,7 @@ class SnakesAndLadders extends React.Component {
                     twoAfterPos: document.getElementById(222).innerHTML = 'Not Lucky',
 
                     turn: '',
-                    playAgain: setTimeout(function() {document.getElementById('hintForAll').innerHTML = playAgainBtn}, 2000)
+                    playAgainBtnDisplay: ''
                 })
                 
 
@@ -554,44 +587,44 @@ class SnakesAndLadders extends React.Component {
         // executes if it is player one's turn
         if ( this.state.turn === 'two'){
             
-            // generates new random number between 1 and 6, inclusive
-            const rand =  Math.floor(Math.random() *  6) + 1;
-            // shows dice number based on random number
-            if ( rand === 1 ) {
+            // generates new twoRandom number between 1 and 6, inclusive
+            const twoRand =  Math.floor(Math.random() * 6) + 1;
+            // shows dice number based on twoRandom number
+            if ( twoRand === 1 ) {
                 document.getElementById(222).innerHTML = twoDiceOne
-            } else if ( rand === 2 ) {
+            } else if ( twoRand === 2 ) {
                 document.getElementById(222).innerHTML = twoDiceTwo
-            } else if ( rand === 3 ) {
+            } else if ( twoRand === 3 ) {
                 document.getElementById(222).innerHTML = twoDiceThree
-            } else if ( rand === 4 ) {
+            } else if ( twoRand === 4 ) {
                 document.getElementById(222).innerHTML = twoDiceFour
-            } else if ( rand === 5 ) {
+            } else if ( twoRand === 5 ) {
                 document.getElementById(222).innerHTML = twoDiceFive
             } else {
                 document.getElementById(222).innerHTML = twoDiceSix
             }
 
-            // situation: player one is not yet in and random number is 6
+            // situation: player one is not yet in and twoRandom number is 6
             // rule: player one moves to number 1 and starts the game
             // rule: plyer one is already rewarded another roll without clicking move button
             // guide: turn is already set to 'one', no need to do anything -- oneMove function will handle it accordingly
             // guide: turn will be declared in case needed for other purposes elsewhere
-            // guide: to begin from square one, oneCurrentMove is set directly to 1 --because random number is 6
+            // guide: to begin from square one, oneCurrentMove is set directly to 1 --because twoRandom number is 6
             // guide: oneCurrentPose should also be set directly to 1 so that player one automatically enter the game board
             // guide: onePrevMove is set to the oneCurrentMove -- for more info go to onePrevMove in state guidance
             // guide: player two dice is declared 0 in order to change turn in oneMove and twoMove functions
             // guide: to inform change of turn, player two's dice is set to twoDiceCube, default cube showing no number 
-            // guide: conditions specific to random number 6 are defined firstly and then for random numbers btw 1 and 5 
-            if ( rand === 6 && this.state.twoCurrentMove < 1 ) {
+            // guide: conditions specific to twoRandom number 6 are defined firstly and then for twoRandom numbers btw 1 and 5 
+            if ( twoRand === 6 && this.state.twoCurrentMove < 1 ) {
                 this.setState({
                     hint: 'player two starts! roll again',
                     twoHint: 'Hooray, roll',
                     oneHint: 'wait',
                     
-                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
                     
-                    twoDice: rand,
+                    twoDice: twoRand,
                     twoCurrentMove: 1,
                     twoCurrentPos: document.getElementById(1).innerHTML = playerTwo,
                     twoPrevMove: this.state.twoCurrentMove,
@@ -604,7 +637,7 @@ class SnakesAndLadders extends React.Component {
 
             } 
             
-            // situation: player one is already in and random number is 6
+            // situation: player one is already in and twoRandom number is 6
             // rule: player one moves 6 numbers forward 
             // rule: player one will be rewarded another roll after clicking move --oneMove will handle
             /* guide: oneMove function already set turn to 'one' but it should be changed to empty string 
@@ -618,17 +651,17 @@ class SnakesAndLadders extends React.Component {
                 a bit complicated 
             */
             // guide: this rules will remain up to number 94, since 95 + 6 is greater than 100
-            else if (rand === 6 && this.state.twoCurrentMove >= 1 && this.state.twoCurrentMove < 94) {
+            else if (twoRand === 6 && this.state.twoCurrentMove >= 1 && this.state.twoCurrentMove < 94) {
                 this.setState({
                     hint: 'player two, move',
                     twoHint: 'lucky, move',
                     oneHint: 'wait',
 
-                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
 
-                    twoDice: rand,
-                    twoCurrentMove: this.state.twoCurrentMove + rand,
+                    twoDice: twoRand,
+                    twoCurrentMove: this.state.twoCurrentMove + twoRand,
                     twoPrevMove: this.state.twoCurrentMove,
 
                     oneDice: 0, //refer to above condition information for guidance
@@ -638,22 +671,22 @@ class SnakesAndLadders extends React.Component {
                 })
 
             
-            // situation: player one's currentMove is 94 and random number is 6
+            // situation: player one's currentMove is 94 and twoRandom number is 6
             // rule: player one moves 6 numbers forward 
             // rule: player one will be rewarded another roll after clicking move --oneMove will handle
             // guide: twoDice/twoCurrentMove functions already set turn to 'one', no need to do anything
-            // guide: since player one's current move is 94 and rand number is 6, number one wins when move is clicked
+            // guide: since player one's current move is 94 and twoRand number is 6, number one wins when move is clicked
             // guide: current move and previous move are declared directly to prevent any unwanted outcome!
-            } else if (rand === 6  && this.state.twoCurrentMove === 94)  {
+            } else if (twoRand === 6  && this.state.twoCurrentMove === 94)  {
                 this.setState({
                     hint: 'player two, congrads! move!',
                     twoHint: 'great, move',
                     oneHint: 'OOOPS!',
 
-                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
 
-                    twoDice: rand,
+                    twoDice: twoRand,
                     twoCurrentMove: 100,
                     twoPrevMove: 94,
 
@@ -663,19 +696,19 @@ class SnakesAndLadders extends React.Component {
                     turn: ''
                 })
 
-            // situation: player one's currentMove is greater than 94 and random number is 6, result will be greater than 100
+            // situation: player one's currentMove is greater than 94 and twoRandom number is 6, result will be greater than 100
             // rule: player one must remain where it is
             // rule: player one will be rewarded another roll without any need to click move --if oneMove clickd, same result 
-            } else if (rand === 6  && this.state.twoCurrentMove > 94)  {
+            } else if (twoRand === 6  && this.state.twoCurrentMove > 94)  {
                 this.setState({
                     hint: 'player two, roll',
                     twoHint: 'so close, roll',
                     oneHint: 'oh, wait',
 
-                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
 
-                    twoDice: rand,
+                    twoDice: twoRand,
                     twoCurrentMove: this.state.twoCurrentMove,
                     twoPrevMove: 0,
 
@@ -684,21 +717,21 @@ class SnakesAndLadders extends React.Component {
 
                     turn: 'two'
                 })
-            // situation: player one is not yet in and random number is not 6
+            // situation: player one is not yet in and twoRandom number is not 6
             // rule: player one must cannot enter the game board
             // rule: turn should change to player two
-            // guide: no move and random is not allowed to effect anything but oneDice for the sake of turn change managment
-            // guide: the following conditions are related to random numbers between 1 and 5 
-            } else if (rand !== 6 && this.state.twoCurrentMove < 1) {
+            // guide: no move and twoRandom is not allowed to effect anything but oneDice for the sake of turn change managment
+            // guide: the following conditions are related to twoRandom numbers between 1 and 5 
+            } else if (twoRand !== 6 && this.state.twoCurrentMove < 1) {
                 this.setState({
                     hint: 'player one, roll',
                     twoHint: 'wait',
                     oneHint: 'roll',
 
-                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
-                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
 
-                    twoDice: rand,
+                    twoDice: twoRand,
                     twoCurrentMove: 0,
                     twoPrevMove: this.state.twoCurrentMove,
 
@@ -707,20 +740,20 @@ class SnakesAndLadders extends React.Component {
 
                     turn: 'one'
                 })
-            // situation: player one is already in and stands somewhere before 95 and random number is not 6
-            // rule: player one moves according to oneCurrentMove added by generated random number
+            // situation: player one is already in and stands somewhere before 95 and twoRandom number is not 6
+            // rule: player one moves according to oneCurrentMove added by generated twoRandom number
             // rule: turn should change to player two
-            } else if (rand !== 6 && this.state.twoCurrentMove >= 1 && this.state.twoCurrentMove < 95) {
+            } else if (twoRand !== 6 && this.state.twoCurrentMove >= 1 && this.state.twoCurrentMove < 95) {
                 this.setState({
                     hint: 'player two, move',
                     twoHint: 'move',
                     oneHint: 'wait',
 
-                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
 
-                    twoDice: rand,
-                    twoCurrentMove: this.state.twoCurrentMove + rand,
+                    twoDice: twoRand,
+                    twoCurrentMove: this.state.twoCurrentMove + twoRand,
                     twoPrevMove: this.state.twoCurrentMove,
 
                     oneDice: 0,
@@ -729,26 +762,26 @@ class SnakesAndLadders extends React.Component {
                     turn: ''
 
                 })
-            // situation: player one is already in and stands either in 95 square or greater and random number is btw 1 and 5
+            // situation: player one is already in and stands either in 95 square or greater and twoRandom number is btw 1 and 5
             /* guide: in this situation there will be three conditions, two of them will be managed here and 
                 one in oneMove function. These two conditions are more straightforward and less repetetive to be coded. */
             /* guide: these two conditions makes easier to manage the different conditions when the current move plus 
-                generated random number equalls to 100, which will be handle in oneMove function. */
-            } else if (rand !== 6 && this.state.twoCurrentMove >= 95) {
+                generated twoRandom number equalls to 100, which will be handle in oneMove function. */
+            } else if (twoRand !== 6 && this.state.twoCurrentMove >= 95) {
 
-                // situtaion: if the current move plus generated random number is above 100
+                // situtaion: if the current move plus generated twoRandom number is above 100
                 // rule: player one is prevented to move forward
                 // rule: turn should change to player two
-                if (rand + this.state.twoCurrentMove > 100) {
+                if (twoRand + this.state.twoCurrentMove > 100) {
                     this.setState({
                         hint: 'player one, roll',
                         twoHint: 'wait',
                         oneHint: 'roll',
 
-                        twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
-                        oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                        twoBoxShadow: `0px 0px 10px rgb(155, 155, 155)`,
+                        oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
 
-                        twoDice: rand,
+                        twoDice: twoRand,
                         twoCurrentMove: this.state.twoCurrentMove,
                         twoPrevMove: 0,
 
@@ -759,7 +792,7 @@ class SnakesAndLadders extends React.Component {
 
                         })
 
-                // situtaion: if the current move plus generated random number is above 100
+                // situtaion: if the current move plus generated twoRandom number is above 100
                 // rule: player one is prevented to move forward
                 // rule: turn should change to player two
                 } else {
@@ -768,11 +801,11 @@ class SnakesAndLadders extends React.Component {
                         twoHint: 'move',
                         oneHint: 'wait',
 
-                        twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                        oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                        twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                        oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
 
-                        twoDice: rand,
-                        twoCurrentMove: this.state.twoCurrentMove + rand,
+                        twoDice: twoRand,
+                        twoCurrentMove: this.state.twoCurrentMove + twoRand,
                         twoPrevMove: this.state.twoCurrentMove,
 
                         oneDice: 0,
@@ -795,8 +828,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'roll',
                     oneHint: 'wait',
 
-                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
-                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
                     
                     turn: 'two'
                 })
@@ -806,8 +839,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'wait',
                     oneHint: 'roll',
 
-                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
-                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
 
                     turn: 'one'
                 })
@@ -975,7 +1008,7 @@ class SnakesAndLadders extends React.Component {
 
 
                 turn: '',
-                playAgain: setTimeout(function() {document.getElementById('hintForAll').innerHTML = playAgainBtn}, 2000)
+                playAgainBtnDisplay: ''
             })
         } 
     }
@@ -990,8 +1023,9 @@ class SnakesAndLadders extends React.Component {
                     <div className="box-shadow col-3 d-flex justify-content-center align-self-center text-info border rounded-2 p-4 bounce-in-left"
                         style={{boxShadow: this.state.oneBoxShadow}}
                     >
+
                         <div className="row overflow-scroll">
-                            <div class="col-12" id="oneNamePanel">
+                            <div class={`${this.state.oneNamePanelDisplay} col-12`}>
                                 <input 
                                     value={this.state.oneNameInput}
                                     onChange={this.oneNameHandleChange}
@@ -1145,10 +1179,19 @@ class SnakesAndLadders extends React.Component {
                                 </div>     
                             </div>
 
+
+
                             {/* hints for all */}
                             <div className="col-12 d-flex justify-content-center">
                                 <div id="hintForAll" class="text-center pt-4">
-                               
+                                    <button
+                                    
+                                    class={`${this.state.playAgainBtnDisplay} btn btn-success d-flex justify-content-center align-items-center fs-4 text-flicker-in-glow`}
+                                    type="button"
+                                    onClick={this.handlePlayAgain}
+                                    >
+                                        play again
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1159,7 +1202,7 @@ class SnakesAndLadders extends React.Component {
                         style={{boxShadow: this.state.twoBoxShadow}}
                     >
                         <div className="row overflow-scroll">
-                            <div class="col-12" id="twoNamePanel">
+                            <div class={`${this.state.twoNamePanelDisplay} col-12`}>
                                 <input 
                                     value={this.state.twoNameInput}
                                     onChange={this.twoNameHandleChange}
