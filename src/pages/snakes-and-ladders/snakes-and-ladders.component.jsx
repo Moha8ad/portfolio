@@ -5,14 +5,14 @@ import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-foot
 import './snakes-and-ladders.styles.scss';
 
 // icons for player one in normal, fading in, and fading out situtions
-const playerOne = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info'></i>`
-const playerOneIn = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info fade-in'></i>`
-const playerOneOut = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-info fade-out'></i>`
+const playerOne = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light fade-in-fwd'></i>`
+const playerOneIn = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light text-flicker-in-glow-2'></i>`
+const playerOneOut = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light text-flicker-in-glow'></i>`
 
 // icons for player two in normal, fading in, and fading out situtions
-const playerTwo = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning'></i>`
-const playerTwoIn = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning fade-in'></i>`
-const playerTwoOut = `<i class='bi bi-person-fill text-warning bg-dark px-1 border rounded-2 border-warning fade-out'></i>`
+const playerTwo = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light fade-in-fwd'></i>`
+const playerTwoIn = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light text-flicker-in-glow-2'></i>`
+const playerTwoOut = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light text-flicker-in-glow'></i>`
 
 // icons for player one dice in different situations
 const oneDiceCube = `<div><i class="bi bi-box"></i></div>`
@@ -35,7 +35,7 @@ const twoDiceSix = `<div class="animated flip"><i class="bi bi-dice-6-fill"></i>
 const playAgainBtn = 
 `<div>
     <button 
-        class='btn btn-success d-flex justify-content-center align-items-center fs-3 fade-in'
+        class='btn btn-success d-flex justify-content-center align-items-center fs-4 text-flicker-in-glow'
         type="button"
         onClick={location.reload()}
     >
@@ -49,7 +49,17 @@ class SnakesAndLadders extends React.Component {
         this.state = {
             hint: "Let's Start! Player One Roll", //hint for all players
             oneHint: 'Roll', // hint specific for player one 
-            twoHint: 'Wait', // hint specific for player two 
+            twoHint: 'Wait', // hint specific for player two
+
+            oneBoxShadow: '', // helps to change player one panel box shadow based on turn
+            twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`, // helps to change player two panel box shadow based on turn
+
+            oneNameInput: '', // player one name entered by user
+            oneName: '', // player one name based on the user input
+
+            twoNameInput: '', // player two name entered by user
+            twoName: '', // player two name based on the user input
+
 
             oneDice: 0, // stores random number for player one in state to be used in other functions 
             oneDiceCube: '', // shows the dice cube, informing player one that turn has changed 
@@ -73,6 +83,36 @@ class SnakesAndLadders extends React.Component {
             turn: 'one', //changes turn between player one and player two 
             playAgain: '' //shows up after a player wins
         }
+    }
+
+    // stores player one name entered by user one
+    oneNameHandleChange = (e) => {
+        this.setState({
+            oneNameInput: e.target.value
+        })
+
+    }
+    // submits player one name based on user one input
+    oneNameHandleSubmit = () => {
+        document.getElementById('oneNamePanel').innerHTML = ''
+        this.setState({
+            oneName: this.state.oneNameInput
+        })
+    }
+
+    // stores player two name entered by user two
+    twoNameHandleChange = (e) => {
+        this.setState({
+            twoNameInput: e.target.value
+        })
+
+    }
+    // submits player two name based on user two input
+    twoNameHandleSubmit = () => {
+        document.getElementById('twoNamePanel').innerHTML = ''
+        this.setState({
+            twoName: this.state.twoNameInput
+        })
     }
     
     // executes when player one clicks the Roll button
@@ -115,6 +155,9 @@ class SnakesAndLadders extends React.Component {
                     hint: 'player one starts! roll again',
                     oneHint: 'Hooray, roll again',
                     twoHint: 'wait',
+
+                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
                     
                     oneDice: rand,
                     oneCurrentMove: 1,
@@ -122,7 +165,7 @@ class SnakesAndLadders extends React.Component {
                     onePrevMove: this.state.oneCurrentMove,
 
                     twoDice: 0,
-                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,             
+                    twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube, 
                 })
 
             } 
@@ -147,6 +190,9 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'lucky, move',
                     twoHint: 'wait',
 
+                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+
                     oneDice: rand,
                     oneCurrentMove: this.state.oneCurrentMove + rand,
                     onePrevMove: this.state.oneCurrentMove,
@@ -170,6 +216,9 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'great, move',
                     twoHint: 'OOOPS!',
 
+                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+
                     oneDice: rand,
                     oneCurrentMove: 100,
                     onePrevMove: 94,
@@ -188,6 +237,10 @@ class SnakesAndLadders extends React.Component {
                     hint: 'player one, roll',
                     oneHint: 'so close, roll again',
                     twoHint: 'wait',
+
+                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+
                     oneDice: rand,
                     oneCurrentMove: this.state.oneCurrentMove,
                     onePrevMove: 0,
@@ -208,6 +261,9 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'wait',
                     twoHint: 'roll',
 
+                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+
                     oneDice: rand,
                     oneCurrentMove: 0,
                     onePrevMove: this.state.oneCurrentMove,
@@ -225,6 +281,9 @@ class SnakesAndLadders extends React.Component {
                     hint: 'player one, move',
                     oneHint: 'move',
                     twoHint: 'wait',
+
+                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
 
                     oneDice: rand,
                     oneCurrentMove: this.state.oneCurrentMove + rand,
@@ -252,6 +311,9 @@ class SnakesAndLadders extends React.Component {
                         oneHint: 'wait',
                         twoHint: 'roll',
 
+                        oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                        twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+
                         oneDice: rand,
                         oneCurrentMove: this.state.oneCurrentMove,
                         onePrevMove: 0,
@@ -271,6 +333,9 @@ class SnakesAndLadders extends React.Component {
                         hint: 'player one, move',
                         oneHint: 'move',
                         twoHint: 'wait',
+
+                        oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                        twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
 
                         oneDice: rand,
                         oneCurrentMove: this.state.oneCurrentMove + rand,
@@ -295,6 +360,9 @@ class SnakesAndLadders extends React.Component {
                     hint: 'player one, roll',
                     oneHint: 'roll',
                     twoHint: 'wait',
+
+                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
                     
                     turn: 'one'
                 })
@@ -303,6 +371,9 @@ class SnakesAndLadders extends React.Component {
                     hint: 'player two, roll',
                     oneHint: 'wait',
                     twoHint: 'roll',
+
+                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
                     
                     turn: 'two'
                 })
@@ -310,7 +381,7 @@ class SnakesAndLadders extends React.Component {
 
             if (this.state.oneCurrentMove > 1 && this.state.onePrevMove === 1) {
                 this.setState({
-                    onePrevPos: document.getElementById(1).innerHTML = ' ',
+                    onePrevPos: document.getElementById(1).innerHTML = ' '
                 })
             }
         
@@ -517,6 +588,9 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'Hooray, roll',
                     oneHint: 'wait',
                     
+                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    
                     twoDice: rand,
                     twoCurrentMove: 1,
                     twoCurrentPos: document.getElementById(1).innerHTML = playerTwo,
@@ -550,6 +624,9 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'lucky, move',
                     oneHint: 'wait',
 
+                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+
                     twoDice: rand,
                     twoCurrentMove: this.state.twoCurrentMove + rand,
                     twoPrevMove: this.state.twoCurrentMove,
@@ -573,6 +650,9 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'great, move',
                     oneHint: 'OOOPS!',
 
+                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+
                     twoDice: rand,
                     twoCurrentMove: 100,
                     twoPrevMove: 94,
@@ -591,6 +671,9 @@ class SnakesAndLadders extends React.Component {
                     hint: 'player two, roll',
                     twoHint: 'so close, roll',
                     oneHint: 'oh, wait',
+
+                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
 
                     twoDice: rand,
                     twoCurrentMove: this.state.twoCurrentMove,
@@ -612,6 +695,9 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'wait',
                     oneHint: 'roll',
 
+                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+
                     twoDice: rand,
                     twoCurrentMove: 0,
                     twoPrevMove: this.state.twoCurrentMove,
@@ -629,6 +715,9 @@ class SnakesAndLadders extends React.Component {
                     hint: 'player two, move',
                     twoHint: 'move',
                     oneHint: 'wait',
+
+                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
 
                     twoDice: rand,
                     twoCurrentMove: this.state.twoCurrentMove + rand,
@@ -656,6 +745,9 @@ class SnakesAndLadders extends React.Component {
                         twoHint: 'wait',
                         oneHint: 'roll',
 
+                        twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                        oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+
                         twoDice: rand,
                         twoCurrentMove: this.state.twoCurrentMove,
                         twoPrevMove: 0,
@@ -675,6 +767,9 @@ class SnakesAndLadders extends React.Component {
                         hint: 'player two, move',
                         twoHint: 'move',
                         oneHint: 'wait',
+
+                        twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                        oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
 
                         twoDice: rand,
                         twoCurrentMove: this.state.twoCurrentMove + rand,
@@ -700,6 +795,9 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'roll',
                     oneHint: 'wait',
 
+                    twoBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+                    oneBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    
                     turn: 'two'
                 })
             } else {
@@ -707,7 +805,10 @@ class SnakesAndLadders extends React.Component {
                     hint: 'player one, roll',
                     twoHint: 'wait',
                     oneHint: 'roll',
-                    
+
+                    twoBoxShadow: `0px 0px 21px rgb(153, 155, 154)`,
+                    oneBoxShadow: `0px 0px 21px rgb(0, 255, 125)`,
+
                     turn: 'one'
                 })
             }
@@ -886,13 +987,25 @@ class SnakesAndLadders extends React.Component {
             <div class="snakes-and-ladders-page container-fluid">
                 <div class="page-shadow row d-flex justify-content-center align-items-start text-light">
                     {/* player one panel */}
-                    <div className="box-shadow col-2 d-flex align-self-center text-info border rounded-2 p-4 bounce-in-left">
-                        <div className="row">
-                            <div className="col-12 text-center fs-3 pb-5">
-                                Player One
+                    <div className="box-shadow col-3 d-flex justify-content-center align-self-center text-info border rounded-2 p-4 bounce-in-left"
+                        style={{boxShadow: this.state.oneBoxShadow}}
+                    >
+                        <div className="row overflow-scroll">
+                            <div class="col-12" id="oneNamePanel">
+                                <input 
+                                    value={this.state.oneNameInput}
+                                    onChange={this.oneNameHandleChange}
+                                    placeholder='Enter Your Name'
+                                />
+                                <button class="text-center m-2" onClick={this.oneNameHandleSubmit}>
+                                    Submit
+                                </button>
+                            </div>
+                            <div className="col-12 text-center fs-4 pb-4">
+                                {this.state.oneName}
                             </div>
                             {/* player one hint */}
-                            <div className="col-12 text-center heartbeat-2">
+                            <div className="col-12 text-center text-flicker-in-glow-2">
                                 <div id="101">
                                     <i class="bi bi-person-fill">
                                         {this.state.oneHint}
@@ -914,7 +1027,7 @@ class SnakesAndLadders extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-5">
                         <div className="row">
                             
                             {/* header  */}
@@ -927,7 +1040,7 @@ class SnakesAndLadders extends React.Component {
                                 <div class="row snakes-and-ladders-board border border-2 rounded-2">   
                                 
                                     {/* game grid  */}
-                                    <div className='snakes-and-ladders-box text-center'>
+                                    <div className='snakes-and-ladders-box box-cover-color text-center'>
                                         <div className="item" id="100">100</div>
                                         <div className="item" id="99">99</div>
                                         <div className="item" id="98">98</div>
@@ -1033,21 +1146,35 @@ class SnakesAndLadders extends React.Component {
                             </div>
 
                             {/* hints for all */}
-                            
+                            <div className="col-12 d-flex justify-content-center">
+                                <div id="hintForAll" class="text-center pt-4">
+                               
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     {/* player two panel */}
-                    <div className="box-shadow col-2 d-flex align-self-center text-warning border rounded-2 p-4 bounce-in-right">
-                        <div className="row">
-                        
-                        {/* player two header */}
-                        <div className="col-12 text-center fs-3 pb-5">
-                            Player Two
-                        </div>
+                    <div className="box-shadow col-3 d-flex align-self-center text-danger border rounded-2 p-4 bounce-in-right"
+                        style={{boxShadow: this.state.twoBoxShadow}}
+                    >
+                        <div className="row overflow-scroll">
+                            <div class="col-12" id="twoNamePanel">
+                                <input 
+                                    value={this.state.twoNameInput}
+                                    onChange={this.twoNameHandleChange}
+                                    placeholder='Enter Your Name'
+                                />
+                                <button class="text-center m-2" onClick={this.twoNameHandleSubmit}>
+                                    Submit
+                                </button>
+                            </div>
+                            <div className="col-12 text-center fs-4 pb-4">
+                                {this.state.twoName}
+                            </div>
                                             
                             {/* player two hint */}
-                            <div className="col-12 text-center heartbeat-2">
+                            <div className="col-12 text-center text-flicker-in-glow-2">
                                 <div id="102">
                                     <i class="bi bi-person-fill border-1 rounded-2">
                                         {this.state.twoHint}
@@ -1065,8 +1192,8 @@ class SnakesAndLadders extends React.Component {
                             
                             {/* player two control buttons */}
                             <div className="col-12 d-flex justify-content-center flex-wrap py-1">
-                                <button class="me-2 btn btn-outline-warning" type="button" onClick={this.twoMove}>Move</button>
-                                <button class="btn btn-outline-warning" type="button" onClick={this.twoDice}>Roll</button>
+                                <button class="me-2 btn btn-outline-danger" type="button" onClick={this.twoMove}>Move</button>
+                                <button class="btn btn-outline-danger" type="button" onClick={this.twoDice}>Roll</button>
                             </div>
                         </div>
                     </div>
