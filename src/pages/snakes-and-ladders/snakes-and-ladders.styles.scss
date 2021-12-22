@@ -25,6 +25,14 @@
   @extend .box-cover-color
 }
 
+.form-control{
+  background-color: rgba(0, 0, 0, 0.1);
+
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0px 10px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 255, 255, 0.6);
+  }
+}
 .snakes-and-ladders-box {
     display: grid;
     grid-template-columns: repeat(10, 1fr);

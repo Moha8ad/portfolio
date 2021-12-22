@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
 import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-footer.component';
 
 import './snakes-and-ladders.styles.scss';
 
 // icons for player one in normal, fading in, and fading out situtions
-const playerOne = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
-const playerOneIn = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
-const playerOneOut = `<i class='bi bi-person-fill text-light bg-info px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
+const playerOne = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
+const playerOneIn = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
+const playerOneOut = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
 
 // icons for player two in normal, fading in, and fading out situtions
-const playerTwo = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
-const playerTwoIn = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
-const playerTwoOut = `<i class='bi bi-person-fill text-light bg-danger px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
+const playerTwo = `<i class='bi bi-person-fill text-danger bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
+const playerTwoIn = `<i class='bi bi-person-fill text-danger bg-dark px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
+const playerTwoOut = `<i class='bi bi-person-fill text-danger bg-dark px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
 
 // icons for player one dice in different situations
 const oneDiceCube = `<div><i class="bi bi-box"></i></div>`
@@ -32,10 +32,17 @@ const twoDiceFour = `<div class="animated flip"><i class="bi bi-dice-4-fill"></i
 const twoDiceFive = `<div class="animated flip"><i class="bi bi-dice-5-fill"></i></div>`
 const twoDiceSix = `<div class="animated flip"><i class="bi bi-dice-6-fill"></i></div>`
 
+const soundOn = `<i class="bi bi-volume-up-fill fs-5"></i>`
+const soundOff = `<i class="bi bi-volume-mute-fill fs-5"></i>`
+
+
 class SnakesAndLadders extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            soundVolume: 'OFF',
+            soundIcon: '',
+
             hint: "Let's Start! Player One Roll", //hint for all players
             oneHint: 'Roll', // hint specific for player one 
             twoHint: 'Wait', // hint specific for player two
@@ -61,6 +68,7 @@ class SnakesAndLadders extends React.Component {
             onePrevPos: 0, //removes the last move based on onePrevMove data in oneMove function
             oneAfterPos: 0, //to be used for jumping or falling effect when snakes or ladders are confronted
             oneBeforePos: 0,  //to be used for jumping or falling effect when snakes or ladders are confronted
+            oneStartPos: '',
 
             twoDice: 0, // everything in this pary for player two is a repetition of the above for player one
             twoDiceCube: '',
@@ -70,7 +78,7 @@ class SnakesAndLadders extends React.Component {
             twoPrevPos: 0,
             twoAfterPos: 0, //to be used for jumping or falling effect when snakes or ladders are confronted
             twoBeforePos: 0,  //to be used for jumping or falling effect when snakes or ladders are confronted
-
+            twoStartPos: '',
 
             turn: 'one', //changes turn between player one and player two 
             playAgainBtnDisplay: 'd-none' //shows up after a player wins
@@ -109,6 +117,9 @@ class SnakesAndLadders extends React.Component {
 
     handlePlayAgain = () => {
         this.setState({
+            soundVolume: 'OFF',
+            soundIcon: document.getElementById('soundIcon').innerHTML = soundOff,
+
             hint: "Let's Start! Player One Roll",
             oneHint: 'Roll',
             twoHint: 'Wait', 
@@ -133,7 +144,8 @@ class SnakesAndLadders extends React.Component {
             oneCurrentPos: document.getElementById(this.state.oneCurrentMove).innerHTML = '',
             onePrevPos: document.getElementById(this.state.onePrevMove).innerHTML = '',
             oneAfterPos: 0, 
-            oneBeforePos: 0, 
+            oneBeforePos: 0,
+            oneStartPos: document.getElementById(101).innerHTML = playerOne,
 
             twoDice: 0, 
             twoDiceCube: document.getElementById(222).innerHTML = twoDiceCube,
@@ -142,18 +154,37 @@ class SnakesAndLadders extends React.Component {
             twoCurrentPos: document.getElementById(this.state.twoCurrentMove).innerHTML = '',
             twoPrevPos: document.getElementById(this.state.twoPrevMove).innerHTML = '',
             twoAfterPos: 0, 
-            twoBeforePos: 0, 
-
+            twoBeforePos: 0,
+            twoStartPos: document.getElementById(202).innerHTML = playerTwo,
 
             turn: 'one',
             playAgainBtnDisplay: 'd-none' 
         })
     }
+
+    handleSound = () => {
+        if (this.state.soundVolume === 'OFF') {
+            this.setState({
+                soundVolume: 'ON',
+                soundIcon: document.getElementById('soundIcon').innerHTML = soundOn
+            })
+        } else if (this.state.soundVolume === 'ON') {
+            this.setState({
+                soundVolume: 'OFF',
+                soundIcon: document.getElementById('soundIcon').innerHTML = soundOff
+            })
+        }
+    }
     
     oneDice = () => {
 
         // executes if it is player one's turn
-        if ( this.state.turn === 'one'){
+        if (this.state.turn === 'one'){
+
+            if (this.state.soundVolume === 'ON') {
+                var audio = new Audio("https://soundbible.com/mp3/Shake%20And%20Roll%20Dice-SoundBible.com-591494296.mp3")
+                audio.play()
+            } 
             
             // generates new oneRandom number between 1 and 6, inclusive
             const oneRand =  Math.floor(Math.random() * 6) + 1;
@@ -191,6 +222,8 @@ class SnakesAndLadders extends React.Component {
 
                     oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
                     twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+
+                    oneStartPos: document.getElementById('101').innerHTML = '',
                     
                     oneDice: oneRand,
                     oneCurrentMove: 1,
@@ -623,6 +656,8 @@ class SnakesAndLadders extends React.Component {
                     
                     twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
                     oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+
+                    twoStartPos: document.getElementById('202').innerHTML = '',
                     
                     twoDice: twoRand,
                     twoCurrentMove: 1,
@@ -1013,8 +1048,6 @@ class SnakesAndLadders extends React.Component {
         } 
     }
 }
-
-
     render(){
         return(
             <div class="snakes-and-ladders-page container-fluid">
@@ -1023,16 +1056,16 @@ class SnakesAndLadders extends React.Component {
                     <div className="box-shadow col-3 d-flex justify-content-center align-self-center text-info border rounded-2 p-4 bounce-in-left"
                         style={{boxShadow: this.state.oneBoxShadow}}
                     >
-
                         <div className="row overflow-scroll">
-                            <div class={`${this.state.oneNamePanelDisplay} col-12`}>
+                            <div class={`${this.state.oneNamePanelDisplay} col-12 d-flex justify-content-center`}>
                                 <input 
+                                    class="form-control text-info border-info rounded-2 m-2 p-2"
                                     value={this.state.oneNameInput}
                                     onChange={this.oneNameHandleChange}
                                     placeholder='Enter Your Name'
                                 />
-                                <button class="text-center m-2" onClick={this.oneNameHandleSubmit}>
-                                    Submit
+                                <button class="btn btn-outline-info m-2" type="button" onClick={this.oneNameHandleSubmit}>
+                                    <i class="bi bi-check-lg"></i>
                                 </button>
                             </div>
                             <div className="col-12 text-center fs-4 pb-4">
@@ -1040,7 +1073,7 @@ class SnakesAndLadders extends React.Component {
                             </div>
                             {/* player one hint */}
                             <div className="col-12 text-center text-flicker-in-glow-2">
-                                <div id="101">
+                                <div>
                                     <i class="bi bi-person-fill">
                                         {this.state.oneHint}
                                     </i>
@@ -1062,7 +1095,7 @@ class SnakesAndLadders extends React.Component {
                         </div>
                     </div>
                     <div className="col-5">
-                        <div className="row">
+                        <div className="row d-flex justify-content-center">
                             
                             {/* header  */}
                             <div className="col-12 text-center fs-2 py-4 text-flicker-in-glow">
@@ -1181,17 +1214,40 @@ class SnakesAndLadders extends React.Component {
 
 
 
-                            {/* hints for all */}
-                            <div className="col-12 d-flex justify-content-center">
-                                <div id="hintForAll" class="text-center pt-4">
-                                    <button
+                            {/* game panel */}
+                            <div className="col-12" style={{width: '65vh'}}>
+                                <div class="row p-0">
+                                    <div className="col-3">
+
+                                        <div class='row d-flex justify-content-start p-0 pt-3'>
+                                            <div class='col-auto' id="101">
+                                            <i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
+                                            </div>
+
+                                            <div class='col-auto' id="202">
+                                            <i class='bi bi-person-fill text-danger bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div className="col-6 d-flex justify-content-center my-3">
+                                        <button
+                                        class={`${this.state.playAgainBtnDisplay} btn btn-success fs-4 text-flicker-in-glow`}
+                                        type="button"
+                                        onClick={this.handlePlayAgain}
+                                        >
+                                            play again
+                                        </button>
+                                    </div>
+
+                                    <div className="col-3 d-flex justify-content-end align-items-start p-0">
+                                        <div class='col-auto' id="soundIcon"  onClick={this.handleSound}>
+                                            <i class="bi bi-volume-mute-fill fs-5"></i>
+                                        </div>
+                                    </div>
+                                
                                     
-                                    class={`${this.state.playAgainBtnDisplay} btn btn-success d-flex justify-content-center align-items-center fs-4 text-flicker-in-glow`}
-                                    type="button"
-                                    onClick={this.handlePlayAgain}
-                                    >
-                                        play again
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1202,14 +1258,15 @@ class SnakesAndLadders extends React.Component {
                         style={{boxShadow: this.state.twoBoxShadow}}
                     >
                         <div className="row overflow-scroll">
-                            <div class={`${this.state.twoNamePanelDisplay} col-12`}>
+                            <div class={`${this.state.twoNamePanelDisplay} col-12 d-flex justify-content-center`}>
                                 <input 
+                                    class="form-control text-danger border-danger rounded-2 m-2 p-2"
                                     value={this.state.twoNameInput}
                                     onChange={this.twoNameHandleChange}
                                     placeholder='Enter Your Name'
                                 />
-                                <button class="text-center m-2" onClick={this.twoNameHandleSubmit}>
-                                    Submit
+                                <button class="btn btn-outline-danger m-2" type="button" onClick={this.twoNameHandleSubmit}>
+                                    <i class="bi bi-check-lg"></i>
                                 </button>
                             </div>
                             <div className="col-12 text-center fs-4 pb-4">
@@ -1218,7 +1275,7 @@ class SnakesAndLadders extends React.Component {
                                             
                             {/* player two hint */}
                             <div className="col-12 text-center text-flicker-in-glow-2">
-                                <div id="102">
+                                <div>
                                     <i class="bi bi-person-fill border-1 rounded-2">
                                         {this.state.twoHint}
                                     </i>
