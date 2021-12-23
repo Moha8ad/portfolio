@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/profile//static/css/main.1df7580b.chunk.css",
-    "main.js": "/profile//static/js/main.88f3e700.chunk.js",
-    "main.js.map": "/profile//static/js/main.88f3e700.chunk.js.map",
+    "main.css": "/profile//static/css/main.57b607cd.chunk.css",
+    "main.js": "/profile//static/js/main.6cd3b36a.chunk.js",
+    "main.js.map": "/profile//static/js/main.6cd3b36a.chunk.js.map",
     "runtime-main.js": "/profile//static/js/runtime-main.86d3fb24.js",
     "runtime-main.js.map": "/profile//static/js/runtime-main.86d3fb24.js.map",
     "static/js/2.366ef149.chunk.js": "/profile//static/js/2.366ef149.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.1be76379.chunk.js": "/profile//static/js/3.1be76379.chunk.js",
     "static/js/3.1be76379.chunk.js.map": "/profile//static/js/3.1be76379.chunk.js.map",
     "index.html": "/profile//index.html",
-    "static/css/main.1df7580b.chunk.css.map": "/profile//static/css/main.1df7580b.chunk.css.map",
+    "static/css/main.57b607cd.chunk.css.map": "/profile//static/css/main.57b607cd.chunk.css.map",
     "static/js/2.366ef149.chunk.js.LICENSE.txt": "/profile//static/js/2.366ef149.chunk.js.LICENSE.txt",
     "static/media/asar-logo-lg-wt.7acaca47.svg": "/profile//static/media/asar-logo-lg-wt.7acaca47.svg",
     "static/media/asar-logo-md-wt.1fdac3cf.svg": "/profile//static/media/asar-logo-md-wt.1fdac3cf.svg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.86d3fb24.js",
     "static/js/2.366ef149.chunk.js",
-    "static/css/main.1df7580b.chunk.css",
-    "static/js/main.88f3e700.chunk.js"
+    "static/css/main.57b607cd.chunk.css",
+    "static/js/main.6cd3b36a.chunk.js"
   ]
 }
