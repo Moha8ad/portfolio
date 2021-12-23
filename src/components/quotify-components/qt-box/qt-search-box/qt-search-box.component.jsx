@@ -18,7 +18,7 @@ const SearchQuoteBox = ({ history, searchField, handleChange, searchByName, rand
         <div class="col-12">
             {searchField === '' ?
                 <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4 text-secondary">
-                    <h1><i class="bi bi-person-bounding-box text-success"></i> Search For Authors!</h1>
+                    <div class="fs-3"><i class="bi bi-person-bounding-box text-success"></i> Search For Authors!</div>
                 </div>
             :
                 (searchByName.length > 0) 

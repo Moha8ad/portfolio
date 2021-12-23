@@ -4,7 +4,7 @@ import './search-box.style.css';
 
 export const SearchBox = ({ placeholder, handleChange }) => (
     <form class="d-flex flex-fill">
-        <i class="search-icon bi bi-search"></i>
+        <i class="search-icon bi bi-search text-light"></i>
         <input 
             class="custom-border-radius form-control p-2 ps-5"
             type="search" 

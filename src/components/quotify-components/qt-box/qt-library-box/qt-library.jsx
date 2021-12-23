@@ -17,17 +17,17 @@ const LibraryQuote = ({ randomColor, searchByName }) => (
                                     />
                                 </div>
                                 <div class="col-auto col-sm-6 d-flex align-self-end fs-4 py-2 d-none d-lg-block auth-name-library-animation">
-                                    <div class="px-2 border-2 rounded-2" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
+                                    <div class="px-2 border-2 rounded-2 fs-6" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
                                         {result.author}
                                     </div>
                                 </div>
                                 
                                 <div class="row p-1 border-2 rounded-2 overflow-scroll" style={{backgroundColor: randomColor, height: "150px"}}>
                                     <div class="col-12 p-0 border-2 rounded-2" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
-                                        <div class="fs-5 px-2 d-lg-none" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
+                                        <div class="fs-6 px-2 d-lg-none" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
                                             {result.author}
                                         </div>
-                                        <div class="text-light p-2 fs-4">
+                                        <div class="text-light p-2 fs-5">
                                             {result.quote}
                                             
                                                 <button 

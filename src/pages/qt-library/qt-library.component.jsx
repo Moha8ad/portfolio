@@ -4,7 +4,7 @@ import QuotifyMain from "../../components/quotify-components/qt-main/qt-main.com
 
 
 const QuotifyLibrary = () => (
-  <div class=" text-light container-fluid">
+  <div class="text-light container-fluid">
     <div class="row">
       <div class="col-12">
         <QuotifyMain />
