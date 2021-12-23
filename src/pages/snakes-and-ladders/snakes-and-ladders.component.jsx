@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 import AsArLogoLgWt from '../../components/all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component'
-import AsArLogoSmWt from '../../components/all-reusable-components/asar-logo-sm-wt/asar-logo-sm-wt.component'
 
 import rollSF from '../../assets/dice.wav'
 
@@ -1068,16 +1069,28 @@ class SnakesAndLadders extends React.Component {
                 <div class="page-shadow row d-flex justify-content-center align-items-center text-light">
 
                     {/* top panel */}
-                    <div class=" col-12 fixed-top box-cover-color text-center fs-4 py-2">        
-                    <div class="container-fluid">
-                        <div class="row">
-                             {/* header  */}
-                            <div class="text-flicker-in-glow">
-                                SNAKES AND LADDERS
+                    <div class=" col-12 fixed-top box-cover-color text-center fs-4 py-2 p-0">        
+                        <div class="container-fluid">
+                            <div class="row">
+                                {/* back button*/}
+                                <div class="col-3 d-flex justify-content-start">
+                                    <Link to="/profile/">
+                                        <i class="bi bi-box-arrow-left fs-4 text-light"></i>
+                                    </Link>
+                                </div>
+
+                                {/* header  */}
+                                <div class="not-clickable col-6 text-flicker-in-glow">
+                                    SNAKES AND LADDERS
+                                </div>
+                                <div className="col-3 d-flex justify-content-end p-0">
+                                    <div class='col-auto' id="soundIcon"  onClick={this.handleSound}>
+                                            <i class="bi bi-volume-mute-fill fs-4"></i>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>    
-                </div>
+                        </div>    
+                    </div>
 
 
                     {/* player one panel */}
@@ -1100,7 +1113,7 @@ class SnakesAndLadders extends React.Component {
                                 {this.state.oneName}
                             </div>
                             {/* player one hint */}
-                            <div className="col-12 text-center text-flicker-in-glow-2">
+                            <div className="col-12 text-center text-flicker-in-glow-2 not-clickable">
                                 <div>
                                     <i class="bi bi-person-fill">
                                         {this.state.oneHint}
@@ -1126,7 +1139,7 @@ class SnakesAndLadders extends React.Component {
                         <div className="row d-flex justify-content-center">
                             
                             {/* game board  */}
-                            <div className="col-12 d-flex justify-content-center align-items-start">
+                            <div className="not-clickable col-12 d-flex justify-content-center align-items-start">
                                 <div class="row snakes-and-ladders-board border border-2 rounded-2">   
                                 
                                     {/* game grid  */}
@@ -1264,13 +1277,10 @@ class SnakesAndLadders extends React.Component {
                                         </button>
                                     </div>
 
+                                    {/* any item could be added here at the right end of the panel later*/}
                                     <div className="col-3 d-flex justify-content-end align-items-start p-0">
-                                        <div class='col-auto' id="soundIcon"  onClick={this.handleSound}>
-                                            <i class="bi bi-volume-mute-fill fs-5"></i>
-                                        </div>
+                                        
                                     </div>
-                                
-                                    
                                 </div>
                             </div>
                         </div>
@@ -1297,7 +1307,7 @@ class SnakesAndLadders extends React.Component {
                             </div>
                                             
                             {/* player two hint */}
-                            <div className="col-12 text-center text-flicker-in-glow-2">
+                            <div className="col-12 text-center text-flicker-in-glow-2 not-clickable">
                                 <div>
                                     <i class="bi bi-person-fill border-1 rounded-2">
                                         {this.state.twoHint}
