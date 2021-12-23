@@ -1,20 +1,21 @@
 import React from 'react'
 
-import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-footer.component';
+import AsArLogoLgWt from '../../components/all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component'
+import AsArLogoSmWt from '../../components/all-reusable-components/asar-logo-sm-wt/asar-logo-sm-wt.component'
 
 import rollSF from '../../assets/dice.wav'
 
 import './snakes-and-ladders.styles.scss';
 
 // icons for player one in normal, fading in, and fading out situtions
-const playerOne = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
-const playerOneIn = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
-const playerOneOut = `<i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
+const playerOne = `<i class='bi bi-circle-fill text-info bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
+const playerOneIn = `<i class='bi bi-circle-fill text-info bg-dark px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
+const playerOneOut = `<i class='bi bi-circle-fill text-info bg-dark px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
 
 // icons for player two in normal, fading in, and fading out situtions
-const playerTwo = `<i class='bi bi-person-fill text-danger bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
-const playerTwoIn = `<i class='bi bi-person-fill text-danger bg-dark px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
-const playerTwoOut = `<i class='bi bi-person-fill text-danger bg-dark px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
+const playerTwo = `<i class='bi bi-circle-fill text-danger bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
+const playerTwoIn = `<i class='bi bi-circle-fill text-danger bg-dark px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
+const playerTwoOut = `<i class='bi bi-circle-fill text-danger bg-dark px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
 
 // icons for player one dice in different situations
 const oneDiceCube = `<div><i class="bi bi-box"></i></div>`
@@ -1064,7 +1065,21 @@ class SnakesAndLadders extends React.Component {
     render(){
         return(
             <div class="snakes-and-ladders-page container-fluid">
-                <div class="page-shadow row d-flex justify-content-center align-items-start text-light">
+                <div class="page-shadow row d-flex justify-content-center align-items-center text-light">
+
+                    {/* top panel */}
+                    <div class=" col-12 fixed-top box-cover-color text-center fs-4 py-2">        
+                    <div class="container-fluid">
+                        <div class="row">
+                             {/* header  */}
+                            <div class="text-flicker-in-glow">
+                                SNAKES AND LADDERS
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+
+
                     {/* player one panel */}
                     <div className="box-shadow col-3 d-flex justify-content-center align-self-center text-info border rounded-2 p-4 bounce-in-left"
                         style={{boxShadow: this.state.oneBoxShadow}}
@@ -1110,17 +1125,12 @@ class SnakesAndLadders extends React.Component {
                     <div className="col-5">
                         <div className="row d-flex justify-content-center">
                             
-                            {/* header  */}
-                            <div className="col-12 text-center fs-2 py-4 text-flicker-in-glow">
-                                SNAKES AND LADDERS
-                            </div>
-
                             {/* game board  */}
                             <div className="col-12 d-flex justify-content-center align-items-start">
                                 <div class="row snakes-and-ladders-board border border-2 rounded-2">   
                                 
                                     {/* game grid  */}
-                                    <div className='snakes-and-ladders-box box-cover-color text-center'>
+                                    <div className='snakes-and-ladders-box board-cover-color text-center'>
                                         <div className="item" id="100">100</div>
                                         <div className="item" id="99">99</div>
                                         <div className="item" id="98">98</div>
@@ -1233,12 +1243,12 @@ class SnakesAndLadders extends React.Component {
                                     <div className="col-3">
 
                                         <div class='row d-flex justify-content-start p-0 pt-3'>
-                                            <div class='col-auto' id="101">
-                                            <i class='bi bi-person-fill text-info bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
+                                            <div class='col-auto text-flicker-in-glow-2' id="101">
+                                            <i class='bi bi-circle-fill text-info bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
                                             </div>
 
-                                            <div class='col-auto' id="202">
-                                            <i class='bi bi-person-fill text-danger bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
+                                            <div class='col-auto text-flicker-in-glow-2' id="202">
+                                            <i class='bi bi-circle-fill text-danger bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
                                             </div>
                                         </div>
                                         
@@ -1315,7 +1325,20 @@ class SnakesAndLadders extends React.Component {
                     <div class="d-none" id="0"></div> 
                     
                     {/* as the name says, Footer */}
-                    <QuotifyFooter />
+
+                    <div class=" col-12 fixed-bottom p-2 d-flex align-items-center box-cover-color">        
+                        <div class="container-fluid">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    © 2021 AsAr Web Development
+                                </div>
+                                <div class="col-auto d-none d-md-block">
+                                    <AsArLogoLgWt />
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+
                 </div>
             </div>
         )
