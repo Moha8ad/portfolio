@@ -44,7 +44,7 @@ class SnakesAndLadders extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            soundVolume: 'OFF',
+            soundVolume: false,
             soundIcon: '',
 
             hint: "Let's Start! Player One Roll", //hint for all players
@@ -167,16 +167,16 @@ class SnakesAndLadders extends React.Component {
     }
 
     handleSound = () => {
-        if (this.state.soundVolume === 'OFF') {
-            this.setState({
-                soundVolume: 'ON',
+        if (this.state.soundVolume === false) {
+            this.setState(state => ({
+                soundVolume: !state.soundVolume,
                 soundIcon: document.getElementById('soundIcon').innerHTML = soundOn
-            })
-        } else if (this.state.soundVolume === 'ON') {
-            this.setState({
-                soundVolume: 'OFF',
+            }))
+        } else if (this.state.soundVolume === true) {
+            this.setState(state => ({
+                soundVolume: !state.soundVolume,
                 soundIcon: document.getElementById('soundIcon').innerHTML = soundOff
-            })
+            }))
         }
     }
     
@@ -185,7 +185,7 @@ class SnakesAndLadders extends React.Component {
         // executes if it is player one's turn
         if (this.state.turn === 'one'){
 
-            if (this.state.soundVolume === 'ON') {
+            if (this.state.soundVolume === true) {
                 const dice = new Audio(rollSF)
                 dice.play()
             } 
@@ -219,11 +219,6 @@ class SnakesAndLadders extends React.Component {
             // guide: to inform change of turn, player two's dice is set to twoDiceCube, default cube showing no number 
             // guide: conditions specific to oneRandom number 6 are defined firstly and then for oneRandom numbers btw 1 and 5 
             if ( oneRand === 6 && this.state.oneCurrentMove < 1 ) {
-
-                if (this.state.soundVolume === 'ON') {
-                    var enter = new Audio("https://soundbible.com/mp3/Shake%20And%20Roll%20Dice-SoundBible.com-591494296.mp3")
-                    enter.play()
-                } 
 
                 this.setState({
                     hint: 'player one starts! roll again',
@@ -630,7 +625,7 @@ class SnakesAndLadders extends React.Component {
         // executes if it is player one's turn
         if ( this.state.turn === 'two'){
 
-            if (this.state.soundVolume === 'ON') {
+            if (this.state.soundVolume === true) {
                 var dice = new Audio(rollSF)
                 dice.play()
             } 
