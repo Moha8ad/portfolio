@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/profile//static/css/main.57b607cd.chunk.css",
-    "main.js": "/profile//static/js/main.6cd3b36a.chunk.js",
-    "main.js.map": "/profile//static/js/main.6cd3b36a.chunk.js.map",
-    "runtime-main.js": "/profile//static/js/runtime-main.86d3fb24.js",
-    "runtime-main.js.map": "/profile//static/js/runtime-main.86d3fb24.js.map",
-    "static/js/2.366ef149.chunk.js": "/profile//static/js/2.366ef149.chunk.js",
-    "static/js/2.366ef149.chunk.js.map": "/profile//static/js/2.366ef149.chunk.js.map",
-    "static/js/3.1be76379.chunk.js": "/profile//static/js/3.1be76379.chunk.js",
-    "static/js/3.1be76379.chunk.js.map": "/profile//static/js/3.1be76379.chunk.js.map",
+    "main.css": "/profile//static/css/main.080ba53b.chunk.css",
+    "main.js": "/profile//static/js/main.9d955291.chunk.js",
+    "main.js.map": "/profile//static/js/main.9d955291.chunk.js.map",
+    "runtime-main.js": "/profile//static/js/runtime-main.01e71084.js",
+    "runtime-main.js.map": "/profile//static/js/runtime-main.01e71084.js.map",
+    "static/js/2.c38453a2.chunk.js": "/profile//static/js/2.c38453a2.chunk.js",
+    "static/js/2.c38453a2.chunk.js.map": "/profile//static/js/2.c38453a2.chunk.js.map",
+    "static/js/3.0cab59ae.chunk.js": "/profile//static/js/3.0cab59ae.chunk.js",
+    "static/js/3.0cab59ae.chunk.js.map": "/profile//static/js/3.0cab59ae.chunk.js.map",
     "index.html": "/profile//index.html",
-    "static/css/main.57b607cd.chunk.css.map": "/profile//static/css/main.57b607cd.chunk.css.map",
-    "static/js/2.366ef149.chunk.js.LICENSE.txt": "/profile//static/js/2.366ef149.chunk.js.LICENSE.txt",
+    "static/css/main.080ba53b.chunk.css.map": "/profile//static/css/main.080ba53b.chunk.css.map",
+    "static/js/2.c38453a2.chunk.js.LICENSE.txt": "/profile//static/js/2.c38453a2.chunk.js.LICENSE.txt",
     "static/media/asar-logo-lg-wt.7acaca47.svg": "/profile//static/media/asar-logo-lg-wt.7acaca47.svg",
     "static/media/asar-logo-md-wt.1fdac3cf.svg": "/profile//static/media/asar-logo-md-wt.1fdac3cf.svg",
     "static/media/asar-logo-sm-wt.cc81fcc5.svg": "/profile//static/media/asar-logo-sm-wt.cc81fcc5.svg",
     "static/media/dice.ce2d94cf.wav": "/profile//static/media/dice.ce2d94cf.wav",
-    "static/media/move.styles.scss": "/profile//static/media/game-board.99c1dcb2.png"
+    "static/media/snakes-and-ladders.styles.scss": "/profile//static/media/game-board.99c1dcb2.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.86d3fb24.js",
-    "static/js/2.366ef149.chunk.js",
-    "static/css/main.57b607cd.chunk.css",
-    "static/js/main.6cd3b36a.chunk.js"
+    "static/js/runtime-main.01e71084.js",
+    "static/js/2.c38453a2.chunk.js",
+    "static/css/main.080ba53b.chunk.css",
+    "static/js/main.9d955291.chunk.js"
   ]
 }
