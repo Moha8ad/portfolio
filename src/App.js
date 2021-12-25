@@ -17,15 +17,15 @@ function App() {
   return(
     <div>      
       <Switch>  
-        <Route path='/profile/' component={HomePage} />
-        <Route path='/profile/rolodex' component={Rolodex} />
-        <Route path='/profile/quotify' component={Quotify} />
-        <Route path='/profile/home' component={QuotifyHome} />
-        <Route path='/profile/search' component={QuotifySearch} />
-        <Route path='/profile/library' component={QuotifyLibrary} />
-        <Route path='/profile/snakes-and-ladders' component={SnakesAndLadders} />
-        <Route path='/profile/app4' component={Presentational} />
-        <Route path='/profile/app5' component={Move} />
+        <Route exact path='/profile/' component={HomePage} />
+        <Route exact path='/profile/rolodex' component={Rolodex} />
+        <Route exact path='/profile/quotify' component={Quotify} />
+        <Route exact path='/profile/home' component={QuotifyHome} />
+        <Route exact path='/profile/search' component={QuotifySearch} />
+        <Route exact path='/profile/library' component={QuotifyLibrary} />
+        <Route exact path='/profile/snakes-and-ladders' component={SnakesAndLadders} />
+        <Route exact path='/profile/app4' component={Presentational} />
+        <Route exact path='/profile/app5' component={Move} />
       </Switch>
     </div>
   )
