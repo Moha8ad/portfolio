@@ -17,8 +17,8 @@ function App() {
   return(
     <div>      
       <Switch>  
-        <Route exact path='/profile/' component={HomePage} />
-        <Route path= '/profile/rolodex' component={Rolodex} />
+        <Route path='/profile/' component={HomePage} />
+        <Route path='/profile/rolodex' component={Rolodex} />
         <Route path='/profile/quotify' component={Quotify} />
         <Route path='/profile/home' component={QuotifyHome} />
         <Route path='/profile/search' component={QuotifySearch} />
