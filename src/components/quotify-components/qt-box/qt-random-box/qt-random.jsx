@@ -88,7 +88,6 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     
                         {/* quote text*/}
                         <span class="fst-normal fs-2"  style={{color: randomColor}}>{randomQuotes[randomQuoteId]}</span>
-                    
                     </i>
                     
                     {/* author */}

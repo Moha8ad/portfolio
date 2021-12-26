@@ -1,3 +1,4 @@
+import { preventOverflow } from '@popperjs/core';
 import React from 'react';
 
 class Liked extends React.Component {
@@ -15,7 +16,9 @@ class Liked extends React.Component {
                     card: 'CARD THREE'
                 }
             ],
-            likedCards: []
+            likedCards: [],
+            email: '',
+            password: ''
         }
     }
 
@@ -23,6 +26,22 @@ class Liked extends React.Component {
         const card = this.state.cards.map(card => card)
         this.setState({
             likedCards: [this.state.likedCards + card[0]]
+        })
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+
+        this.setState({
+            email: '',
+            password: '',
+        })
+    }
+
+    handleChange = event => {
+        const {value, name} = event.target
+        this.setState({
+            [name]: value
         })
     }
 
@@ -43,6 +62,33 @@ class Liked extends React.Component {
                         <div className="col12">
                             {this.state.likedCards}
                         </div>
+                        <form onSubmit= {this.handleSubmit}>
+                            <input 
+                                name= 'email'
+                                type= 'email'
+                                value= {this.state.email}
+                                onChange={this.handleChange}
+                                required
+                            />
+                            <label>
+                                Email
+                            </label>
+                        </form>
+                        <form onSubmit= {this.handleSubmit}>
+                        <input 
+                            name= 'password'
+                            type= 'password'
+                            value= {this.state.password}
+                            onChange={this.handleChange}
+                            required
+                        />
+                        <label>
+                            Password
+                        </label>
+                    </form>
+                    <h1>{this.state.email}</h1>
+                    <h1>{this.state.password}</h1>
+                    <button onClick={this.handleSubmit}></button>
                     </div>
                 </div>
             </div>

@@ -100,6 +100,7 @@ class SnakesAndLadders extends React.Component {
     oneNameHandleSubmit = () => {
         this.setState({
             oneName: this.state.oneNameInput,
+            oneNameInput: '',
             oneNamePanelDisplay: 'd-none'
         })
     }
@@ -115,6 +116,7 @@ class SnakesAndLadders extends React.Component {
     twoNameHandleSubmit = () => {
         this.setState({
             twoName: this.state.twoNameInput,
+            twoNameInput: '',
             twoNamePanelDisplay: 'd-none'
         })
     }
@@ -1093,20 +1095,32 @@ class SnakesAndLadders extends React.Component {
                         style={{boxShadow: this.state.oneBoxShadow}}
                     >
                         <div className="row overflow-scroll">
+                            <div>
+                                {
+                                    this.state.oneNameInput.length > 0 
+                                    ? 
+                                    <label class="px-2 mx-2" style={{fontSize:'12px'}}>Your Name</label> 
+                                    : 
+                                    <label class="px-2 mx-2" style={{fontSize:'12px'}}></label>
+                                }
+                            </div>
                             <div class={`${this.state.oneNamePanelDisplay} col-12 d-flex justify-content-center`}>
                                 <input 
                                     class="form-control text-info border-info rounded-2 m-2 p-2"
                                     value={this.state.oneNameInput}
                                     onChange={this.oneNameHandleChange}
                                     placeholder='Enter Your Name'
+                                    required
                                 />
+                                
                                 <button class="btn btn-outline-info m-2" type="button" onClick={this.oneNameHandleSubmit}>
                                     <i class="bi bi-check-lg"></i>
                                 </button>
                             </div>
-                            <div className="col-12 text-center fs-4 pb-4">
+                            <div className="col-12 text-center fs-4 pb-5">
                                 {this.state.oneName}
                             </div>
+                           
                             {/* player one hint */}
                             <div className="col-12 text-center text-flicker-in-glow-2 not-clickable">
                                 <div>
@@ -1286,6 +1300,15 @@ class SnakesAndLadders extends React.Component {
                         style={{boxShadow: this.state.twoBoxShadow}}
                     >
                         <div className="row overflow-scroll">
+                            <div id='OneNameLabel'>
+                            {
+                                this.state.twoNameInput.length > 0 
+                                ? 
+                                <label class="px-2 mx-2" style={{fontSize:'12px'}}>Your Name</label> 
+                                : 
+                                <label class="px-2 mx-2" style={{fontSize:'12px'}}></label>
+                            }
+                            </div>
                             <div class={`${this.state.twoNamePanelDisplay} col-12 d-flex justify-content-center`}>
                                 <input 
                                     class="form-control text-danger border-danger rounded-2 m-2 p-2"
@@ -1297,7 +1320,7 @@ class SnakesAndLadders extends React.Component {
                                     <i class="bi bi-check-lg"></i>
                                 </button>
                             </div>
-                            <div className="col-12 text-center fs-4 pb-4">
+                            <div className="col-12 text-center fs-4 pb-5">
                                 {this.state.twoName}
                             </div>
                                             
