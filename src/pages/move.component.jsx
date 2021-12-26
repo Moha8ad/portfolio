@@ -18,7 +18,7 @@ class Liked extends React.Component {
             ],
             likedCards: [],
             email: '',
-            password: ''
+            password: '',
         }
     }
 
@@ -43,6 +43,18 @@ class Liked extends React.Component {
         this.setState({
             [name]: value
         })
+    }
+
+    changeText1 = () => {
+
+        var node = document.getElementById("player1")
+        var list = document.getElementById("test");
+        list.insertBefore(node, list.childNodes[1]);
+    }
+    changeText2 = () => {
+        var node = document.getElementById("player2")
+        var list = document.getElementById("test");
+        list.insertBefore(node, list.childNodes[1]);
     }
 
     render() {
@@ -89,6 +101,28 @@ class Liked extends React.Component {
                     <h1>{this.state.email}</h1>
                     <h1>{this.state.password}</h1>
                     <button onClick={this.handleSubmit}></button>
+                    </div>
+                    <button class='col-1 bg-primary text-light m-5' onClick={this.changeText1}>player 1</button>
+                    <button class='col-1 bg-primary text-light m-5' onClick={this.changeText2}>player 2</button>
+
+                    
+                    <div class="col-1 p-1" id="player1"><i class="bi bi-circle-fill text-warning fs-6"></i></div>
+                    <div class="col-1 p-1" id="player2"><i class="bi bi-circle-fill text-danger fs-6"></i></div>
+
+                    
+                    <div class="bg-dark text-light col-12 d-flex justify-content-center  border-light flex-wrap">
+                        <div id='test' class="container p-2">
+                            <div className="p-1" id="1">1</div>
+                            <div className="p-1" id="2">2</div>
+                            <div className="p-1" id="3">3</div>
+                            <div className="p-1" id="4">4</div>
+                            <div className="p-1" id="5">5</div>
+                            <div className="p-1" id="6">6</div>
+                            <div className="p-1" id="7">7</div>
+                            <div className="p-1" id="8">8</div>
+                            <div className="p-1" id="9">9</div>
+                            <div className="p-1" id="10">10</div>
+                        </div>
                     </div>
                 </div>
             </div>

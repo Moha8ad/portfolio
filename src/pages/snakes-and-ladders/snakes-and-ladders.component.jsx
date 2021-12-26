@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom';
 
 import AsArLogoLgWt from '../../components/all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component'
 
-import rollSF from '../../assets/dice.wav'
+import rollSF from '../../assets/dice.wav';
+import dice6 from '../../assets/dice6.wav';
+import winner from '../../assets/winner.wav';
+import landing from '../../assets/landing.wav';
+import ladder from '../../assets/ladder.wav';
+import snake from '../../assets/snake.wav';
+import move from '../../assets/move.wav';
+
 
 import './snakes-and-ladders.styles.scss';
 
@@ -123,8 +130,6 @@ class SnakesAndLadders extends React.Component {
 
     handlePlayAgain = () => {
         this.setState({
-            soundVolume: 'OFF',
-            soundIcon: document.getElementById('soundIcon').innerHTML = soundOff,
 
             hint: "Let's Start! Player One Roll",
             oneHint: 'Roll',
@@ -187,14 +192,19 @@ class SnakesAndLadders extends React.Component {
         // executes if it is player one's turn
         if (this.state.turn === 'one'){
 
-            if (this.state.soundVolume === true) {
-                const dice = new Audio(rollSF)
-                dice.play()
-            } 
-            
+
             // generates new oneRandom number between 1 and 6, inclusive
             const oneRand =  Math.floor(Math.random() * 6) + 1;
 
+            if (this.state.soundVolume === true && oneRand === 6 ) {
+                const diceSix = new Audio(dice6)
+                diceSix.play()
+            } else if (this.state.soundVolume === true) {
+                const dice = new Audio(rollSF)
+                dice.play()
+            }
+
+            
             // shows dice number based on oneRandom number
             if ( oneRand === 1 ) {
                 document.getElementById(111).innerHTML = oneDiceOne
@@ -428,6 +438,21 @@ class SnakesAndLadders extends React.Component {
 
         if (this.state.oneDice > 0 && this.state.twoDice === 0) {
 
+            if (this.state.soundVolume === true && [2, 6, 20, 52, 57, 71].includes(this.state.oneCurrentMove) ) {
+                const ladders = new Audio(ladder)
+                ladders.play()
+            } else if (this.state.soundVolume === true && [4, 30].includes(this.state.oneCurrentMove) ) {
+                const spacecrafts = new Audio(landing)
+                spacecrafts.play()
+            } else if (this.state.soundVolume === true && [43, 50, 56, 73, 84, 87, 98].includes(this.state.oneCurrentMove) ) {
+                const snakes = new Audio(snake)
+                snakes.play()
+            } else if ( this.state.soundVolume === true && this.state.oneCurrentMove > 0 && this.state.oneCurrentMove < 100) {
+                const moving = new Audio(move)
+                moving.play()
+            }
+
+
             if (this.state.oneDice === 6 ) {
                 this.setState({
                     hint: 'player one, roll',
@@ -600,6 +625,12 @@ class SnakesAndLadders extends React.Component {
                     })
                 
             } else if (this.state.oneCurrentMove === 100) {
+
+                if (this.state.soundVolume === true) {
+                    const win = new Audio(winner)
+                    win.play()
+                }
+
                 this.setState({
                     hint: 'player one, WINNER!',
                     oneHint: 'Hoooray!!!',
@@ -627,13 +658,18 @@ class SnakesAndLadders extends React.Component {
         // executes if it is player one's turn
         if ( this.state.turn === 'two'){
 
-            if (this.state.soundVolume === true) {
-                var dice = new Audio(rollSF)
-                dice.play()
-            } 
-            
+
             // generates new twoRandom number between 1 and 6, inclusive
             const twoRand =  Math.floor(Math.random() * 6) + 1;
+
+            if (this.state.soundVolume === true && twoRand === 6 ) {
+                const diceSix = new Audio(dice6)
+                diceSix.play()
+            } else if (this.state.soundVolume === true) {
+                const dice = new Audio(rollSF)
+                dice.play()
+            }
+            
             // shows dice number based on twoRandom number
             if ( twoRand === 1 ) {
                 document.getElementById(222).innerHTML = twoDiceOne
@@ -869,6 +905,20 @@ class SnakesAndLadders extends React.Component {
 
         if (this.state.twoDice > 0 && this.state.oneDice === 0) {
 
+            if (this.state.soundVolume === true && [2, 6, 20, 52, 57, 71].includes(this.state.twoCurrentMove) ) {
+                const ladders = new Audio(ladder)
+                ladders.play()
+            } else if (this.state.soundVolume === true && [4, 30].includes(this.state.twoCurrentMove) ) {
+                const spacecrafts = new Audio(landing)
+                spacecrafts.play()
+            } else if (this.state.soundVolume === true && [43, 50, 56, 73, 84, 87, 98].includes(this.state.twoCurrentMove) ) {
+                const snakes = new Audio(snake)
+                snakes.play()
+            } else if ( this.state.soundVolume === true && this.state.twoCurrentMove > 0 && this.state.twoCurrentMove < 100) {
+                const moving = new Audio(move)
+                moving.play()
+            }
+
             if (this.state.twoDice === 6 ) {
                 this.setState({
                     hint: 'player two, roll',
@@ -1042,6 +1092,11 @@ class SnakesAndLadders extends React.Component {
                 })
             
         } else if (this.state.twoCurrentMove === 100) {
+
+            if (this.state.soundVolume === true) {
+                const win = new Audio(winner)
+                win.play()
+            }
             this.setState({
                 hint: 'player 2, WINNER!',
                 twoHint: 'Hoooray!!!',
@@ -1265,12 +1320,12 @@ class SnakesAndLadders extends React.Component {
                                     <div className="col-3">
 
                                         <div class='row d-flex justify-content-start p-0 pt-3'>
-                                            <div class='col-auto text-flicker-in-glow-2' id="101">
-                                            <i class='bi bi-circle-fill text-info bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
+                                            <div class='col-1 text-flicker-in-glow-2' id="101">
+                                                <i class='bi bi-circle-fill text-info bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
                                             </div>
 
-                                            <div class='col-auto text-flicker-in-glow-2' id="202">
-                                            <i class='bi bi-circle-fill text-danger bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
+                                            <div class='col-1 text-flicker-in-glow-2' id="202">
+                                                <i class='bi bi-circle-fill text-danger bg-dark px-1 ms-3 border rounded-2 border-light fade-in-fwd box-shadow'></i>
                                             </div>
                                         </div>
                                         
