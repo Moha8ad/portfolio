@@ -87,11 +87,11 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     <i class="bi bi-quote fs-1">
                     
                         {/* quote text*/}
-                        <span class="fst-normal fs-2"  style={{color: randomColor}}>{randomQuotes[randomQuoteId]}</span>
+                        <span class="fst-normal fs-4"  style={{color: randomColor}}>{randomQuotes[randomQuoteId]}</span>
                     </i>
                     
                     {/* author */}
-                    <div className="col-12 d-flex justify-content-end fs-4" style={{color: randomColor}}>
+                    <div className="col-12 d-flex justify-content-end fs-6" style={{color: randomColor}}>
                         {randomAuthors[randomQuoteId]}
                     </div>
                 </div>

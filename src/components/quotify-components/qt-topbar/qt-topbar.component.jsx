@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+import { signInWithGoogle } from '../../../firebase/firebase.utils';
 
 import SearchBox from '../../all-reusable-components/search-box/search-box.component';
 
@@ -23,7 +24,7 @@ const QuotifyTopbar = ({ handleChange, midPart, history, back, forward }) => (
                     <div></div>
                 }
             </div>
-            <div class="col-auto d-none d-sm-block">
+            <div class="col-auto d-none d-sm-block" onClick={signInWithGoogle}>
                 <i class="bi bi-person-circle fs-4"></i>
                 <span class="d-none d-lg-inline ms-2 fw-bold">User</span>
             </div>  
