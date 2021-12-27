@@ -1,13 +1,14 @@
 import React from 'react';
 import { withRouter } from "react-router";
 
+import { auth } from '../../../firebase/firebase.utils.js'
+
 import RandomQuoteBox from '../qt-box/qt-random-box/qt-random-box.component';
 import SearchQuoteBox from '../qt-box/qt-search-box/qt-search-box.component';
 import LibraryQuoteBox from '../qt-box/qt-library-box/qt-library-box.component';
 
 import QuotifyNavbar from '../qt-navbar/qt-navbar.component';
 import QuotifyFooter from '../qt-footer/qt-footer.component';
-
 
 import QUOTES_DATA from './qt.data';
 import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component';
@@ -22,7 +23,8 @@ class QuotifyMain extends React.Component {
             colorArr: [],
             searchField: '',
             randomQuoteId: Math.floor(Math.random()*30),
-            randomNum: Math.floor(Math.random()*13)
+            randomNum: Math.floor(Math.random()*13),
+            currentUser: null
         };
     }
     handleChange = e => {
@@ -39,12 +41,23 @@ class QuotifyMain extends React.Component {
         })
     }
 
+    unsubscribeFromAuth = null;
+
     componentDidMount() {
-        this.setState({
-            quotesDB: QUOTES_DATA,
-            colorArr: COLOR_PALETTE
+        this.unsubscribeFromAuth =  auth.onAuthStateChanged(user => {
+
+            this.setState({
+                quotesDB: QUOTES_DATA,
+                colorArr: COLOR_PALETTE,
+                currentUser: user
+            })
         })
     }
+
+    componentWillUnmount() {
+        this.unsubscribeFromAuth();
+    }
+
     render() {
         const { quotesDB, searchField, colorArr, randomQuoteId, randomNum } = this.state;
 
@@ -71,6 +84,7 @@ class QuotifyMain extends React.Component {
                         handleClick={this.handleClick}
                         searchByName={searchByName}
                         randomQuoteId={randomQuoteId}
+                        currentUser={this.state.currentUser}
                     />
                 }
                 {location.pathname === '/profile/search' &&            
@@ -81,6 +95,7 @@ class QuotifyMain extends React.Component {
                         randomColor = {randomColor}
                         searchField={searchField}
                         handleChange={this.handleChange}
+                        currentUser={this.state.currentUser}
                     />
                 }
                 {location.pathname === '/profile/library' &&            
@@ -91,6 +106,7 @@ class QuotifyMain extends React.Component {
                         randomColor = {randomColor}
                         searchField={searchField}
                         handleChange={this.handleChange}
+                        currentUser={this.state.currentUser}
                     />
                 }
                 </div>

@@ -21,7 +21,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
 
                         onClick={handleClick}
                     >
-                        <i class="bi bi-arrow-repeat fs-2" />
+                        <i class="bi bi-arrow-repeat fs-2 cursor-pointer" />
                     </div>
                     {/* repeat button tooltip hover*/}
                     <ReactTooltip class="col-auto fs-6" id="repeat-btn" place="right" effect="solid">
@@ -30,7 +30,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
 
                     {/* share button */}
                     <a
-                        className="col-auto hover-scale-change"
+                        className="col-auto hover-scale-change cursor-pointer"
                         style={{color: randomColor}}
                         data-tip data-for="share-btn"
                         rel="noopener noreferrer"
@@ -49,7 +49,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                         data-tip='saved!' data-event='click focus'
                     >
                    
-                        <i class="bi bi-clipboard fs-5" data-tip data-for="copy-btn">
+                        <i class="bi bi-clipboard fs-5 cursor-pointer" data-tip data-for="copy-btn">
                         
                         </i>
                     </div>
