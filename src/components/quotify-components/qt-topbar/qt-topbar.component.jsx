@@ -24,9 +24,24 @@ const QuotifyTopbar = ({ handleChange, midPart, history, back, forward }) => (
                     <div></div>
                 }
             </div>
-            <div class="col-auto d-none d-sm-block" onClick={signInWithGoogle}>
-                <i class="bi bi-person-circle fs-4"></i>
-                <span class="d-none d-lg-inline ms-2 fw-bold">User</span>
+            <div class="col-auto d-none d-sm-block" >
+                <div class="dropdown">
+                    <button 
+                        class="btn btn-sm btn-dark" 
+                        type="button" 
+                        id="dropdownMenuButton1" 
+                        data-bs-toggle="dropdown" 
+                        aria-expanded="false"
+                    >
+                        <i class="bi bi-person-fill"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                        <li class="dropdown-item disabled" >Sign up</li>
+                        <li class="dropdown-item disabled">Sign in</li>
+                        <li><hr class="dropdown-divider"/></li>
+                        <li class="dropdown-item" onClick={signInWithGoogle}>Login with <i class="bi bi-google"></i></li>
+                    </ul>
+                </div>
             </div>  
         </div>
 )
