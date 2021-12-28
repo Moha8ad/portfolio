@@ -24,7 +24,7 @@ class SignIn extends React.Component {
         password: '' 
       });
     } catch (error) {
-      console.log(error)
+      alert("account does not exist")
     }
 
   };
@@ -53,7 +53,7 @@ class SignIn extends React.Component {
             onChange={this.handleChange}
             value={this.state.email}
             label="email"
-            placeholder='Enter Your Email'
+            placeholder='Your Email'
             required
             />
           </div>
@@ -65,7 +65,7 @@ class SignIn extends React.Component {
               value={this.state.password}
               onChange={this.handleChange}
               label="password"
-              placeholder='Enter Your Password'
+              placeholder='Your Password'
               required
             />
           </div>

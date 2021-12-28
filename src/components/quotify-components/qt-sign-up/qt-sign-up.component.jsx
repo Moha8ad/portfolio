@@ -3,52 +3,54 @@ import React from 'react';
 import { auth, createUserProfileDocument } from '../../../firebase/firebase.utils'
 
 class SignUp extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    };
-  }
-
-  handleSubmit = async event => {
-    event.preventDefault();
-
-    const { displayName, email, password, confirmPassword } = this.state;
-
-    if (password !== confirmPassword) {
-      alert("passwords don't match");
-      return;
-    }
-
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      await createUserProfileDocument(user, { displayName });
-
-      this.setState({
+    constructor() {
+      super();
+  
+      this.state = {
         displayName: '',
         email: '',
         password: '',
         confirmPassword: ''
-      });
-    } catch (error) {
-      console.error(error);
+      };
     }
-  };
-
-  handleChange = event => {
-    const { name, value } = event.target;
-
-    this.setState({ [name]: value });
-  };
-
+  
+    handleSubmit = async event => {
+      event.preventDefault();
+  
+      const { displayName, email, password, confirmPassword } = this.state;
+  
+      if (password !== confirmPassword) {
+        alert("passwords don't match");
+        return;
+      }
+  
+      try {
+        const { user } = await auth.createUserWithEmailAndPassword(
+          email,
+          password
+        );
+  
+        await createUserProfileDocument(user, { displayName });
+  
+        this.setState({
+          displayName: '',
+          email: '',
+          password: '',
+          confirmPassword: ''
+        });
+        alert('created')
+      } catch (error) {
+        console.error(error);
+        alert('problem')
+      }
+    };
+  
+    handleChange = event => {
+      const { name, value } = event.target;
+  
+      this.setState({ [name]: value });
+    };
+  
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
     return (
@@ -57,14 +59,14 @@ class SignUp extends React.Component {
           <div class="fs-4">I do not have an account</div>
           <div class="py-4">Sign up with your email and password</div>
         </div>
-        <form className='sign-up-form' onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
             <div className="col-12">
                 <input
                     type='text'
                     name='displayName'
                     value={displayName}
                     onChange={this.handleChange}
-                    placeholder='Enter Your Name'
+                    placeholder='Your Name'
                     required
                 />
             </div>
@@ -75,7 +77,7 @@ class SignUp extends React.Component {
                     name='email'
                     value={email}
                     onChange={this.handleChange}
-                    placeholder='Enter Your Email'
+                    placeholder='Your Email'
                     required
                 />
             </div>
@@ -85,7 +87,7 @@ class SignUp extends React.Component {
                     name='password'
                     value={password}
                     onChange={this.handleChange}
-                    placeholder='Enter Password'
+                    placeholder='Password'
                     required
                 />
             </div>
