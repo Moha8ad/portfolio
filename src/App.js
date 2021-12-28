@@ -10,6 +10,7 @@ import QuotifyLibrary from './pages/qt-library/qt-library.component';
 import SnakesAndLadders from './pages/snakes-and-ladders/snakes-and-ladders.component';
 import Presentational from './pages/redux-page';
 import Move from './pages/move.component';
+import SignInAndSignUp from './pages/qt-account/qt-account.component'
 
 import './App.css';
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='/profile/snakes-and-ladders' component={SnakesAndLadders} />
         <Route path='/profile/app4' component={Presentational} />
         <Route path='/profile/app5' component={Move} />
+        <Route path='/profile/account' component={SignInAndSignUp} />
       </Switch>
     </div>
   )
