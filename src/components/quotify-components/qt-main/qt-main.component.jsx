@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from "react-router";
 
-import { auth } from '../../../firebase/firebase.utils.js'
+import { auth, createUserProfileDocument  } from '../../../firebase/firebase.utils.js'
 
 import RandomQuoteBox from '../qt-box/qt-random-box/qt-random-box.component';
 import SearchQuoteBox from '../qt-box/qt-search-box/qt-search-box.component';
@@ -44,12 +44,27 @@ class QuotifyMain extends React.Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
-        this.unsubscribeFromAuth =  auth.onAuthStateChanged(user => {
 
+        this.setState({
+            quotesDB: QUOTES_DATA,
+            colorArr: COLOR_PALETTE,
+        })
+        
+        this.unsubscribeFromAuth =  auth.onAuthStateChanged(async userAuth => {
+            if (userAuth) {
+                const userRef = await createUserProfileDocument(userAuth);
+
+                userRef.onSnapshot(snapShot => {
+                    this.setState({
+                        currentUser: {
+                            id: snapShot.id,
+                            ...snapShot.data()
+                        }
+                    })
+                })
+            } 
             this.setState({
-                quotesDB: QUOTES_DATA,
-                colorArr: COLOR_PALETTE,
-                currentUser: user
+                currentUser: userAuth
             })
         })
     }

@@ -1,6 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { auth } from '../../../firebase/firebase.utils'
 
 import { signInWithGoogle } from '../../../firebase/firebase.utils';
@@ -38,7 +37,7 @@ const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) =>
                             data-bs-toggle="dropdown" 
                             aria-expanded="false"
                         >
-                            <i class="bi bi-person-fill"></i> Hello, Signed in
+                            <i class="bi bi-person-fill"></i> Hello, {currentUser.displayName}
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
                             <li class="dropdown-item cursor-pointer" onClick={() => auth.signOut()}>Sign out</li>
