@@ -25,8 +25,61 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 align-items-center align-items-lg-start 
                 fw-bold py-2 p-sm-2"
             >
-                    
                 <li>
+                    <div class="nav-link pb-sm-0"
+                    onClick={() => history.push('/profile/quotify')}
+                    >
+                        <i class="bi bi-house-door fs-4 text-light"></i>
+                        <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-link pb-sm-0"
+                    onClick={() => history.push('/profile/search')}
+                    >
+                        <i class="bi bi-search fs-4 text-light"></i>
+                        <span class="d-none d-lg-inline ms-3 text-secondary"> Search</span> 
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-link"
+                        onClick={() => history.push('/profile/library')}
+                    >
+                        <i class="bi bi-journal-bookmark fs-4 text-light"></i>
+                        <span class="d-none d-lg-inline ms-3 text-secondary"> Library</span> 
+                    </div>
+                </li>
+                
+                <li>
+                    <div class="nav-link d-none d-sm-block pt-sm-4 pb-sm-0">
+                        <i class="bi bi-bookmark-plus fs-4 text-light"></i>
+                        <span class="d-none d-lg-inline ms-3 text-secondary"> Lists</span>   
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-link d-none d-sm-block">
+                        <i class="bi bi-heart fs-4 text-light"></i>
+                        <span class="d-none d-lg-inline ms-3 text-secondary"> Liked</span>  
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <div class="d-block d-sm-none">
+                        <i 
+                            class="bi bi-three-dots fs-4 text-light ms-3" 
+                            id="dropdownMenuButton1" 
+                            data-bs-toggle="dropdown" 
+                            aria-expanded="false"
+                        >
+                            <div class="d-none d-sm-block"> </div>
+                        </i>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1"  style={{zIndex: "10000"}}>
+                            <li class="dropdown-item cursor-pointer bi bi-bookmark-plus"> Lists</li>
+                            <li class="dropdown-item cursor-pointer bi bi-heart"> Liked</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="d-flex justify-self-center align-self-center">
                     {
                         currentUser
                         ?
@@ -64,45 +117,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                             </ul>
                         </div>
                     }
-                </li>
-                <li>
-                    <div class="nav-link pb-sm-0"
-                    onClick={() => history.push('/profile/quotify')}
-                    >
-                        <i class="bi bi-house-door fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 
-                    </div>
-                </li>
-                <li>
-                    <div class="nav-link pb-sm-0"
-                    onClick={() => history.push('/profile/search')}
-                    >
-                        <i class="bi bi-search fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Search</span> 
-                    </div>
-                </li>
-                <li>
-                    <div class="nav-link"
-                        onClick={() => history.push('/profile/library')}
-                    >
-                        <i class="bi bi-journal-bookmark fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Library</span> 
-                    </div>
-                </li>
-                
-                <li>
-                    <div class="nav-link pt-sm-4 pb-sm-0">
-                        <i class="bi bi-bookmark-plus fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Bookmark</span>   
-                    </div>
-                </li>
-                <li>
-                    <div class="nav-link">
-                        <i class="bi bi-heart fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Liked</span>  
-                    </div>
-                </li>
-            </ul>
+                </div>
         </div>
     </div>
 )

@@ -84,6 +84,7 @@ class QuotifyMain extends React.Component {
         const { location } = this.props;
 
         return(
+            <div className="container-fluid">
             <div class='row'>
                 <QuotifyNavbar 
                     handleNavHome={this.handleNavHome}
@@ -130,6 +131,7 @@ class QuotifyMain extends React.Component {
 
                 <QuotifyFooter />
 
+            </div>
             </div>
         )
     }
