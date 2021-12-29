@@ -89,6 +89,8 @@ class QuotifyMain extends React.Component {
                     handleNavHome={this.handleNavHome}
                     handleNavSearch={this.handleNavSearch}
                     handleNavLibrary={this.handleNavLibrary}
+                    currentUser={this.state.currentUser}
+
                 />
                 
                 <div className="qt-main col-12 col-sm-10 overflow-scroll">

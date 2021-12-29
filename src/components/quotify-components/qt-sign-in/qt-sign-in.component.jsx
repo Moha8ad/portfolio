@@ -41,8 +41,8 @@ class SignIn extends React.Component {
     return (
       <div className='row'>
         <div class="col-12">
-          <div class="fs-4">I already have an account</div>
-          <div class="py-4">Sign in with your email and password</div>
+          <div class="fs-4 py-2">I already have an account</div>
+          <div class="py-4 d-none d-sm-block ">Sign in with your email and password</div>
         </div>
         
         <form onSubmit={this.handleSubmit}>

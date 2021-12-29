@@ -20,17 +20,17 @@ const SignInAndSignUp = () => (
                             <i className="bi bi-box-arrow-left text-secondary fs-4 px-3"></i>
                         </Link>
                     </div>
-                    <div class="col-6 d-flex justify-content-center fs-4 text-secondary">
+                    <div class="d-none d-sm-block col-6 d-flex justify-content-center fs-4 text-secondary">
                         Quotify Account
                     </div>
                 </div>
             </div>
             <div class="col-12 p-3"></div>
 
-            <div className="col-12 col-sm-6 p-5">
+            <div className="col-12 col-sm-6 p-sm-5">
                 <SignIn />
             </div>
-            <div className="col-12 col-sm-6 pb-5 py-sm-5 px-5">
+            <div className="col-12 col-sm-6 pb-5 py-4 px-sm-5">
                 <SignUp />
             </div>
 
