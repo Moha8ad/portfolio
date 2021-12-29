@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 
 import QuotifyFooter from "../../components/quotify-components/qt-footer/qt-footer.component";
 
@@ -8,20 +8,15 @@ import SignUp from "../../components/quotify-components/qt-sign-up/qt-sign-up.co
 
 import './qt-account.styles.scss';
 
-const SignInAndSignUp = () => (
+const SignInAndSignUp = ({ history }) => (
     <div class="container-fluid d-flex justify-content-center align-items-start bg-dark text-light p-5"
         style={{minHeight: '100vh'}}
     >
         <div className="row ">
             <div className="col-12 fixed-top p-3">
                 <div class="row">
-                    <div class="col-3 d-flex justify-content-start">
-                        <Link to="/profile/quotify">
-                            <i className="bi bi-box-arrow-left text-secondary fs-4 px-3"></i>
-                        </Link>
-                    </div>
-                    <div class="d-none d-sm-block col-6 d-flex justify-content-center fs-4 text-secondary">
-                        Quotify Account
+                    <div>
+                        <i className="bi bi-box-arrow-left text-secondary fs-4 px-3" onClick={() => history.goBack()}></i>
                     </div>
                 </div>
             </div>
@@ -39,4 +34,4 @@ const SignInAndSignUp = () => (
     </div>
 )
 
-export default SignInAndSignUp;
+export default withRouter(SignInAndSignUp);
