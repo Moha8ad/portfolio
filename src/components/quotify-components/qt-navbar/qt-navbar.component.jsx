@@ -1,5 +1,9 @@
 import React from 'react';
+
 import { withRouter, Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+
 import { auth, signInWithGoogle } from '../../../firebase/firebase.utils';
 
 import AsArLogoLgWt from '../../all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component';
@@ -121,5 +125,9 @@ const QuotifyNavbar = ({ history, currentUser }) => (
         </div>
     </div>
 )
+
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+})
                 
-export default withRouter(QuotifyNavbar);
+export default connect(mapStateToProps)(withRouter(QuotifyNavbar));

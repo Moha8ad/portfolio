@@ -1,5 +1,7 @@
 import React from 'react';
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router';
+
+import { connect } from 'react-redux';
 
 import { auth, createUserProfileDocument  } from '../../../firebase/firebase.utils.js'
 
@@ -9,6 +11,8 @@ import LibraryQuoteBox from '../qt-box/qt-library-box/qt-library-box.component';
 
 import QuotifyNavbar from '../qt-navbar/qt-navbar.component';
 import QuotifyFooter from '../qt-footer/qt-footer.component';
+
+import { setCurrentUser } from '../../../redux/user/user.actions'
 
 import QUOTES_DATA from './qt.data';
 import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component';
@@ -23,9 +27,7 @@ class QuotifyMain extends React.Component {
             colorArr: [],
             searchField: '',
             randomQuoteId: Math.floor(Math.random()*30),
-            randomNum: Math.floor(Math.random()*13),
-            currentUser: null
-        };
+            randomNum: Math.floor(Math.random()*13),        };
     }
     handleChange = e => {
         this.setState({
@@ -44,6 +46,8 @@ class QuotifyMain extends React.Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
+    
+        const { setCurrentUser } = this.props;
 
         this.setState({
             quotesDB: QUOTES_DATA,
@@ -55,18 +59,14 @@ class QuotifyMain extends React.Component {
                 const userRef = await createUserProfileDocument(userAuth);
 
                 userRef.onSnapshot(snapShot => {
-                    this.setState({
-                        currentUser: {
+                    setCurrentUser({
                             id: snapShot.id,
                             ...snapShot.data()
-                        }
-                    })
-                })
-            } 
-            this.setState({
-                currentUser: userAuth
-            })
-        })
+                        });
+                    });
+                } 
+            setCurrentUser({userAuth})
+        });
     }
 
     componentWillUnmount() {
@@ -85,56 +85,47 @@ class QuotifyMain extends React.Component {
 
         return(
             <div className="container-fluid">
-            <div class='row'>
-                <QuotifyNavbar 
-                    handleNavHome={this.handleNavHome}
-                    handleNavSearch={this.handleNavSearch}
-                    handleNavLibrary={this.handleNavLibrary}
-                    currentUser={this.state.currentUser}
-
-                />
-                
-                <div className="qt-main col-12 col-sm-10 overflow-scroll">
-                
-                {location.pathname === '/profile/quotify' &&            
-                    <RandomQuoteBox
-                        randomColor = {randomColor}
-                        handleClick={this.handleClick}
-                        searchByName={searchByName}
-                        randomQuoteId={randomQuoteId}
-                        currentUser={this.state.currentUser}
-                    />
-                }
-                {location.pathname === '/profile/search' &&            
-                    <SearchQuoteBox
-                        handleClick={this.handleClick}
-                        searchByName={searchByName}
-                        randomQuoteId={randomQuoteId}
-                        randomColor = {randomColor}
-                        searchField={searchField}
-                        handleChange={this.handleChange}
-                        currentUser={this.state.currentUser}
-                    />
-                }
-                {location.pathname === '/profile/library' &&            
-                    <LibraryQuoteBox
-                        handleClick={this.handleClick}
-                        searchByName={searchByName}
-                        randomQuoteId={randomQuoteId}
-                        randomColor = {randomColor}
-                        searchField={searchField}
-                        handleChange={this.handleChange}
-                        currentUser={this.state.currentUser}
-                    />
-                }
+                <div class='row'>
+                    <QuotifyNavbar/>
+                    <div className="qt-main col-12 col-sm-10 overflow-scroll">
+                        {location.pathname === '/profile/quotify' &&            
+                            <RandomQuoteBox
+                                randomColor = {randomColor}
+                                handleClick={this.handleClick}
+                                searchByName={searchByName}
+                                randomQuoteId={randomQuoteId}
+                            />
+                        }
+                        {location.pathname === '/profile/search' &&            
+                            <SearchQuoteBox
+                                handleClick={this.handleClick}
+                                searchByName={searchByName}
+                                randomQuoteId={randomQuoteId}
+                                randomColor = {randomColor}
+                                searchField={searchField}
+                                handleChange={this.handleChange}
+                            />
+                        }
+                        {location.pathname === '/profile/library' &&            
+                            <LibraryQuoteBox
+                                handleClick={this.handleClick}
+                                searchByName={searchByName}
+                                randomQuoteId={randomQuoteId}
+                                randomColor = {randomColor}
+                                searchField={searchField}
+                                handleChange={this.handleChange}
+                            />
+                        }
+                    </div>
+                    <QuotifyFooter />
                 </div>
-
-                <QuotifyFooter />
-
-            </div>
             </div>
         )
     }
 }
 
-export default withRouter(QuotifyMain);
+const mapDispatchToProps = dispatch => ({
+    setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(QuotifyMain));

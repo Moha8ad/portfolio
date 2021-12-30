@@ -1,5 +1,9 @@
 import React from 'react';
+
 import { withRouter, Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+
 import { auth, signInWithGoogle } from '../../../firebase/firebase.utils';
 
 import SearchBox from '../../all-reusable-components/search-box/search-box.component';
@@ -16,7 +20,7 @@ const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) =>
                    onClick={forward}
                 />
             </div>
-            <div class="col-7 col-sm-auto me-auto">
+            <div class="col-7 col-sm-6 col-md-auto me-auto">
                 { midPart === "searchBox" ?
                     <SearchBox placeholder={"Search for Authors or Words"} handleChange={handleChange}/>
                 : 
@@ -63,4 +67,8 @@ const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) =>
         </div>
 )
 
-export default withRouter(QuotifyTopbar);
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(withRouter(QuotifyTopbar));

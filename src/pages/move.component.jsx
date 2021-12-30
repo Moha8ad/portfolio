@@ -1,4 +1,3 @@
-import { preventOverflow } from '@popperjs/core';
 import React from 'react';
 
 class Liked extends React.Component {
