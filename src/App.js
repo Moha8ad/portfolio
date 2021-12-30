@@ -8,7 +8,7 @@ import QuotifyMain from './components/quotify-components/qt-main/qt-main.compone
 import SnakesAndLadders from './pages/snakes-and-ladders/snakes-and-ladders.component';
 import Presentational from './pages/redux-page';
 import Move from './pages/move.component';
-import SignInAndSignUp from './pages/qt-account/qt-account.component'
+import SignInAndSignUp from './pages/qt-account/qt-account.component';
 
 import './App.css';
 

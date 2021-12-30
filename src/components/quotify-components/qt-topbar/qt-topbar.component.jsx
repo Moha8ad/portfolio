@@ -28,9 +28,7 @@ const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) =>
                 }
             </div>
             <div class="col-auto ms-auto pe-2" >
-                {
-                    currentUser
-                    ?
+                {currentUser ? (
                     <div class="dropdown d-none d-sm-block">
                         <button 
                             class="btn btn-sm btn-success" 
@@ -45,7 +43,7 @@ const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) =>
                             <li class="dropdown-item cursor-pointer" onClick={() => auth.signOut()}>Sign out</li>
                         </ul>
                     </div>
-                    :
+                    ) : (
                     <div class="dropdown d-none d-sm-block">
                         <button 
                             class="btn btn-sm btn-dark" 
@@ -62,6 +60,7 @@ const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) =>
                             <li class="dropdown-item cursor-pointer" onClick={signInWithGoogle}>Login with <i class="bi bi-google"></i></li>
                         </ul>
                     </div>
+                    )
                 }
             </div>  
         </div>

@@ -65,7 +65,7 @@ class QuotifyMain extends React.Component {
                         });
                     });
                 } 
-            setCurrentUser({userAuth})
+            setCurrentUser(userAuth)
         });
     }
 
