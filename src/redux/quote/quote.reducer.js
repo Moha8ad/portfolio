@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-    randomQuoteId: Math.floor(Math.random()*30)
+    currentRandomQuoteId: Math.floor(Math.random()*30)
 }
 
 const quoteReducer = (state= INITIAL_STATE , action) => {
