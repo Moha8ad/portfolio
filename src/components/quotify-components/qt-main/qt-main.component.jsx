@@ -39,6 +39,9 @@ class QuotifyMain extends React.Component {
 
     handleClick = (e) => {
         e.preventDefault()
+
+        
+
         this.props.setRandomQuoteId(Math.floor(Math.random()*this.state.quotesDB.length))
         this.setState({
             randomNum: Math.floor(Math.random()*13)
@@ -127,7 +130,7 @@ const mapStateToProps = ({ user }) => ({
     currentUser: user.currentUser
   });
   
-  const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
     setCurrentUser: user => dispatch(setCurrentUser(user)),
     setRandomQuoteId: randomQuoteId => dispatch(setRandomQuoteId(randomQuoteId))
   });

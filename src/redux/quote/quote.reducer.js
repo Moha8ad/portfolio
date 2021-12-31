@@ -7,7 +7,7 @@ const quoteReducer = (state= INITIAL_STATE , action) => {
         case 'SET_RANDOM_QUOTE_ID':
             return {
                 ...state,
-                randomQuoteId: action.payload
+                currentRandomQuoteId: action.payload
             }
         default:
             return state

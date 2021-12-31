@@ -105,7 +105,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
 )
 
 const mapStateToProps = state => ({
-    randomQuoteId: state.randomQuoteId.randomQuoteId
+    randomQuoteId: state.randomQuoteId.currentRandomQuoteId
 })
 
 
