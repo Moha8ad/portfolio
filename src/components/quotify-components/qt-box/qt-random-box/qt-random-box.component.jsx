@@ -6,7 +6,7 @@ import QuotifyTopbar from '../../qt-topbar/qt-topbar.component';
 
 import RandomQuote from './qt-random';
 
-const RandomQuoteBox = ({ history, handleClick, searchByName, randomQuoteId, randomColor }) => (
+const RandomQuoteBox = ({ history, handleClick, searchByName, randomColor }) => (
     <div class="row">
         <div className="qt-topbar col-12 sticky-top me-auto py-2">
             <QuotifyTopbar 
@@ -18,7 +18,6 @@ const RandomQuoteBox = ({ history, handleClick, searchByName, randomQuoteId, ran
                 randomAuthors={searchByName.map(i => i.author)} 
                 randomQuotes={searchByName.map(i => i.quote)} 
                 handleClick={handleClick}
-                randomQuoteId={randomQuoteId}
                 randomColor={randomColor}
             />         
         </div>

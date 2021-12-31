@@ -1,5 +1,7 @@
 import React from "react";
 
+import { connect } from 'react-redux'
+
 import ReactTooltip from "react-tooltip";
 
 const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
@@ -16,7 +18,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     <div class="row d-flex align-items-center">
 
                     {/* repeat button */}
-                    <div className="col-auto me-auto hover-scale-rotate"
+                    <div className="col-auto me-auto hover-rotate"
                         data-tip data-for="repeat-btn"
 
                         onClick={handleClick}
@@ -102,4 +104,9 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
     </div>
 )
 
-export default RandomQuote;
+const mapStateToProps = state => ({
+    randomQuoteId: state.randomQuoteId.randomQuoteId
+})
+
+
+export default connect(mapStateToProps)(RandomQuote);

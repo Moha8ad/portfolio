@@ -126,5 +126,8 @@ const QuotifyNavbar = ({ history, currentUser }) => (
     </div>
 )
 
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+})
                 
-export default withRouter(QuotifyNavbar);
+export default connect(mapStateToProps)(withRouter(QuotifyNavbar));

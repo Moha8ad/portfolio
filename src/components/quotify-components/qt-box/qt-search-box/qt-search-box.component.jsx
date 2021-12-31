@@ -5,7 +5,7 @@ import QuotifyTopbar from '../../qt-topbar/qt-topbar.component';
 
 import ResultQuote from './qt-search';
 
-const SearchQuoteBox = ({ history, searchField, handleChange, searchByName, randomQuoteId, randomColor }) => (
+const SearchQuoteBox = ({ history, searchField, handleChange, searchByName, randomColor }) => (
     <div class="row">
         <div className="qt-topbar col-12 sticky-top me-auto py-2">
             <QuotifyTopbar 
@@ -28,7 +28,6 @@ const SearchQuoteBox = ({ history, searchField, handleChange, searchByName, rand
                         <ResultQuote key={result.id} 
                             result={result}
                             randomColor = {randomColor}
-                            randomQuoteId={randomQuoteId}
                         /> 
                     )}
                 </div>

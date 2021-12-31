@@ -12,7 +12,8 @@ import LibraryQuoteBox from '../qt-box/qt-library-box/qt-library-box.component';
 import QuotifyNavbar from '../qt-navbar/qt-navbar.component';
 import QuotifyFooter from '../qt-footer/qt-footer.component';
 
-import { setCurrentUser } from '../../../redux/user/user.actions'
+import { setCurrentUser } from '../../../redux/user/user.actions';
+import { setRandomQuoteId } from '../../../redux/quote/quote.actions'
 
 import QUOTES_DATA from './qt.data';
 import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component';
@@ -26,20 +27,21 @@ class QuotifyMain extends React.Component {
             quotesDB: [],
             colorArr: [],
             searchField: '',
-            randomQuoteId: Math.floor(Math.random()*30),
-            randomNum: Math.floor(Math.random()*13),        };
+            randomNum: Math.floor(Math.random()*13),        
+        };
     }
+    
     handleChange = e => {
         this.setState({
             searchField: e.target.value,
         })
-      }
+    }
+
     handleClick = (e) => {
         e.preventDefault()
+        this.props.setRandomQuoteId(Math.floor(Math.random()*this.state.quotesDB.length))
         this.setState({
-            randomQuoteId: Math.floor(Math.random()*this.state.quotesDB.length),
             randomNum: Math.floor(Math.random()*13)
-
         })
     }
 
@@ -60,11 +62,11 @@ class QuotifyMain extends React.Component {
 
                 userRef.onSnapshot(snapShot => {
                     setCurrentUser({
-                            id: snapShot.id,
-                            ...snapShot.data() 
-                        });
+                        id: snapShot.id,
+                        ...snapShot.data() 
                     });
-                } 
+                });
+            } 
             setCurrentUser(userAuth)
         });
     }
@@ -74,7 +76,7 @@ class QuotifyMain extends React.Component {
     }
 
     render() {
-        const { quotesDB, searchField, colorArr, randomQuoteId, randomNum } = this.state;
+        const { quotesDB, searchField, colorArr, randomNum } = this.state;
 
         const randomColor = colorArr[randomNum]
         
@@ -93,14 +95,12 @@ class QuotifyMain extends React.Component {
                                 randomColor = {randomColor}
                                 handleClick={this.handleClick}
                                 searchByName={searchByName}
-                                randomQuoteId={randomQuoteId}
                             />
                         }
                         {location.pathname === '/profile/search' &&            
                             <SearchQuoteBox
                                 handleClick={this.handleClick}
                                 searchByName={searchByName}
-                                randomQuoteId={randomQuoteId}
                                 randomColor = {randomColor}
                                 searchField={searchField}
                                 handleChange={this.handleChange}
@@ -110,7 +110,6 @@ class QuotifyMain extends React.Component {
                             <LibraryQuoteBox
                                 handleClick={this.handleClick}
                                 searchByName={searchByName}
-                                randomQuoteId={randomQuoteId}
                                 randomColor = {randomColor}
                                 searchField={searchField}
                                 handleChange={this.handleChange}
@@ -129,7 +128,8 @@ const mapStateToProps = ({ user }) => ({
   });
   
   const mapDispatchToProps = dispatch => ({
-    setCurrentUser: user => dispatch(setCurrentUser(user))
+    setCurrentUser: user => dispatch(setCurrentUser(user)),
+    setRandomQuoteId: randomQuoteId => dispatch(setRandomQuoteId(randomQuoteId))
   });
   
   export default connect(

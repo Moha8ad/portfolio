@@ -5,7 +5,7 @@ import QuotifyTopbar from "../../qt-topbar/qt-topbar.component";
 
 import LibraryQuote from './qt-library';
 
-const LibraryQuoteBox = ({ history, searchByName, randomQuoteId, randomColor, handleClick, handleChange}) => (
+const LibraryQuoteBox = ({ history, searchByName, randomColor, handleClick, handleChange}) => (
     <div class="row">
         <div className="qt-topbar col-12 sticky-top me-auto py-2">
             <QuotifyTopbar 
@@ -21,7 +21,6 @@ const LibraryQuoteBox = ({ history, searchByName, randomQuoteId, randomColor, ha
                 <div>
                     <LibraryQuote 
                         randomColor = {randomColor}
-                        randomQuoteId={randomQuoteId}
                         handleClick={handleClick}
                         searchByName={searchByName}
                     /> 
