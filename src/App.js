@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom'; 
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom'; 
 import { connect } from 'react-redux';
 
 import HomePage from './pages/homepage/homepage.component';
@@ -26,7 +26,7 @@ const App = ({ currentUser }) => (
           <Route path='/profile/app4' component={Presentational} />
           <Route path='/profile/app5' component={Move} />
           <Route 
-             path='/profile/account'
+             exact path='/profile/account'
               render={() =>
                 currentUser ? (
                   <Redirect to='/profile/quotify' />
@@ -40,8 +40,9 @@ const App = ({ currentUser }) => (
 
 )
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   currentUser: state.user.currentUser
 });
 
-export default connect(mapStateToProps)(App);
+
+export default connect(mapStateToProps)(withRouter(App));
