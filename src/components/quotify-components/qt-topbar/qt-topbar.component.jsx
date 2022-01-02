@@ -24,7 +24,7 @@ const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) =>
                 { midPart === "searchBox" ?
                     <SearchBox placeholder={"Search for Authors or Words"} handleChange={handleChange}/>
                 : 
-                    <div></div>
+                    null
                 }
             </div>
             <div class="col-auto ms-auto pe-2" >

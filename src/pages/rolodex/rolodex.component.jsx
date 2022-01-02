@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 import CardList from '../../components/rolodex-components/card-list/card-list.component';
 import { SearchBox } from '../../components/all-reusable-components/search-box/search-box.component';
@@ -53,4 +55,9 @@ export class Rolodex extends Component {
   }
 }
 
-export default Rolodex;
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+})
+
+
+export default connect(mapStateToProps)(Rolodex);

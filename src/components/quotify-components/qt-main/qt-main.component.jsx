@@ -1,6 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { auth, createUserProfileDocument  } from '../../../firebase/firebase.utils.js'
@@ -39,9 +38,6 @@ class QuotifyMain extends React.Component {
 
     handleClick = (e) => {
         e.preventDefault()
-
-        
-
         this.props.setRandomQuoteId(Math.floor(Math.random()*this.state.quotesDB.length))
         this.setState({
             randomNum: Math.floor(Math.random()*13)
@@ -100,7 +96,7 @@ class QuotifyMain extends React.Component {
                                 searchByName={searchByName}
                             />
                         }
-                        {location.pathname === '/profile/search' &&            
+                        {location.pathname === '/profile/quotify/search' &&            
                             <SearchQuoteBox
                                 handleClick={this.handleClick}
                                 searchByName={searchByName}
@@ -109,7 +105,7 @@ class QuotifyMain extends React.Component {
                                 handleChange={this.handleChange}
                             />
                         }
-                        {location.pathname === '/profile/library' &&            
+                        {location.pathname === '/profile/quotify/library' &&            
                             <LibraryQuoteBox
                                 handleClick={this.handleClick}
                                 searchByName={searchByName}
@@ -118,6 +114,7 @@ class QuotifyMain extends React.Component {
                                 handleChange={this.handleChange}
                             />
                         }
+                        
                     </div>
                     <QuotifyFooter />
                 </div>
@@ -126,9 +123,6 @@ class QuotifyMain extends React.Component {
     }
 }
 
-const mapStateToProps = ({ user }) => ({
-    currentUser: user.currentUser
-  });
   
 const mapDispatchToProps = dispatch => ({
     setCurrentUser: user => dispatch(setCurrentUser(user)),
@@ -136,6 +130,6 @@ const mapDispatchToProps = dispatch => ({
   });
   
   export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
   )(withRouter(QuotifyMain));
