@@ -11,17 +11,17 @@ import LibraryQuoteBox from '../../components/quotify-components/qt-box/qt-libra
 import QuotifyNavbar from '../../components/quotify-components/qt-navbar/qt-navbar.component';
 import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-footer.component';
 
-import SignInAndSignUp from '../../../pages/qt-account/qt-account.component';
+import SignInAndSignUp from '../../components/quotify-components/qt-sign-in-sign-up/qt-sign-in-sign-up.component'
 
 import { setCurrentUser } from '../../redux/user/user.actions';
 import { setRandomQuoteId } from '../../redux/quote/quote.actions'
 
-import QUOTES_DATA from './qt.data';
+import QUOTES_DATA from './quotify-data';
 import COLOR_PALETTE from '../../components/all-reusable-components/random-color/random-color-component';
 
-import './qt-main.styles.scss';
+import './quotify.styles.scss';
 
-class QuotifyMain extends React.Component {
+class Quotify extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -140,4 +140,4 @@ const mapDispatchToProps = dispatch => ({
   export default connect(
     null,
     mapDispatchToProps
-  )(withRouter(QuotifyMain));
+  )(withRouter(Quotify));

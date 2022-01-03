@@ -30,7 +30,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 fw-bold py-2 p-sm-2"
             >
                 <li>
-                    <div class="nav-link pb-sm-0"
+                    <div class="nav-link pb-sm-0 cursor-pointer"
                     onClick={() => history.push('/profile/quotify')}
                     >
                         <i class="bi bi-house-door fs-4 text-light"></i>
@@ -38,7 +38,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                     </div>
                 </li>
                 <li>
-                    <div class="nav-link pb-sm-0"
+                    <div class="nav-link pb-sm-0 cursor-pointer"
                     onClick={() => history.push('/profile/quotify/search')}
                     >
                         <i class="bi bi-search fs-4 text-light"></i>
@@ -46,7 +46,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                     </div>
                 </li>
                 <li>
-                    <div class="nav-link"
+                    <div class="nav-link cursor-pointer"
                         onClick={() => history.push('/profile/quotify/library')}
                     >
                         <i class="bi bi-journal-bookmark fs-4 text-light"></i>
@@ -55,13 +55,13 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 </li>
                 
                 <li>
-                    <div class="nav-link d-none d-sm-block pt-sm-4 pb-sm-0">
+                    <div class="nav-link d-none d-sm-block pt-sm-4 pb-sm-0 cursor-pointer">
                         <i class="bi bi-bookmark-plus fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Lists</span>   
                     </div>
                 </li>
                 <li>
-                    <div class="nav-link d-none d-sm-block">
+                    <div class="nav-link d-none d-sm-block cursor-pointer">
                         <i class="bi bi-heart fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Liked</span>  
                     </div>
