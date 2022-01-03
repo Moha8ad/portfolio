@@ -18,10 +18,10 @@ const App = () => (
       <Route exact path='/profile/' component={HomePage} />
       <Route path='/profile/rolodex' component={Rolodex} />
       <Route path='/profile/quotify' component={QuotifyMain} />
+      <Route path='/profile/quotify/account' component={SignInAndSignUp} />
       <Route path='/profile/snake-and-ladders' component={SnakesAndLadders} />
       <Route path='/profile/app4' component={Presentational} />
       <Route path='/profile/app5' component={Move} />
-      <Route path='/profile/account' component={SignInAndSignUp} />
 
     </Switch>
   </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { auth, createUserProfileDocument  } from '../../../firebase/firebase.utils.js'
+import { auth, createUserProfileDocument  } from '../../../firebase/firebase.utils.js';
 
 import RandomQuoteBox from '../qt-box/qt-random-box/qt-random-box.component';
 import SearchQuoteBox from '../qt-box/qt-search-box/qt-search-box.component';
@@ -10,6 +10,8 @@ import LibraryQuoteBox from '../qt-box/qt-library-box/qt-library-box.component';
 
 import QuotifyNavbar from '../qt-navbar/qt-navbar.component';
 import QuotifyFooter from '../qt-footer/qt-footer.component';
+
+import SignInAndSignUp from '../../../pages/qt-account/qt-account.component';
 
 import { setCurrentUser } from '../../../redux/user/user.actions';
 import { setRandomQuoteId } from '../../../redux/quote/quote.actions'
@@ -43,17 +45,17 @@ class QuotifyMain extends React.Component {
             randomNum: Math.floor(Math.random()*13)
         })
     }
-
+    
     unsubscribeFromAuth = null;
 
     componentDidMount() {
-    
-        const { setCurrentUser } = this.props;
 
         this.setState({
             quotesDB: QUOTES_DATA,
             colorArr: COLOR_PALETTE,
         })
+    
+        const { setCurrentUser } = this.props;
         
         this.unsubscribeFromAuth =  auth.onAuthStateChanged(async userAuth => {
             if (userAuth) {
@@ -85,6 +87,11 @@ class QuotifyMain extends React.Component {
         const { location } = this.props;
 
         return(
+            <div>
+            {location.pathname === '/profile/quotify/account' 
+            ? 
+            <SignInAndSignUp />
+            :
             <div className="container-fluid">
                 <div class='row'>
                     <QuotifyNavbar/>
@@ -118,6 +125,7 @@ class QuotifyMain extends React.Component {
                     </div>
                     <QuotifyFooter />
                 </div>
+            </div>}
             </div>
         )
     }

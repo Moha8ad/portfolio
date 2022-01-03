@@ -21,30 +21,6 @@ class SignInAndSignUp extends React.Component {
         this.props.history.goBack();
     }
 
-    unsubscribeFromAuth = null;
-
-    componentDidMount() {
-    
-        const { setCurrentUser } = this.props;
-        
-        this.unsubscribeFromAuth =  auth.onAuthStateChanged(async userAuth => {
-            if (userAuth) {
-                const userRef = await createUserProfileDocument(userAuth);
-
-                userRef.onSnapshot(snapShot => {
-                    setCurrentUser({
-                        id: snapShot.id,
-                        ...snapShot.data() 
-                    });
-                });
-            } 
-            setCurrentUser(userAuth)
-        });
-    }
-
-    componentWillUnmount() {
-        this.unsubscribeFromAuth();
-    }
 
     render() {
         return(
@@ -59,9 +35,7 @@ class SignInAndSignUp extends React.Component {
                         <div className="col-12 fixed-top p-3">
                             <div class="row">
                                 <div>
-                                    <i className="bi bi-box-arrow-left text-secondary fs-4 px-3" onClick={this.goBack}></i>
-                                    {/*  */}
-                                </div>
+                                    <i className="bi bi-box-arrow-left text-secondary fs-4 px-3" onClick={this.goBack}></i>                                </div>
                             </div>
                         </div>
                         <div class="col-12 p-3"></div>
@@ -76,7 +50,7 @@ class SignInAndSignUp extends React.Component {
                     </div>
                 </div>
                 ) : (
-                <Redirect to="/profile/quotify" />
+                <Redirect to={this.props.history.goBack()} />
                 )
             }
             </div>    
@@ -84,15 +58,8 @@ class SignInAndSignUp extends React.Component {
     }
 }
 
-const mapStateToProps = ({ user }) => ({
-    currentUser: user.currentUser
+const mapStateToProps = ({ user: { currentUser} }) => ({
+    currentUser
 })
 
-const mapDispatchToProps = dispatch => ({
-    setCurrentUser: user => dispatch(setCurrentUser(user)),
-  });
-  
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-    )(withRouter(SignInAndSignUp));
+export default connect(mapStateToProps)(withRouter(SignInAndSignUp));

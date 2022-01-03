@@ -8,7 +8,7 @@ import { auth, signInWithGoogle } from '../../../firebase/firebase.utils';
 
 import SearchBox from '../../all-reusable-components/search-box/search-box.component';
 
-import './qt-topbar.styles.scss'
+import './qt-topbar.styles.scss';
 
 const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) => (
         <div class="row d-flex flex-wrap align-items-center fs-5 fw-bold text-light ps-2">
@@ -55,7 +55,7 @@ const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) =>
                         <div>Hello, Sign in</div>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                            <Link to="/profile/account"><li class="dropdown-item">Sign in/ Sign up</li></Link>
+                            <Link to="/profile/quotify/account"><li class="dropdown-item">Sign in/ Sign up</li></Link>
                             <li><hr class="dropdown-divider"/></li>
                             <li class="dropdown-item cursor-pointer" onClick={signInWithGoogle}>Login with <i class="bi bi-google"></i></li>
                         </ul>
@@ -66,7 +66,7 @@ const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) =>
         </div>
 )
 
-const mapStateToProps = state => ({
+const mapStateToProps = ( state ) => ({
     currentUser: state.user.currentUser
 })
 
