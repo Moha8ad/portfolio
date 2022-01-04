@@ -7,6 +7,7 @@ import { auth, createUserProfileDocument  } from '../../firebase/firebase.utils.
 import RandomQuoteBox from '../../components/quotify-components/qt-box/qt-random-box/qt-random-box.component';
 import SearchQuoteBox from '../../components/quotify-components/qt-box/qt-search-box/qt-search-box.component';
 import LibraryQuoteBox from '../../components/quotify-components/qt-box/qt-library-box/qt-library-box.component';
+import LikedQuoteBox from '../../components/quotify-components/qt-box/qt-liked-box/qt-liked-box.component';
 
 import QuotifyNavbar from '../../components/quotify-components/qt-navbar/qt-navbar.component';
 import QuotifyFooter from '../../components/quotify-components/qt-footer/qt-footer.component';
@@ -28,7 +29,7 @@ class Quotify extends React.Component {
             quotesDB: [],
             colorArr: [],
             searchField: '',
-            randomNum: Math.floor(Math.random()*13),        
+            randomNum: Math.floor(Math.random()*13)
         };
     }
     
@@ -121,7 +122,9 @@ class Quotify extends React.Component {
                                 handleChange={this.handleChange}
                             />
                         }
-                        
+                        {location.pathname === '/profile/quotify/liked' &&            
+                            <LikedQuoteBox />
+                        }
                     </div>
                     <QuotifyFooter />
                 </div>

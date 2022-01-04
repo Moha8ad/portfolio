@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import ReactTooltip from "react-tooltip";
 
-const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
+const RandomQuote = ({ currentRandomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
     
     /* quote row */
     <div class="row d-flex justify-content-center align-items-center">
@@ -37,7 +37,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                         data-tip data-for="share-btn"
                         rel="noopener noreferrer"
                         target="_blank"
-                        href={`https://twitter.com/intent/tweet?text=${randomQuotes[randomQuoteId]} - ${randomAuthors[randomQuoteId]}`}
+                        href={`https://twitter.com/intent/tweet?text=${randomQuotes[currentRandomQuoteId]} - ${randomAuthors[currentRandomQuoteId]}`}
                     >
                         <i class="bi bi-twitter fs-5"></i>
                     </a>
@@ -63,7 +63,7 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     <ReactTooltip 
                         class="col-auto bg-success fs-6" 
                         place="right" effect="solid"
-                        afterShow = {() => navigator.clipboard.writeText(`${randomQuotes[randomQuoteId]} - ${randomAuthors[randomQuoteId]}`)}
+                        afterShow = {() => navigator.clipboard.writeText(`${randomQuotes[currentRandomQuoteId]} - ${randomAuthors[currentRandomQuoteId]}`)}
                         globalEventOff={"click"}
 
                     />
@@ -75,8 +75,8 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
             <div className="col-12 d-flex justify-content-center align-items-center author-home-animation">
         
                 <img
-                    alt={`${randomAuthors[randomQuoteId]}`}
-                    src={`https://robohash.org/${[randomQuoteId]}?&&size=220x220`}
+                    alt={`${randomAuthors[currentRandomQuoteId]}`}
+                    src={`https://robohash.org/${[currentRandomQuoteId]}?&&size=220x220`}
                     />        
             
             </div>
@@ -89,12 +89,12 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
                     <i class="bi bi-quote fs-1">
                     
                         {/* quote text*/}
-                        <span class="fst-normal fs-4"  style={{color: randomColor}}>{randomQuotes[randomQuoteId]}</span>
+                        <span class="fst-normal fs-4"  style={{color: randomColor}}>{randomQuotes[currentRandomQuoteId]}</span>
                     </i>
                     
                     {/* author */}
                     <div className="col-12 d-flex justify-content-end fs-6" style={{color: randomColor}}>
-                        {randomAuthors[randomQuoteId]}
+                        {randomAuthors[currentRandomQuoteId]}
                     </div>
                 </div>
             </div>
@@ -104,8 +104,8 @@ const RandomQuote = ({ randomQuoteId, randomAuthors, randomQuotes, handleClick, 
     </div>
 )
 
-const mapStateToProps = state => ({
-    randomQuoteId: state.randomQuoteId.currentRandomQuoteId
+const mapStateToProps = ({ quote: { currentRandomQuoteId } }) => ({
+    currentRandomQuoteId
 })
 
 

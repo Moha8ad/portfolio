@@ -61,7 +61,9 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                     </div>
                 </li>
                 <li>
-                    <div class="nav-link d-none d-sm-block cursor-pointer">
+                    <div class="nav-link d-none d-sm-block cursor-pointer"
+                        onClick={() => history.push('/profile/quotify/liked')}
+                    >
                         <i class="bi bi-heart fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Liked</span>  
                     </div>

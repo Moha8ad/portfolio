@@ -19,11 +19,13 @@ const LibraryQuoteBox = ({ history, searchByName, randomColor, handleClick, hand
             {(searchByName.length > 0) 
             ?
                 <div>
+                {searchByName.map((result, id) => 
                     <LibraryQuote 
-                        randomColor = {randomColor}
-                        handleClick={handleClick}
-                        searchByName={searchByName}
+                        id={id} 
+                        result= {result}
+                        randomColor= {randomColor}
                     /> 
+                )}
                     <div class="mb-5 pb-5"/>
                 </div>
             :
