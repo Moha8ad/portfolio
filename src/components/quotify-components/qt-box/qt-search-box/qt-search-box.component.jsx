@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import QuotifyTopbar from '../../qt-topbar/qt-topbar.component';
@@ -25,7 +26,7 @@ const SearchQuoteBox = ({ history, searchField, handleChange, searchByName, rand
             ?
                 <div>
                     {searchByName.map(result => 
-                        <ResultQuote key={result.id} 
+                        <ResultQuote
                             result={result}
                             randomColor = {randomColor}
                         /> 
@@ -40,4 +41,8 @@ const SearchQuoteBox = ({ history, searchField, handleChange, searchByName, rand
     </div>
 )
 
-export default withRouter(SearchQuoteBox);
+const mapStateToProps = ({quote: {addedQuote}}) => ({
+    addedQuote
+})
+
+export default connect(mapStateToProps)(withRouter(SearchQuoteBox));

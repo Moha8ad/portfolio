@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { withRouter } from 'react-router-dom';
 
@@ -6,7 +7,7 @@ import QuotifyTopbar from '../../qt-topbar/qt-topbar.component';
 
 import RandomQuote from './qt-random';
 
-const RandomQuoteBox = ({ history, handleClick, searchByName, randomColor }) => (
+const RandomQuoteBox = ({ history, handleClick, quotesDB }) => (
     <div class="row">
         <div className="qt-topbar col-12 sticky-top me-auto py-2">
             <QuotifyTopbar 
@@ -15,13 +16,18 @@ const RandomQuoteBox = ({ history, handleClick, searchByName, randomColor }) => 
         </div>
         <div className="col-12">
             <RandomQuote
-                randomAuthors={searchByName.map(i => i.author)} 
-                randomQuotes={searchByName.map(i => i.quote)} 
+                randomAuthors={quotesDB.map(i => i.author)} 
+                randomQuotes={quotesDB.map(i => i.quote)} 
+                randomIds={quotesDB.map(i => i.id)}
                 handleClick={handleClick}
-                randomColor={randomColor}
             />         
         </div>
     </div>
 )
 
-export default withRouter(RandomQuoteBox);
+const mapStateToProps = ({quote: { quotesDB }}) => ({
+    quotesDB
+})
+
+
+export default connect(mapStateToProps)(withRouter(RandomQuoteBox));

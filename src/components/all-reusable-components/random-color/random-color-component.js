@@ -11,7 +11,19 @@ const COLOR_PALETTE = [
     '#f72585',
     '#4c956c',
     '#c0fdff',
-    '#c77dff'
+    '#c77dff',
+    '#D77FA1',
+    '#CAB8FF',
+    '#C1FFD7',
+    '#1A5F7A',
+    '#84DFFF',
+    '#516BEB',
+    '#519259',
+    '#C37B89',
+    '#99A799',
+    '#FFB085',
+    '#C449C2',
+    '#1597E5',
     
 ]
 export default COLOR_PALETTE;

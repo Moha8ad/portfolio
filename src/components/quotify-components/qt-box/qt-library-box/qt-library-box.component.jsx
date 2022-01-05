@@ -5,21 +5,21 @@ import QuotifyTopbar from "../../qt-topbar/qt-topbar.component";
 
 import LibraryQuote from './qt-library';
 
-const LibraryQuoteBox = ({ history, searchByName, randomColor, handleClick, handleChange}) => (
+const LibraryQuoteBox = ({ history, searchAtLibrary, randomColor, handleClick, handleChangeLibrary}) => (
     <div class="row">
         <div className="qt-topbar col-12 sticky-top me-auto py-2">
             <QuotifyTopbar 
                 midPart={"searchBox"}
                 back={() => history.goBack()}
                 forward={() => history.goForward()}
-                handleChange={handleChange}
+                handleChange={handleChangeLibrary}
             />
         </div>
         <div class="col-12">
-            {(searchByName.length > 0) 
+            {(searchAtLibrary.length > 0) 
             ?
                 <div>
-                {searchByName.map((result, id) => 
+                {searchAtLibrary.map((result, id) => 
                     <LibraryQuote 
                         id={id} 
                         result= {result}

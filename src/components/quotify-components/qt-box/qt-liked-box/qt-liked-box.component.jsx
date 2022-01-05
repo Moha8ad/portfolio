@@ -14,14 +14,42 @@ const LikedQuoteBox = ({ history, likedQuote }) => (
                 />
             </div>
             <div class="col-12 text-light">
+                
+                {
+                    likedQuote.length < 1 ?
+                    <h1>No Liked Quote</h1>
+                    :
+                    ''
+                }
             
-                <h1>Liked Quotes</h1>
-                {likedQuote.map(liked => 
-                <h2>
-                    <span class="text-primary">{liked.author} </span>
-                    says 
-                    <span class="text-warning"> {liked.quote}</span>
-                </h2>
+                {likedQuote.map((liked )=> 
+                    <div class="row liked-box border border-1 rounded-2 py-3 m-3">
+                        <div className="col-3">
+                            <div className="row">
+                                <div className="col-12 pb-4">
+                                    <div className="row ">
+                                        <div className="col-12 fs-1 pb-2 d-flex justify-content-center">
+                                            <img
+                                            alt='img'
+                                            src={`https://robohash.org/${[liked.id]}?&&size=180x180`}
+                                            />
+                                        </div>
+                                        <div className="col-12 text-light text-center fs-5">{liked.author}</div>
+                                    </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="row d-flex justify-content-center text-secondary">
+                                        <div className="col-auto">copy</div>
+                                        <div className="col-auto">like</div>
+                                        <div className="col-auto">share</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-9 d-flex align-self-center">
+                            <h1 class="text-warning fs-3"> {liked.quote}</h1>
+                        </div>   
+                    </div>
                 )}
             </div>
         </div>

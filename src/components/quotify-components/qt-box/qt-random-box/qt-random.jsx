@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 
 import ReactTooltip from "react-tooltip";
 
-const RandomQuote = ({ currentRandomQuoteId, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
+const RandomQuote = ({ currentRandomQuoteId, randomIds, randomAuthors, randomQuotes, handleClick, randomColorNum }) => ( 
     
     /* quote row */
     <div class="row d-flex justify-content-center align-items-center">
  
         {/* quote box */}
-        <div class="col-10 col-sm-8 border border-2 border-light rounded-2 m-4 box-animation" style={{backgroundColor: randomColor}}>
-            <div class="row d-flex justify-content-center align-items-center" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.200)"}}>
+        <div class="col-10 col-sm-8 border border-2 border-light rounded-2 m-4 box-animation" style={{backgroundColor: randomColorNum}}>
+            <div class="row d-flex justify-content-center align-items-center" style={{color: randomColorNum, backgroundColor:"rgba(26, 21, 25, 0.200)"}}>
             
                 {/* buttons */}
                 <div class="col-12 mt-4 mb-0 px-4">
@@ -33,7 +33,7 @@ const RandomQuote = ({ currentRandomQuoteId, randomAuthors, randomQuotes, handle
                     {/* share button */}
                     <a
                         className="col-auto hover-scale-change cursor-pointer"
-                        style={{color: randomColor}}
+                        style={{color: randomColorNum}}
                         data-tip data-for="share-btn"
                         rel="noopener noreferrer"
                         target="_blank"
@@ -76,7 +76,7 @@ const RandomQuote = ({ currentRandomQuoteId, randomAuthors, randomQuotes, handle
         
                 <img
                     alt={`${randomAuthors[currentRandomQuoteId]}`}
-                    src={`https://robohash.org/${[currentRandomQuoteId]}?&&size=220x220`}
+                    src={`https://robohash.org/${randomIds[currentRandomQuoteId]}?&&size=220x220`}
                     />        
             
             </div>
@@ -89,11 +89,11 @@ const RandomQuote = ({ currentRandomQuoteId, randomAuthors, randomQuotes, handle
                     <i class="bi bi-quote fs-1">
                     
                         {/* quote text*/}
-                        <span class="fst-normal fs-4"  style={{color: randomColor}}>{randomQuotes[currentRandomQuoteId]}</span>
+                        <span class="fst-normal fs-4"  style={{color: randomColorNum}}>{randomQuotes[currentRandomQuoteId]}</span>
                     </i>
                     
                     {/* author */}
-                    <div className="col-12 d-flex justify-content-end fs-6" style={{color: randomColor}}>
+                    <div className="col-12 d-flex justify-content-end fs-6" style={{color: randomColorNum}}>
                         {randomAuthors[currentRandomQuoteId]}
                     </div>
                 </div>
@@ -104,8 +104,8 @@ const RandomQuote = ({ currentRandomQuoteId, randomAuthors, randomQuotes, handle
     </div>
 )
 
-const mapStateToProps = ({ quote: { currentRandomQuoteId } }) => ({
-    currentRandomQuoteId
+const mapStateToProps = ({ quote: { currentRandomQuoteId, randomColorNum } }) => ({
+    currentRandomQuoteId, randomColorNum
 })
 
 
