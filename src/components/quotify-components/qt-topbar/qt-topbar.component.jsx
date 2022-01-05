@@ -55,7 +55,7 @@ const QuotifyTopbar = ({ handleChange, midPart, currentUser, back, forward }) =>
                         <div>Hello, Sign in</div>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                            <Link to="/profile/quotify/account"><li class="dropdown-item">Sign in/ Sign up</li></Link>
+                            <Link to="/profile/qt/account"><li class="dropdown-item">Sign in/ Sign up</li></Link>
                             <li><hr class="dropdown-divider"/></li>
                             <li class="dropdown-item cursor-pointer" onClick={signInWithGoogle}>Login with <i class="bi bi-google"></i></li>
                         </ul>

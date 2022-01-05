@@ -31,7 +31,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
             >
                 <li>
                     <div class="nav-link pb-sm-0 cursor-pointer"
-                    onClick={() => history.push('/profile/quotify')}
+                    onClick={() => history.push('/profile/qt/home')}
                     >
                         <i class="bi bi-house-door fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 

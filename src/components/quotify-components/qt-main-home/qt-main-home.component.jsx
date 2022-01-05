@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 
 import ReactTooltip from "react-tooltip";
 
-const RandomQuote = ({ currentRandomQuoteId, randomIds, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
+import './qt-main-home.styles.scss'
+
+const QuotifyMainHome = ({ currentRandomQuoteId, randomIds, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
     
     /* quote row */
     <div class="row d-flex justify-content-center align-items-center">
@@ -109,4 +111,4 @@ const mapStateToProps = ({ quote: { currentRandomQuoteId, randomColor } }) => ({
 })
 
 
-export default connect(mapStateToProps)(RandomQuote);
+export default connect(mapStateToProps)(QuotifyMainHome);

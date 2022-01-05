@@ -20,7 +20,7 @@ class Directory extends React.Component {
           title: 'Quotify',
           subtitle: 'Get Inspired!',
           imageUrl: 'http://michaelcriner.com/wp-content/uploads/2013/06/QuotePostLogo.jpg',
-          linkUrl: 'quotify',
+          linkUrl: 'qt/home',
           id: 2
         },
         {

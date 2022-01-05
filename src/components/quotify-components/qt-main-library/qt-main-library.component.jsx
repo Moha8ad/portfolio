@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { setLikedQuote } from "../../../../redux/quote/quote.actions";
+import { setLikedQuote } from "../../../redux/quote/quote.actions";
 
-import '../qt-box.styles.scss'
+import './qt-main-library.styles.scss';
 
-class LibraryQuote extends React.Component {
+class QuotifyMainLibrary extends React.Component {
 
     render() {
         const { randomColor, searchByName, setLikedQuote } = this.props;
@@ -82,4 +82,4 @@ const mapDispatchToProps = dispatch => ({
     setLikedQuote: likedQuote => dispatch(setLikedQuote(likedQuote))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LibraryQuote);
+export default connect(mapStateToProps, mapDispatchToProps)(QuotifyMainLibrary);

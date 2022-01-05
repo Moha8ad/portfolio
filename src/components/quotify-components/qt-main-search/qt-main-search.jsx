@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-const ResultQuote = ({ result, randomColor }) => (
+import './qt-main-search.styles.scss'
+
+const QuotifyMainSearch = ({ result, randomColor }) => (
     <div class="row d-flex justify-content-center m-3">  
         <div class="col-12 col-sm-10 col-md-8 col-xl-6">
             <div class="row">
@@ -50,4 +52,4 @@ const mapStateToProps = ({quote: {randomColor}}) => ({
     randomColor
 })
 
-export default connect(mapStateToProps)(withRouter(ResultQuote));
+export default connect(mapStateToProps)(withRouter(QuotifyMainSearch));

@@ -4,12 +4,12 @@ import { withRouter, Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-import QuotifyFooter from "../qt-footer/qt-footer.component";
+import QuotifyFooter from "../../../components/quotify-components/qt-footer/qt-footer.component";
 
-import SignIn from "../qt-sign-in/qt-sign-in.component"
-import SignUp from "../qt-sign-up/qt-sign-up.component";
+import SignIn from "../../../components/quotify-components/qt-sign-in/qt-sign-in.component"
+import SignUp from "../../../components/quotify-components/qt-sign-up/qt-sign-up.component";
 
-class SignInAndSignUp extends React.Component {
+class AccountPageQuotify extends React.Component {
 
     goBack = () => {
         this.props.history.goBack();
@@ -55,4 +55,4 @@ const mapStateToProps = ({ user: { currentUser} }) => ({
     currentUser
 })
 
-export default connect(mapStateToProps)(withRouter(SignInAndSignUp));
+export default connect(mapStateToProps)(withRouter(AccountPageQuotify));

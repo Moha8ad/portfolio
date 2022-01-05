@@ -6,10 +6,10 @@ import QuotifyNavbar from '../../../components/quotify-components/qt-navbar/qt-n
 import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-topbar.component';
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 
-import ResultQuote from '../../../components/quotify-components/qt-box/qt-search-box/qt-search-box';
+import QuotifyMainSearch from '../../../components/quotify-components/qt-main-search/qt-main-search';
 
 
-class SearchQuotify extends React.Component {
+class SearchPageQuotify extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -55,7 +55,7 @@ class SearchQuotify extends React.Component {
                                 ?
                                     <div>
                                         {searchByName.map(result => 
-                                            <ResultQuote
+                                            <QuotifyMainSearch
                                                 result={result}
                                             /> 
                                         )}
@@ -75,9 +75,8 @@ class SearchQuotify extends React.Component {
     }
 }
 
-
 const mapStateToProps = ({quote: {quotesDB}}) => ({
     quotesDB
 })
 
-export default connect(mapStateToProps)(withRouter(SearchQuotify));
+export default connect(mapStateToProps)(withRouter(SearchPageQuotify));

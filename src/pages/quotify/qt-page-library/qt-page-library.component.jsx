@@ -6,9 +6,9 @@ import QuotifyNavbar from '../../../components/quotify-components/qt-navbar/qt-n
 import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-topbar.component';
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 
-import LibraryQuote from '../../../components/quotify-components/qt-box/qt-library-box/qt-library-box';
+import QuotifyMainLibrary from '../../../components/quotify-components/qt-main-library/qt-main-library.component';
 
-class LibraryQuotify extends React.Component {
+class LibraryPageQuotify extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -48,7 +48,7 @@ class LibraryQuotify extends React.Component {
                                 {(searchByName.length > 0) 
                                 ?
                                     <div>
-                                        <LibraryQuote 
+                                        <QuotifyMainLibrary 
                                         searchByName={searchByName}
                                         />
                                         <div class="mb-5 pb-5"/>
@@ -73,4 +73,4 @@ const mapStateToProps = ({quote: {quotesDB}}) => ({
     quotesDB
 })
 
-export default connect(mapStateToProps)(withRouter(LibraryQuotify));
+export default connect(mapStateToProps)(withRouter(LibraryPageQuotify));

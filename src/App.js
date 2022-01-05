@@ -4,16 +4,15 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from './pages/homepage/homepage.component';
 import Rolodex from './pages/rolodex/rolodex.component';
 
-import Quotify from './pages/quotify/quotify.component';
-import SearchQuotify from './pages/quotify/qt-search/qt-search.component';
-import LibraryQuotify from './pages/quotify/qt-library/qt-library.component';
-import LikedQuotify from './pages/quotify/qt-liked/qt-liked.component';
+import QuotifyPageHome from './pages/quotify/qt-page-home/qt-page-home.component'
+import QuotifyPageSearch from './pages/quotify/qt-page-search/qt-page-search.component';
+import QuotifyPageLibrary from './pages/quotify/qt-page-library/qt-page-library.component';
+import QuotifyPageLiked from './pages/quotify/qt-page-liked/qt-page-liked.component';
+import QuotifyPageAccount from './pages/quotify/qt-page-account/qt-page-account.component';
 
 import SnakesAndLadders from './pages/snakes-and-ladders/snakes-and-ladders.component';
 import Presentational from './pages/redux-page';
 import Move from './pages/move.component';
-
-import SignInAndSignUp from './components/quotify-components/qt-sign-in-sign-up/qt-sign-in-sign-up.component'
 
 import './App.css';
 
@@ -23,12 +22,12 @@ const App = () => (
       <Route exact path='/profile/' component={HomePage} />
       <Route path='/profile/rolodex' component={Rolodex} />
       
-      <Route path='/profile/quotify' component={Quotify} />
-      <Route path='/profile/qt/search' component={SearchQuotify} />
-      <Route path='/profile/qt/library' component={LibraryQuotify} />
-      <Route path='/profile/qt/liked' component={LikedQuotify} />
+      <Route path='/profile/qt/home' component={QuotifyPageHome} />
+      <Route path='/profile/qt/search' component={QuotifyPageSearch} />
+      <Route path='/profile/qt/library' component={QuotifyPageLibrary} />
+      <Route path='/profile/qt/liked' component={QuotifyPageLiked} />
+      <Route path='/profile/qt/account' component={QuotifyPageAccount} />
 
-      <Route path='/profile/quotify/account' component={SignInAndSignUp} />
       <Route path='/profile/snakes-and-ladders' component={SnakesAndLadders} />
       <Route path='/profile/app4' component={Presentational} />
       <Route path='/profile/app5' component={Move} />
