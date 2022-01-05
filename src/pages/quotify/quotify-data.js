@@ -63,7 +63,7 @@ const QUOTES_DATA =  [
                             {
                                    quote: "We become what we think about.",
                                    author: "Earl Nightingale", 
-                                   id: 5 
+                                   id: 13 
                             },
                             {
                                    quote: "Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do, so throw off the bowlines, sail away from safe harbor, catch the trade winds in your sails.  Explore, Dream, Discover.",

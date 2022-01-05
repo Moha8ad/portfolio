@@ -2,10 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import QuotifyTopbar from '../../qt-topbar/qt-topbar.component'
+import QuotifyNavbar from '../../../components/quotify-components/qt-navbar/qt-navbar.component'
+import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-topbar.component';
+import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 
-const LikedQuoteBox = ({ history, likedQuote }) => (
-        <div class="row">
+
+const LikedQuotify = ({ history, likedQuote }) => (
+    <div className="container-fluid">
+    <div class='row'>
+        <QuotifyNavbar />
+        <div className="qt-main col-12 col-sm-10 overflow-scroll">
+     
+    <div class="row">
             <div className="qt-topbar col-12 sticky-top me-auto py-2">
                 <QuotifyTopbar 
                     midPart={"searchBox"}
@@ -22,7 +30,7 @@ const LikedQuoteBox = ({ history, likedQuote }) => (
                     ''
                 }
             
-                {likedQuote.map((liked )=> 
+                {likedQuote.map((liked)=> 
                     <div class="row liked-box border border-1 rounded-2 py-3 m-3">
                         <div className="col-3">
                             <div className="row">
@@ -52,11 +60,17 @@ const LikedQuoteBox = ({ history, likedQuote }) => (
                     </div>
                 )}
             </div>
+            <QuotifyFooter />
+
         </div>
+        </div>
+        </div>
+        </div>
+
 )
 
 const mapStateToProps = ({ quote: { likedQuote }}) => ({
     likedQuote
 })
 
-export default connect(mapStateToProps)(withRouter(LikedQuoteBox));
+export default connect(mapStateToProps)(withRouter(LikedQuotify));

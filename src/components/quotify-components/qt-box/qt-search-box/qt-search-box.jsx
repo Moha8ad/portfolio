@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 const ResultQuote = ({ result, randomColor }) => (
     <div class="row d-flex justify-content-center m-3">  
@@ -42,4 +44,10 @@ const ResultQuote = ({ result, randomColor }) => (
     </div>
 )
 
-export default ResultQuote;
+
+
+const mapStateToProps = ({quote: {randomColor}}) => ({
+    randomColor
+})
+
+export default connect(mapStateToProps)(withRouter(ResultQuote));
