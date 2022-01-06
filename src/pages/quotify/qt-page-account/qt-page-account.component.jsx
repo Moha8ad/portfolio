@@ -4,6 +4,10 @@ import { withRouter, Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
+import { setCurrentUser } from "../../../redux/user/user.actions";
+
+import { auth, createUserProfileDocument } from '../../../firebase/firebase.utils';
+
 import QuotifyFooter from "../../../components/quotify-components/qt-footer/qt-footer.component";
 
 import SignIn from "../../../components/quotify-components/qt-sign-in/qt-sign-in.component"
@@ -13,6 +17,31 @@ class AccountPageQuotify extends React.Component {
 
     goBack = () => {
         this.props.history.goBack();
+    }
+
+    unsubscribeFromAuth = null;
+
+    componentDidMount() {
+    
+        const { setCurrentUser } = this.props;
+        
+        this.unsubscribeFromAuth =  auth.onAuthStateChanged(async userAuth => {
+            if (userAuth) {
+                const userRef = await createUserProfileDocument(userAuth);
+
+                userRef.onSnapshot(snapShot => {
+                    setCurrentUser({
+                        id: snapShot.id,
+                        ...snapShot.data() 
+                    });
+                });
+            } 
+            setCurrentUser(userAuth)
+        });
+    }
+
+    componentWillUnmount() {
+        this.unsubscribeFromAuth();
     }
 
     render() {
@@ -51,8 +80,13 @@ class AccountPageQuotify extends React.Component {
     }
 }
 
+
+const mapDispatchToProps = dispatch => ({
+    setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
 const mapStateToProps = ({ user: { currentUser} }) => ({
     currentUser
 })
 
-export default connect(mapStateToProps)(withRouter(AccountPageQuotify));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AccountPageQuotify));

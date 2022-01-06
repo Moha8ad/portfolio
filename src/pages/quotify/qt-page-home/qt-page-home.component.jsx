@@ -2,15 +2,12 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { auth, createUserProfileDocument  } from '../../../firebase/firebase.utils.js';
-
 import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-topbar.component';
 import QuotifyNavbar from '../../../components/quotify-components/qt-navbar/qt-navbar.component';
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 
 import QuotifyMainHome from '../../../components/quotify-components/qt-main-home/qt-main-home.component'
 
-import { setCurrentUser } from '../../../redux/user/user.actions';
 import { setRandomQuoteId } from '../../../redux/quote/quote.actions';
 import { generateRandomColor } from '../../../redux/quote/quote.actions';
 
@@ -24,31 +21,6 @@ class HomePageQuotify extends React.Component {
         this.props.generateRandomColor(Math.floor(Math.random()*25))
     }
     
-    unsubscribeFromAuth = null;
-
-    componentDidMount() {
-    
-        const { setCurrentUser } = this.props;
-        
-        this.unsubscribeFromAuth =  auth.onAuthStateChanged(async userAuth => {
-            if (userAuth) {
-                const userRef = await createUserProfileDocument(userAuth);
-
-                userRef.onSnapshot(snapShot => {
-                    setCurrentUser({
-                        id: snapShot.id,
-                        ...snapShot.data() 
-                    });
-                });
-            } 
-            setCurrentUser(userAuth)
-        });
-    }
-
-    componentWillUnmount() {
-        this.unsubscribeFromAuth();
-    }
-
     render() {      
 
         const { history, quotesDB } = this.props;
@@ -87,7 +59,6 @@ const mapStateToProps = ({ quote: { quotesDB } }) => ({
 })
   
 const mapDispatchToProps = dispatch => ({
-    setCurrentUser: user => dispatch(setCurrentUser(user)),
     setRandomQuoteId: randomQuoteId => dispatch(setRandomQuoteId(randomQuoteId)),
     generateRandomColor: randomColor => dispatch(generateRandomColor(randomColor))
   });
