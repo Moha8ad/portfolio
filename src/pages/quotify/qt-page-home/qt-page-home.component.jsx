@@ -20,8 +20,8 @@ class HomePageQuotify extends React.Component {
         this.props.setRandomQuoteId(Math.floor(Math.random()*this.props.quotesDB.length))
         this.props.generateRandomColor(Math.floor(Math.random()*25))
     }
-    
-    render() {      
+
+    render() {              
 
         const { history, quotesDB } = this.props;
 
@@ -41,7 +41,7 @@ class HomePageQuotify extends React.Component {
                                 <QuotifyMainHome
                                     randomAuthors={quotesDB.map(i => i.author)} 
                                     randomQuotes={quotesDB.map(i => i.quote)} 
-                                    randomIds={quotesDB.map(i => i.id)}
+                                    randomIds={quotesDB.map(i => i.authorId)}
                                     handleClick={this.handleClick}
                                 />         
                             </div>
@@ -66,4 +66,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(withRouter(HomePageQuotify));
+    )(withRouter(HomePageQuotify));

@@ -29,3 +29,8 @@ export const addQuoteToDataBase = addedQuote => ({
     type: QuoteActionTypes.ADD_QUOTE_TO_DATA_BASE,
     payload: addedQuote
 })
+
+export const addLikedQuoteToDataBase = addedLikedQuote => ({
+    type: QuoteActionTypes.ADD_LIKED_QUOTE_TO_DATA_BASE,
+    payload: addedLikedQuote
+})

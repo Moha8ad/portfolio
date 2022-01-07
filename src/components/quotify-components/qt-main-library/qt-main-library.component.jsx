@@ -19,7 +19,7 @@ class QuotifyMainLibrary extends React.Component {
                                     <div class="col-12 col-lg-6 px-2 auth-img-library-animation">
                                         <img
                                             alt='img'
-                                            src={`https://robohash.org/${[result.id]}?&&size=180x180`}
+                                            src={`https://robohash.org/${[result.authorId]}?&&size=180x180`}
                                         />
                                     </div>
                                     <div class="col-auto col-sm-6 d-flex align-self-end fs-4 py-2 d-none d-lg-block auth-name-library-animation">
@@ -49,10 +49,19 @@ class QuotifyMainLibrary extends React.Component {
                                                 type="button" 
                                                 class="btn"
                                                 style={{color: randomColor}}
-                                                onClick={() => setLikedQuote(result)
+                                                onClick={() =>
+                                                    result.authorId !== 1 ?
+                                                    setLikedQuote(result)
+                                                    :
+                                                    null
                                                 }
                                                 > 
-                                                    <i class="bi bi-heart fs-5" />
+                                                    {
+                                                        result ?
+                                                            <i class="bi bi-heart-fill text-danger fs-5" />
+                                                        :
+                                                            <i class="bi bi-heart fs-5" />
+                                                    }
                                                 </button>
                                                 {/* Share Button */}
                                                 <a

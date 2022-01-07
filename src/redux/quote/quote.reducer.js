@@ -1,4 +1,6 @@
 import QuoteActionTypes from './quote.types';
+import addQuoteToLikedQuoteDB from './quote.utils';
+
 import QUOTES_DATA from '../../pages/quotify/quotify-data';
 import COLOR_PALETTE from '../../components/all-reusable-components/random-color/random-color-component';
 
@@ -6,7 +8,7 @@ const INITIAL_STATE = {
     searchByName: '',
     searchField: '',
     quotesDB: QUOTES_DATA,
-    likedQuote: [],
+    likedQuotesDB: [],
     currentRandomQuoteId: Math.floor(Math.random()*102),
     randomColor: COLOR_PALETTE[Math.floor(Math.random()*25)],
     
@@ -32,7 +34,7 @@ const quoteReducer = (state= INITIAL_STATE , action) => {
         case QuoteActionTypes.SET_LIKED_QUOTE:
             return {
                 ...state,
-                likedQuote: [...state.likedQuote, action.payload]
+                likedQuotesDB: addQuoteToLikedQuoteDB(state.likedQuotesDB, action.payload)
             }
         case QuoteActionTypes.SET_RANDOM_QUOTE_ID:
             return {

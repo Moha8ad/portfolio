@@ -9,7 +9,11 @@ import { auth, signInWithGoogle } from '../../../firebase/firebase.utils';
 import AsArLogoLgWt from '../../all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component';
 import AsArLogoMdWt from '../../all-reusable-components/asar-logo-md-wt/asar-logo-md-wt.component';
 
-import './qt-navbar.styles.scss'
+import './qt-navbar.styles.scss';
+
+function refreshPage() {
+    window.location.reload(false);
+  }
 
 const QuotifyNavbar = ({ history, currentUser }) => (
     <div class="qt-navbar col-12 col-sm-2 p-0 px-2">    
@@ -31,7 +35,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
             >
                 <li>
                     <div class="nav-link pb-sm-0 cursor-pointer"
-                    onClick={() => history.push('/profile/qt/home')}
+                    onClick={() => history.push('/profile/qt/home') }
                     >
                         <i class="bi bi-house-door fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 

@@ -7,7 +7,7 @@ import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-t
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 
 
-const LikedPageQuotify = ({ history, likedQuote }) => (
+const LikedPageQuotify = ({ history, likedQuotesDB }) => (
     <div className="container-fluid">
         <div class='row'>
             <QuotifyNavbar />
@@ -22,12 +22,12 @@ const LikedPageQuotify = ({ history, likedQuote }) => (
                     </div>
                     <div class="col-12 text-light">
                         {
-                            likedQuote.length < 1 ?
+                            likedQuotesDB.length < 1 ?
                             <h1>No Liked Quote</h1>
                             :
                             ''
                         }
-                        {likedQuote.map((liked)=> 
+                        {likedQuotesDB.map((liked)=> 
                             <div class="row liked-box border border-1 rounded-2 py-3 m-3">
                                 <div className="col-3">
                                     <div className="row">
@@ -65,8 +65,8 @@ const LikedPageQuotify = ({ history, likedQuote }) => (
 
 )
 
-const mapStateToProps = ({ quote: { likedQuote }}) => ({
-    likedQuote
+const mapStateToProps = ({ quote: { likedQuotesDB }}) => ({
+    likedQuotesDB
 })
 
 export default connect(mapStateToProps)(withRouter(LikedPageQuotify));
