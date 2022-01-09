@@ -1,19 +1,12 @@
-const addQuoteToLikedQuoteDB = ( likedQuotesDB, quoteToLike ) => {
+export const addQuoteToLikedQuotesDB = ( likedQuotesDB, quoteToLike ) => {
     
     const existingQuote = likedQuotesDB.find(
-        likedQuote => likedQuote.id  === quoteToLike.id 
+        likedQuote => likedQuote.quoteId === quoteToLike.quoteId
     );
-
-    if(existingQuote) {
-        return likedQuotesDB.map(likedQuote => 
-            likedQuote.id  === quoteToLike.id 
-             ? {...likedQuote}
-             : likedQuote
-        )
-    };
-
-    return [...likedQuotesDB, {...quoteToLike}]
-
- };
-
- export default addQuoteToLikedQuoteDB;
+  
+    if (existingQuote) {
+        return likedQuotesDB.filter(cartItem => cartItem.quoteId !== quoteToLike.quoteId)
+    }
+  
+    return [...likedQuotesDB, { ...quoteToLike, liked: true }];
+  };
