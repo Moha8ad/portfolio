@@ -8,5 +8,5 @@ export const addQuoteToLikedQuotesDB = ( likedQuotesDB, quoteToLike ) => {
         return likedQuotesDB.filter(cartItem => cartItem.quoteId !== quoteToLike.quoteId)
     }
   
-    return [...likedQuotesDB, { ...quoteToLike, liked: true }];
+    return [...likedQuotesDB, quoteToLike];
   };

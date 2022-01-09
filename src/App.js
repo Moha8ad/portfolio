@@ -7,7 +7,8 @@ import Rolodex from './pages/rolodex/rolodex.component';
 import QuotifyPageHome from './pages/quotify/qt-page-home/qt-page-home.component'
 import QuotifyPageSearch from './pages/quotify/qt-page-search/qt-page-search.component';
 import QuotifyPageLibrary from './pages/quotify/qt-page-library/qt-page-library.component';
-import QuotifyPageLiked from './pages/quotify/qt-page-liked/qt-page-liked.component';
+import LikedPageQuotify from './pages/quotify/qt-page-liked/qt-page-liked.component';
+import ListPageQuotify from './pages/quotify/qt-page-list/qt-page-list.component';
 import QuotifyPageAccount from './pages/quotify/qt-page-account/qt-page-account.component';
 
 import SnakesAndLadders from './pages/snakes-and-ladders/snakes-and-ladders.component';
@@ -25,7 +26,8 @@ const App = () => (
       <Route path='/profile/qt/home' component={QuotifyPageHome} />
       <Route path='/profile/qt/search' component={QuotifyPageSearch} />
       <Route path='/profile/qt/library' component={QuotifyPageLibrary} />
-      <Route path='/profile/qt/liked' component={QuotifyPageLiked} />
+      <Route path='/profile/qt/liked' component={LikedPageQuotify} />
+      <Route path='/profile/qt/list' component={ListPageQuotify} />
       <Route path='/profile/qt/account' component={QuotifyPageAccount} />
 
       <Route path='/profile/snakes-and-ladders' component={SnakesAndLadders} />

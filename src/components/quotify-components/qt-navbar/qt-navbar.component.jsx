@@ -59,7 +59,9 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 </li>
                 
                 <li>
-                    <div class="nav-link d-none d-sm-block pt-sm-4 pb-sm-0 cursor-pointer">
+                    <div class="nav-link d-none d-sm-block pt-sm-4 pb-sm-0 cursor-pointer"
+                        onClick={() => history.push('/profile/qt/list')}
+                    >
                         <i class="bi bi-bookmark-plus fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Lists</span>   
                     </div>
@@ -72,21 +74,17 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Liked</span>  
                     </div>
                 </li>
-                <li class="dropdown">
-                    <div class="d-block d-sm-none">
+                <li class="dropdown d-block d-sm-none">
                         <i 
                             class="bi bi-three-dots fs-4 text-light ms-3" 
-                            id="dropdownMenuButton1" 
                             data-bs-toggle="dropdown" 
                             aria-expanded="false"
                         >
-                            <div class="d-none d-sm-block"> </div>
                         </i>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1"  style={{zIndex: "10000"}}>
+                        <ul class="dropdown-menu dropdown-menu-dark" style={{zIndex: "10000"}}>
                             <li class="dropdown-item cursor-pointer bi bi-bookmark-plus"> Lists</li>
                             <li class="dropdown-item cursor-pointer bi bi-heart"> Liked</li>
                         </ul>
-                    </div>
                 </li>
             </ul>
             <div class="d-flex justify-self-center align-self-center">
