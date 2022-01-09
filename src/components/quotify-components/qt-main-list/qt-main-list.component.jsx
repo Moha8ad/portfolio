@@ -22,19 +22,19 @@ class QuotifyMainList extends React.Component {
                 </div>
                 <QuotifyMainListBox 
                     randomColor = { randomColor }
-                    setLikedQuote = { setLikedQuote}
-                    likedQuotesDB = { likedQuotesDB }
+                    setListedQuote = { setLikedQuote}
+                    listedQuotesDB = { likedQuotesDB }
                 />
                 <hr class="text-secondary" />
 
                 {/* Insightful Quotes List */}
                 <div class="fs-4 pt-4 text-secondary">
-                    Inspirational Quotes
+                    Insightful Quotes
                 </div>
                 <QuotifyMainListBox 
                     randomColor = { randomColor }
-                    setLikedQuote = { setLikedQuote}
-                    likedQuotesDB = { likedQuotesDB }
+                    setListedQuote = { setLikedQuote}
+                    listedQuotesDB = { likedQuotesDB }
                 />
                 <hr class="text-secondary" />
 
