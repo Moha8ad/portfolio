@@ -8,7 +8,7 @@ import './qt-main-library.styles.scss';
 class QuotifyMainLibrary extends React.Component {
 
     render() {
-        const { randomColor, searchByName, setLikedQuote, likedQuotesDB, setInspirationalQuote } = this.props;
+        const { randomColor, searchByName, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList } = this.props;
         
         return ( 
             <div class="d-flex flex-wrap justify-content-center">
@@ -54,17 +54,49 @@ class QuotifyMainLibrary extends React.Component {
                                                 <span 
                                                     class="dropdown"
                                                     style={{color: randomColor}}
-                                                    onClick={() => setInspirationalQuote(result)}
                                                 >
-                                                    <i 
-                                                        class="bi bi-journal-plus" 
-                                                        data-bs-toggle="dropdown" 
-                                                        aria-expanded="false"
-                                                    >
-                                                    </i>
+                                                <span
+                                                data-bs-toggle="dropdown" 
+                                                aria-expanded="false"
+                                            >
+                                            
+                                                {
+                                                    inspirationalList.find(listedQuote => listedQuote.quoteId === result.quoteId) 
+                                                ?
+                                                <i 
+                                                    class="bi bi-journal-bookmark-fill" 
+                                                    
+                                                ></i>
+                                                :
+                                                <i 
+                                                    class="bi bi-journal-bookmark" 
+                                                ></i>
+                                                }
+                                            </span>
                                                     <ul class="dropdown-menu dropdown-menu-dark text-light" style={{backgroundColor:'rgba(33, 37, 41, 0.95)'}}>
-                                                        <li class="dropdown-item cursor-pointer bi bi-bookmark-plus"> Inspirational List</li>
-                                                        <li class="dropdown-item cursor-pointer bi bi-bookmark-dash"> Insightful List</li>
+                                                        
+                                                    {
+                                                        inspirationalList.find(listedQuote => listedQuote.quoteId === result.quoteId) 
+                                                    ?
+                                                        <li 
+                                                            class="dropdown-item cursor-pointer bi bi-bookmark-dash" 
+                                                            onClick={() => setInspirationalQuote(result)}
+                                                        > 
+                                                            <span class='px-2'>Inspirational List</span>
+                                                        </li>
+                                                    :
+                                                        <li 
+                                                            class="dropdown-item cursor-pointer bi bi-bookmark-plus" 
+                                                            onClick={() => setInspirationalQuote(result)}
+                                                        > 
+                                                            <span class='px-2'>Inspirational List</span>
+                                                        </li>
+                                                    }
+                                                        <li 
+                                                            class="dropdown-item cursor-pointer bi bi-bookmark-dash"
+                                                        >
+                                                            <span class='px-2'>Insightful List</span>
+                                                        </li>
                                                     </ul>
                                                 </span>
                                                 {/* Copy Button */}
@@ -102,8 +134,8 @@ class QuotifyMainLibrary extends React.Component {
     }   
 }
 
-const mapStateToProps = ({ quote: { randomColor, likedQuotesDB }}) => ({
-    randomColor, likedQuotesDB
+const mapStateToProps = ({ quote: { randomColor, likedQuotesDB, inspirationalList }}) => ({
+    randomColor, likedQuotesDB, inspirationalList
 })
 
 const mapDispatchToProps = dispatch => ({

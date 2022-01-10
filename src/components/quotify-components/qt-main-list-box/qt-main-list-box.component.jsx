@@ -1,9 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { setLikedQuote } from "../../../redux/quote/quote.actions";
+
 
 import './qt-main-list-box.styles.scss';
 
-const QuotifyMainListBox = ({ header, randomColor, setQuote, list }) => (
+const QuotifyMainListBox = ({ header, randomColor, setLikedQuote, likedQuotesDB, setListQuote, list }) => (
         <div>
             <div class="fs-4 pt-4 text-secondary">
                 {header}
@@ -39,41 +43,105 @@ const QuotifyMainListBox = ({ header, randomColor, setQuote, list }) => (
                                         {listed.author}
                                     </div>
                                 </div>
-                                <div class="row p-1 border-2 rounded-2 overflow-scroll" style={{backgroundColor: randomColor, height: "150px"}}>
-                                    <div class="col-12 p-0 border-2 rounded-2" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
-                                        <div class="fs-6 px-2 d-lg-none" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
-                                            {listed.author}
-                                        </div>
-                                        <div class="text-light p-2 fs-5">
-                                            {listed.quote}
-                                            {/* Copy Button */}
-                                            <button 
-                                            type="button" 
-                                            class="btn ps-2 p-0"
-                                            onClick={() =>  navigator.clipboard.writeText(`${listed.quote} --${listed.author}`)}
-                                            > 
-                                                <i class="bi bi-clipboard fs-5"  style={{color: randomColor}}/>
-                                            </button>
-                                            {/* Like Button */}
-                                            <button 
-                                                type="button" 
-                                                class="btn"
+                                <div class="row p-1 border-2 rounded-1 overflow-scroll" style={{backgroundColor: randomColor, height: "150px"}}>
+                                <div class="col-12 p-0 border-2 rounded-1" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
+                                    <div class="fs-6 px-2" style={{color: randomColor, backgroundColor:"rgba(26, 21, 25, 0.400)"}}>
+                                        <div className="row">
+                                            <div className="col d-lg-none"> 
+                                                {listed.author}
+                                            </div>
+                                            <div className="col-auto ms-auto">
+                                                {/* Like Button */}
+                                                <span 
+                                                    class="px-2"
+                                                    style={{color:randomColor}}
+                                                    onClick={() => setLikedQuote(listed)}
+                                                >
+                                                {
+                                                    likedQuotesDB.find(likedQuote => likedQuote.quoteId === listed.quoteId) 
+                                                ?
+                                                    <i class="bi bi-heart-fill text-danger" />
+                                                :
+                                                    <i class="bi bi-heart" />
+                                                }
+                                                </span>
+                                                {/* List Button */}
+                                                <span 
+                                                    class="dropdown"
+                                                    style={{color: randomColor}}
+                                                >
+                                                <span
+                                                    data-bs-toggle="dropdown" 
+                                                    aria-expanded="false"
+                                                >
+                                                
+                                                    {
+                                                        list.find(listedQuote => listedQuote.quoteId === listed.quoteId) 
+                                                    ?
+                                                    <i 
+                                                        class="bi bi-journal-bookmark-fill" 
+                                                        
+                                                    ></i>
+                                                    :
+                                                    <i 
+                                                        class="bi bi-journal-bookmark" 
+                                                    ></i>
+                                                    }
+                                                </span>
+                                                    
+                                                    <ul class="dropdown-menu dropdown-menu-dark text-light" style={{backgroundColor:'rgba(33, 37, 41, 0.95)'}}>
+                                                        
+                                                    {
+                                                        list.find(listedQuote => listedQuote.quoteId === listed.quoteId) 
+                                                    ?
+                                                        <li 
+                                                            class="dropdown-item cursor-pointer bi bi-bookmark-dash" 
+                                                            onClick={() => setListQuote(listed)}
+                                                        > 
+                                                            <span class='px-2'>Inspirational List</span>
+                                                        </li>
+                                                    :
+                                                        <li 
+                                                            class="dropdown-item cursor-pointer bi bi-bookmark-plus" 
+                                                            onClick={() => setListQuote(listed)}
+                                                        > 
+                                                            <span class='px-2'>Inspirational List</span>
+                                                        </li>
+                                                    }
+                                                        <li 
+                                                            class="dropdown-item cursor-pointer bi bi-bookmark-dash"
+                                                        >
+                                                            <span class='px-2'>Insightful List</span>
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                                {/* Copy Button */}
+                                                <span
+                                                class="ps-2"
                                                 style={{color: randomColor}}
-                                                onClick={() => setQuote(listed)}
-                                            >
-                                                <i class="bi bi-heart-fill text-danger fs-5" />
-                                            </button>
-                                            {/* Share Button */}
-                                            <a
-                                                rel="noopener noreferrer"
-                                                target="_blank"
-                                                href={`https://twitter.com/intent/tweet?text=${listed.quote} - ${listed.author}`}>
-                                            <i class="bi bi-twitter fs-5" style={{color: randomColor}}/>
-                                            </a>   
+                                                onClick={() =>  navigator.clipboard.writeText(`${listed.quote} --${listed.author}`)}
+                                                > 
+                                                <i class="bi bi-clipboard"/>
+                                                </span>
+                                                {/* Share Button */}
+                                                <a
+                                                    rel="noopener noreferrer"
+                                                    target="_blank"
+                                                    href={`https://twitter.com/intent/tweet?text=${listed.quote} - ${listed.author}`}
+                                                    style={{color: randomColor}}
+                                                    class="ps-2"
+                                                >
+                                                <i class="bi bi-twitter"/>
+                                                </a>
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="text-light p-2 fs-5">
+                                        {listed.quote}     
                                     </div>
                                 </div>
                             </div>
+                           </div>
                         </div>
                     )
                 }      
@@ -84,4 +152,12 @@ const QuotifyMainListBox = ({ header, randomColor, setQuote, list }) => (
 )
 
 
-export default QuotifyMainListBox;
+const mapStateToProps = ({ quote: { randomColor, likedQuotesDB }}) => ({
+    randomColor, likedQuotesDB
+})
+
+const mapDispatchToProps = dispatch => ({
+    setLikedQuote: likedQuote => dispatch(setLikedQuote(likedQuote)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuotifyMainListBox);
