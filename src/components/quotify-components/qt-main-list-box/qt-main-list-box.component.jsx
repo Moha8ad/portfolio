@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 
 import './qt-main-list-box.styles.scss';
 
-const QuotifyMainListBox = ({ randomColor, setListedQuote, listedQuotesDB }) => (
-            
+const QuotifyMainListBox = ({ header, randomColor, setQuote, list }) => (
+        <div>
+            <div class="fs-4 pt-4 text-secondary">
+                {header}
+            </div>
             <div className="container d-flex text-secondary overflow-scroll">
 
                 {
-                    listedQuotesDB.length < 1 ?
+                    list.length < 1 ?
                     <div class="p-4">
                         <div class="pb-4 text-secondary">
-                            <span class="fs-6">Add quotes to this list by selecting add to Insightful Quotes.</span>
+                            <span class="fs-6">Quotes you add to {header} will appear here.</span>
                             <br />
                         </div>
                         <button class="btn btn-primary fs-6" type="button">
@@ -22,7 +25,7 @@ const QuotifyMainListBox = ({ randomColor, setListedQuote, listedQuotesDB }) => 
                     ''
                 }
                 {
-                    listedQuotesDB.map((listed) =>
+                    list.map((listed) =>
                         <div class="col-12 col-sm-10 col-md-6 col-lg-4 p-4">
                             <div class="hover-scale row d-flex justify-content-center border border-secondary bg-dark border-2 rounded-2">
                                 <div class="col-12 col-lg-6 px-2 auth-img-library-animation">
@@ -56,7 +59,7 @@ const QuotifyMainListBox = ({ randomColor, setListedQuote, listedQuotesDB }) => 
                                                 type="button" 
                                                 class="btn"
                                                 style={{color: randomColor}}
-                                                onClick={() => setListedQuote(listed)}
+                                                onClick={() => setQuote(listed)}
                                             >
                                                 <i class="bi bi-heart-fill text-danger fs-5" />
                                             </button>
@@ -75,6 +78,9 @@ const QuotifyMainListBox = ({ randomColor, setListedQuote, listedQuotesDB }) => 
                     )
                 }      
             </div>
+            <hr class="text-secondary" />
+
+        </div>  
 )
 
 

@@ -6,7 +6,7 @@ import ReactTooltip from "react-tooltip";
 
 import './qt-main-home.styles.scss'
 
-const QuotifyMainHome = ({ currentRandomQuoteId, randomIds, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
+const QuotifyMainHome = ({ randomQuoteId, randomIds, randomAuthors, randomQuotes, handleClick, randomColor }) => ( 
     
     /* quote row */
     <div class="row d-flex justify-content-center align-items-center">
@@ -39,7 +39,7 @@ const QuotifyMainHome = ({ currentRandomQuoteId, randomIds, randomAuthors, rando
                         data-tip data-for="share-btn"
                         rel="noopener noreferrer"
                         target="_blank"
-                        href={`https://twitter.com/intent/tweet?text=${randomQuotes[currentRandomQuoteId]} - ${randomAuthors[currentRandomQuoteId]}`}
+                        href={`https://twitter.com/intent/tweet?text=${randomQuotes[randomQuoteId]} - ${randomAuthors[randomQuoteId]}`}
                     >
                         <i class="bi bi-twitter fs-5"></i>
                     </a>
@@ -65,7 +65,7 @@ const QuotifyMainHome = ({ currentRandomQuoteId, randomIds, randomAuthors, rando
                     <ReactTooltip 
                         class="col-auto bg-success fs-6" 
                         place="right" effect="solid"
-                        afterShow = {() => navigator.clipboard.writeText(`${randomQuotes[currentRandomQuoteId]} - ${randomAuthors[currentRandomQuoteId]}`)}
+                        afterShow = {() => navigator.clipboard.writeText(`${randomQuotes[randomQuoteId]} - ${randomAuthors[randomQuoteId]}`)}
                         globalEventOff={"click"}
 
                     />
@@ -77,8 +77,8 @@ const QuotifyMainHome = ({ currentRandomQuoteId, randomIds, randomAuthors, rando
             <div className="col-12 d-flex justify-content-center align-items-center author-home-animation">
         
                 <img
-                    alt={`${randomAuthors[currentRandomQuoteId]}`}
-                    src={`https://robohash.org/${randomIds[currentRandomQuoteId]}?&&size=220x220`}
+                    alt={`${randomAuthors[randomQuoteId]}`}
+                    src={`https://robohash.org/${randomIds[randomQuoteId]}?&&size=220x220`}
                     />        
             
             </div>
@@ -91,12 +91,12 @@ const QuotifyMainHome = ({ currentRandomQuoteId, randomIds, randomAuthors, rando
                     <i class="bi bi-quote fs-1">
                     
                         {/* quote text*/}
-                        <span class="fst-normal fs-4"  style={{color: randomColor}}>{randomQuotes[currentRandomQuoteId]}</span>
+                        <span class="fst-normal fs-4"  style={{color: randomColor}}>{randomQuotes[randomQuoteId]}</span>
                     </i>
                     
                     {/* author */}
                     <div className="col-12 d-flex justify-content-end fs-6" style={{color: randomColor}}>
-                        {randomAuthors[currentRandomQuoteId]}
+                        {randomAuthors[randomQuoteId]}
                     </div>
                 </div>
             </div>
@@ -106,8 +106,8 @@ const QuotifyMainHome = ({ currentRandomQuoteId, randomIds, randomAuthors, rando
     </div>
 )
 
-const mapStateToProps = ({ quote: { currentRandomQuoteId, randomColor } }) => ({
-    currentRandomQuoteId, randomColor
+const mapStateToProps = ({ quote: { randomColor } }) => ({
+    randomColor
 })
 
 

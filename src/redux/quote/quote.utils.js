@@ -1,12 +1,12 @@
-export const addQuoteToLikedQuotesDB = ( likedQuotesDB, quoteToLike ) => {
+export const toggleQuote = ( QuotesDataBase, quoteToToggle ) => {
     
-    const existingQuote = likedQuotesDB.find(
-        likedQuote => likedQuote.quoteId === quoteToLike.quoteId
+    const existingQuote = QuotesDataBase.find(
+        quote => quote.quoteId === quoteToToggle.quoteId
     );
   
     if (existingQuote) {
-        return likedQuotesDB.filter(cartItem => cartItem.quoteId !== quoteToLike.quoteId)
+        return QuotesDataBase.filter(quote => quote.quoteId !== quoteToToggle.quoteId)
     }
   
-    return [...likedQuotesDB, quoteToLike];
+    return [...QuotesDataBase, quoteToToggle];
   };

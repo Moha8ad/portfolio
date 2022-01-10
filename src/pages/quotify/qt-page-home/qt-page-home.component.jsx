@@ -8,23 +8,31 @@ import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-f
 
 import QuotifyMainHome from '../../../components/quotify-components/qt-main-home/qt-main-home.component'
 
-import { setRandomQuoteId } from '../../../redux/quote/quote.actions';
 import { generateRandomColor } from '../../../redux/quote/quote.actions';
 
 import '../quotify.styles.scss';
 
 class HomePageQuotify extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            randomQuoteId: Math.floor(Math.random()* 50)
+        }
+    }
+    
 
     handleClick = (e) => {
         e.preventDefault()
-        this.props.setRandomQuoteId(Math.floor(Math.random()*this.props.quotesDB.length))
         this.props.generateRandomColor(Math.floor(Math.random()*25))
+        this.setState({
+            randomQuoteId: Math.floor(Math.random()*this.props.quotesDB.length)
+        })
     }
 
     render() {              
 
         const { history, quotesDB } = this.props;
-
+        
         return(
             
             <div className="container-fluid">
@@ -42,6 +50,7 @@ class HomePageQuotify extends React.Component {
                                     randomAuthors={quotesDB.map(i => i.author)} 
                                     randomQuotes={quotesDB.map(i => i.quote)} 
                                     randomIds={quotesDB.map(i => i.authorId)}
+                                    randomQuoteId= {this.state.randomQuoteId }
                                     handleClick={this.handleClick}
                                 />         
                             </div>
@@ -59,7 +68,6 @@ const mapStateToProps = ({ quote: { quotesDB } }) => ({
 })
   
 const mapDispatchToProps = dispatch => ({
-    setRandomQuoteId: randomQuoteId => dispatch(setRandomQuoteId(randomQuoteId)),
     generateRandomColor: randomColor => dispatch(generateRandomColor(randomColor))
   });
 
