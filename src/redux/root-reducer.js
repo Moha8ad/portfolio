@@ -8,7 +8,7 @@ import quoteReducer from "./quote/quote.reducer";
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['']
+    whitelist: ['quote']
 }
 
 const rootReducer = combineReducers({

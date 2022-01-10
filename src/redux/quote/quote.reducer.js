@@ -9,6 +9,7 @@ const INITIAL_STATE = {
     quotesDB: QUOTES_DATA,
     likedQuotesDB: [],
     inspirationalList: [],
+    insightfulList: [],
     randomColor: COLOR_PALETTE[Math.floor(Math.random()*25)],
     
 }
@@ -34,6 +35,11 @@ const quoteReducer = (state= INITIAL_STATE , action) => {
             return{
                 ...state,
                 inspirationalList: toggleQuote(state.inspirationalList, action.payload)
+            }
+        case QuoteActionTypes.SET_INSIGHTFUL_QUOTE:
+            return{
+                ...state,
+                insightfulList: toggleQuote(state.insightfulList, action.payload)
             }
         default:
             return state

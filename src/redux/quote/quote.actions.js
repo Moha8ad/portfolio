@@ -19,3 +19,8 @@ export const setInspirationalQuote = inspirationalQuote => ({
     type: QuoteActionTypes.SET_INSPIRATIONAL_QUOTE,
     payload: inspirationalQuote
 })
+
+export const setInsightfulQuote = insightfulQuote => ({
+    type: QuoteActionTypes.SET_INSIGHTFUL_QUOTE,
+    payload: insightfulQuote
+})

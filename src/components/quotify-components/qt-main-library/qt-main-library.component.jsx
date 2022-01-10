@@ -1,14 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { setLikedQuote, setInspirationalQuote } from "../../../redux/quote/quote.actions";
+import { setLikedQuote, setInspirationalQuote, setInsightfulQuote } from "../../../redux/quote/quote.actions";
 
 import './qt-main-library.styles.scss';
 
 class QuotifyMainLibrary extends React.Component {
 
     render() {
-        const { randomColor, searchByName, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList } = this.props;
+        const { randomColor, searchByName, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList, setInsightfulQuote, insightfulList } = this.props;
         
         return ( 
             <div class="d-flex flex-wrap justify-content-center">
@@ -62,6 +62,9 @@ class QuotifyMainLibrary extends React.Component {
                                             
                                                 {
                                                     inspirationalList.find(listedQuote => listedQuote.quoteId === result.quoteId) 
+                                                    ||
+                                                    insightfulList.find(listedQuote => listedQuote.quoteId === result.quoteId) 
+
                                                 ?
                                                 <i 
                                                     class="bi bi-journal-bookmark-fill" 
@@ -92,11 +95,23 @@ class QuotifyMainLibrary extends React.Component {
                                                             <span class='px-2'>Inspirational List</span>
                                                         </li>
                                                     }
+                                                    {
+                                                        insightfulList.find(listedQuote => listedQuote.quoteId === result.quoteId) 
+                                                    ?
                                                         <li 
-                                                            class="dropdown-item cursor-pointer bi bi-bookmark-dash"
-                                                        >
+                                                            class="dropdown-item cursor-pointer bi bi-bookmark-dash" 
+                                                            onClick={() => setInsightfulQuote(result)}
+                                                        > 
                                                             <span class='px-2'>Insightful List</span>
                                                         </li>
+                                                    :
+                                                        <li 
+                                                            class="dropdown-item cursor-pointer bi bi-bookmark-plus" 
+                                                            onClick={() => setInsightfulQuote(result)}
+                                                        > 
+                                                            <span class='px-2'>Insightful List</span>
+                                                        </li>
+                                                    }
                                                     </ul>
                                                 </span>
                                                 {/* Copy Button */}
@@ -134,13 +149,14 @@ class QuotifyMainLibrary extends React.Component {
     }   
 }
 
-const mapStateToProps = ({ quote: { randomColor, likedQuotesDB, inspirationalList }}) => ({
-    randomColor, likedQuotesDB, inspirationalList
+const mapStateToProps = ({ quote: { randomColor, likedQuotesDB, inspirationalList, insightfulList }}) => ({
+    randomColor, likedQuotesDB, inspirationalList, insightfulList
 })
 
 const mapDispatchToProps = dispatch => ({
     setLikedQuote: likedQuote => dispatch(setLikedQuote(likedQuote)),
-    setInspirationalQuote: inspirationalQuote => dispatch(setInspirationalQuote(inspirationalQuote))
+    setInspirationalQuote: inspirationalQuote => dispatch(setInspirationalQuote(inspirationalQuote)),
+    setInsightfulQuote: insightfulQuote => dispatch(setInsightfulQuote(insightfulQuote))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuotifyMainLibrary);

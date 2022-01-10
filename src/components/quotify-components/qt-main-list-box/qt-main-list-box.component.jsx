@@ -7,7 +7,7 @@ import { setLikedQuote } from "../../../redux/quote/quote.actions";
 
 import './qt-main-list-box.styles.scss';
 
-const QuotifyMainListBox = ({ header, randomColor, setLikedQuote, likedQuotesDB, setListQuote, list }) => (
+const QuotifyMainListBox = ({ header, randomColor, setLikedQuote, likedQuotesDB, setListQuote, setListQuote2, list, list2, menuItem1, menuItem2 }) => (
         <div>
             <div class="fs-4 pt-4 text-secondary">
                 {header}
@@ -98,21 +98,34 @@ const QuotifyMainListBox = ({ header, randomColor, setLikedQuote, likedQuotesDB,
                                                             class="dropdown-item cursor-pointer bi bi-bookmark-dash" 
                                                             onClick={() => setListQuote(listed)}
                                                         > 
-                                                            <span class='px-2'>Inspirational List</span>
+                                                            <span class='px-2'>{menuItem1}</span>
                                                         </li>
                                                     :
                                                         <li 
                                                             class="dropdown-item cursor-pointer bi bi-bookmark-plus" 
                                                             onClick={() => setListQuote(listed)}
                                                         > 
-                                                            <span class='px-2'>Inspirational List</span>
+                                                            <span class='px-2'>{menuItem1}</span>
                                                         </li>
                                                     }
+                                                    {
+                                                        list2.find(listedQuote => listedQuote.quoteId === listed.quoteId) 
+                                                    ?
                                                         <li 
-                                                            class="dropdown-item cursor-pointer bi bi-bookmark-dash"
-                                                        >
-                                                            <span class='px-2'>Insightful List</span>
+                                                            class="dropdown-item cursor-pointer bi bi-bookmark-dash" 
+                                                            onClick={() => setListQuote2(listed)}
+                                                        > 
+                                                            <span class='px-2'>{menuItem2}</span>
                                                         </li>
+                                                    :
+                                                        <li 
+                                                            class="dropdown-item cursor-pointer bi bi-bookmark-plus" 
+                                                            onClick={() => setListQuote2(listed)}
+                                                        > 
+                                                            <span class='px-2'>{menuItem2}</span>
+                                                        </li>
+                                                    }
+                                                    
                                                     </ul>
                                                 </span>
                                                 {/* Copy Button */}

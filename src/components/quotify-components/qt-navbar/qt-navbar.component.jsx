@@ -53,7 +53,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                     <div class="nav-link cursor-pointer"
                         onClick={() => history.push('/profile/qt/library')}
                     >
-                        <i class="bi bi-journal-bookmark fs-4 text-light"></i>
+                        <i class="bi bi-collection fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Library</span> 
                     </div>
                 </li>
@@ -62,7 +62,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                     <div class="nav-link d-none d-sm-block pt-sm-4 pb-sm-0 cursor-pointer"
                         onClick={() => history.push('/profile/qt/list')}
                     >
-                        <i class="bi bi-bookmark-plus fs-4 text-light"></i>
+                        <i class="bi bi-journal-bookmark-fill fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Lists</span>   
                     </div>
                 </li>
