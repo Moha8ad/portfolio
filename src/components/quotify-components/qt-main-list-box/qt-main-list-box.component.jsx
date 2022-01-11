@@ -10,39 +10,33 @@ const QuotifyMainListBox = ({ header, list, searchList }) => (
         <div class="fs-4 pt-4 text-secondary">
             {header}
         </div>
-        <div>
-
-            {list.length < 1 ?
-                <div class="p-4">
-                    <div class="pb-4 text-secondary">
-                        <span class="fs-6">Quotes you add to {header} will appear here.</span>
-                        <br />
-                    </div>
-                    <Link to='library'>
-                        <button class="btn btn-primary fs-6" type="button">
-                            Find Quotes
-                        </button>
-                    </Link>
-                </div>
-                :
-                <div>
-                    {searchList.length > 0 
-                    ?
-                        <div class="row">
-                            {searchList.map(cardItem => 
-                                <QuotifyCard cardItem = {cardItem}/>
-                            )}
+        <div class="container d-flex text-secondary overflow-scroll">
+                {list.length < 1 
+                ?
+                    <div class="p-4">
+                        <div class="pb-4 text-secondary">
+                            <span class="fs-6">Quotes you add to {header} will appear here.</span>
+                            <br />
                         </div>
+                        <Link to='library'>
+                            <button class="btn btn-primary fs-6" type="button">
+                                Find Quotes
+                            </button>
+                        </Link>
+                    </div>
+                :
+                    searchList.length > 0 
+                    ?
+                        searchList.map(cardItem => 
+                                <QuotifyCard cardItem = {cardItem}/>
+                            )
                     :
                         <div class="fs-4 text-danger p-4">
                             Result Not Found
-                        </div>
-                    }
-                </div>
+                        </div>        
                 }
+            <hr class="text-secondary" />
         </div>
-
-        <hr class="text-secondary" />
     </div>  
 )
 
