@@ -34,26 +34,21 @@ class HomePageQuotify extends React.Component {
         const { history, quotesDB } = this.props;
         
         return(
-            
-            <div className="container-fluid">
+            <div className="container-fluid not-clickable">
                 <div class='row'>
                     <QuotifyNavbar/>
                     <div className="qt-main col-12 col-sm-10 overflow-scroll"> 
                         <div class="row">
-                            <div className="qt-topbar col-12 sticky-top me-auto py-2">
-                                <QuotifyTopbar 
+                            <QuotifyTopbar 
                                 forward={() => history.goForward()}
-                                />
-                            </div>
-                            <div className="col-12">
-                                <QuotifyMainHome
-                                    randomAuthors={quotesDB.map(i => i.author)} 
-                                    randomQuotes={quotesDB.map(i => i.quote)} 
-                                    randomIds={quotesDB.map(i => i.authorId)}
-                                    randomQuoteId= {this.state.randomQuoteId }
-                                    handleClick={this.handleClick}
-                                />         
-                            </div>
+                            />
+                            <QuotifyMainHome
+                                randomAuthors={quotesDB.map(i => i.author)} 
+                                randomQuotes={quotesDB.map(i => i.quote)} 
+                                randomIds={quotesDB.map(i => i.authorId)}
+                                randomQuoteId= {this.state.randomQuoteId }
+                                handleClick={this.handleClick}
+                            />         
                         </div>
                     </div>
                     <QuotifyFooter />

@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import QuotifyButtonPanel from '../qt-button-panel/qt-button-panel.component';
+
 import './qt-main-search.styles.scss'
 
 const QuotifyMainSearch = ({ result, randomColor }) => (
@@ -17,27 +19,7 @@ const QuotifyMainSearch = ({ result, randomColor }) => (
                     <div class="col-12 fs-5 fst-italic fs-6" style={{color: randomColor}}> {result.author}</div>
                     <div class="col-12 d-flex justify-content-end align-items-end">
                         
-                        {/* Copy Button */}
-                        <button 
-                        type="button" 
-                        class="btn"
-                        style={{color: randomColor}}
-                        data-toggle="tooltip" 
-                        data-placement="left" 
-                        title="Copy"
-                        onClick={() =>  navigator.clipboard.writeText(`${result.quote} --${result.author}`)}
-                        > 
-                            <i class="bi bi-clipboard fs-5" />
-                        </button>
-                        
-                        {/* Share Button */}
-                        <a
-                            class="btn my-sm-3"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                            href={`https://twitter.com/intent/tweet?text=${result.quote} - ${result.author}`}>
-                        <i class="bi bi-twitter fs-5" style={{color: randomColor}}/>
-                        </a>
+                        <QuotifyButtonPanel item = {result} />
                         
                     </div>
                 </div>

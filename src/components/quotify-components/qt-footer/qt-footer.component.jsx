@@ -5,17 +5,19 @@ import AsArLogoSmWt from '../../all-reusable-components/asar-logo-sm-wt/asar-log
 import './qt-footer.styles.scss';
 
 const QuotifyFooter = () => (
-    <div class="qt-footer col-12 fixed-bottom p-2 d-flex align-items-center">        
-        <div class="container-fluid">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-auto">
-                    © 2021 AsAr Web Development
+    <div>        
+        <div class="qt-footer col-12 fixed-bottom p-2 d-flex align-items-center">        
+            <div class="container-fluid">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-auto">
+                        © 2021 AsAr Web Development
+                    </div>
+                    <div class="col-auto d-none d-sm-block ">
+                        <AsArLogoSmWt />
+                    </div>
                 </div>
-                <div class="col-auto d-none d-md-block">
-                    <AsArLogoSmWt />
-                </div>
-            </div>
-        </div>    
+            </div>    
+        </div>
     </div>
 )
 

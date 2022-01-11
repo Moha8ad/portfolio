@@ -11,10 +11,6 @@ import AsArLogoMdWt from '../../all-reusable-components/asar-logo-md-wt/asar-log
 
 import './qt-navbar.styles.scss';
 
-function refreshPage() {
-    window.location.reload(false);
-  }
-
 const QuotifyNavbar = ({ history, currentUser }) => (
     <div class="qt-navbar col-12 col-sm-2 p-0 px-2">    
         <div class="d-flex flex-row flex-sm-column flex-wrap justify-content-between">  

@@ -37,14 +37,12 @@ class SearchPageQuotify extends React.Component {
                     <QuotifyNavbar />
                     <div className="qt-main col-12 col-sm-10 overflow-scroll">
                         <div class="row">
-                            <div className="qt-topbar col-12 sticky-top me-auto py-2">
-                                <QuotifyTopbar 
-                                    midPart={"searchBox"}
-                                    back={() => history.goBack()}
-                                    forward={() => history.goForward()}
-                                    handleChange={this.handleChange}
-                                />
-                            </div>
+                            <QuotifyTopbar 
+                                midPart={"searchBox"}
+                                back={() => history.goBack()}
+                                forward={() => history.goForward()}
+                                handleChange={this.handleChange}
+                            />
                             <div class="col-12">
                                 {searchField === '' ?
                                     <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4 text-secondary">
