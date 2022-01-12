@@ -40,6 +40,7 @@ const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput
                     header = "My Quotes Library"
                     list= { addedQuoteCard }
                     searchList = { addedQuoteCard }
+                    trash= "trash"
                 />
             </div>
         </div>

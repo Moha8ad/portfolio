@@ -6,9 +6,9 @@ import QuotifyButtonPanel from '../qt-button-panel/qt-button-panel.component';
 
 import './qt-card.styles.scss';
 
-const QuotifyCard = ({ cardItem, randomColor}) => (
+const QuotifyCard = ({ cardItem, randomColor, trash}) => (
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 px-4 py-3">
-        <div class="hover-scale row d-flex justify-content-center border border-secondary bg-dark border-2 rounded-3">
+        <div  class="hover-scale row d-flex justify-content-center border border-secondary bg-dark border-2 rounded-3">
             <div class="col-12 col-lg-6 px-2 auth-img-library-animation">
                 <img
                     alt='img'
@@ -30,6 +30,7 @@ const QuotifyCard = ({ cardItem, randomColor}) => (
                             </div>
                             <QuotifyButtonPanel 
                                 item={cardItem}
+                                trash={trash}
                             />
                         </div>
                     </div>

@@ -5,7 +5,7 @@ import QuotifyCard from '../qt-card/qt-card.component';
 
 import './qt-horizontal-cards-box.styles.scss';
 
-const QuotifyHorizontalCardsBox = ({ header, list, searchList }) => (
+const QuotifyHorizontalCardsBox = ({ header, list, searchList, trash }) => (
     <div>
         <div class="fs-4 pt-4 text-secondary">
             {header}
@@ -28,7 +28,7 @@ const QuotifyHorizontalCardsBox = ({ header, list, searchList }) => (
                     searchList.length > 0 
                     ?
                         searchList.map(cardItem => 
-                                <QuotifyCard cardItem = {cardItem}/>
+                                <QuotifyCard cardItem = {cardItem} trash={trash}/>
                             )
                     :
                         <div class="fs-4 text-danger p-4">

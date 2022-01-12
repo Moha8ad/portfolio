@@ -60,7 +60,7 @@ class SearchPageQuotify extends React.Component {
                                 handleChange={this.handleChange}
                                 handleSubmit={this.handleSubmit}
                                 authorInput={authorInput} 
-                                quoteInput={quoteInput} 
+                                quoteInput={quoteInput}
                             />
                         </div>
                     </div>

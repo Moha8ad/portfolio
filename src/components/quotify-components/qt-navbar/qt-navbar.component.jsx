@@ -21,11 +21,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 <AsArLogoMdWt />
             </div>
             <ul class="
-                nav 
-                flex-sm-column 
-                flex-row
-                d-flex 
-                flex-wrap
+                nav flex-sm-column flex-row d-flex flex-wrap
                 align-items-center align-items-lg-start 
                 fw-bold py-2 p-sm-2"
             >
@@ -39,27 +35,27 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 </li>
                 <li>
                     <div class="nav-link pb-sm-0 cursor-pointer"
-                    onClick={() => history.push('/profile/qt/search')}
-                    >
-                        <i class="bi bi-search fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Search</span> 
-                    </div>
-                </li>
-                <li>
-                    <div class="nav-link cursor-pointer"
-                        onClick={() => history.push('/profile/qt/library')}
+                    onClick={() => history.push('/profile/qt/library')}
                     >
                         <i class="bi bi-collection fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Library</span> 
                     </div>
                 </li>
-                
                 <li>
-                    <div class="nav-link d-none d-sm-block pt-sm-4 pb-sm-0 cursor-pointer"
+                    <div class="nav-link cursor-pointer"
                         onClick={() => history.push('/profile/qt/list')}
                     >
                         <i class="bi bi-journal-bookmark-fill fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Lists</span>   
+                        <span class="d-none d-lg-inline ms-3 text-secondary"> Lists</span> 
+                    </div>
+                </li>
+                
+                <li>
+                    <div class="nav-link d-none d-sm-block pt-sm-4 pb-sm-0 cursor-pointer"
+                        onClick={() => history.push('/profile/qt/create')}
+                    >
+                        <i class="bi bi-plus-square-dotted fs-4 text-light"></i>
+                        <span class="d-none d-lg-inline ms-3 text-secondary"> Create</span>   
                     </div>
                 </li>
                 <li>

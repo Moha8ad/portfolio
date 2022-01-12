@@ -1,3 +1,19 @@
+#to-show {
+    color: rgba(255, 255, 255, 0);;
+}
+#to-hover:hover > #to-show {
+    color: rgba(255, 255, 255, 0.6);
+    
+    &:hover {
+        transform: scale(1.10);
+        color: rgb(255, 56, 56);
+    }
+    
+    &:active {
+        color: rgba(255, 255, 255, 0);
+    }
+}
+
 .hover-change > span {
     
     cursor: pointer;

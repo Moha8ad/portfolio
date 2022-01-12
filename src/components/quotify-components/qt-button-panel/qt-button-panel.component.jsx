@@ -5,8 +5,15 @@ import { setLikedQuote, setInspirationalQuote, setInsightfulQuote } from "../../
 
 import './qt-button-panel.styles.scss'
 
-const QuotifyButtonPanel = ({ item, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList, setInsightfulQuote, insightfulList }) => (
-    <div className="col-5 ms-auto d-flex justify-content-around align-items-center hover-change">
+const QuotifyButtonPanel = ({ trash, item, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList, setInsightfulQuote, insightfulList }) => (
+    <div id="to-hover" className="col-5 ms-auto d-flex justify-content-around align-items-center hover-change">
+        {trash === 'trash' ?
+            <span id="to-show" >
+                <i class="bi bi-trash"></i>
+            </span>
+            :
+            ''
+        }
         {/* Like Button */}
         <span 
             onClick={() => setLikedQuote(item)}
