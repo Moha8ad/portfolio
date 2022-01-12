@@ -8,28 +8,49 @@ import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-f
 
 import QuotifyMainSearch from '../../../components/quotify-components/qt-main-search/qt-main-search';
 
+import QuotifyCard from '../../../components/quotify-components/qt-card/qt-card.component';
+import QuotifyMainListBox from '../../../components/quotify-components/qt-main-list-box/qt-main-list-box.component';
+
+import { addQuoteCard } from '../../../redux/quote/quote.actions';
 
 class SearchPageQuotify extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchField: ""
+            authorInput: '',
+            quoteInput: '',
+            authorId: 121,
+            quoteId: 121
         }
     }
 
-    handleChange = e => (
-        this.setState({
-            searchField: e.target.value
-        })
-    )
+    handleChange = e => {
+        const { name, value } = e.target;
+        
+        this.setState({ 
+            [name]: value
+        });
+    }
+
+    handleSubmit = () => {
+
+        this.setState({ 
+            authorInput: '',
+            quoteInput: '',
+            authorId: this.state.authorId + 1,
+            quoteId: this.state.quoteId + 1
+        });   
+
+        const { authorInput, quoteInput, authorId, quoteId } = this.state
+        this.props.addQuoteCard( authorInput, quoteInput, quoteId, authorId)
+
+             
+    }
 
     render() {
-        const { searchField } = this.state;
-        const { history, quotesDB } = this.props;
+        const { authorInput, quoteInput} = this.state;
+        const { history } = this.props;
 
-        const searchByName = quotesDB.filter(name => (
-            name.author.toLowerCase().includes(searchField.toLowerCase())
-        ))
 
         return (
             <div className="container-fluid">
@@ -43,38 +64,63 @@ class SearchPageQuotify extends React.Component {
                                 forward={() => history.goForward()}
                                 handleChange={this.handleChange}
                             />
-                            <div class="col-12">
-                                {searchField === '' ?
-                                    <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4 text-secondary">
-                                        <div class="fs-3"><i class="bi bi-person-bounding-box text-success"></i> Search For Authors!</div>
+                            <div class="col-12 text-secondary">
+                                <div className='row'>
+                                    <div class="col-12">
+                                        <div class="fs-4 py-2">Add Quote to your personal library here</div>
+                                        <div class="py-4 ">Enter Author Name and Quote Below</div>
                                     </div>
-                                :
-                                    (searchByName.length > 0) 
-                                ?
-                                    <div>
-                                        {searchByName.map(result => 
-                                            <QuotifyMainSearch
-                                                result={result}
-                                            /> 
-                                        )}
+                                        <div className="col-12">
+                                            <input
+                                                type='text'
+                                                name='authorInput'
+                                                value={authorInput}
+                                                onChange={this.handleChange}
+                                                placeholder='Enter Author Name'
+                                                required
+                                            />
+                                        </div>
+                                        <div className="col-12 my-2">
+                                            <input
+                                                type='text'
+                                                name='quoteInput'
+                                                value={quoteInput}
+                                                onChange={this.handleChange}
+                                                placeholder='Enter Quote'
+                                                required
+                                            />
+                                        </div>
+                                        <div className='col-12 py-4'>
+                                        <button class="btn btn-success me-1 mb-1" onClick={this.handleSubmit}> Add to My Library </button>
+                                        </div>
+                                    <div class="col-12">
+                                    <QuotifyMainListBox 
+                                        header = "My Quotes Library"
+                                        list= { this.props.addedQuoteCard }
+                                        searchList = { this.props.addedQuoteCard }
+                                    />
+                                    
                                     </div>
-                                :
-                                    <div class="col-12 col-sm-10 col-md-8 col-lg-6 p-4 text-danger">
-                                        <h1>Result Not Found</h1>
-                                    </div>
-                                }
+                                </div>
+
+
                             </div>
-                            <QuotifyFooter />
                         </div>
                     </div>
+                    <QuotifyFooter />
                 </div>    
             </div>
         )
     }
 }
 
-const mapStateToProps = ({quote: {quotesDB}}) => ({
-    quotesDB
+
+const mapDispatchToProps = dispatch => ({
+    addQuoteCard: (author, quote, quoteId, authorId) => dispatch(addQuoteCard(author, quote, quoteId, authorId))
 })
 
-export default connect(mapStateToProps)(withRouter(SearchPageQuotify));
+const mapStateToProps = ({quote: {quotesDB, addedQuoteCard}}) => ({
+    quotesDB, addedQuoteCard
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchPageQuotify));

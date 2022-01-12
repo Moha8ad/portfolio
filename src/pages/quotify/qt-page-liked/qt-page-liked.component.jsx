@@ -35,18 +35,28 @@ class LikedPageQuotify extends React.Component {
                     <QuotifyNavbar />
                     <div className="qt-main col-12 col-sm-10 overflow-scroll">
                         <div class="row">
+                        {searchByName.length > 0 ?
+
                             <QuotifyTopbar 
                                 midPart={"searchBox"}
                                 back={() => history.goBack()}
                                 forward={() => history.goForward()}
                                 handleChange={this.handleChange}
                             />
+                        :
+                            <QuotifyTopbar 
+                                midPart={""}
+                                back={() => history.goBack()}
+                                forward={() => history.goForward()}
+                                handleChange={this.handleChange}
+                            />
+                        }
                             <QuotifyMainLiked 
                                 searchByName={searchByName} 
                             />
-                            <QuotifyFooter />
                         </div>
                     </div>
+                    <QuotifyFooter />
                 </div>
             </div>
         )

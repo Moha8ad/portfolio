@@ -90,9 +90,8 @@ class SignUp extends React.Component {
                     required
                 />
             </div>
-            <div className="col-12">
+            <div className="col-12 my-2">
                 <input
-                    class="my-2"
                     type='password'
                     name='confirmPassword'
                     value={confirmPassword}

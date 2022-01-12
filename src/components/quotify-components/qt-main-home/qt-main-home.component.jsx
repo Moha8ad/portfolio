@@ -37,8 +37,6 @@ const QuotifyMainHome = ({ randomQuoteId, randomIds, randomAuthors, randomQuotes
                         className="col-auto hover-scale-change cursor-pointer"
                         style={{color: randomColor}}
                         data-tip data-for="share-btn"
-                        rel="noopener noreferrer"
-                        target="_blank"
                         href={`https://twitter.com/intent/tweet?text=${randomQuotes[randomQuoteId]} - ${randomAuthors[randomQuoteId]}`}
                     >
                         <i class="bi bi-twitter fs-5"></i>

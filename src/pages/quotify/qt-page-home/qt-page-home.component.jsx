@@ -20,7 +20,6 @@ class HomePageQuotify extends React.Component {
         }
     }
     
-
     handleClick = (e) => {
         e.preventDefault()
         this.props.generateRandomColor(Math.floor(Math.random()*25))
@@ -34,7 +33,7 @@ class HomePageQuotify extends React.Component {
         const { history, quotesDB } = this.props;
         
         return(
-            <div className="container-fluid not-clickable">
+            <div className="container-fluid">
                 <div class='row'>
                     <QuotifyNavbar/>
                     <div className="qt-main col-12 col-sm-10 overflow-scroll"> 

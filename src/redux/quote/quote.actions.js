@@ -24,3 +24,11 @@ export const setInsightfulQuote = insightfulQuote => ({
     type: QuoteActionTypes.SET_INSIGHTFUL_QUOTE,
     payload: insightfulQuote
 })
+
+export const addQuoteCard = (author, quote, quoteId, authorId) => ({
+    type: QuoteActionTypes.ADD_QUOTE_CARD,
+    author: author,
+    quote: quote,
+    quoteId: quoteId,
+    authorId: authorId
+})

@@ -59,9 +59,9 @@ class ListPageQuotify extends React.Component {
                             searchByNameinspirationalList={searchByNameinspirationalList}
                             searchByNameinsightfulList={searchByNameinsightfulList}
                             />
-                            <QuotifyFooter />
                         </div>
                     </div>
+                    <QuotifyFooter />
                 </div>
             </div>
         )
