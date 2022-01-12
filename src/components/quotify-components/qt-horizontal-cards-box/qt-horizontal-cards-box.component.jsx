@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import QuotifyCard from '../qt-card/qt-card.component';
 
-import './qt-main-list-box.styles.scss';
+import './qt-horizontal-cards-box.styles.scss';
 
-const QuotifyMainListBox = ({ header, list, searchList }) => (
+const QuotifyHorizontalCardsBox = ({ header, list, searchList }) => (
     <div>
         <div class="fs-4 pt-4 text-secondary">
             {header}
@@ -40,4 +40,4 @@ const QuotifyMainListBox = ({ header, list, searchList }) => (
     </div>  
 )
 
-export default QuotifyMainListBox;
+export default QuotifyHorizontalCardsBox;

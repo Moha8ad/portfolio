@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import QuotifyMainListBox from "../qt-main-list-box/qt-main-list-box.component";
+import QuotifyHorizontalCardsBox from "../qt-horizontal-cards-box/qt-horizontal-cards-box.component";
 
 import './qt-main-list.styles.scss';
 
@@ -13,14 +13,14 @@ class QuotifyMainList extends React.Component {
         return (
             <div>
                 {/* Inspirational Quotes List */}
-                <QuotifyMainListBox 
+                <QuotifyHorizontalCardsBox 
                     header = "Inspirational Quotes"
                     list= { inspirationalList }
                     searchList = { searchByNameinspirationalList }
                 />
 
                 {/* Insightful Quotes List */}
-                <QuotifyMainListBox 
+                <QuotifyHorizontalCardsBox 
                     header = "Insightful Quotes"
                     list= { insightfulList }
                     searchList = { searchByNameinsightfulList }
