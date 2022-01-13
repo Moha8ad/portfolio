@@ -71,7 +71,6 @@ class SearchPageQuotify extends React.Component {
     }
 }
 
-
 const mapDispatchToProps = dispatch => ({
     addQuoteCard: (author, quote, quoteId, authorId) => dispatch(addQuoteCard(author, quote, quoteId, authorId))
 })

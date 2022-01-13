@@ -25,6 +25,11 @@ export const setInsightfulQuote = insightfulQuote => ({
     payload: insightfulQuote
 })
 
+export const remove = qt => ({
+    type: QuoteActionTypes.REMOVE,
+    payload: qt
+})
+
 export const addQuoteCard = (author, quote, quoteId, authorId) => ({
     type: QuoteActionTypes.ADD_QUOTE_CARD,
     author: author,
