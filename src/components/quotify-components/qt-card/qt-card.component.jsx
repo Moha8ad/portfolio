@@ -72,7 +72,7 @@ render() {
 }
 
 const mapDispatchToProps = dispatch => ({
-    generateRandomQuoteId: randomQuoteID => dispatch(generateRandomQuoteId(randomQuoteID))
+    generateRandomQuoteId: randomQuoteId => dispatch(generateRandomQuoteId(randomQuoteId))
 })
 
 const mapStateToProps = ({ quote: { quotesDB }}) => ({

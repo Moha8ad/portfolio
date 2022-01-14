@@ -12,29 +12,37 @@ const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput
                 <div class="fs-4 py-2">Add Quote to your personal library here</div>
                 <div class="py-4 ">Enter Author Name and Quote Below</div>
             </div>
-            <div className="col-12">
-                <input
-                    type='text'
-                    name='authorInput'
-                    value={authorInput}
-                    onChange={handleChange}
-                    placeholder='Enter Author Name'
-                    required
-                />
-            </div>
-            <div className="col-12 my-2">
-                <input
-                    type='text'
-                    name='quoteInput'
-                    value={quoteInput}
-                    onChange={handleChange}
-                    placeholder='Enter Quote'
-                    required
-                />
-            </div>
-            <div className='col-12 py-4'>
-                <button class="btn btn-success me-1 mb-1" onClick={handleSubmit}> Add to My Library </button>
-            </div>
+            <form onSubmit={handleSubmit}>
+                <div className="col-12">
+                    <label for="author">Author:</label><br />
+                    <input
+                        id="author"
+                        type='text'
+                        name='authorInput'
+                        value={authorInput}
+                        onChange={handleChange}
+                        label="author"
+                        placeholder='Enter Author Name'
+                        required
+                    />
+                </div>
+                <div className="col-12 my-2">
+                    <label for="quote">Quote:</label><br />
+                    <input
+                        id="quote"
+                        type='text'
+                        name='quoteInput'
+                        value={quoteInput}
+                        onChange={handleChange}
+                        label="quote"
+                        placeholder='Enter Quote'
+                        required
+                    />
+                </div>
+                <div className='col-12 py-4'>
+                    <button class="btn btn-success me-1 mb-1" type="submit"> Add to My Library </button>
+                </div>
+            </form>
             <div class="col-12">
                 <QuotifyHorizontalCardsBox 
                     header = "My Quotes Library"

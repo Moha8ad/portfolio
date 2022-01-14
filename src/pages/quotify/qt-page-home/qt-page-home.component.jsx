@@ -13,7 +13,7 @@ class HomePageQuotify extends React.Component {
     
     render() {              
         const { history, quotesDB, randomQuoteId } = this.props;
-        
+
         const randomQuote = quotesDB.filter(card => card.quoteId === randomQuoteId)
             
         return(
