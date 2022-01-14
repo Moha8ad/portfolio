@@ -5,18 +5,15 @@ import QuotifyHorizontalCardsBox from "../qt-horizontal-cards-box/qt-horizontal-
 
 import './qt-main-create.styles.scss';
 
-const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput, addedQuoteCard }) => (
+const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput, addedQuoteCard, currentUser }) => (
     <div class="col-12 text-secondary">
         <div className='row'>
             <div class="col-12">
                 <div class="fs-4 py-2">Add Quote to your personal library here</div>
                 <div class="py-4 ">Enter Author Name and Quote Below</div>
             </div>
-            <form onSubmit={handleSubmit}>
                 <div className="col-12">
-                    <label for="author">Author:</label><br />
                     <input
-                        id="author"
                         type='text'
                         name='authorInput'
                         value={authorInput}
@@ -27,9 +24,7 @@ const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput
                     />
                 </div>
                 <div className="col-12 my-2">
-                    <label for="quote">Quote:</label><br />
                     <input
-                        id="quote"
                         type='text'
                         name='quoteInput'
                         value={quoteInput}
@@ -39,10 +34,34 @@ const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput
                         required
                     />
                 </div>
-                <div className='col-12 py-4'>
-                    <button class="btn btn-success me-1 mb-1" type="submit"> Add to My Library </button>
-                </div>
-            </form>
+               
+                    <div className='col-12 py-4'>
+                    {authorInput && quoteInput ?
+                        <button class="btn btn-success me-1 mb-1" onClick={handleSubmit}>
+                            Add to My Library
+                        </button>
+                        :
+                        authorInput ?
+                        <button class="btn btn-secondary me-1 mb-1" onClick={()=> alert(
+                            "\n Dear " + JSON.stringify(currentUser.displayName) 
+                            + "\n\n ⚠ Please enter quote's text! \n")}>
+                            Add to My Library
+                        </button>
+                        :
+                        quoteInput ?
+                        <button class="btn btn-secondary me-1 mb-1" onClick={()=> alert(
+                            "\n Dear " + JSON.stringify(currentUser.displayName) 
+                            + "\n\n ⚠ Please enter author's text! \n")}>
+                            Add to My Library
+                        </button>
+                        :
+                        <button class="btn btn-secondary me-1 mb-1" onClick={()=> alert(
+                            "\n Dear " + JSON.stringify(currentUser.displayName) 
+                            + "\n\n ⚠ Please enter author's name and quote's text first! \n")}>
+                            Add to My Library
+                        </button>
+                    }
+                    </div>
             <div class="col-12">
                 <QuotifyHorizontalCardsBox 
                     header = "My Quotes Library"
@@ -55,8 +74,8 @@ const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput
     </div>
 )
 
-const mapStateToProps = ({quote: {addedQuoteCard}}) => ({
-    addedQuoteCard
+const mapStateToProps = ({quote: {addedQuoteCard}, user: {currentUser}}) => ({
+    addedQuoteCard, currentUser
 })
 
 export default connect(mapStateToProps)(QuotifyMainCreate);
