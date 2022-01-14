@@ -67,7 +67,7 @@ const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput
                     header = "My Quotes Library"
                     list= { addedQuoteCard }
                     searchList = { addedQuoteCard }
-                    trash= "yes"
+                    trash= {true}
                 />
             </div>
         </div>

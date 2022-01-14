@@ -28,6 +28,9 @@ class LibraryPageQuotify extends React.Component {
         const searchByName = quotesDB.filter(name => (
             name.author.toLowerCase().includes(this.state.searchField.toLowerCase())
         ))
+        const searchByQuote = quotesDB.filter(name => (
+            name.quote.toLowerCase().includes(this.state.searchField.toLowerCase())
+        ))
 
         return (
             <div className="container-fluid">
@@ -42,7 +45,8 @@ class LibraryPageQuotify extends React.Component {
                                 handleChange={this.handleChange}
                             />
                             <QuotifyMainLibrary 
-                                searchByName={searchByName} 
+                                searchByName={searchByName}
+                                searchByQuote={searchByQuote} 
                             />
                         </div>
                     </div>

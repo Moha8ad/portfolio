@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { setLikedQuote, setInspirationalQuote, setInsightfulQuote, addQuoteCard } from "../../../redux/quote/quote.actions";
 
-import { removeQuote } from "./button.utils";
+import { removeQuote } from "./qt-button.utils";
 
 import './qt-button-panel.styles.scss'
 
@@ -12,7 +12,7 @@ const QuotifyButtonPanel = ({ handleClick, repeat, trash, item, addQuoteCard, se
     <div id="to-hover"  className="col-6 ms-auto d-flex justify-content-around align-items-center hover-change">
     
         {/* Repeat Button */}
-        {repeat === 'yes' ?
+        {repeat ?
             <span onClick={handleClick}>
                 <i class="bi bi-arrow-repeat"></i>
             </span>
@@ -21,21 +21,19 @@ const QuotifyButtonPanel = ({ handleClick, repeat, trash, item, addQuoteCard, se
         }
 
         {/* Remove Button */}
-        { trash === 'yes' ?
+        { trash ?
             <span id="to-show" onClick={() => {
                 addQuoteCard(item.author, item.quote, item.quoteId, item.authorId); 
                 removeQuote(likedQuotesDB, setLikedQuote, item)
                 removeQuote(inspirationalList, setInspirationalQuote, item)
                 removeQuote(insightfulList, setInsightfulQuote, item)
             }}>
-            <i class="bi bi-trash"></i>
+                <i class="bi bi-trash"></i>
             </span>
             :
             null
         }
-    
-    
-        
+
         {/* Like Button */}
         <span 
             onClick={() => setLikedQuote(item)}

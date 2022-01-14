@@ -8,7 +8,7 @@ const QuotifyMainHome = ({ randomQuote }) => (
     <div>
         <div class="row">
             {randomQuote.map(cardItem => 
-                <QuotifyCard cardItem = {cardItem} repeat='yes'/>
+                <QuotifyCard cardItem = {cardItem} repeat={true}/>
             )}
         </div>
     </div>

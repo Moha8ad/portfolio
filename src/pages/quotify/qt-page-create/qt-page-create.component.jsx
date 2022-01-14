@@ -42,7 +42,7 @@ class SearchPageQuotify extends React.Component {
 
     render() {
         const { authorInput, quoteInput} = this.state;
-        const { history } = this.props;
+        const { history, addedQuoteCard } = this.props;
         
         return (
             <div className="container-fluid">
@@ -50,12 +50,13 @@ class SearchPageQuotify extends React.Component {
                     <QuotifyNavbar />
                     <div className="qt-main col-12 col-sm-10 overflow-scroll">
                         <div class="row">
-                            <QuotifyTopbar 
-                                midPart={"searchBox"}
+                             <QuotifyTopbar 
+                                midPart= {addedQuoteCard.length > 0 ? "searchBox" : "" }
                                 back={() => history.goBack()}
                                 forward={() => history.goForward()}
                                 handleChange={this.handleChange}
                             />
+                        
                             <QuotifyMainCreate 
                                 handleChange={this.handleChange}
                                 handleSubmit={this.handleSubmit}
@@ -75,4 +76,8 @@ const mapDispatchToProps = dispatch => ({
     addQuoteCard: (author, quote, quoteId, authorId) => dispatch(addQuoteCard(author, quote, quoteId, authorId))
 })
 
-export default connect(null, mapDispatchToProps)(withRouter(SearchPageQuotify));
+const mapStateToProps = ({ quote: { addedQuoteCard }}) => ({
+    addedQuoteCard
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchPageQuotify));

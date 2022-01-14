@@ -5,7 +5,7 @@ import QuotifyCard from '../qt-card/qt-card.component';
 
 import './qt-horizontal-cards-box.styles.scss';
 
-const QuotifyHorizontalCardsBox = ({ header, list, searchList, trash }) => (
+const QuotifyHorizontalCardsBox = ({ header, list, searchList, trash, linkToLibrary }) => (
     <div>
         <div class="fs-4 pt-4 text-secondary">
             {header}
@@ -18,11 +18,15 @@ const QuotifyHorizontalCardsBox = ({ header, list, searchList, trash }) => (
                             <span class="fs-6">Quotes you add to {header} will appear here.</span>
                             <br />
                         </div>
-                        <Link to='library'>
-                            <button class="btn btn-primary fs-6" type="button">
-                                Find Quotes
-                            </button>
-                        </Link>
+                        {linkToLibrary ?
+                            <Link to='library'>
+                                <button class="btn btn-primary fs-6" type="button">
+                                    Find Quotes
+                                </button>
+                            </Link>
+                            :
+                            null
+                        }
                     </div>
                 :
                     searchList.length > 0 

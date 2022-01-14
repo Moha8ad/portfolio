@@ -17,6 +17,7 @@ class QuotifyMainList extends React.Component {
                     header = "Inspirational Quotes"
                     list= { inspirationalList }
                     searchList = { searchByNameinspirationalList }
+                    linkToLibrary= {true}
                 />
 
                 {/* Insightful Quotes List */}
@@ -24,6 +25,7 @@ class QuotifyMainList extends React.Component {
                     header = "Insightful Quotes"
                     list= { insightfulList }
                     searchList = { searchByNameinsightfulList }
+                    linkToLibrary= {true}
                 />
 
             </div>

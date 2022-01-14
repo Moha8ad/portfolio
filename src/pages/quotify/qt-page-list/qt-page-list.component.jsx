@@ -39,22 +39,12 @@ class ListPageQuotify extends React.Component {
                     <QuotifyNavbar />
                     <div className="qt-main col-12 col-sm-10 overflow-scroll">
                         <div class="row">
-                        {inspirationalList.length || insightfulList.length > 0 ?
-
                             <QuotifyTopbar 
-                                midPart={"searchBox"}
+                                midPart={inspirationalList.length || insightfulList.length > 0 ? "searchBox" : ""}
                                 back={() => history.goBack()}
                                 forward={() => history.goForward()}
                                 handleChange={this.handleChange}
                             />
-                        :
-                            <QuotifyTopbar 
-                                midPart={""}
-                                back={() => history.goBack()}
-                                forward={() => history.goForward()}
-                                handleChange={this.handleChange}
-                            />
-                        }
                             <QuotifyMainList
                             searchByNameinspirationalList={searchByNameinspirationalList}
                             searchByNameinsightfulList={searchByNameinsightfulList}
