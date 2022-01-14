@@ -1,13 +1,8 @@
 import QuoteActionTypes from './quote.types';
 
-export const generateRandomColor = randomColor => ({
-    type: QuoteActionTypes.GENERATE_RANDOM_COLOR,
-    payload: randomColor
-})
-
-export const addQuoteToDataBase = addedQuote => ({
-    type: QuoteActionTypes.ADD_QUOTE_TO_DATA_BASE,
-    payload: addedQuote
+export const generateRandomQuoteId = randomQuoteId => ({
+    type: QuoteActionTypes.GENERATE_RANDOM_QUOTE_ID,
+    payload: randomQuoteId
 })
 
 export const setLikedQuote = likedQuote => ({
@@ -23,11 +18,6 @@ export const setInspirationalQuote = inspirationalQuote => ({
 export const setInsightfulQuote = insightfulQuote => ({
     type: QuoteActionTypes.SET_INSIGHTFUL_QUOTE,
     payload: insightfulQuote
-})
-
-export const remove = qt => ({
-    type: QuoteActionTypes.REMOVE,
-    payload: qt
 })
 
 export const addQuoteCard = (author, quote, quoteId, authorId) => ({

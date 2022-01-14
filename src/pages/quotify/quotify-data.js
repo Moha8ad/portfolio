@@ -1,5 +1,9 @@
 const QUOTES_DATA =  [
-
+                            {
+                                   quote:  "People don't realize how much they are in the grip of ideas. We live among ideas much more than we live in nature.",
+                                   author:  "Saul Bellow", 
+                                   quoteId: 0, authorId: 0
+                            },
                             {
                                    quote:  "Life isn’t about getting and having, it’s about giving and being.",
                                    author:  "Kevin Kruse", 

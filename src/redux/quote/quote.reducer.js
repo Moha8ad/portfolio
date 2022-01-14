@@ -3,29 +3,22 @@ import QuoteActionTypes from './quote.types';
 import { toggleQuote } from './quote.utils'; 
 
 import QUOTES_DATA from '../../pages/quotify/quotify-data';
-import COLOR_PALETTE from '../../components/all-reusable-components/random-color/random-color-component';
 
 const INITIAL_STATE = {
+    randomQuoteId: Math.floor(Math.random()*50),
     quotesDB: QUOTES_DATA,
     likedQuotesDB: [],
     inspirationalList: [],
     insightfulList: [],
-    addedQuoteCard: [],
-    ic: [],
-    randomColor: COLOR_PALETTE[Math.floor(Math.random()*25)],
+    addedQuoteCard: []
 }
 
 const quoteReducer = (state= INITIAL_STATE , action) => {
     switch (action.type) {
-        case QuoteActionTypes.GENERATE_RANDOM_COLOR:
+        case QuoteActionTypes.GENERATE_RANDOM_QUOTE_ID:
             return {
                 ...state,
-                randomColor: COLOR_PALETTE[action.payload]
-            }
-        case QuoteActionTypes.ADD_QUOTE_TO_DATA_BASE:
-            return {
-                ...state,
-                quotesDB: [...state.addedQuote, action.payload]
+                randomQuoteId: action.payload
             }
         case QuoteActionTypes.SET_LIKED_QUOTE:
             return {
@@ -41,11 +34,6 @@ const quoteReducer = (state= INITIAL_STATE , action) => {
             return{
                 ...state,
                 insightfulList: toggleQuote(state.insightfulList, action.payload)
-            }
-        case QuoteActionTypes.REMOVE:
-            return{
-                ...state,
-                ic: QUOTES_DATA
             }
         case QuoteActionTypes.ADD_QUOTE_CARD:
             return{

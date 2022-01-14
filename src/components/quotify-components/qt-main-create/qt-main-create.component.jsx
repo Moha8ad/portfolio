@@ -5,7 +5,7 @@ import QuotifyHorizontalCardsBox from "../qt-horizontal-cards-box/qt-horizontal-
 
 import './qt-main-create.styles.scss';
 
-const QuotifyMainCreate = ({ ic, handleChange, handleSubmit, authorInput, quoteInput, addedQuoteCard }) => (
+const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput, addedQuoteCard }) => (
     <div class="col-12 text-secondary">
         <div className='row'>
             <div class="col-12">
@@ -35,21 +35,20 @@ const QuotifyMainCreate = ({ ic, handleChange, handleSubmit, authorInput, quoteI
             <div className='col-12 py-4'>
                 <button class="btn btn-success me-1 mb-1" onClick={handleSubmit}> Add to My Library </button>
             </div>
-            <div class="text-light">{ic.map(i => <h1>{i.quote}</h1>)}</div>
             <div class="col-12">
                 <QuotifyHorizontalCardsBox 
                     header = "My Quotes Library"
                     list= { addedQuoteCard }
                     searchList = { addedQuoteCard }
-                    trash= "trash"
+                    trash= "yes"
                 />
             </div>
         </div>
     </div>
 )
 
-const mapStateToProps = ({quote: {addedQuoteCard, ic}}) => ({
-    addedQuoteCard, ic
+const mapStateToProps = ({quote: {addedQuoteCard}}) => ({
+    addedQuoteCard
 })
 
 export default connect(mapStateToProps)(QuotifyMainCreate);

@@ -74,8 +74,12 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                         >
                         </i>
                         <ul class="dropdown-menu dropdown-menu-dark" style={{zIndex: "10000"}}>
-                            <li class="dropdown-item cursor-pointer bi bi-bookmark-plus"> Lists</li>
-                            <li class="dropdown-item cursor-pointer bi bi-heart"> Liked</li>
+                            <Link to='/profile/qt/create'>
+                                <li class="dropdown-item cursor-pointer bi-plus-square-dotted"> Create</li>
+                            </Link>
+                            <Link to='/profile/qt/liked'>
+                                <li class="dropdown-item cursor-pointer bi bi-heart"> Liked</li>
+                            </Link>
                         </ul>
                 </li>
             </ul>

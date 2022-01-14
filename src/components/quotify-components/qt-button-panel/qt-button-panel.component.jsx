@@ -1,19 +1,40 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { setLikedQuote, setInspirationalQuote, setInsightfulQuote, remove, addQuoteCard } from "../../../redux/quote/quote.actions";
+import { setLikedQuote, setInspirationalQuote, setInsightfulQuote, addQuoteCard } from "../../../redux/quote/quote.actions";
+
+import { removeQuote } from "./button.utils";
 
 import './qt-button-panel.styles.scss'
 
-const QuotifyButtonPanel = ({ addQuoteCard, addedQuoteCard, trash, item, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList, setInsightfulQuote, insightfulList }) => (
-    <div id="to-hover"  className="col-5 ms-auto d-flex justify-content-around align-items-center hover-change">
-        { trash === 'trash' ?
-            <span id="to-show" onClick={() => addQuoteCard(item.author, item.quote, item.quoteId, item.authorId)}>
-            <i   class="bi bi-trash"></i>
+const QuotifyButtonPanel = ({ handleClick, repeat, trash, item, addQuoteCard, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList, setInsightfulQuote, insightfulList }) => (
+    
+    <div id="to-hover"  className="col-6 ms-auto d-flex justify-content-around align-items-center hover-change">
+    
+        {/* Repeat Button */}
+        {repeat === 'yes' ?
+            <span onClick={handleClick}>
+                <i class="bi bi-arrow-repeat"></i>
             </span>
             :
-            ""
+            null
         }
+
+        {/* Remove Button */}
+        { trash === 'yes' ?
+            <span id="to-show" onClick={() => {
+                addQuoteCard(item.author, item.quote, item.quoteId, item.authorId); 
+                removeQuote(likedQuotesDB, setLikedQuote, item)
+                removeQuote(inspirationalList, setInspirationalQuote, item)
+                removeQuote(insightfulList, setInsightfulQuote, item)
+            }}>
+            <i class="bi bi-trash"></i>
+            </span>
+            :
+            null
+        }
+    
+    
         
         {/* Like Button */}
         <span 
@@ -109,14 +130,14 @@ const QuotifyButtonPanel = ({ addQuoteCard, addedQuoteCard, trash, item, setLike
     </div>
 )
 
-const mapStateToProps = ({ quote: { likedQuotesDB, inspirationalList, insightfulList, addedQuoteCard }}) => ({
-    likedQuotesDB, inspirationalList, insightfulList, addedQuoteCard
+
+const mapStateToProps = ({ quote: { likedQuotesDB, inspirationalList, insightfulList }}) => ({
+    likedQuotesDB, inspirationalList, insightfulList
 })
 
 const mapDispatchToProps = dispatch => ({
     setLikedQuote: likedQuote => dispatch(setLikedQuote(likedQuote)),
     addQuoteCard: (author, quote, quoteId, authorId) => dispatch(addQuoteCard(author, quote, quoteId, authorId) ),
-    remove: qt => dispatch(remove(qt)),
     setInspirationalQuote: inspirationalQuote => dispatch(setInspirationalQuote(inspirationalQuote)),
     setInsightfulQuote: insightfulQuote => dispatch(setInsightfulQuote(insightfulQuote)),
 })

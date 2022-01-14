@@ -2,11 +2,35 @@ import React from "react";
 
 import { connect } from "react-redux";
 
+import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component';
+
 import QuotifyButtonPanel from '../qt-button-panel/qt-button-panel.component';
+
+import { generateRandomQuoteId } from '../../../redux/quote/quote.actions';
 
 import './qt-card.styles.scss';
 
-const QuotifyCard = ({ cardItem, randomColor, trash}) => (
+class QuotifyCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        randomColor: COLOR_PALETTE[Math.floor(Math.random()*25)],
+        }
+    }
+
+    handleClick = () => {
+        this.props.generateRandomQuoteId((Math.floor(Math.random()*this.props.quotesDB.length)))
+        this.setState({
+            randomColor: COLOR_PALETTE[Math.floor(Math.random()*25)],
+        })
+    }
+
+render() {
+    const { randomColor } = this.state;
+    const { cardItem, trash, repeat} = this.props;
+
+    return (
+
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 px-4 py-3">
         <div  class="hover-scale row d-flex justify-content-center border border-secondary bg-dark border-2 rounded-3">
             <div class="col-12 col-lg-6 px-2 auth-img-library-animation">
@@ -31,6 +55,8 @@ const QuotifyCard = ({ cardItem, randomColor, trash}) => (
                             <QuotifyButtonPanel 
                                 item={cardItem}
                                 trash={trash}
+                                repeat={repeat}
+                                handleClick={this.handleClick}
                             />
                         </div>
                     </div>
@@ -42,9 +68,15 @@ const QuotifyCard = ({ cardItem, randomColor, trash}) => (
         </div>
     </div>
 )
+}
+}
 
-const mapStateToProps = ({ quote: { randomColor }}) => ({
-    randomColor
+const mapDispatchToProps = dispatch => ({
+    generateRandomQuoteId: randomQuoteID => dispatch(generateRandomQuoteId(randomQuoteID))
 })
 
-export default connect(mapStateToProps, null)(QuotifyCard);
+const mapStateToProps = ({ quote: { quotesDB }}) => ({
+    quotesDB
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuotifyCard);
