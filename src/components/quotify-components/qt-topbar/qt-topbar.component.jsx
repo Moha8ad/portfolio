@@ -48,8 +48,7 @@ class QuotifyTopbar extends React.Component {
                 <div class="row d-flex flex-wrap align-items-center fs-5 fw-bold text-light ps-2">
                     <div class="col-auto">
                         <i class="bi bi-arrow-left-circle fs-2 cursor-pointer" 
-                        onClick={back}
-                        />
+                        onClick={back}/>
                         <i class="bi bi-arrow-right-circle fs-2 ps-3 cursor-pointer"
                         onClick={forward}
                         />

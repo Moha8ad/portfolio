@@ -45,7 +45,7 @@ const QuotifyMainHome = ({ randomQuote, generateRandomQuoteId, quotesDB }) => (
                </div>
                
                {randomQuote.map(cardItem => 
-                <div class="col-4 auth-img-library-animation px-3">
+                <div class="col-5 auth-img-library-animation px-3 overflow-hidden" style={{maxHeight: "35vh"}}>
                 <img
                     alt='img'
                     src={`https://robohash.org/${[cardItem.authorId]}?&&size=180x180`}
