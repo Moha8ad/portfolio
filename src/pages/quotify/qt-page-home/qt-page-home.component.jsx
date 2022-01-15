@@ -27,7 +27,6 @@ class HomePageQuotify extends React.Component {
                             />
                             <QuotifyMainHome
                                 randomQuote = {randomQuote}
-                                handleClick={this.handleClick}
                             />         
                         </div>
                     </div>

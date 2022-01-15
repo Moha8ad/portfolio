@@ -32,8 +32,8 @@ const QuotifyHorizontalCardsBox = ({ header, list, searchList, trash, linkToLibr
                     searchList.length > 0 
                     ?
                         searchList.map(cardItem => 
-                                <QuotifyCard cardItem = {cardItem} trash={trash}/>
-                            )
+                            <QuotifyCard cardItem = {cardItem} trash={trash}/>
+                        )
                     :
                         <div class="fs-4 text-danger p-4">
                             Result Not Found

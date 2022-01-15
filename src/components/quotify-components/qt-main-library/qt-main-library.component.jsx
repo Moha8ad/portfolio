@@ -4,12 +4,16 @@ import QuotifyCard from "../qt-card/qt-card.component";
 
 import './qt-main-library.styles.scss';
 
-const QuotifyMainLibrary = ({ searchByName }) => ( 
+const QuotifyMainLibrary = ({ searchByName, searchByQuote  }) => ( 
     <div>
-        {searchByName.length > 0 
+    
+        {searchByName.length > 0 || searchByQuote.length > 0
         ?
             <div class="row">
                 {searchByName.map(cardItem => 
+                    <QuotifyCard cardItem = {cardItem}/>
+                )}
+                {searchByQuote.map(cardItem => 
                     <QuotifyCard cardItem = {cardItem}/>
                 )}
             </div>
