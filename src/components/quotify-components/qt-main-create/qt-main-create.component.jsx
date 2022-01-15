@@ -44,20 +44,23 @@ const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput
                         authorInput ?
                         <button class="btn btn-secondary me-1 mb-1" onClick={()=> alert(
                             "\n Dear " + JSON.stringify(currentUser.displayName) 
-                            + "\n\n ⚠ Please enter quote's text! \n")}>
+                            + "\n\n ⚠ Please enter quote's text! \n")}
+                        >
                             Add to My Library
                         </button>
                         :
                         quoteInput ?
                         <button class="btn btn-secondary me-1 mb-1" onClick={()=> alert(
                             "\n Dear " + JSON.stringify(currentUser.displayName) 
-                            + "\n\n ⚠ Please enter author's text! \n")}>
+                            + "\n\n ⚠ Please enter author's text! \n")}
+                        >
                             Add to My Library
                         </button>
                         :
                         <button class="btn btn-secondary me-1 mb-1" onClick={()=> alert(
                             "\n Dear " + JSON.stringify(currentUser.displayName) 
-                            + "\n\n ⚠ Please enter author's name and quote's text first! \n")}>
+                            + "\n\n ⚠ Please enter author's name and quote's text first! \n")}
+                        >
                             Add to My Library
                         </button>
                     }

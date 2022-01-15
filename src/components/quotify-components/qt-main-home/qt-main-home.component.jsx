@@ -38,7 +38,7 @@ const QuotifyMainHome = ({ randomQuote, generateRandomQuoteId, quotesDB }) => (
                   
                <div class="col-7 p-4 overflow-scroll d-flex align-items-center" style={{maxHeight: "40vh"}}>
                 {randomQuote.map(cardItem => 
-                    <div class="col-12 border border-1 border-secondary rounded-2 p-4">
+                    <div class="col-12 p-4">
                         <div class="fs-4" style={{color:COLOR_PALETTE[Math.floor(Math.random()*25)]}}>{cardItem.quote}</div>
                     </div>
                     )}  
