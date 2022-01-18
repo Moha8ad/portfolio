@@ -20,19 +20,19 @@ import './App.css';
 const App = () => (
   <div>      
     <Switch>  
-      <Route exact path='/profile/' component={HomePage} />
-      <Route path='/profile/rolodex' component={Rolodex} />
+      <Route exact path='' component={HomePage} />
+      <Route path='/rolodex' component={Rolodex} />
       
-      <Route path='/profile/qt/home' component={QuotifyPageHome} />
-      <Route path='/profile/qt/create' component={QuotifyMainCreate} />
-      <Route path='/profile/qt/library' component={QuotifyPageLibrary} />
-      <Route path='/profile/qt/liked' component={LikedPageQuotify} />
-      <Route path='/profile/qt/list' component={ListPageQuotify} />
-      <Route path='/profile/qt/account' component={QuotifyPageAccount} />
+      <Route path='/qt/home' component={QuotifyPageHome} />
+      <Route path='/qt/create' component={QuotifyMainCreate} />
+      <Route path='/qt/library' component={QuotifyPageLibrary} />
+      <Route path='/qt/liked' component={LikedPageQuotify} />
+      <Route path='/qt/list' component={ListPageQuotify} />
+      <Route path='/qt/account' component={QuotifyPageAccount} />
 
-      <Route path='/profile/snakes-and-ladders' component={SnakesAndLadders} />
-      <Route path='/profile/app4' component={Presentational} />
-      <Route path='/profile/app5' component={Move} />
+      <Route path='/snakes-and-ladders' component={SnakesAndLadders} />
+      <Route path='/app4' component={Presentational} />
+      <Route path='/app5' component={Move} />
 
     </Switch>
   </div>
