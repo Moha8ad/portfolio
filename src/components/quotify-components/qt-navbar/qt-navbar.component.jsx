@@ -27,7 +27,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
             >
                 <li>
                     <Link class="nav-link pb-sm-0 cursor-pointer"
-                    to='/profile/qt/home'
+                    to='/qt/home'
                     >
                         <i class="bi bi-house-door fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 
@@ -35,7 +35,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 </li>
                 <li>
                     <div class="nav-link pb-sm-0 cursor-pointer"
-                    onClick={() => history.push('/profile/qt/library')}
+                    onClick={() => history.push('/qt/library')}
                     >
                         <i class="bi bi-collection fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Library</span> 
@@ -43,7 +43,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 </li>
                 <li>
                     <div class="nav-link cursor-pointer"
-                        onClick={() => history.push('/profile/qt/list')}
+                        onClick={() => history.push('/qt/list')}
                     >
                         <i class="bi bi-journal-bookmark-fill fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Lists</span> 
@@ -52,7 +52,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 
                 <li>
                     <div class="nav-link d-none d-sm-block pt-sm-4 pb-sm-0 cursor-pointer"
-                        onClick={() => history.push('/profile/qt/create')}
+                        onClick={() => history.push('/qt/create')}
                     >
                         <i class="bi bi-plus-square-dotted fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Create</span>   
@@ -60,7 +60,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 </li>
                 <li>
                     <div class="nav-link d-none d-sm-block cursor-pointer"
-                        onClick={() => history.push('/profile/qt/liked')}
+                        onClick={() => history.push('/qt/liked')}
                     >
                         <i class="bi bi-heart fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Liked</span>  
@@ -74,10 +74,10 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                         >
                         </i>
                         <ul class="dropdown-menu dropdown-menu-dark" style={{zIndex: "10000"}}>
-                            <Link to='/profile/qt/create'>
+                            <Link to='qt/create'>
                                 <li class="dropdown-item cursor-pointer bi-plus-square-dotted"> Create</li>
                             </Link>
-                            <Link to='/profile/qt/liked'>
+                            <Link to='/qt/liked'>
                                 <li class="dropdown-item cursor-pointer bi bi-heart"> Liked</li>
                             </Link>
                         </ul>
@@ -115,7 +115,7 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                             <div class="d-none d-sm-block"> Hello, Sign in</div>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1" style={{zIndex: "10000"}}>
-                                <Link to="/profile/account"><li class="dropdown-item">Sign in/ Sign up</li></Link>
+                                <Link to="/account"><li class="dropdown-item">Sign in/ Sign up</li></Link>
                                 <li><hr class="dropdown-divider"/></li>
                                 <li class="dropdown-item cursor-pointer" onClick={signInWithGoogle}>Login with <i class="bi bi-google"></i></li>
                             </ul>

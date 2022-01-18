@@ -47,6 +47,9 @@ const soundOn = `<i class="bi bi-volume-up-fill fs-5"></i>`
 const soundOff = `<i class="bi bi-volume-mute-fill fs-5"></i>`
 
 
+const lightOn = `0px 0px 60px rgb(155, 155, 155)`
+const lightOff = `0px 0px 10px rgb(155, 155, 155)`
+
 class SnakesAndLadders extends React.Component {
     constructor(props){
         super(props);
@@ -62,7 +65,7 @@ class SnakesAndLadders extends React.Component {
             twoNamePanelDisplay: '',  // controls player two name panel appearance 
 
             oneBoxShadow: '', // helps to change player one panel box shadow based on turn
-            twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`, // helps to change player two panel box shadow based on turn
+            twoBoxShadow: lightOff, // helps to change player two panel box shadow based on turn
 
             oneNameInput: '', // player one name entered by user
             oneName: '', // player one name based on the user input
@@ -136,7 +139,7 @@ class SnakesAndLadders extends React.Component {
             twoHint: 'Wait', 
 
             oneBoxShadow: '', 
-            twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`, 
+            twoBoxShadow: lightOff, 
 
             oneNamePanelDisplay: '',
             twoNamePanelDisplay: '',
@@ -237,8 +240,8 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'Hooray, roll again',
                     twoHint: 'wait',
 
-                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    oneBoxShadow: lightOn,
+                    twoBoxShadow: lightOff,
 
                     oneStartPos: document.getElementById('101').innerHTML = '',
                     
@@ -273,8 +276,8 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'lucky, move',
                     twoHint: 'wait',
 
-                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    oneBoxShadow: lightOn,
+                    twoBoxShadow: lightOff,
 
                     oneDice: oneRand,
                     oneCurrentMove: this.state.oneCurrentMove + oneRand,
@@ -299,8 +302,8 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'great, move',
                     twoHint: 'OOOPS!',
 
-                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    oneBoxShadow: lightOn,
+                    twoBoxShadow: lightOff,
 
                     oneDice: oneRand,
                     oneCurrentMove: 100,
@@ -321,8 +324,8 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'so close, roll again',
                     twoHint: 'wait',
 
-                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    oneBoxShadow: lightOn,
+                    twoBoxShadow: lightOff,
 
                     oneDice: oneRand,
                     oneCurrentMove: this.state.oneCurrentMove,
@@ -344,8 +347,8 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'wait',
                     twoHint: 'roll',
 
-                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
-                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    oneBoxShadow: lightOff,
+                    twoBoxShadow: lightOn,
 
                     oneDice: oneRand,
                     oneCurrentMove: 0,
@@ -365,8 +368,8 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'move',
                     twoHint: 'wait',
 
-                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    oneBoxShadow: lightOn,
+                    twoBoxShadow: lightOff,
 
                     oneDice: oneRand,
                     oneCurrentMove: this.state.oneCurrentMove + oneRand,
@@ -394,8 +397,8 @@ class SnakesAndLadders extends React.Component {
                         oneHint: 'wait',
                         twoHint: 'roll',
 
-                        oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
-                        twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                        oneBoxShadow: lightOff,
+                        twoBoxShadow: lightOn,
 
                         oneDice: oneRand,
                         oneCurrentMove: this.state.oneCurrentMove,
@@ -417,8 +420,8 @@ class SnakesAndLadders extends React.Component {
                         oneHint: 'move',
                         twoHint: 'wait',
 
-                        oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                        twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                        oneBoxShadow: lightOn,
+                        twoBoxShadow: lightOff,
 
                         oneDice: oneRand,
                         oneCurrentMove: this.state.oneCurrentMove + oneRand,
@@ -459,8 +462,8 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'roll',
                     twoHint: 'wait',
 
-                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    oneBoxShadow: lightOn,
+                    twoBoxShadow: lightOff,
                     
                     turn: 'one'
                 })
@@ -470,8 +473,8 @@ class SnakesAndLadders extends React.Component {
                     oneHint: 'wait',
                     twoHint: 'roll',
 
-                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
-                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    oneBoxShadow: lightOff,
+                    twoBoxShadow: lightOn,
                     
                     turn: 'two'
                 })
@@ -702,8 +705,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'Hooray, roll',
                     oneHint: 'wait',
                     
-                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    twoBoxShadow: lightOn,
+                    oneBoxShadow: lightOff,
 
                     twoStartPos: document.getElementById('202').innerHTML = '',
                     
@@ -740,8 +743,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'lucky, move',
                     oneHint: 'wait',
 
-                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    twoBoxShadow: lightOn,
+                    oneBoxShadow: lightOff,
 
                     twoDice: twoRand,
                     twoCurrentMove: this.state.twoCurrentMove + twoRand,
@@ -766,8 +769,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'great, move',
                     oneHint: 'OOOPS!',
 
-                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    twoBoxShadow: lightOn,
+                    oneBoxShadow: lightOff,
 
                     twoDice: twoRand,
                     twoCurrentMove: 100,
@@ -788,8 +791,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'so close, roll',
                     oneHint: 'oh, wait',
 
-                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    twoBoxShadow: lightOn,
+                    oneBoxShadow: lightOff,
 
                     twoDice: twoRand,
                     twoCurrentMove: this.state.twoCurrentMove,
@@ -811,8 +814,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'wait',
                     oneHint: 'roll',
 
-                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
-                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    twoBoxShadow: lightOff,
+                    oneBoxShadow: lightOn,
 
                     twoDice: twoRand,
                     twoCurrentMove: 0,
@@ -832,8 +835,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'move',
                     oneHint: 'wait',
 
-                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    twoBoxShadow: lightOn,
+                    oneBoxShadow: lightOff,
 
                     twoDice: twoRand,
                     twoCurrentMove: this.state.twoCurrentMove + twoRand,
@@ -862,7 +865,7 @@ class SnakesAndLadders extends React.Component {
                         oneHint: 'roll',
 
                         twoBoxShadow: `0px 0px 10px rgb(155, 155, 155)`,
-                        oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                        oneBoxShadow: lightOn,
 
                         twoDice: twoRand,
                         twoCurrentMove: this.state.twoCurrentMove,
@@ -884,8 +887,8 @@ class SnakesAndLadders extends React.Component {
                         twoHint: 'move',
                         oneHint: 'wait',
 
-                        twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                        oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                        twoBoxShadow: lightOn,
+                        oneBoxShadow: lightOff,
 
                         twoDice: twoRand,
                         twoCurrentMove: this.state.twoCurrentMove + twoRand,
@@ -925,8 +928,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'roll',
                     oneHint: 'wait',
 
-                    twoBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
-                    oneBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
+                    twoBoxShadow: lightOn,
+                    oneBoxShadow: lightOff,
                     
                     turn: 'two'
                 })
@@ -936,8 +939,8 @@ class SnakesAndLadders extends React.Component {
                     twoHint: 'wait',
                     oneHint: 'roll',
 
-                    twoBoxShadow: `0px 0px 10px rgb(153, 155, 154)`,
-                    oneBoxShadow: `0px 0px 60px rgb(155, 155, 155)`,
+                    twoBoxShadow: lightOff,
+                    oneBoxShadow: lightOn,
 
                     turn: 'one'
                 })
@@ -1126,7 +1129,7 @@ class SnakesAndLadders extends React.Component {
                             <div class="row">
                                 {/* back button*/}
                                 <div class="col-3 d-flex justify-content-start">
-                                    <Link to="/profile/">
+                                    <Link to="/">
                                         <i class="bi bi-box-arrow-left fs-4 text-light"></i>
                                     </Link>
                                 </div>
