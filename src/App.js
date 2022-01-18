@@ -20,7 +20,7 @@ import './App.css';
 const App = () => (
   <div>      
     <Switch>  
-      <Route exact path='' component={HomePage} />
+      <Route exact path='/' component={HomePage} />
       <Route path='/rolodex' component={Rolodex} />
       
       <Route path='/qt/home' component={QuotifyPageHome} />
