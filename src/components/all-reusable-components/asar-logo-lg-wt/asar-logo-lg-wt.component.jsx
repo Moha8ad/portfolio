@@ -7,7 +7,7 @@ import './asar-logo-lg-wt.styles.scss'
 
 const Header = () => (
     <div>
-        <Link to="/profile/">
+        <Link to="/">
             <AsArLogoLgWt class="asar-logo-lg-wt"/>
         </Link>
     </div>
