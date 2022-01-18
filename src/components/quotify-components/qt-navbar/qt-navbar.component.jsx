@@ -26,12 +26,12 @@ const QuotifyNavbar = ({ history, currentUser }) => (
                 fw-bold py-2 p-sm-2"
             >
                 <li>
-                    <div class="nav-link pb-sm-0 cursor-pointer"
-                    onClick={() => history.push('/profile/qt/home') }
+                    <Link class="nav-link pb-sm-0 cursor-pointer"
+                    to='/profile/qt/home'
                     >
                         <i class="bi bi-house-door fs-4 text-light"></i>
                         <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 
-                    </div>
+                    </Link>
                 </li>
                 <li>
                     <div class="nav-link pb-sm-0 cursor-pointer"

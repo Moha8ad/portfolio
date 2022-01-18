@@ -5,13 +5,14 @@ import QuotifyCard from "../qt-card/qt-card.component";
 import QuotifyButtonPanel from '../qt-button-panel/qt-button-panel.component';
 
 import { generateRandomQuoteId } from '../../../redux/quote/quote.actions';
+
 import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component';
 
 
 import './qt-main-home.styles.scss'
 import { connect } from "react-redux";
 
-const QuotifyMainHome = ({ randomQuote, generateRandomQuoteId, quotesDB }) => ( 
+const QuotifyMainHome = ({ randomQuote}) => ( 
     <div>
         <div class="d-block d-md-none">
         {randomQuote.map(cardItem => 
@@ -23,45 +24,40 @@ const QuotifyMainHome = ({ randomQuote, generateRandomQuoteId, quotesDB }) => (
             <QuotifyButtonPanel 
                 item={cardItem}
                 repeat={true}
-                handleClick={() => generateRandomQuoteId((Math.floor(Math.random()*quotesDB.length)))
-                }
             />
         )}    
-        <div class="row overflow-hidden py-4" style={{maxHeight: "10vh"}}>
+        <div class="row overflow-hidden py-4" style={{maxHeight: "15vh"}}>
             {randomQuote.map(cardItem => 
                 <div>
-                    <div class="fs-4">{cardItem.quote}</div>
+                    <div class="fs-5">{cardItem.quote}</div>
                 </div>
             )}
             </div>
             <div class="row " style={{maxHeight: "40vh"}}>
                   
-               <div class="col-7 p-4 overflow-scroll d-flex align-items-center" style={{maxHeight: "40vh"}}>
+                <div class="col-7 p-4 overflow-scroll d-flex align-items-center" style={{maxHeight: "40vh"}}>
                 {randomQuote.map(cardItem => 
                     <div class="col-12 p-4">
                         <div class="fs-4" style={{color:COLOR_PALETTE[Math.floor(Math.random()*25)]}}>{cardItem.quote}</div>
                     </div>
                     )}  
-               </div>
+                </div>
                
-               {randomQuote.map(cardItem => 
+                {randomQuote.map(cardItem => 
                 <div class="col-5 auth-img-library-animation px-3 overflow-hidden" style={{maxHeight: "35vh"}}>
                 <img
                     alt='img'
                     src={`https://robohash.org/${[cardItem.authorId]}?&&size=180x180`}
                 />
-                    <div class="fs-3 text-secondary">{cardItem.author}</div>
-                    <div class="fs-6">{cardItem.quote}</div>
+                    <div class="fs-4 text-secondary">{cardItem.author}</div>
                 </div>
                 )} 
 
             </div>
-            <div class="row overflow-hidden" style={{maxHeight: "20vh"}}>
+            <div class="row overflow-hidden" style={{maxHeight: "15vh"}}>
                 {randomQuote.map(cardItem => 
                     <div>
-                        <div class="fs-5">{cardItem.quote}</div>
-                        <div class="fs-1">{cardItem.quote}</div>
-
+                        <div class="fs-6">{cardItem.quote}</div>
                     </div>
                 )}
             </div>

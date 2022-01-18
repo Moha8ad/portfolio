@@ -6,24 +6,16 @@ import COLOR_PALETTE from '../../all-reusable-components/random-color/random-col
 
 import QuotifyButtonPanel from '../qt-button-panel/qt-button-panel.component';
 
-import { generateRandomQuoteId } from '../../../redux/quote/quote.actions';
-
 import './qt-card.styles.scss';
 
 class QuotifyCard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        randomColor: COLOR_PALETTE[Math.floor(Math.random()*25)],
+        randomColor: COLOR_PALETTE[Math.floor(Math.random()*11)],
         }
     }
 
-    handleClick = () => {
-        this.props.generateRandomQuoteId((Math.floor(Math.random()*this.props.quotesDB.length)))
-        this.setState({
-            randomColor: COLOR_PALETTE[Math.floor(Math.random()*25)],
-        })
-    }
 
 render() {
     const { randomColor } = this.state;
@@ -56,7 +48,7 @@ render() {
                                 item={cardItem}
                                 trash={trash}
                                 repeat={repeat}
-                                handleClick={this.handleClick}
+                                randomColor= {randomColor}
                             />
                         </div>
                     </div>
@@ -71,12 +63,9 @@ render() {
 }
 }
 
-const mapDispatchToProps = dispatch => ({
-    generateRandomQuoteId: randomQuoteId => dispatch(generateRandomQuoteId(randomQuoteId))
-})
 
 const mapStateToProps = ({ quote: { quotesDB }}) => ({
     quotesDB
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuotifyCard);
+export default connect(mapStateToProps)(QuotifyCard);
