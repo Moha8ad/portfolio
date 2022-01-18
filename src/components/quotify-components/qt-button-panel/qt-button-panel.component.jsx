@@ -122,7 +122,11 @@ const QuotifyButtonPanel = ({ generateRandomQuoteId, repeat, trash, item, quotes
 
         {/* Share Button */}
         <span>
-            <a href={`https://twitter.com/intent/tweet?text=${item.quote} - ${item.author}`}>
+            <a 
+            href={`https://twitter.com/intent/tweet?text=${item.quote} - ${item.author}`}
+            target="_blank" 
+            rel="noopener noreferrer"
+            >
                 <i class="bi bi-twitter" />
             </a>
         </span>
