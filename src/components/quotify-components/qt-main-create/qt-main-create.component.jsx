@@ -50,25 +50,16 @@ const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput
                             </button>
                             :
                             authorInput ?
-                            <button class="btn btn-outline-warning py-3" onClick={()=> alert(
-                                "\n Dear " + JSON.stringify(currentUser.displayName) 
-                                + "\n\n ⚠ Please enter quote's text! \n")}
-                            >
+                            <button class="btn btn-outline-warning py-3">
                                 Enter Quote
                             </button>
                             :
                             quoteInput ?
-                            <button class="btn btn-outline-warning py-3" onClick={()=> alert(
-                                "\n Dear " + JSON.stringify(currentUser.displayName) 
-                                + "\n\n ⚠ Please enter author's name! \n")}
-                            >
+                            <button class="btn btn-outline-warning py-3">
                                 Enter Author
                             </button>
                             :
-                            <button class="btn btn-outline-secondary py-3" onClick={()=> alert(
-                                "\n Dear " + JSON.stringify(currentUser.displayName) 
-                                + "\n\n ⚠ Please enter author's name and quote's text first! \n")}
-                            >
+                            <button class="btn btn-outline-secondary py-3">
                                 Enter Author and Quote
                             </button>
                         }
