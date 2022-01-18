@@ -16,9 +16,9 @@ import move from '../../assets/move.wav';
 import './snakes-and-ladders.styles.scss';
 
 // icons for player one in normal, fading in, and fading out situtions
-const playerOne = `<i class='bi bi-circle-fill text-info bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
-const playerOneIn = `<i class='bi bi-circle-fill text-info bg-dark px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
-const playerOneOut = `<i class='bi bi-circle-fill text-info bg-dark px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
+const playerOne = `<i class='bi bi-circle-fill text-primary bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
+const playerOneIn = `<i class='bi bi-circle-fill text-primary bg-dark px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
+const playerOneOut = `<i class='bi bi-circle-fill text-primary bg-dark px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
 
 // icons for player two in normal, fading in, and fading out situtions
 const playerTwo = `<i class='bi bi-circle-fill text-danger bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
