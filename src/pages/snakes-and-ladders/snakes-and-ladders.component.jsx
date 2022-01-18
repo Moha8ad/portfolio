@@ -16,14 +16,14 @@ import move from '../../assets/move.wav';
 import './snakes-and-ladders.styles.scss';
 
 // icons for player one in normal, fading in, and fading out situtions
-const playerOne = `<i class='bi bi-circle-fill text-primary bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
-const playerOneIn = `<i class='bi bi-circle-fill text-primary bg-dark px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
-const playerOneOut = `<i class='bi bi-circle-fill text-primary bg-dark px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
+const playerOne = `<i class='bi bi-circle-fill text-info bg-dark p-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
+const playerOneIn = `<i class='bi bi-circle-fill text-info bg-dark p-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
+const playerOneOut = `<i class='bi bi-circle-fill text-info bg-dark p-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
 
 // icons for player two in normal, fading in, and fading out situtions
-const playerTwo = `<i class='bi bi-circle-fill text-danger bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
-const playerTwoIn = `<i class='bi bi-circle-fill text-danger bg-dark px-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
-const playerTwoOut = `<i class='bi bi-circle-fill text-danger bg-dark px-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
+const playerTwo = `<i class='bi bi-circle-fill text-danger bg-dark p-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>`
+const playerTwoIn = `<i class='bi bi-circle-fill text-danger bg-dark p-1 border rounded-2 border-light text-flicker-in-glow-2 box-shadow'></i>`
+const playerTwoOut = `<i class='bi bi-circle-fill text-danger bg-dark p-1 border rounded-2 border-light text-flicker-in-glow box-shadow'></i>`
 
 // icons for player one dice in different situations
 const oneDiceCube = `<div><i class="bi bi-box"></i></div>`
@@ -1324,11 +1324,11 @@ class SnakesAndLadders extends React.Component {
 
                                         <div class='row d-flex justify-content-start p-0 pt-3'>
                                             <div class='col-1 text-flicker-in-glow-2' id="101">
-                                                <i class='bi bi-circle-fill text-info bg-dark px-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
+                                                <i class='bi bi-circle-fill text-info bg-dark p-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
                                             </div>
 
                                             <div class='col-1 text-flicker-in-glow-2' id="202">
-                                                <i class='bi bi-circle-fill text-danger bg-dark px-1 ms-3 border rounded-2 border-light fade-in-fwd box-shadow'></i>
+                                                <i class='bi bi-circle-fill text-danger bg-dark p-1 ms-3 border rounded-2 border-light fade-in-fwd box-shadow'></i>
                                             </div>
                                         </div>
                                         
