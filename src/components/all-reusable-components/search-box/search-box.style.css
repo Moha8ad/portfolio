@@ -5,3 +5,7 @@
   z-index:999;
   color: rgb(255, 255, 255);
 }
+
+.custom-border-radius {
+  border-radius: 30px;
+}

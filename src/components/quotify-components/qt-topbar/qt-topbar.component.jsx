@@ -10,7 +10,7 @@ import { setCurrentUser } from '../../../redux/user/user.actions';
 
 import SearchBox from '../../all-reusable-components/search-box/search-box.component';
 
-import './qt-topbar.styles.scss';
+import { Topbar } from './qt-topbar.styles';
 
 class QuotifyTopbar extends React.Component {
 
@@ -44,7 +44,7 @@ class QuotifyTopbar extends React.Component {
         const { handleChange, midPart, currentUser, back, forward } = this.props;
 
         return (
-            <div className="qt-topbar col-12 sticky-top me-auto py-2">
+            <Topbar className="col-12 sticky-top me-auto py-2">
                 <div class="row d-flex flex-wrap align-items-center fs-5 fw-bold text-light ps-2">
                     <div class="col-auto">
                         <i class="bi bi-arrow-left-circle fs-2 cursor-pointer" 
@@ -60,14 +60,14 @@ class QuotifyTopbar extends React.Component {
                             null
                         }
                     </div>
-                    <div class="col-auto ms-auto me-2" >
+                    <div class="col-auto ms-auto me-2">
                         {currentUser ? (
                             <div class="dropdown d-none d-sm-block">
                                 <button 
-                                    class="btn btn-sm btn-success" 
-                                    type="button" 
-                                    id="dropdownMenuButton1" 
-                                    data-bs-toggle="dropdown" 
+                                    class="btn btn-sm btn-success"
+                                    type="button"
+                                    id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                 >
                                     <div>Hello, {currentUser.displayName}</div>
@@ -88,7 +88,7 @@ class QuotifyTopbar extends React.Component {
                                 <div>Hello, Sign in</div>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                                    <Link to="/profile/qt/account"><li class="dropdown-item">Sign in/ Sign up</li></Link>
+                                    <Link to="/qt/account"><li class="dropdown-item">Sign in/ Sign up</li></Link>
                                     <li><hr class="dropdown-divider"/></li>
                                     <li class="dropdown-item cursor-pointer" onClick={signInWithGoogle}>Login with <i class="bi bi-google"></i></li>
                                 </ul>
@@ -97,8 +97,7 @@ class QuotifyTopbar extends React.Component {
                         }
                     </div>  
                 </div>
-            </div>
-
+            </Topbar>
         )
     }
 }
