@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -7,55 +7,41 @@ import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-t
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 import QuotifyMainList from '../../../components/quotify-components/qt-main-list/qt-main-list.component';
 
-class ListPageQuotify extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            searchField: ''
-        }
-    }
+const ListPageQuotify = ({ history, inspirationalList, insightfulList } ) => {
 
-    handleChange = e => (
-        this.setState({
-            searchField: e.target.value
-       })
-    )
+    const [ searchField, setSearchField ] = useState('')
 
-    render() {
+    const searchByNameinspirationalList = inspirationalList.filter(name => (
+        name.author.toLowerCase().includes(searchField.toLowerCase())
+    ))
         
-        const { history, inspirationalList, insightfulList } = this.props;
+    const searchByNameinsightfulList = insightfulList.filter(name => (
+        name.author.toLowerCase().includes(searchField.toLowerCase())
+    ))
 
-        const searchByNameinspirationalList = inspirationalList.filter(name => (
-            name.author.toLowerCase().includes(this.state.searchField.toLowerCase())
-        ))
-        
-        const searchByNameinsightfulList = insightfulList.filter(name => (
-            name.author.toLowerCase().includes(this.state.searchField.toLowerCase())
-        ))
-
-        return (
-            <div className="container-fluid">
-                <div class='row'>
-                    <QuotifyNavbar />
-                    <div className="qt-main col-12 col-sm-10 overflow-scroll">
-                        <div class="row">
-                            <QuotifyTopbar 
-                                midPart={inspirationalList.length || insightfulList.length > 0 ? "searchBox" : null}
-                                back={() => history.goBack()}
-                                forward={() => history.goForward()}
-                                handleChange={this.handleChange}
-                            />
-                            <QuotifyMainList
-                            searchByNameinspirationalList={searchByNameinspirationalList}
-                            searchByNameinsightfulList={searchByNameinsightfulList}
-                            />
-                        </div>
+    return (
+        <div className="container-fluid">
+            <div class='row'>
+                <QuotifyNavbar />
+                <div className="qt-main col-12 col-sm-10 overflow-scroll">
+                    <div class="row">
+                        <QuotifyTopbar 
+                            midPart={inspirationalList.length || insightfulList.length > 0 ? "searchBox" : null}
+                            back={() => history.goBack()}
+                            forward={() => history.goForward()}
+                            handleChange={(e) => setSearchField(e.target.value)}
+                        />
+                        <QuotifyMainList
+                        searchByNameinspirationalList={searchByNameinspirationalList}
+                        searchByNameinsightfulList={searchByNameinsightfulList}
+                        />
                     </div>
-                    <QuotifyFooter />
                 </div>
+                <QuotifyFooter />
             </div>
-        )
-    }
+        </div>
+    )
+    
 }
 
 const mapStateToProps = ({ quote: { inspirationalList, insightfulList }}) => ({

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -7,50 +7,35 @@ import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-t
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 import QuotifyMainLiked from '../../../components/quotify-components/qt-main-liked/qt-main-liked.component';
 
-class LikedPageQuotify extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            searchField: ''
-        }
-    }
+const LikedPageQuotify = ({ history, likedQuotesDB }) => {
 
-    handleChange = e => (
-        this.setState({
-            searchField: e.target.value
-       })
-    )
-
-    render() {
+    const [searchField, setSearchField] = useState('')
         
-        const { history, likedQuotesDB } = this.props;
+    const searchByName = likedQuotesDB.filter(name => (
+        name.author.toLowerCase().includes(searchField.toLowerCase())
+    ))
 
-        const searchByName = likedQuotesDB.filter(name => (
-            name.author.toLowerCase().includes(this.state.searchField.toLowerCase())
-        ))
-
-        return (
-            <div className="container-fluid">
-                <div class='row'>
-                    <QuotifyNavbar />
-                    <div className="qt-main col-12 col-sm-10 overflow-scroll">
-                        <div class="row">
-                            <QuotifyTopbar 
-                                midPart={likedQuotesDB.length > 0 ? "searchBox" : "" }
-                                back={() => history.goBack()}
-                                forward={() => history.goForward()}
-                                handleChange={this.handleChange}
-                            />
-                            <QuotifyMainLiked 
-                                searchByName={searchByName} 
-                            />
-                        </div>
+    return (
+        <div className="container-fluid">
+            <div class='row'>
+                <QuotifyNavbar />
+                <div className="qt-main col-12 col-sm-10 overflow-scroll">
+                    <div class="row">
+                        <QuotifyTopbar 
+                            midPart={likedQuotesDB.length > 0 ? "searchBox" : "" }
+                            back={() => history.goBack()}
+                            forward={() => history.goForward()}
+                            handleChange={(e) => setSearchField(e.target.value)}
+                        />
+                        <QuotifyMainLiked 
+                            searchByName={searchByName} 
+                        />
                     </div>
-                    <QuotifyFooter />
                 </div>
+                <QuotifyFooter />
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 const mapStateToProps = ({ quote: { likedQuotesDB }}) => ({

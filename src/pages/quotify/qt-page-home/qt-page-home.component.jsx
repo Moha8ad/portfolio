@@ -9,32 +9,28 @@ import QuotifyMainHome from '../../../components/quotify-components/qt-main-home
 
 import '../quotify.styles.scss';
 
-class HomePageQuotify extends React.Component { 
-    
-    render() {              
-        const { history, quotesDB, randomQuoteId } = this.props;
+const HomePageQuotify = ({ history, quotesDB, randomQuoteId }) => { 
 
-        const randomQuote = quotesDB.filter(card => card.quoteId === randomQuoteId)
-            
-        return(
-            <div className="container-fluid">
-                <div class='row'>
-                    <QuotifyNavbar/>
-                    <div className="qt-main col-12 col-sm-10 overflow-scroll"> 
-                        <div class="row">
-                            <QuotifyTopbar 
-                                forward={() => history.goForward()}
-                            />
-                            <QuotifyMainHome
-                                randomQuote = {randomQuote}
-                            />         
-                        </div>
+    const randomQuote = quotesDB.filter(card => card.quoteId === randomQuoteId)
+        
+    return(
+        <div className="container-fluid">
+            <div class='row'>
+                <QuotifyNavbar/>
+                <div className="qt-main col-12 col-sm-10 overflow-scroll"> 
+                    <div class="row">
+                        <QuotifyTopbar 
+                            forward={() => history.goForward()}
+                        />
+                        <QuotifyMainHome
+                            randomQuote = {randomQuote}
+                        />         
                     </div>
-                    <QuotifyFooter />
                 </div>
+                <QuotifyFooter />
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 const mapStateToProps = ({ quote: { quotesDB, randomQuoteId } }) => ({
