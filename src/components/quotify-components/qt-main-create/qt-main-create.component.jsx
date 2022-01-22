@@ -5,7 +5,7 @@ import QuotifyHorizontalCardsBox from "../qt-horizontal-cards-box/qt-horizontal-
 
 import './qt-main-create.styles.scss';
 
-const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput, addedQuoteCard, currentUser }) => (
+const QuotifyMainCreate = ({ searchByNameaddedQuoteCard, handleChange, handleSubmit, authorInput, quoteInput, addedQuoteCard, currentUser }) => (
     <div class="col-12 text-light">
         <div className='row'>
             <div class="col-12 ">
@@ -71,7 +71,7 @@ const QuotifyMainCreate = ({ handleChange, handleSubmit, authorInput, quoteInput
                 <QuotifyHorizontalCardsBox 
                     header = "My Quotes Library"
                     list= { addedQuoteCard }
-                    searchList = { addedQuoteCard }
+                    searchList = { searchByNameaddedQuoteCard }
                     trash= {true}
                 />
             </div>

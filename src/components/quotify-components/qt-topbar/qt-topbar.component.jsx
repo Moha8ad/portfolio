@@ -41,7 +41,7 @@ class QuotifyTopbar extends React.Component {
 
     render() {
 
-        const { handleChange, midPart, currentUser, back, forward } = this.props;
+        const { handleChange, midPart, currentUser, back, forward, name } = this.props;
 
         return (
             <Topbar className="col-12 sticky-top me-auto py-2">
@@ -55,7 +55,7 @@ class QuotifyTopbar extends React.Component {
                     </div>
                     <div class="col-7 col-sm-6 col-md-auto me-auto">
                         { midPart === "searchBox" ?
-                            <SearchBox placeholder={"Search for Authors or Words"} handleChange={handleChange}/>
+                            <SearchBox placeholder={"Search for Authors or Words"} handleChange={handleChange} name={name}/>
                         : 
                             null
                         }

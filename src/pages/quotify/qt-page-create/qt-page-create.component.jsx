@@ -13,6 +13,7 @@ class SearchPageQuotify extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            searchField: '',
             authorInput: '',
             quoteInput: '',
             authorId: 121,
@@ -41,8 +42,12 @@ class SearchPageQuotify extends React.Component {
     }
 
     render() {
-        const { authorInput, quoteInput} = this.state;
+        const { authorInput, quoteInput, searchField } = this.state;
         const { history, addedQuoteCard } = this.props;
+
+        const searchByNameaddedQuoteCard = addedQuoteCard.filter(name => (
+            name.author.toLowerCase().includes(this.state.searchField.toLowerCase())
+        ))
         
         return (
             <div className="container-fluid">
@@ -51,15 +56,17 @@ class SearchPageQuotify extends React.Component {
                     <div className="qt-main col-12 col-sm-10 overflow-scroll">
                         <div class="row">
                              <QuotifyTopbar 
-                                midPart= {addedQuoteCard.length > 0 ? "searchBox" : "" }
+                                midPart= { addedQuoteCard.length > 0 ? "searchBox" : null }
                                 back={() => history.goBack()}
                                 forward={() => history.goForward()}
                                 handleChange={this.handleChange}
+                                name="searchField"
                             />
                         
                             <QuotifyMainCreate 
                                 handleChange={this.handleChange}
                                 handleSubmit={this.handleSubmit}
+                                searchByNameaddedQuoteCard= {searchByNameaddedQuoteCard}
                                 authorInput={authorInput} 
                                 quoteInput={quoteInput}
                             />

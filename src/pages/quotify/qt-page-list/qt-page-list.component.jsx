@@ -40,7 +40,7 @@ class ListPageQuotify extends React.Component {
                     <div className="qt-main col-12 col-sm-10 overflow-scroll">
                         <div class="row">
                             <QuotifyTopbar 
-                                midPart={inspirationalList.length || insightfulList.length > 0 ? "searchBox" : ""}
+                                midPart={inspirationalList.length || insightfulList.length > 0 ? "searchBox" : null}
                                 back={() => history.goBack()}
                                 forward={() => history.goForward()}
                                 handleChange={this.handleChange}
