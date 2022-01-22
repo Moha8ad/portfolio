@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -7,54 +7,41 @@ import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-t
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 import QuotifyMainLibrary from '../../../components/quotify-components/qt-main-library/qt-main-library.component';
 
-class LibraryPageQuotify extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            searchField: ''
-        }
-    }
+const LibraryPageQuotify = ({ history, quotesDB }) => {
 
-    handleChange = e => (
-        this.setState({
-            searchField: e.target.value
-       })
-    )
+    const [searchField, setSearchField] = useState('');
 
-    render() {
-        
-        const { history, quotesDB } = this.props;
+    const searchByName = quotesDB.filter(name => (
+        name.author.toLowerCase().includes(searchField.toLowerCase())
+    ))
+    
+    const searchByQuote = quotesDB.filter(name => (
+        name.quote.toLowerCase().includes(searchField.toLowerCase())
+    ))
 
-        const searchByName = quotesDB.filter(name => (
-            name.author.toLowerCase().includes(this.state.searchField.toLowerCase())
-        ))
-        const searchByQuote = quotesDB.filter(name => (
-            name.quote.toLowerCase().includes(this.state.searchField.toLowerCase())
-        ))
-
-        return (
-            <div className="container-fluid">
-                <div class='row'>
-                    <QuotifyNavbar />
-                    <div className="qt-main col-12 col-sm-10 overflow-scroll">
-                        <div class="row">
-                            <QuotifyTopbar 
-                                midPart={"searchBox"}
-                                back={() => history.goBack()}
-                                forward={() => history.goForward()}
-                                handleChange={this.handleChange}
-                            />
-                            <QuotifyMainLibrary 
-                                searchByName={searchByName}
-                                searchByQuote={searchByQuote} 
-                            />
-                        </div>
+    return (
+        <div className="container-fluid">
+            <div class='row'>
+                <QuotifyNavbar />
+                <div className="qt-main col-12 col-sm-10 overflow-scroll">
+                    <div class="row">
+                        <QuotifyTopbar 
+                            midPart={"searchBox"}
+                            back={() => history.goBack()}
+                            forward={() => history.goForward()}
+                            handleChange={(e)=>setSearchField(e.target.value)}
+                        />
+                        <QuotifyMainLibrary 
+                            searchByName={searchByName}
+                            searchByQuote={searchByQuote} 
+                        />
                     </div>
-                    <QuotifyFooter />
                 </div>
+                <QuotifyFooter />
             </div>
-        )
-    }
+        </div>
+    )
+    
 }  
 
 const mapStateToProps = ({ quote: { quotesDB }}) => ({
