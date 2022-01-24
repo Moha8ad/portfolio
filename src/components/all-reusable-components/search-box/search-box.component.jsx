@@ -2,7 +2,7 @@ import React from "react";
 
 import './search-box.style.css';
 
-export const SearchBox = ({ placeholder, handleChange, name }) => (
+export const SearchBox = ({ placeholder, handleChange }) => (
     <form class="d-flex flex-fill">
         <i class="search-icon bi bi-search"></i>
         <input 
@@ -10,7 +10,7 @@ export const SearchBox = ({ placeholder, handleChange, name }) => (
             type="search" 
             text= "search"
             aria-label="Search"
-            name={name}
+            name="searchField"
             placeholder= {placeholder}  
             onChange = {handleChange}
         />

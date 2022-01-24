@@ -1,82 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { addQuoteCard } from '../../../redux/quote/quote.actions';
 
 import QuotifyNavbar from '../../../components/quotify-components/qt-navbar/qt-navbar.component'
 import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-topbar.component';
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 import QuotifyMainCreate from '../../../components/quotify-components/qt-main-create/qt-main-create.component';
 
-import { addQuoteCard } from '../../../redux/quote/quote.actions';
-
-class SearchPageQuotify extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+const  SearchPageQuotify = ({ history, addedQuoteCard, addQuoteCard }) => {
+    
+    const [quoteInfo, setQuoteInfo] = useState({
             searchField: '',
             authorInput: '',
             quoteInput: '',
-            authorId: 121,
-            quoteId: 121
-        }
-    }
+            authorId: 20,
+            quoteId: 20
+        })
 
-    handleChange = e => {
+    const {searchField, authorInput, quoteInput, quoteId, authorId} = quoteInfo;
+
+    const handleChange = e => {
         const { name, value } = e.target;
         
-        this.setState({ 
+        setQuoteInfo({ 
+            ...quoteInfo,
             [name]: value
         });
     }
 
-    handleSubmit = () => {
-        this.setState({ 
+    const handleSubmit = () => {
+        setQuoteInfo({ 
             authorInput: '',
             quoteInput: '',
-            authorId: this.state.authorId + 1,
-            quoteId: this.state.quoteId + 1
-        });   
+            searchField: searchField,
+            authorId: authorId + 1,
+            quoteId: quoteId + 1
+        });
 
-        const { authorInput, quoteInput, authorId, quoteId } = this.state
-        this.props.addQuoteCard( authorInput, quoteInput, quoteId, authorId)             
+        addQuoteCard(authorInput, quoteInput, quoteId, authorId)             
     }
 
-    render() {
-        const { authorInput, quoteInput, searchField } = this.state;
-        const { history, addedQuoteCard } = this.props;
+    const searchByNameAddedQuoteCard = addedQuoteCard.filter(name => (
+        name.author.toLowerCase().includes(searchField.toLowerCase())
+    ))
 
-        const searchByNameaddedQuoteCard = addedQuoteCard.filter(name => (
-            name.author.toLowerCase().includes(this.state.searchField.toLowerCase())
-        ))
-        
-        return (
-            <div className="container-fluid">
-                <div class='row'>
-                    <QuotifyNavbar />
-                    <div className="qt-main col-12 col-sm-10 overflow-scroll">
-                        <div class="row">
-                             <QuotifyTopbar 
-                                midPart= { addedQuoteCard.length > 0 ? "searchBox" : null }
-                                back={() => history.goBack()}
-                                forward={() => history.goForward()}
-                                handleChange={this.handleChange}
-                                name="searchField"
-                            />
-                        
-                            <QuotifyMainCreate 
-                                handleChange={this.handleChange}
-                                handleSubmit={this.handleSubmit}
-                                searchByNameaddedQuoteCard= {searchByNameaddedQuoteCard}
-                                authorInput={authorInput} 
-                                quoteInput={quoteInput}
-                            />
-                        </div>
+    return (
+        <div className="container-fluid">
+            <div class='row'>
+                <QuotifyNavbar />
+                <div className="qt-main col-12 col-sm-10 overflow-scroll">
+                    <div class="row">
+                         <QuotifyTopbar 
+                            midPart= { addedQuoteCard.length > 0 ? "searchBox" : null }
+                            back={() => history.goBack()}
+                            forward={() => history.goForward()}
+                            handleChange={handleChange}
+                        />
+                    
+                        <QuotifyMainCreate 
+                            handleChange={handleChange}
+                            handleSubmit={handleSubmit}
+                            searchByNameAddedQuoteCard= {searchByNameAddedQuoteCard}
+                            authorInput={authorInput} 
+                            quoteInput={quoteInput}
+                        />
                     </div>
-                    <QuotifyFooter />
-                </div>    
-            </div>
-        )
-    }
+                </div>
+                <QuotifyFooter />
+            </div>    
+        </div>
+    )
+    
 }
 
 const mapDispatchToProps = dispatch => ({
