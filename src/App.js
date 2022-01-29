@@ -12,8 +12,6 @@ import ListPageQuotify from './pages/quotify/qt-page-list/qt-page-list.component
 import QuotifyPageAccount from './pages/quotify/qt-page-account/qt-page-account.component';
 
 import SnakesAndLadders from './pages/snakes-and-ladders/snakes-and-ladders.component';
-import Presentational from './pages/redux-page';
-import Move from './pages/move.component';
 
 import './App.css';
 
@@ -31,8 +29,6 @@ const App = () => (
       <Route path='/qt/account' component={QuotifyPageAccount} />
 
       <Route path='/snakes-and-ladders' component={SnakesAndLadders} />
-      <Route path='/app4' component={Presentational} />
-      <Route path='/app5' component={Move} />
 
     </Switch>
   </div>
