@@ -10,38 +10,38 @@ class Directory extends React.Component {
     this.state = {
       sections: [
         {
-          title: 'rolodex',
-          subtitle: 'live search',
-          imageUrl: 'https://illlustrations.co/static/c1f8fe70d30e487be31c2d47ba4ced6d/day73-writing-tool.png',
-          linkUrl: 'rolodex',
-          id: 1
-        },
-        {
           title: 'Quotify',
           subtitle: 'Get Inspired!',
-          imageUrl: 'http://michaelcriner.com/wp-content/uploads/2013/06/QuotePostLogo.jpg',
+          imageUrl: 'https://illlustrations.co/static/35e1a45f1b256f0a7f6dfac84e1675c0/day100-the-snail.png',
           linkUrl: 'qt/home',
-          id: 2
+          id: 1
         },
         {
           title: 'Snakes and Ladders',
           subtitle: 'Game of Chance!',
-          imageUrl: 'https://st2.depositphotos.com/2485347/8466/v/950/depositphotos_84668354-stock-illustration-background-of-cartoon-dices.jpg',
+          imageUrl: 'https://illlustrations.co/static/a8bffeb0395117a5c2d54c770d50e80e/day2-gaming-console.png',
           linkUrl: 'snakes-and-ladders',
+          id: 2
+        },
+        {
+          title: 'app3',
+          subtitle: 'coming soon',
+          imageUrl: 'https://illlustrations.co/static/d2641810ad0fb936e0c25166b7fa289a/day20-rocket.png',
+          linkUrl: 'app3',
           id: 3
         },
         {
           title: 'app4',
-          subtitle: 'will be constructed',
-          imageUrl: 'https://i.pinimg.com/736x/aa/7d/1f/aa7d1fbe563a7d1ebfb438537ea0206a.jpg',
+          subtitle: 'coming soon',
+          imageUrl: 'https://illlustrations.co/static/34b8b771e91097048a9494b382ec2fc2/118-macbook.png',
           linkUrl: 'app4',
           size: 'large',
           id: 4
         },
         {
           title: 'app5',
-          subtitle: 'to be built',
-          imageUrl: 'https://cdn.dribbble.com/users/56427/screenshots/6003020/budio_hero_illustration_for_animation_2_still_2x.gif?compress=1&resize=400x300',
+          subtitle: 'coming soon',
+          imageUrl: 'https://illlustrations.co/static/74cc668fbe1ef595d4edd1810f7bce32/day76-watch-spectacle.png',
           linkUrl: 'app5',
           size: 'large',
           id: 5
