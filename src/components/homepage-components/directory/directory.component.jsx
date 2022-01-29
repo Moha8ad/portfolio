@@ -24,26 +24,29 @@ class Directory extends React.Component {
           id: 2
         },
         {
-          title: 'app3',
+          title: 'react app',
           subtitle: 'coming soon',
           imageUrl: 'https://illlustrations.co/static/d2641810ad0fb936e0c25166b7fa289a/day20-rocket.png',
           linkUrl: '/',
+          status: 'coming-soon',
           id: 3
         },
         {
-          title: 'app4',
+          title: 'react app',
           subtitle: 'coming soon',
           imageUrl: 'https://illlustrations.co/static/34b8b771e91097048a9494b382ec2fc2/118-macbook.png',
           linkUrl: '/',
           size: 'large',
+          status: 'coming-soon',
           id: 4
         },
         {
-          title: 'app5',
+          title: 'react app',
           subtitle: 'coming soon',
           imageUrl: 'https://illlustrations.co/static/74cc668fbe1ef595d4edd1810f7bce32/day76-watch-spectacle.png',
           linkUrl: '/',
           size: 'large',
+          status: 'coming-soon',
           id: 5
         }
       ]

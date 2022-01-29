@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 import AsArLogoLgWt from '../../components/all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component'
 
 import rollSF from '../../assets/dice.wav';
@@ -11,7 +10,6 @@ import landing from '../../assets/landing.wav';
 import ladder from '../../assets/ladder.wav';
 import snake from '../../assets/snake.wav';
 import move from '../../assets/move.wav';
-
 
 import './snakes-and-ladders.styles.scss';
 
