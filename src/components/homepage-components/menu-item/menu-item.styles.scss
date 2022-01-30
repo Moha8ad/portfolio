@@ -5,14 +5,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid black;
-    margin: 0 7.5px 15px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border: 1px solid black;
+    font-family: 'Quicksand', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 0.5rem;
     overflow: hidden;
 
     &:hover {
       cursor: pointer;
-
     
       & .background-image {
         transform: scale(1.2);
@@ -32,14 +31,6 @@
       cursor: not-allowed;
     }
   
-    &:first-child {
-      margin-right: 7.5px;
-    }
-  
-    &:last-child {
-      margin-left: 7.5px;
-    }
-  
     .background-image {
       width: 100%;
       height: 100%;
@@ -47,29 +38,29 @@
       background-size: cover;
     }
     
-  
     .content {
-      height: 90px;
-      padding: 0 5px;
+      height: 100px;
+      width: 220px;
+      padding: 5px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       border: 1px solid black;
       background-color: rgba(5, 5, 5, 0.7);
-      opacity: 0.7;
+      opacity: 0.6;
       position: absolute;
   
       .title {
         font-weight: bold;
         margin-bottom: 6px;
-        font-size: 22px;
+        font-size: 16px;
         color: #ffffff;
       }
   
       .subtitle {
         font-weight: lighter;
-        font-size: 16px;
+        font-size: 12px;
         color: #ffffff;
       }
     }
@@ -78,9 +69,13 @@
 
 @media only screen and (max-width: 992px) {
   .menu-item {
-    min-width: 40%;   
+    min-width: 40%;  
     &.large {
       height: 240px;
+    }
+    .content {
+      height: 150px;
+      width: 220px;
     }
   }
 }
@@ -89,8 +84,28 @@
   .menu-item {
     min-width: 100%;  
     height: 340px;
+
     &.large {
       height: 340px;
+    }
+    .content {
+      height: 180px;
+      width: 300px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .menu-item {
+    min-width: 100%;  
+    height: 340px;
+
+    &.large {
+      height: 340px;
+    }
+    .content {
+      height: 220px;
+      width: 220px;
     }
   }
 }

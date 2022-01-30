@@ -26,14 +26,14 @@ const QuotifyMainHome = ({ randomQuote}) => (
                 repeat={true}
             />
         )}    
-        <div class="row overflow-hidden py-4" style={{maxHeight: "15vh"}}>
+        <div class="row overflow-hidden py-4 vibrate-1" style={{maxHeight: "15vh"}}>
             {randomQuote.map(cardItem => 
                 <div>
                     <div class="fs-5">{cardItem.quote}</div>
                 </div>
             )}
             </div>
-            <div class="row " style={{maxHeight: "40vh"}}>
+            <div class="row vibrate-2" style={{maxHeight: "40vh"}}>
                   
                 <div class="col-7 p-4 overflow-scroll d-flex align-items-center" style={{maxHeight: "40vh"}}>
                 {randomQuote.map(cardItem => 
@@ -54,7 +54,7 @@ const QuotifyMainHome = ({ randomQuote}) => (
                 )} 
 
             </div>
-            <div class="row overflow-hidden" style={{maxHeight: "15vh"}}>
+            <div class="row overflow-hidden vibrate-3" style={{maxHeight: "15vh"}}>
                 {randomQuote.map(cardItem => 
                     <div>
                         <div class="fs-6">{cardItem.quote}</div>
