@@ -47,13 +47,13 @@ export const rollInRight = keyframes`
 
 export const AboutMeSection = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-auto-flow: row;
     grid-template-areas:
-        ". asar-logo ."
-        ". job-title ."
-        ". about-me ."
-        ". skill ."
+        ". . asar-logo . ."
+        ". job-title job-title job-title ."
+        ". about-me about-me about-me . "
+        ". skill skill skill ."
     ;
 
     min-height: 100vh;
@@ -66,10 +66,8 @@ export const AboutMeSection = styled.div`
     cursor: default;
 
 	animation: ${colorChange} 2s linear 1 alternate both;
-
     background-image: linear-gradient( 170deg, #2014D7 10%, #00BDDD 100%);
     background-size: 200% 200%;
-    animation: ${colorChange} 4s ease 1;
 `
 
 export const AsarLogo = styled.div`
@@ -87,8 +85,7 @@ export const JobTitle = styled.div`
     justify-self: center; 
     align-self: center;
     color: #E1A5FF;
-    font-weight: 600;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
 
     -webkit-animation: ${fadeInLeft} 0.6s 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -105,7 +102,7 @@ export const AboutMe = styled.div`
     align-self: start;
     font-weight: 400;
     color: #E3F0F5;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
 
     @media only screen and (max-width: 600px) {
@@ -117,7 +114,7 @@ export const AboutMe = styled.div`
 
 export const SkillDev = styled.div`
     display: grid; 
-    grid-template-columns: repeat(8, 1fr); 
+    grid-template-columns: repeat(6, 1fr); 
     grid-template-rows: auto; 
     justify-self: center; 
     align-self: start;
@@ -143,69 +140,69 @@ export const SkillLogo = styled.span`
 
     ${props => props.js && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg");
-        height: 60px;
-        width: 60px;
+        height: 40px;
+        width: 40px;
 	    animation: ${rollInRight} 1.65s 1s ease-out both;  
     `}
     ${props => props.react && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg");
-        height: 60px;
-        width: 67.5px;
+        height: 40px;
+        width: 45px;
 	    animation: ${rollInRight} 1.65s 1.2s ease-out both;  
     `}
     ${props => props.redux && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/30/Redux_Logo.png");
-        height: 60px;
-        width: 67.5px;
+        height: 40px;
+        width: 42px;
 	    animation: ${rollInRight} 1.65s 1.4s ease-out both;  
     `}
     ${props => props.nodejs && css`
         background-image: url("https://nodejs.org/static/images/logo.svg");
-        height: 60px;
-        width: 100px;
+        height: 40px;
+        width: 65px;
 	    animation: ${rollInRight} 1.65s 1.5s ease-out both;  
     `}
 
     ${props => props.graphql && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg");
-        height: 60px;
-        width: 60px;
+        height: 40px;
+        width: 40px;
 	    animation: ${rollInRight} 1.65s 1.6s ease-out both;  
     `}
     ${props => props.apollo && css`
         background-image: url("https://brandeps.com/logo-download/A/Apollo-GraphQL-logo-vector-01.svg");
-        height: 60px;
-        width: 60px;
+        height: 40px;
+        width: 40px;
 	    animation: ${rollInRight} 1.65s 1.7s ease-out both;  
     `}
     ${props => props.firebase && css`
         background-image: url("https://static.requarks.io/logo/firebase.svg");
-        height: 60px;
-        width: 43px;
+        height: 40px;
+        width: 25px;
 	    animation: ${rollInRight} 1.65s 1.8s ease-out both;  
     `}
     ${props => props.git && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/62/Git-logo-orange.svg");
-        height: 60px;
-        width: 60px;
+        height: 40px;
+        width: 40px;
         animation: ${rollInRight} 1.65s 1.9s ease-out both; 
     `}
     ${props => props.github && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg");
-        height: 60px;
-        width: 60px;
+        height: 40px;
+        width: 40px;
         animation: ${rollInRight} 1.65s 2s ease-out both; 
     `}
     ${props => props.bootstrap && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg");
-        height: 60px;
-        width: 75px;
+        height: 40px;
+        width: 50px;
         animation: ${rollInRight} 1.65s 2.1s ease-out both;  
     `}
     ${props => props.styledComponent && css`
         background-image: url("https://styled-components.com/logo.png");
-        height: 60px;
-        width: 60px;
+        height: 40px;
+        width: 40px;
         animation: ${rollInRight} 1.65s 2.2s ease-out both; 
     `}
     

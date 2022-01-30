@@ -1,17 +1,19 @@
 import React from "react";
 
 import Header from "../../all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component.jsx";
+import Directory from "../directory/directory.component"
 
-import { AboutMeSection, AsarLogo, JobTitle, AboutMe, SkillDev, SkillLogo } from './profile-info.styles.jsx'
+import { AboutMeSection, AsarLogo, JobTitle, AboutMe, SkillDev, SkillLogo } from './profile.styles.jsx'
 
-const ProfileInfo = () => {
+const Profile = () => {
     return (
+    <div>
     <AboutMeSection>
         <AsarLogo>
             <Header />
         </AsarLogo>
         <JobTitle>
-            <span class="text-secondary" style={{fontSize: '1rem'}}>on my way to be a</span> Front-end Developer
+        Front-end Developer
         </JobTitle>
         <AboutMe>
             Hi, I'm Mohammad, learning web development.
@@ -36,7 +38,12 @@ const ProfileInfo = () => {
             <SkillLogo styledComponent />
         </SkillDev>
     </AboutMeSection>
+    <Directory />
+
+    </div>
+
+
     )
 }
 
-export default ProfileInfo;
+export default Profile;
