@@ -2,17 +2,14 @@ import React from "react";
 
 import Header from "../../all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component.jsx";
 
-import { Entrance, AboutMeSection, AsarLogo, AboutMe, SkillDev, SkillLogo } from './profile-info.styles.jsx'
+import { AboutMeSection, AsarLogo, AboutMe, SkillDev, SkillLogo } from './profile-info.styles.jsx'
 
 const ProfileInfo = () => {
     return (
-    <Entrance>
     <AboutMeSection>
-    <Entrance>
-    <AsarLogo>
+        <AsarLogo>
             <Header />
         </AsarLogo>
-        </Entrance>
 
         <AboutMe>
             Hi, I'm Mohammad, learning web development.
@@ -22,17 +19,16 @@ const ProfileInfo = () => {
             I'd be more than happy if you share your comments with me.
         </AboutMe>
         <SkillDev>
-            <SkillLogo react />
             <SkillLogo js />
+            <SkillLogo react />
             <SkillLogo nodejs />
-            <SkillLogo firebase />
-            <SkillLogo styledComponent />
-            <SkillLogo bootstrap />            
             <SkillLogo graphql />
             <SkillLogo apollo />
-            </SkillDev>
+            <SkillLogo firebase /> 
+            <SkillLogo bootstrap /> 
+            <SkillLogo styledComponent />
+        </SkillDev>
     </AboutMeSection>
-    </Entrance>
     )
 }
 
