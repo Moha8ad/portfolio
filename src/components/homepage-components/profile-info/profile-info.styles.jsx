@@ -1,8 +1,7 @@
 import styled, { css, keyframes } from 'styled-components'
 
 export const colorChange = keyframes`
-    0%{background-position:10% 60%}
-    25%{background-position:100% 30%}
+    0%{background-position:50% 100%}
     100%{background-position:0% 0%}
 `
 
@@ -52,8 +51,10 @@ export const AboutMeSection = styled.div`
     grid-auto-flow: row;
     grid-template-areas:
         ". asar-logo ."
+        ". job-title ."
         ". about-me ."
-        ". skill .";
+        ". skill ."
+    ;
 
     min-height: 100vh;
     min-width: 100vw;
@@ -64,11 +65,10 @@ export const AboutMeSection = styled.div`
     user-select: none; 
     cursor: default;
 
-	-webkit-animation: ${colorChange} 4s linear 1 alternate both;
-	animation: ${colorChange} 4s linear 1 alternate both;
+	animation: ${colorChange} 2s linear 1 alternate both;
 
-    background-image: linear-gradient( 135deg, #002661 10%, #0396FF 100%);
-    background-size: 250% 250%;
+    background-image: linear-gradient( 170deg, #2014D7 10%, #00BDDD 100%);
+    background-size: 200% 200%;
     animation: ${colorChange} 4s ease 1;
 `
 
@@ -82,25 +82,42 @@ export const AsarLogo = styled.div`
 	animation: ${fadeInRight} 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 `
 
+export const JobTitle = styled.div`
+    grid-area: job-title; 
+    justify-self: center; 
+    align-self: center;
+    color: #E1A5FF;
+    font-weight: 600;
+    font-size: 2rem;
+    font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
+
+    -webkit-animation: ${fadeInLeft} 0.6s 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: ${fadeInLeft} 0.6s 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+
+    @media only screen and (max-width: 600px) {
+        padding: 1rem; 
+    }
+`
+
 export const AboutMe = styled.div`
     grid-area: about-me; 
     justify-self: center; 
     align-self: start;
-    color: #0396FF;
-    font-size: 1.6rem;
+    font-weight: 400;
+    color: #E3F0F5;
+    font-size: 1.3rem;
     font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
 
     @media only screen and (max-width: 600px) {
         padding: 1rem; 
     }
 
-    -webkit-animation: ${fadeInLeft} 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	animation: ${fadeInLeft} 0.6s 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: ${fadeInLeft} 0.6s 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 `
 
 export const SkillDev = styled.div`
     display: grid; 
-    grid-template-columns: repeat(9, 1fr); 
+    grid-template-columns: repeat(8, 1fr); 
     grid-template-rows: auto; 
     justify-self: center; 
     align-self: start;
@@ -167,16 +184,29 @@ export const SkillLogo = styled.span`
         width: 43px;
 	    animation: ${rollInRight} 1.65s 1.8s ease-out both;  
     `}
+    ${props => props.git && css`
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/62/Git-logo-orange.svg");
+        height: 60px;
+        width: 60px;
+        animation: ${rollInRight} 1.65s 1.9s ease-out both; 
+    `}
+    ${props => props.github && css`
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg");
+        height: 60px;
+        width: 60px;
+        animation: ${rollInRight} 1.65s 2s ease-out both; 
+    `}
     ${props => props.bootstrap && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg");
         height: 60px;
         width: 75px;
-        animation: ${rollInRight} 1.65s 1.9s ease-out both;  
+        animation: ${rollInRight} 1.65s 2.1s ease-out both;  
     `}
     ${props => props.styledComponent && css`
         background-image: url("https://styled-components.com/logo.png");
         height: 60px;
         width: 60px;
-        animation: ${rollInRight} 1.65s 2s ease-out both;    
+        animation: ${rollInRight} 1.65s 2.2s ease-out both; 
     `}
+    
 `

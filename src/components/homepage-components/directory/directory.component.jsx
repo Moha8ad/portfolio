@@ -36,18 +36,8 @@ class Directory extends React.Component {
           subtitle: 'coming soon',
           imageUrl: 'https://illlustrations.co/static/34b8b771e91097048a9494b382ec2fc2/118-macbook.png',
           linkUrl: '/',
-          size: 'large',
           status: 'coming-soon',
           id: 4
-        },
-        {
-          title: 'react app',
-          subtitle: 'coming soon',
-          imageUrl: 'https://illlustrations.co/static/74cc668fbe1ef595d4edd1810f7bce32/day76-watch-spectacle.png',
-          linkUrl: '/',
-          size: 'large',
-          status: 'coming-soon',
-          id: 5
         }
       ]
     };
