@@ -47,13 +47,13 @@ export const rollInRight = keyframes`
 
 export const AboutMeSection = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-auto-flow: row;
     grid-template-areas:
-        ". . asar-logo . ."
-        ". job-title job-title job-title ."
-        ". about-me about-me about-me . "
-        ". skill skill skill ."
+        ". asar-logo ."
+        ". job-title . "
+        ". about-me . "
+        ". skill ."
     ;
 
     min-height: 100vh;
@@ -74,7 +74,9 @@ export const AsarLogo = styled.div`
     grid-area: asar-logo; 
     justify-self: center; 
     align-self: center;
-    padding: 10px;
+    padding: 20px 120px;
+    margin: 10px;
+    border: 1px dash #E1A5FF;
 
     -webkit-animation: ${fadeInRight} 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	animation: ${fadeInRight} 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -82,14 +84,16 @@ export const AsarLogo = styled.div`
 
 export const JobTitle = styled.div`
     grid-area: job-title; 
+
     justify-self: center; 
-    align-self: center;
+    align-self: start;
     color: #E1A5FF;
+
     font-size: 1.5rem;
     font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
 
-    -webkit-animation: ${fadeInLeft} 0.6s 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	animation: ${fadeInLeft} 0.6s 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    -webkit-animation: ${fadeInLeft} 0.7s 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: ${fadeInLeft} 0.7s 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 
     @media only screen and (max-width: 600px) {
         padding: 1rem; 
@@ -102,6 +106,7 @@ export const AboutMe = styled.div`
     align-self: start;
     font-weight: 400;
     color: #E3F0F5;
+    padding: 3rem;
     font-size: 1.1rem;
     font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
 
@@ -114,13 +119,13 @@ export const AboutMe = styled.div`
 
 export const SkillDev = styled.div`
     display: grid; 
-    grid-template-columns: repeat(6, 1fr); 
+    grid-template-columns: repeat(11, 1fr); 
     grid-template-rows: auto; 
     justify-self: center; 
-    align-self: start;
-    gap: 15px;
+    align-self: ccenter;
+    gap: 10px;
     grid-area: skill;
-    padding: 5px;
+    padding: 15px;
 
     @media only screen and (max-width: 992px) {
         grid-template-columns: repeat(4, 1fr); 

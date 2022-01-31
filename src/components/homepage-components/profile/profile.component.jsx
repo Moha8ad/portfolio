@@ -13,13 +13,13 @@ const Profile = () => {
             <Header />
         </AsarLogo>
         <JobTitle>
-        Front-end Developer
+            Web Developement
         </JobTitle>
         <AboutMe>
             Hi, I'm Mohammad, learning web development.
             I enjoy dealing with the novel challenges in this path
             and finding/building a way forward.
-            The following list shows the skills I've been learning and practicing
+            The list on the left shows the skills I've been learning and practicing
             during the past six months.
             I invite you to see the two react apps I built thus far. 
             I'd be more than happy if you share your comments with me.
@@ -39,7 +39,6 @@ const Profile = () => {
         </SkillDev>
     </AboutMeSection>
     <Directory />
-
     </div>
 
 
