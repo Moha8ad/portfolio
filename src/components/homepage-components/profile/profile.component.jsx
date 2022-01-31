@@ -13,15 +13,11 @@ const Profile = () => {
             <Header />
         </AsarLogo>
         <JobTitle>
-            Web Developement
+        <i class="bi bi-terminal fs-6"></i> <i class="bi bi-code-square fs-5" /> Web Developer 
         </JobTitle>
         <AboutMe>
-            Hi, I'm Mohammad, learning web development.
-            I enjoy dealing with the novel challenges in this path
-            and finding/building a way forward.
-            The list on the left shows the skills I've been learning and practicing
-            during the past six months.
-            I invite you to see the two react apps I built thus far. 
+            Hi, I'm Mohammad.
+            I invite you to see the two react apps I built by using the below tools. 
             I'd be more than happy if you share your comments with me.
         </AboutMe>
         <SkillDev>

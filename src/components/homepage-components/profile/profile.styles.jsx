@@ -1,10 +1,5 @@
 import styled, { css, keyframes } from 'styled-components'
 
-export const colorChange = keyframes`
-    0%{background-position:50% 100%}
-    100%{background-position:0% 0%}
-`
-
 export const fadeInRight = keyframes`
     0% {
         -webkit-transform: translateX(50px);
@@ -58,16 +53,13 @@ export const AboutMeSection = styled.div`
 
     min-height: 100vh;
     min-width: 100vw;
+    background-image: linear-gradient(0deg, #000 0%, #0D25B9 100%);
 
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
     user-select: none; 
     cursor: default;
-
-	animation: ${colorChange} 2s linear 1 alternate both;
-    background-image: linear-gradient( 170deg, #2014D7 10%, #00BDDD 100%);
-    background-size: 200% 200%;
 `
 
 export const AsarLogo = styled.div`
@@ -85,11 +77,12 @@ export const AsarLogo = styled.div`
 export const JobTitle = styled.div`
     grid-area: job-title; 
 
-    justify-self: center; 
-    align-self: start;
+    justify-self: start; 
+    align-self: end;
     color: #E1A5FF;
+    padding: 0 3rem;
 
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
 
     -webkit-animation: ${fadeInLeft} 0.7s 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -107,7 +100,7 @@ export const AboutMe = styled.div`
     font-weight: 400;
     color: #E3F0F5;
     padding: 3rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
 
     @media only screen and (max-width: 600px) {

@@ -11,34 +11,19 @@ class Directory extends React.Component {
       sections: [
         {
           title: 'Quotify',
-          subtitle: 'responsive',
+          subtitle: 'get inspired',
           imageUrl: 'https://illlustrations.co/static/35e1a45f1b256f0a7f6dfac84e1675c0/day100-the-snail.png',
           linkUrl: 'qt/home',
           id: 1
         },
         {
           title: 'Snakes and Ladders',
-          subtitle: 'full screen desktop',
+          subtitle: 'game of chance',
           imageUrl: 'https://illlustrations.co/static/a8bffeb0395117a5c2d54c770d50e80e/day2-gaming-console.png',
           linkUrl: 'snakes-and-ladders',
           id: 2
-        },
-        {
-          title: 'react app',
-          subtitle: 'coming soon',
-          imageUrl: 'https://illlustrations.co/static/d2641810ad0fb936e0c25166b7fa289a/day20-rocket.png',
-          linkUrl: '/',
-          status: 'coming-soon',
-          id: 3
-        },
-        {
-          title: 'react app',
-          subtitle: 'coming soon',
-          imageUrl: 'https://illlustrations.co/static/34b8b771e91097048a9494b382ec2fc2/118-macbook.png',
-          linkUrl: '/',
-          status: 'coming-soon',
-          id: 4
         }
+        
       ]
     };
   }

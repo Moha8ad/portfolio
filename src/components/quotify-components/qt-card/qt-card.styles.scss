@@ -53,6 +53,7 @@
 }
 
 .auth-img-library-animation {
+    transition: all 1s ease-in-out;
 
     filter: grayscale(90%);
 

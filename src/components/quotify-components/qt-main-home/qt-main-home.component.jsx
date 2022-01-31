@@ -8,58 +8,47 @@ import { generateRandomQuoteId } from '../../../redux/quote/quote.actions';
 
 import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component';
 
-
 import './qt-main-home.styles.scss'
 import { connect } from "react-redux";
 
 const QuotifyMainHome = ({ randomQuote}) => ( 
-    <div>
-        <div class="d-block d-md-none">
+    <div class="p-5 d-flex justify-content-center align-items-start">
+        <div class="d-block d-md-none d-flex justify-content-center align-items-start">
         {randomQuote.map(cardItem => 
             <QuotifyCard cardItem = {cardItem} repeat={true}/>
         )}
         </div>
-        <div class="d-none d-md-block col-md-12 p-5 overflow-hidden" style={{maxHeight: "70vh"}}>
-        {randomQuote.map(cardItem => 
-            <QuotifyButtonPanel 
-                item={cardItem}
-                repeat={true}
-            />
-        )}    
-        <div class="row overflow-hidden py-4 vibrate-1" style={{maxHeight: "15vh"}}>
-            {randomQuote.map(cardItem => 
-                <div>
-                    <div class="fs-5">{cardItem.quote}</div>
-                </div>
-            )}
-            </div>
-            <div class="row vibrate-2" style={{maxHeight: "40vh"}}>
-                  
-                <div class="col-7 p-4 overflow-scroll d-flex align-items-center" style={{maxHeight: "40vh"}}>
+        <div class="d-none d-md-block col-md-8">
+            <div class="mb-5">
                 {randomQuote.map(cardItem => 
-                    <div class="col-12 p-4">
-                        <div class="fs-4" style={{color:COLOR_PALETTE[Math.floor(Math.random()*25)]}}>{cardItem.quote}</div>
-                    </div>
+                    <QuotifyButtonPanel 
+                        item={cardItem}
+                        repeat={true}
+                    />
+                )}
+            </div>
+            <div class="card-grad row border border-1 border-light rounded-3 py-4">
+                <div class="col-8 d-flex align-items-center px-4">
+                {randomQuote.map(cardItem => 
+                        <div class="fs-5">{cardItem.quote}</div>
                     )}  
                 </div>
-               
+                
                 {randomQuote.map(cardItem => 
-                <div class="col-5 auth-img-library-animation px-3 overflow-hidden" style={{maxHeight: "35vh"}}>
-                <img
-                    alt='img'
-                    src={`https://robohash.org/${[cardItem.authorId]}?&&size=180x180`}
-                />
-                    <div class="fs-4 text-secondary">{cardItem.author}</div>
+                <div class="col-4">
+                    <div className="row">
+                        <div className="col-12 d-flex justify-content-center auth-img-library-animation">
+                            <img
+                                alt='img'
+                                src={`https://robohash.org/${[cardItem.authorId]}?&&size=180x180`}
+                            />
+                        </div>
+                        <div className="col-12 pt-1">
+                            <div class="fs-6 text-center">{cardItem.author}</div>
+                        </div>
+                    </div>
                 </div>
                 )} 
-
-            </div>
-            <div class="row overflow-hidden vibrate-3" style={{maxHeight: "15vh"}}>
-                {randomQuote.map(cardItem => 
-                    <div>
-                        <div class="fs-6">{cardItem.quote}</div>
-                    </div>
-                )}
             </div>
         </div>
     </div>
