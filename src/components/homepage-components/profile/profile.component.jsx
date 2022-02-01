@@ -25,11 +25,11 @@ const Profile = () => {
             <SkillLogo react />
             <SkillLogo redux />
             <SkillLogo nodejs />
-            <SkillLogo graphql />
-            <SkillLogo apollo />
+            <SkillLogo rest />
             <SkillLogo firebase /> 
             <SkillLogo git />
             <SkillLogo github />
+            <SkillLogo wordpress />
             <SkillLogo bootstrap /> 
             <SkillLogo styledComponent />
         </SkillDev>

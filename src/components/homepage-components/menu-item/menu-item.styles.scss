@@ -1,61 +1,60 @@
 .menu-item {
-    height: 100vh;
-    min-width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Quicksand', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    overflow: hidden;
-    position: sticky;
+  height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Quicksand', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  overflow: hidden;
+  position: sticky;
 
-    &:hover {
-      cursor: pointer;
-
-      .background-image {
-       transform: scale(1.02); 
-      }
-
-      .content {
-        opacity: 0.8;
-      }
-    }
-  
-    .background-image {
-      width: 100%;
-      height: 100%;
-      background-position: center;
-      background-size: cover;
-      background-attachment: fixed;
-      transition: all 2s ease-in-out;
-    }
+  &:hover {
+    cursor: pointer;
     
+    .background-image {
+      transform: scale(1.02); 
+    }
+
     .content {
-      height: 100vh;
-      width: 100vw;
-      padding: 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      border: 1px solid black;
-      background-color: rgba(5, 5, 5, 0.7);
-      opacity: 0.2;
-      position: absolute;
-      transition: all 1s ease-in-out;
-
-  
-      .title {
-        font-weight: 600;
-        margin-bottom: 5px;
-        font-size: 2.5rem;
-        color: #ffffff;
-
-      }
-  
-      .subtitle {
-        font-weight: lighter;
-        font-size: 1.4rem;
-        color: #ffffff;
-      }
+      opacity: 0.8;
     }
   }
+
+  .background-image {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    transition: all 2s ease-in-out;
+  }
+  
+  .content {
+    height: 100vh;
+    width: 100vw;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    border: 1px solid black;
+    background-color: rgba(5, 5, 5, 0.7);
+    opacity: 0.2;
+    position: absolute;
+    transition: all 1s ease-in-out;
+
+    .title {
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 2.5rem;
+      color: #ffffff;
+
+    }
+
+    .subtitle {
+      font-weight: lighter;
+      font-size: 1.4rem;
+      color: #ffffff;
+    }
+  }
+}

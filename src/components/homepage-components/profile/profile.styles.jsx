@@ -1,5 +1,23 @@
 import styled, { css, keyframes } from 'styled-components'
 
+const breakpoints = {
+    xs: '0',
+    sm: '576px',
+    md: '768px',
+    lg: '992px',
+    xl: '1200px',
+    xxl: '1400px'
+};
+
+export const device = {
+    xs: `(min-width: ${breakpoints.xs})`,
+    sm: `(min-width: ${breakpoints.sm})`,
+    md: `(min-width: ${breakpoints.md})`,
+    lg: `(min-width: ${breakpoints.lg})`,
+    xl: `(min-width: ${breakpoints.xl})`,
+    xxl: `(min-width: ${breakpoints.xl})`,
+};
+
 export const fadeInRight = keyframes`
     0% {
         -webkit-transform: translateX(50px);
@@ -28,8 +46,8 @@ export const fadeInLeft = keyframes`
 
 export const rollInRight = keyframes`
     0% {
-        -webkit-transform: translateX(1000px) rotate(720deg);
-        transform: translateX(1000px) rotate(720deg);
+        -webkit-transform: translateX(50vh) rotate(720deg);
+        transform: translateX(50vh) rotate(720deg);
         opacity: 0;
     }
     100% {
@@ -40,101 +58,53 @@ export const rollInRight = keyframes`
     }
 `
 
-export const AboutMeSection = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-flow: row;
-    grid-template-areas:
-        ". asar-logo ."
-        ". job-title . "
-        ". about-me . "
-        ". skill ."
-    ;
-
-    min-height: 100vh;
-    min-width: 100vw;
-    background-image: linear-gradient(0deg, #000 0%, #0D25B9 100%);
-
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-    -moz-user-select: none;     /* Firefox all */
-    -ms-user-select: none;      /* IE 10+ */
-    user-select: none; 
-    cursor: default;
-`
-
 export const AsarLogo = styled.div`
-    grid-area: asar-logo; 
-    justify-self: center; 
-    align-self: center;
-    padding: 20px 120px;
-    margin: 10px;
-    border: 1px dash #E1A5FF;
 
     -webkit-animation: ${fadeInRight} 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	animation: ${fadeInRight} 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 `
 
 export const JobTitle = styled.div`
-    grid-area: job-title; 
 
-    justify-self: start; 
-    align-self: end;
+    padding: 10vh 2vw 1vh;
+    
     color: #E1A5FF;
-    padding: 0 3rem;
-
     font-size: 1.7rem;
     font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
 
     -webkit-animation: ${fadeInLeft} 0.7s 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	animation: ${fadeInLeft} 0.7s 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-
-    @media only screen and (max-width: 600px) {
-        padding: 1rem; 
-    }
 `
 
 export const AboutMe = styled.div`
-    grid-area: about-me; 
-    justify-self: center; 
-    align-self: start;
-    font-weight: 400;
+    
+    padding: 1vh 2vw 15vh;
     color: #E3F0F5;
-    padding: 3rem;
     font-size: 1.2rem;
+    font-weight: 400;
     font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
-
-    @media only screen and (max-width: 600px) {
-        padding: 1rem; 
-    }
-
-	animation: ${fadeInLeft} 0.6s 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    
+    -webkit-animation: ${fadeInLeft} 0.6s 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: ${fadeInLeft} 0.6s 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 `
 
 export const SkillDev = styled.div`
-    display: grid; 
-    grid-template-columns: repeat(11, 1fr); 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
     grid-template-rows: auto; 
-    justify-self: center; 
-    align-self: ccenter;
-    gap: 10px;
-    grid-area: skill;
-    padding: 15px;
+    gap: 20px;
 
-    @media only screen and (max-width: 992px) {
-        grid-template-columns: repeat(4, 1fr); 
-    }
+    max-width: 100vw;
 
-    @media only screen and (max-width: 776px) {
-        grid-template-columns: repeat(3, 1fr); 
-    }
+    justify-self: center;
+    align-self: center;
 `
 
 export const SkillLogo = styled.span`
-    height: 100%;
-    width: auto;
-    padding: 10px;
-    margin: 5px;
     background-size: cover;
+    padding: 10px;
+    justify-self: center;
+    align-self: center;
 
     ${props => props.js && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg");
@@ -160,36 +130,35 @@ export const SkillLogo = styled.span`
         width: 65px;
 	    animation: ${rollInRight} 1.65s 1.5s ease-out both;  
     `}
-
-    ${props => props.graphql && css`
-        background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg");
+    ${props => props.rest && css`
+        background-image: url("https://restfulapi.net/wp-content/uploads/rest.png");
         height: 40px;
         width: 40px;
 	    animation: ${rollInRight} 1.65s 1.6s ease-out both;  
-    `}
-    ${props => props.apollo && css`
-        background-image: url("https://brandeps.com/logo-download/A/Apollo-GraphQL-logo-vector-01.svg");
-        height: 40px;
-        width: 40px;
-	    animation: ${rollInRight} 1.65s 1.7s ease-out both;  
     `}
     ${props => props.firebase && css`
         background-image: url("https://static.requarks.io/logo/firebase.svg");
         height: 40px;
         width: 25px;
-	    animation: ${rollInRight} 1.65s 1.8s ease-out both;  
+	    animation: ${rollInRight} 1.65s 1.7s ease-out both;  
     `}
     ${props => props.git && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/62/Git-logo-orange.svg");
         height: 40px;
         width: 40px;
-        animation: ${rollInRight} 1.65s 1.9s ease-out both; 
+        animation: ${rollInRight} 1.65s 1.8s ease-out both; 
     `}
     ${props => props.github && css`
-        background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg");
+        background-image: url("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png");
         height: 40px;
         width: 40px;
-        animation: ${rollInRight} 1.65s 2s ease-out both; 
+        animation: ${rollInRight} 1.65s 1.9s ease-out both; 
+    `}
+    ${props => props.wordpress && css`
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg");
+        height: 40px;
+        width: 40px;
+	    animation: ${rollInRight} 1.65s 2s ease-out both;  
     `}
     ${props => props.bootstrap && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg");
@@ -203,5 +172,106 @@ export const SkillLogo = styled.span`
         width: 40px;
         animation: ${rollInRight} 1.65s 2.2s ease-out both; 
     `}
-    
+`
+
+export const AboutMeSection = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    max-width: 100vw;
+    padding: 1rem;
+
+    background-image: linear-gradient(0deg, #000 0%, #0D25B9 100%);
+
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+
+    user-select: none; 
+    cursor: default;
+
+    @media only screen and ${device.xs} { 
+        padding: 1rem;
+
+        ${JobTitle} {
+            padding: 10vh 2vw 1vh;
+        }
+
+        ${AboutMe} {
+            padding: 1vh 2vw 15vh;
+        }
+
+        ${SkillDev}{
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 20px;
+        }
+    }
+    @media only screen and ${device.sm} { 
+        padding: 3rem;
+
+        ${JobTitle} {
+            padding: 15vh 2vw 1vh;
+        }
+
+        ${AboutMe} {
+            padding: 1vh 2vw 15vh;
+        }
+
+        ${SkillDev}{
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 20px;
+        }
+    }
+    @media only screen and ${device.md} { 
+        padding: 4rem;
+
+        ${JobTitle} {
+            padding: 15vh 15vw 1vh;
+        }
+
+        ${AboutMe} {
+            padding: 1vh 15vw 15vh;
+        }
+
+        ${SkillDev}{
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 20px;
+            padding: 0 10vh;
+        }
+    }
+    @media only screen and ${device.lg} { 
+        padding: 4rem;
+        
+        ${JobTitle} {
+            padding: 10vh 25vw 2vh;
+        }
+
+        ${AboutMe} {
+            padding: 0 25vw 20vh;
+        }
+
+        ${SkillDev}{
+            grid-template-columns: repeat(auto-fill, minmax(8%, 1fr));
+            gap: 1%;
+            padding: 0 10vh;
+        }
+    }
+    @media only screen and ${device.xl} { 
+        padding: 5rem;
+
+        ${JobTitle} {
+            padding: 15vh 25vw 2vh;
+        }
+
+        ${AboutMe} {
+            padding: 0 25vw 25vh;
+        }
+
+        ${SkillDev}{
+            grid-template-columns: repeat(auto-fill, minmax(8%, 1fr));
+            gap: 1%;
+            padding: 0 20vh;
+        }
+    }
 `

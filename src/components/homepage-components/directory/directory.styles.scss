@@ -1,8 +1,8 @@
 .directory-menu {
-    width: 100%;
     min-height: 100vh;
+    max-width: 100vw;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
