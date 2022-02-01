@@ -27,28 +27,32 @@ const QuotifyMainHome = ({ randomQuote}) => (
                     />
                 )}
             </div>
-            <div class="card-grad row border border-1 border-light rounded-3 py-4">
-                <div class="col-8 d-flex align-items-center px-4">
-                {randomQuote.map(cardItem => 
-                        <div class="fs-5">{cardItem.quote}</div>
-                    )}  
-                </div>
-                
-                {randomQuote.map(cardItem => 
-                <div class="col-4">
-                    <div className="row">
-                        <div className="col-12 d-flex justify-content-center auth-img-library-animation">
-                            <img
-                                alt='img'
-                                src={`https://robohash.org/${[cardItem.authorId]}?&&size=180x180`}
-                            />
+            <div class="move-to-right-1 row border border-1 border-light rounded-3" style={{backgroundColor: COLOR_PALETTE[Math.floor(Math.random() * 25)]}}>
+                <div class="move-to-left-1 card-grad col rounded-3 py-4">
+                    <div className="move-to-right-1 row">
+                        <div class="col-8 d-flex align-items-center px-4">
+                        {randomQuote.map(cardItem => 
+                                <div class="move-to-right-2 fs-5">{cardItem.quote}</div>
+                            )}  
                         </div>
-                        <div className="col-12 pt-1">
-                            <div class="fs-6 text-center">{cardItem.author}</div>
+                        
+                        {randomQuote.map(cardItem => 
+                        <div class="move-to-left-2 col-4">
+                            <div className="row">
+                                <div className="move-to-left-2 col-12 d-flex justify-content-center auth-img-library-animation">
+                                    <img
+                                        alt='img'
+                                        src={`https://robohash.org/${[cardItem.authorId]}?&&size=180x180`}
+                                    />
+                                </div>
+                                <div className="move-to-left-2 col-12 pt-1">
+                                    <div class="move-to-left-2 fs-6 text-center">{cardItem.author}</div>
+                                </div>
+                            </div>
                         </div>
+                        )} 
                     </div>
                 </div>
-                )} 
             </div>
         </div>
     </div>
