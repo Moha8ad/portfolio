@@ -213,8 +213,8 @@ export const ProfilePage = styled.div`
         }
 
         ${SkillDev}{
-            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+            gap: 10%px;
         }
     }
     @media only screen and ${device.sm} { 
@@ -230,8 +230,8 @@ export const ProfilePage = styled.div`
         }
 
         ${SkillDev}{
-            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+            gap: 10%;
         }
     }
     @media only screen and ${device.md} { 
