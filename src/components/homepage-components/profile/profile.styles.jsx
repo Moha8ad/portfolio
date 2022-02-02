@@ -209,12 +209,12 @@ export const ProfilePage = styled.div`
         }
 
         ${AboutMe} {
-            padding: 1vh 2vw 15vh;
+            padding: 1vh 2vw 10vh;
         }
 
         ${SkillDev}{
-            grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
-            gap: 10%px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
     }
     @media only screen and ${device.sm} { 
