@@ -2,8 +2,6 @@ import React, {useState} from "react";
 
 import MenuItem from '../menu-item/menu-item.component';
 
-import {DirectoryMenu } from './directory.styles.jsx';
-
 const Directory = () => {
 
   const [sections] = useState(
@@ -14,7 +12,6 @@ const Directory = () => {
         imageUrl: 'https://illlustrations.co/static/35e1a45f1b256f0a7f6dfac84e1675c0/day100-the-snail.png',
         linkUrl: 'qt/home',
         id: 1,
-        status: true
       },
       {
         title: 'Snakes and Ladders',
@@ -27,11 +24,11 @@ const Directory = () => {
   )
 
   return(
-    <DirectoryMenu>
+    <div>
       {sections.map(({id, ...otherSectionProps}) => (
         <MenuItem key={id} {...otherSectionProps}/>
       ))}
-    </DirectoryMenu>
+    </div>
   )
 }
 

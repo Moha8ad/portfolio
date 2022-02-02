@@ -197,7 +197,6 @@ export const AboutMeSection = styled.div`
 export const ProfilePage = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
     @media only screen and ${device.xs} { 
@@ -252,7 +251,7 @@ export const ProfilePage = styled.div`
             gap: 20px;
             padding: 0 10vh;
         }
-        
+
         ${BackgroundImage} {
             background-size: cover;
         }
