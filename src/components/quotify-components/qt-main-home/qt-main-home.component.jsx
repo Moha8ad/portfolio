@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import QuotifyCard from "../qt-card/qt-card.component";
 
@@ -9,7 +10,6 @@ import { generateRandomQuoteId } from '../../../redux/quote/quote.actions';
 import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component';
 
 import './qt-main-home.styles.scss'
-import { connect } from "react-redux";
 
 const QuotifyMainHome = ({ randomQuote}) => ( 
     <div class="p-5 d-flex justify-content-center align-items-start">

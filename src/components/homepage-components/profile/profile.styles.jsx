@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components'
+import { BackgroundImage } from '../menu-item/menu-item.styles';
 
 const breakpoints = {
     xs: '0',
@@ -100,6 +101,11 @@ export const SkillDev = styled.div`
     align-self: center;
 `
 
+export const customSize = css`
+    height: 40px;
+    width: 40px;
+`
+
 export const SkillLogo = styled.span`
     background-size: cover;
     padding: 10px;
@@ -108,8 +114,7 @@ export const SkillLogo = styled.span`
 
     ${props => props.js && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg");
-        height: 40px;
-        width: 40px;
+        ${customSize}
 	    animation: ${rollInRight} 1.65s 1s ease-out both;  
     `}
     ${props => props.react && css`
@@ -132,8 +137,7 @@ export const SkillLogo = styled.span`
     `}
     ${props => props.rest && css`
         background-image: url("https://restfulapi.net/wp-content/uploads/rest.png");
-        height: 40px;
-        width: 40px;
+        ${customSize}
 	    animation: ${rollInRight} 1.65s 1.6s ease-out both;  
     `}
     ${props => props.firebase && css`
@@ -144,20 +148,17 @@ export const SkillLogo = styled.span`
     `}
     ${props => props.git && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/62/Git-logo-orange.svg");
-        height: 40px;
-        width: 40px;
+        ${customSize}
         animation: ${rollInRight} 1.65s 1.8s ease-out both; 
     `}
     ${props => props.github && css`
         background-image: url("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png");
-        height: 40px;
-        width: 40px;
+        ${customSize}
         animation: ${rollInRight} 1.65s 1.9s ease-out both; 
     `}
     ${props => props.wordpress && css`
         background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg");
-        height: 40px;
-        width: 40px;
+        ${customSize}
 	    animation: ${rollInRight} 1.65s 2s ease-out both;  
     `}
     ${props => props.bootstrap && css`
@@ -168,8 +169,7 @@ export const SkillLogo = styled.span`
     `}
     ${props => props.styledComponent && css`
         background-image: url("https://styled-components.com/logo.png");
-        height: 40px;
-        width: 40px;
+        ${customSize}
         animation: ${rollInRight} 1.65s 2.2s ease-out both; 
     `}
 `
@@ -177,6 +177,8 @@ export const SkillLogo = styled.span`
 export const AboutMeSection = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     min-height: 100vh;
     max-width: 100vw;
@@ -190,9 +192,18 @@ export const AboutMeSection = styled.div`
 
     user-select: none; 
     cursor: default;
+`
+
+export const ProfilePage = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     @media only screen and ${device.xs} { 
-        padding: 1rem;
+        ${AboutMeSection} { 
+            padding: 1rem;
+        }
 
         ${JobTitle} {
             padding: 10vh 2vw 1vh;
@@ -208,8 +219,9 @@ export const AboutMeSection = styled.div`
         }
     }
     @media only screen and ${device.sm} { 
-        padding: 3rem;
-
+        ${AboutMeSection} { 
+            padding: 3rem;
+        }
         ${JobTitle} {
             padding: 15vh 2vw 1vh;
         }
@@ -224,8 +236,9 @@ export const AboutMeSection = styled.div`
         }
     }
     @media only screen and ${device.md} { 
-        padding: 4rem;
-
+        ${AboutMeSection} { 
+            padding: 4rem;
+        }
         ${JobTitle} {
             padding: 15vh 15vw 1vh;
         }
@@ -239,10 +252,15 @@ export const AboutMeSection = styled.div`
             gap: 20px;
             padding: 0 10vh;
         }
+        
+        ${BackgroundImage} {
+            background-size: cover;
+        }
     }
     @media only screen and ${device.lg} { 
-        padding: 4rem;
-        
+        ${AboutMeSection} { 
+            padding: 4rem;
+        }        
         ${JobTitle} {
             padding: 10vh 25vw 2vh;
         }
@@ -256,10 +274,15 @@ export const AboutMeSection = styled.div`
             gap: 1%;
             padding: 0 10vh;
         }
+
+        ${BackgroundImage} {
+            background-size: cover;
+        }
     }
     @media only screen and ${device.xl} { 
-        padding: 5rem;
-
+        ${AboutMeSection} { 
+            padding: 5rem;
+        }
         ${JobTitle} {
             padding: 15vh 25vw 2vh;
         }
@@ -272,6 +295,10 @@ export const AboutMeSection = styled.div`
             grid-template-columns: repeat(auto-fill, minmax(8%, 1fr));
             gap: 1%;
             padding: 0 20vh;
+        }
+
+        ${BackgroundImage} {
+            background-size: cover;
         }
     }
 `
