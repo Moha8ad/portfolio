@@ -252,9 +252,7 @@ export const ProfilePage = styled.div`
             padding: 0 10vh;
         }
 
-        ${BackgroundImage} {
-            background-size: cover;
-        }
+        
     }
     @media only screen and ${device.lg} { 
         ${AboutMeSection} { 
@@ -274,9 +272,6 @@ export const ProfilePage = styled.div`
             padding: 0 10vh;
         }
 
-        ${BackgroundImage} {
-            background-size: cover;
-        }
     }
     @media only screen and ${device.xl} { 
         ${AboutMeSection} { 
@@ -296,8 +291,6 @@ export const ProfilePage = styled.div`
             padding: 0 20vh;
         }
 
-        ${BackgroundImage} {
-            background-size: cover;
-        }
+        
     }
 `

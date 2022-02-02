@@ -2,6 +2,8 @@ import React, {useState} from "react";
 
 import MenuItem from '../menu-item/menu-item.component';
 
+import {DirectoryMenu } from './directory.styles.jsx';
+
 const Directory = () => {
 
   const [sections] = useState(
@@ -24,11 +26,11 @@ const Directory = () => {
   )
 
   return(
-    <div>
+    <DirectoryMenu>
       {sections.map(({id, ...otherSectionProps}) => (
         <MenuItem key={id} {...otherSectionProps}/>
       ))}
-    </div>
+    </DirectoryMenu>
   )
 }
 
