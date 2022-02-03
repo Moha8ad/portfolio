@@ -1,5 +1,7 @@
-import styled, { css, keyframes } from 'styled-components'
-import { BackgroundImage } from '../menu-item/menu-item.styles';
+import styled, { css, keyframes } from 'styled-components';
+
+
+  
 
 const breakpoints = {
     xs: '0',
@@ -124,9 +126,8 @@ export const SkillLogo = styled.span`
 	    animation: ${rollInRight} 1.65s 1.2s ease-out both;  
     `}
     ${props => props.redux && css`
-        background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/30/Redux_Logo.png");
-        height: 40px;
-        width: 42px;
+        background-image: url("https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg");
+        ${customSize}
 	    animation: ${rollInRight} 1.65s 1.4s ease-out both;  
     `}
     ${props => props.nodejs && css`
@@ -173,18 +174,65 @@ export const SkillLogo = styled.span`
         animation: ${rollInRight} 1.65s 2.2s ease-out both; 
     `}
 `
+document.addEventListener("mousemove", parallax);
+function parallax(e) {
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    let mouseX = e.clientX;
+    let mouseY = e.clientY;
+    let logo1 = `${2 - (mouseX - w) * 0.01}% ${2 - (mouseY - h) * 0.02}%`;
+    let logo2 = `${7 - (mouseX - w) * 0.02}% ${24 - (mouseY - h) * 0.01}%`;
+    let logo3 = `${12 - (mouseX - w) * 0.03}% ${10 - (mouseY - h) * -0.01}%`;
+    let logo4 = `${17 - (mouseX - w) * 0.005}% ${18 - (mouseY - h) * -0.01}%`;
+    let logo5 = `${22 - (mouseX - w) * 0.01}% ${28 - (mouseY - h) * -0.02}%`;
+    let logo6 = `${27 - (mouseX - w) * -0.02}% ${6 - (mouseY - h) * 0.03}%`;
+    let logo7 = `${75 - (mouseX - w) * 0.01}% ${14 - (mouseY - h) * 0.01}%`;
+    let logo8 = `${84 - (mouseX - w) * -0.04}% ${22 - (mouseY - h) * 0.01}%`;
+    let logo9 = `${88 - (mouseX - w) * -0.03}% ${10 - (mouseY - h) * -0.01}%`;
+    let logo10 = `${94 - (mouseX - w) * -0.02}% ${26 - (mouseY - h) * -0.03}%`;
+    let logo11 = `${98 - (mouseX - w) * -0.01}% ${2 - (mouseY - h) * 0.01}%`;
+    let x = `${logo11}, ${logo10}, ${logo9}, ${logo8}, ${logo7}, ${logo6}, ${logo5}, ${logo4}, ${logo3}, ${logo2}, ${logo1}`;
+    document.querySelector(`${MovingLogo}`).style.backgroundPosition = x;
+}
+export const MovingLogo = styled.span`
+
+    background-position: -100px;
+    width: 100%;
+    min-height: 100vh;
+    background-image: 
+    url(https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg), 
+    url(https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg),
+    url(https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png),
+    url(https://restfulapi.net/wp-content/uploads/rest.png),
+    url(https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg), 
+    url(https://static.requarks.io/logo/firebase.svg),
+    url(https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg),
+    url(https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg),
+    url(https://upload.wikimedia.org/wikipedia/commons/6/62/Git-logo-orange.svg),
+    url(https://styled-components.com/logo.png),
+    url(https://nodejs.org/static/images/logo.svg);
+
+    background-size: 40px auto;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    position: absolute;
+    transition: transform 2s ease-in-out;
+
+`
 
 export const AboutMeSection = styled.div`
+
+position: relative;
+    width: 100%;
+    height: 100vh;
+
+    background: linear-gradient(#000 0%, #0D25B9 100%);
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    min-height: 100vh;
-    max-width: 100vw;
-    padding: 1rem;
-
-    background-image: linear-gradient(0deg, #000 0%, #0D25B9 100%);
+ 
 
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */

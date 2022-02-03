@@ -3,12 +3,13 @@ import React from "react";
 import Header from "../../all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component.jsx";
 import Directory from "../directory/directory.component"
 
-import { ProfilePage, AboutMeSection, AsarLogo, JobTitle, AboutMe, SkillDev, SkillLogo } from './profile.styles.jsx'
+import { ProfilePage, AboutMeSection, MovingLogo, AsarLogo, JobTitle, AboutMe, SkillDev, SkillLogo } from './profile.styles.jsx'
 
 const Profile = () => {
     return (
     <ProfilePage>
         <AboutMeSection>
+        <MovingLogo />
             <AsarLogo>
                 <Header />
             </AsarLogo>
@@ -20,6 +21,7 @@ const Profile = () => {
                 I invite you to see the two react apps I built by using the below tools. 
                 I'd be more than happy if you share your comments with me.
             </AboutMe>
+
             <SkillDev>
                 <SkillLogo js />
                 <SkillLogo react />
