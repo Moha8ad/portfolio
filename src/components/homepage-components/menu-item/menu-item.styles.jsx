@@ -47,14 +47,15 @@ export const Subtitle = styled.div`
 export const AppMenu  = styled.div`
   display: flex;
   width: 100vw;
-  max-height: 100vh;
+  height: 100vh;
+  background: linear-gradient(#000 0%, #0D25B9 100%);
   align-items: center;
   justify-content: center;
   overflow: hidden;
   position: sticky;
   font-family: 'Quicksand', sans-serif;
-
   top: 0;
+  
 
   &:hover {
     cursor: pointer;
