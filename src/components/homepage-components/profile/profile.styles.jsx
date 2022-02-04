@@ -1,8 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
 
-
-  
-
 const breakpoints = {
     xs: '0',
     sm: '576px',
@@ -215,16 +212,15 @@ export const MovingLogo = styled.span`
     background-size: 40px auto;
     background-repeat: no-repeat;
     opacity: 0.2;
-    position: absolute;
     transition: transform 2s ease-in-out;
-
+    position: absolute;
+    
 `
 
 export const AboutMeSection = styled.div`
 
-position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 
     background: linear-gradient(#000 0%, #0D25B9 100%);
 
@@ -232,7 +228,6 @@ position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
- 
 
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
@@ -242,10 +237,18 @@ position: relative;
     cursor: default;
 `
 
+export const AboutMePage = styled.div`
+     position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+`
+
 export const ProfilePage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
 
     @media only screen and ${device.xs} { 
         ${AboutMeSection} { 

@@ -17,8 +17,8 @@ export const BackgroundImage = styled.div`
 `
   
 export const Content = styled.div`
-  width: 40vw;
-  height: 40vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,8 +51,10 @@ export const AppMenu  = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-
+  position: sticky;
   font-family: 'Quicksand', sans-serif;
+
+  top: 0;
 
   &:hover {
     cursor: pointer;
