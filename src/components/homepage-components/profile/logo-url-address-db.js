@@ -44,8 +44,8 @@ const LOGO_URL = [
         delay: "1.9s"
     },
     {
-        url:"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-        alt: "github",
+        url:"https://static.requarks.io/logo/firebase.svg",
+        alt: "firebase",
         delay: "2s"
     },
     {
@@ -54,9 +54,9 @@ const LOGO_URL = [
         delay: "2.1s"
     },
     {
-        url:"https://static.requarks.io/logo/firebase.svg",
-        alt: "firebase",
-        delay: "2.2s"
+    url:"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+    alt: "github",
+    delay: "2.2s"
     },
 ]
 

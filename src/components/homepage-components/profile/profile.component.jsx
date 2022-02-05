@@ -28,7 +28,7 @@ const Profile = () => {
                 </AboutMeContent>
                 <SkillDev>
                     {LOGO_URL.map( address =>
-                        <Image alt={address.alt} src={address.url} style={{width:"max(6vh, 4vw)", padding: "5px", animationDelay: `${address.delay}`}}/>
+                        <Image alt={address.alt} src={address.url} style={{height:"max(6vh, 4vw)", width:"max(6vh, 4vw)", padding: "max(0.8vh, 0.8vw)", animationDelay: `${address.delay}`}}/>
                     )}
                 </SkillDev>
             </AboutMeSection>
