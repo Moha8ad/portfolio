@@ -1,11 +1,13 @@
 import React from "react";
 
 import Header from "../../all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component.jsx";
-import Directory from "../directory/directory.component"
+import Directory from "../directory/directory.component";
 
-import { ProfilePage, AboutMeSection, AboutMePage, AboutMeContent, MovingLogo, AsarLogo, JobTitle, AboutMe, SkillDev, SkillLogo } from './profile.styles.jsx'
+import LOGO_URL from './logo-url-address-db';
+import { Image, ProfilePage, AboutMeSection, AboutMePage, AboutMeContent, MovingLogo, AsarLogo, JobTitle, AboutMe, SkillDev } from './profile.styles.jsx';
 
 const Profile = () => {
+
     return (
     <ProfilePage>
         <AboutMePage>
@@ -25,17 +27,9 @@ const Profile = () => {
                     </AboutMe>
                 </AboutMeContent>
                 <SkillDev>
-                    <SkillLogo js />
-                    <SkillLogo react />
-                    <SkillLogo redux />
-                    <SkillLogo nodejs />
-                    <SkillLogo rest />
-                    <SkillLogo firebase />
-                    <SkillLogo git />
-                    <SkillLogo github />
-                    <SkillLogo wordpress />
-                    <SkillLogo bootstrap />
-                    <SkillLogo styledComponent />
+                    {LOGO_URL.map( address =>
+                        <Image alt={address.alt} src={address.url} style={{width:"max(6vh, 4vw)", padding: "5px", animationDelay: `${address.delay}`}}/>
+                    )}
                 </SkillDev>
             </AboutMeSection>
         </AboutMePage>
