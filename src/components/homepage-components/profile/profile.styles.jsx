@@ -114,6 +114,7 @@ export const AboutMeBox = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-content: center;
     
     padding: max(3vh, 3vw) max(4vh, 4vw);
 
@@ -158,17 +159,17 @@ export const MovingLogo = styled.span`
     let h = window.innerHeight;
     let mouseX = e.clientX;
     let mouseY = e.clientY;
-    let logo1 = `${10 - (mouseX - w) * -0.008}% ${20 - (mouseY - h) * 0.05}%`;
-    let logo2 = `${88 - (mouseX - w) * 0.008}% ${5 - (mouseY - h) * 0.02}%`;
-    let logo3 = `${80 - (mouseX - w) * 0.008}% ${10 - (mouseY - h) * 0.04}%`;
-    let logo4 = `${90 - (mouseX - w) * -0.04}% ${5 - (mouseY - h) * 0.06}%`;
-    let logo5 = `${15 - (mouseX - w) * 0.008}% ${60 - (mouseY - h) * -0.03}%`;
-    let logo6 = `${25 - (mouseX - w) * -0.004}% ${20 - (mouseY - h) * -0.04}%`;
-    let logo7 = `${85 - (mouseX - w) * -0.02}% ${30 - (mouseY - h) * -0.05}%`;
-    let logo8 = `${8 - (mouseX - w) * 0.02}% ${50 - (mouseY - h) * -0.08}%`;
-    let logo9 = `${2 - (mouseX - w) * 0.08}% ${8 - (mouseY - h) * 0.15}%`;
-    let logo10 = `${90 - (mouseX - w) * -0.01}% ${60 - (mouseY - h) * -0.08}%`;
-    let logo11 = `${8 - (mouseX - w) * 0.008}% ${6 - (mouseY - h) * -0.005}%`;
+    let logo1 = `${8 - (mouseX - w) * 0.03}% ${17 - (mouseY - h) * 0.03}%`;
+    let logo2 = `${90 - (mouseX - w) * -0.015}% ${19 - (mouseY - h) * -0.01}%`;
+    let logo3 = `${6 - (mouseX - w) * 0.008}% ${35 - (mouseY - h) * 0.06}%`;
+    let logo4 = `${9 - (mouseX - w) * 0.01}% ${55 - (mouseY - h) * -0.06}%`;
+    let logo5 = `${10 - (mouseX - w) * 0.06}% ${70 - (mouseY - h) * -0.03}%`;
+    let logo6 = `${7 - (mouseX - w) * 0.007}% ${80 - (mouseY - h) * -0.03}%`;
+    let logo7 = `${87 - (mouseX - w) * 0.005}% ${25 - (mouseY - h) * 0.05}%`;
+    let logo8 = `${89 - (mouseX - w) * -0.05}% ${40 - (mouseY - h) * -0.04}%`;
+    let logo9 = `${2 - (mouseX - w) * 0.07}% ${2 - (mouseY - h) * 0.14}%`;
+    let logo10 = `${90 - (mouseX - w) * -0.06}% ${78 - (mouseY - h) * -0.08}%`;
+    let logo11 = `${86 - (mouseX - w) * 0.008}% ${65 - (mouseY - h) * -0.09}%`;
     let x = `${logo11}, ${logo10}, ${logo9}, ${logo8}, ${logo7}, ${logo6}, ${logo5}, ${logo4}, ${logo3}, ${logo2}, ${logo1}`;
     
     if (document.querySelector(MovingLogo) != null){
@@ -196,6 +197,8 @@ export const AboutMePage = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+    align-items: center;
+
 
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
