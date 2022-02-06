@@ -1,38 +1,33 @@
 const LOGO_URL = [
     {
-        url:"https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg",
-        alt: "js",
-        delay: "1s",
-        position: "100px 200px"
-    },
-    {
         url: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
         alt: "react",
-        delay: "1.2s"
-    },
-    {
-        url:"https://nodejs.org/static/images/logo.svg",
-        alt: "nodejs",
-        delay: "1.4s"
-
-    },
-    {
-        url:"https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg",
-        alt: "redux",
-        delay: "1.5s"
-
+        delay: "0.9s"
     },
     {
         url:"https://restfulapi.net/wp-content/uploads/rest.png",
         alt: "rest",
+        delay: "1.1s"
+    },
+    {
+        url:"https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg",
+        alt: "js",
+        delay: "1.4s",
+    },
+    {
+        url:"https://nodejs.org/static/images/logo.svg",
+        alt: "nodejs",
+        delay: "1.5s"
+    },
+    {
+        url:"https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg",
+        alt: "redux",
         delay: "1.6s"
-
     },
     {
         url:"https://styled-components.com/logo.png",
         alt: "styledComponent",
         delay: "1.7s"
-
     },
     {
         url:"https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg",
@@ -55,9 +50,9 @@ const LOGO_URL = [
         delay: "2.1s"
     },
     {
-    url:"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-    alt: "github",
-    delay: "2.2s"
+        url:"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+        alt: "github",
+        delay: "2.2s"
     },
 ]
 

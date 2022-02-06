@@ -1,17 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 
 import Header from "../../all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component.jsx";
 import Directory from "../directory/directory.component";
 
 import LOGO_URL from './logo-url-address-db';
-import { Image, ProfilePage, AboutMeSection, AboutMePage, AboutMeContent, MovingLogo, AsarLogo, JobTitle, AboutMe, SkillDev } from './profile.styles.jsx';
+import { Image, ProfilePage, AboutMeContent, AboutMePage, AboutMeBox, MovingLogo, AsarLogo, JobTitle, AboutMe, SkillDev } from './profile.styles.jsx';
 
 const Profile = () => {
     return (
         <ProfilePage>
             <AboutMePage>
-                <MovingLogo></MovingLogo>
-                <AboutMeSection>
+                <MovingLogo />
+                <AboutMeBox>
                     <AsarLogo>
                         <Header />
                     </AsarLogo>
@@ -30,7 +30,7 @@ const Profile = () => {
                             <Image alt={address.alt} src={address.url} style={{height:"max(6vh, 4vw)", width:"max(6vh, 4vw)", padding: "max(0.8vh, 0.8vw)", animationDelay: `${address.delay}`}}/>
                         )}
                     </SkillDev>
-                </AboutMeSection>
+                </AboutMeBox>
             </AboutMePage>
             <Directory />
         </ProfilePage>
