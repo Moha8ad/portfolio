@@ -29,6 +29,15 @@ export const device = {
     xxl: `(min-width: ${breakpoints.xl})`,
 };
 
+export const fadeIn = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`
+
 export const fadeInRight = keyframes`
     0% {
         -webkit-transform: translateX(50px);
@@ -69,26 +78,34 @@ export const rollInRight = keyframes`
 `
 
 export const AsarLogo = styled.div`
-    -webkit-animation: ${fadeInRight} 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	animation: ${fadeInRight} 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    -webkit-animation: ${fadeInRight} 0.6s 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: ${fadeInRight} 0.6s 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 `
 
 export const JobTitle = styled.div`    
     color: #E1A5FF;
-    font-size: max(3.5vh, min(3vw, 1.6rem));
     padding-bottom:  max(1.5vh, 1.5vw);
-    
-    -webkit-animation: ${fadeInLeft} 0.7s 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	animation: ${fadeInLeft} 0.7s 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    font-size: 1.5rem;
+
+    -webkit-animation: ${fadeInLeft} 0.7s 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: ${fadeInLeft} 0.7s 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+
+    @media only screen and ${device.sm} {
+        font-size: max(3.5vh, min(3vw, 1.6rem));
+    }
 `
 
 export const AboutMe = styled.div`    
     color: #E3F0F5;
-    font-size: max(2.5vh, min(2vw, 1.2rem));
+    font-size: 1rem;
     font-weight: 400;
 
     -webkit-animation: ${fadeInLeft} 0.6s 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     animation: ${fadeInLeft} 0.6s 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+
+    @media only screen and ${device.sm} {
+        font-size: max(2.5vh, min(2vw, 1.2rem));
+    }
 `
 
 export const SkillDev = styled.div`
@@ -122,8 +139,8 @@ export const AboutMeBox = styled.div`
     
     font-family: 'Quicksand', 'Open Sans Condensed', Georgia, Times, 'Times New Roman', serif;
     
-    -webkit-animation: ${fadeInLeft} 0.6s 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-    animation: ${fadeInLeft} 0.6s 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    -webkit-animation: ${fadeIn} 0.6s 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: ${fadeIn} 0.6s 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 
     @media only screen and ${device.sm} {
         width: max(60vh, 60vw);
@@ -165,11 +182,11 @@ export const MovingLogo = styled.span`
     let logo4 = `${9 - (mouseX - w) * 0.01}% ${55 - (mouseY - h) * -0.06}%`;
     let logo5 = `${10 - (mouseX - w) * 0.06}% ${70 - (mouseY - h) * -0.03}%`;
     let logo6 = `${7 - (mouseX - w) * 0.007}% ${80 - (mouseY - h) * -0.03}%`;
-    let logo7 = `${87 - (mouseX - w) * 0.005}% ${25 - (mouseY - h) * 0.05}%`;
-    let logo8 = `${89 - (mouseX - w) * -0.05}% ${40 - (mouseY - h) * -0.04}%`;
+    let logo7 = `${89 - (mouseX - w) * 0.008}% ${5 - (mouseY - h) * 0.05}%`;
+    let logo8 = `${94 - (mouseX - w) * -0.05}% ${40 - (mouseY - h) * -0.04}%`;
     let logo9 = `${2 - (mouseX - w) * 0.07}% ${2 - (mouseY - h) * 0.14}%`;
-    let logo10 = `${90 - (mouseX - w) * -0.06}% ${78 - (mouseY - h) * -0.08}%`;
-    let logo11 = `${86 - (mouseX - w) * 0.008}% ${65 - (mouseY - h) * -0.09}%`;
+    let logo10 = `${92 - (mouseX - w) * -0.06}% ${78 - (mouseY - h) * -0.08}%`;
+    let logo11 = `${86 - (mouseX - w) * 0.008}% ${60 - (mouseY - h) * -0.09}%`;
     let x = `${logo11}, ${logo10}, ${logo9}, ${logo8}, ${logo7}, ${logo6}, ${logo5}, ${logo4}, ${logo3}, ${logo2}, ${logo1}`;
     
     if (document.querySelector(MovingLogo) != null){
