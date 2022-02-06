@@ -2,7 +2,8 @@ const LOGO_URL = [
     {
         url:"https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg",
         alt: "js",
-        delay: "1s"
+        delay: "1s",
+        position: "100px 200px"
     },
     {
         url: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
