@@ -55,7 +55,7 @@ class QuotifyTopbar extends React.Component {
                     </div>
                     <div class="col-7 col-sm-6 col-md-auto me-auto">
                         { midPart === "searchBox" ?
-                            <SearchBox placeholder={"Search for Authors or Words"} handleChange={handleChange}/>
+                            <SearchBox placeholder={"Search for Authors"} handleChange={handleChange}/>
                         : 
                             null
                         }

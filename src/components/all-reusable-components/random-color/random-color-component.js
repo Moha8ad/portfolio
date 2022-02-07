@@ -24,6 +24,5 @@ const COLOR_PALETTE = [
     '#FFB085',
     '#C449C2',
     '#1597E5',
-    
 ]
 export default COLOR_PALETTE;

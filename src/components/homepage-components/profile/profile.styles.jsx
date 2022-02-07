@@ -116,7 +116,7 @@ export const SkillDev = styled.div`
     justify-content: center;
 
     *{
-        animation: ${rollInRight} 1.5s ease-out both;
+        animation: ${rollInRight} 2s ease-out both;
     }
 `
 
@@ -215,6 +215,12 @@ export const AboutMePage = styled.div`
     justify-content: center;
     align-content: center;
     align-items: center;
+
+    @media only screen and ${device.sm} {
+        position: sticky;
+        top: 0;
+    }
+    
 
 
     -webkit-user-select: none;  /* Chrome all / Safari all */

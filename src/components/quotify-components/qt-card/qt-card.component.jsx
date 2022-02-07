@@ -8,18 +8,9 @@ import QuotifyButtonPanel from '../qt-button-panel/qt-button-panel.component';
 
 import './qt-card.styles.scss';
 
-class QuotifyCard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        randomColor: COLOR_PALETTE[Math.floor(Math.random()*11)],
-        }
-    }
-
-
-render() {
-    const { randomColor } = this.state;
-    const { cardItem, trash, repeat} = this.props;
+const QuotifyCard = ({ cardItem, trash, repeat}) => {
+    
+    const randomColor = COLOR_PALETTE[Math.floor(Math.random()*25)];
 
     return (
 
@@ -60,7 +51,7 @@ render() {
         </div>
     </div>
 )
-}
+
 }
 
 

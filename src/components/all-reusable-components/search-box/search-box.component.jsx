@@ -6,7 +6,7 @@ export const SearchBox = ({ placeholder, handleChange }) => (
     <form class="d-flex flex-fill">
         <i class="search-icon bi bi-search"></i>
         <input 
-            class="custom-border-radius form-control text-light p-2 ps-5"
+            class="input-box form-control text-light p-2 ps-5"
             type="search" 
             text= "search"
             aria-label="Search"

@@ -8,6 +8,7 @@ import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-f
 import QuotifyMainHome from '../../../components/quotify-components/qt-main-home/qt-main-home.component'
 
 import '../quotify.styles.scss';
+import './qt-page-home.styles.css';
 
 const HomePageQuotify = ({ history, quotesDB, randomQuoteId }) => { 
 
@@ -17,7 +18,7 @@ const HomePageQuotify = ({ history, quotesDB, randomQuoteId }) => {
         <div className="container-fluid">
             <div class='row'>
                 <QuotifyNavbar/>
-                <div className="qt-main col-12 col-sm-10 overflow-scroll"> 
+                <div className="qt-page-home qt-main col-12 col-sm-10 overflow-scroll"> 
                     <div class="row">
                         <QuotifyTopbar 
                             forward={() => history.goForward()}
