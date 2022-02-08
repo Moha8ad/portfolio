@@ -7,6 +7,8 @@ import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-t
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 import QuotifyMainLibrary from '../../../components/quotify-components/qt-main-library/qt-main-library.component';
 
+import './qt-page-library.styles.scss';
+
 const LibraryPageQuotify = ({ history, quotesDB }) => {
 
     const [searchField, setSearchField] = useState('');
@@ -23,7 +25,7 @@ const LibraryPageQuotify = ({ history, quotesDB }) => {
         <div className="container-fluid">
             <div class='row'>
                 <QuotifyNavbar />
-                <div className="qt-main col-12 col-sm-10 overflow-scroll">
+                <div className="qt-page-library qt-main col-12 col-sm-10 overflow-scroll">
                     <div class="row">
                         <QuotifyTopbar 
                             midPart={"searchBox"}

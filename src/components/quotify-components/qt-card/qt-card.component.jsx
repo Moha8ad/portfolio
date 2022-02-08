@@ -15,7 +15,7 @@ const QuotifyCard = ({ cardItem, trash, repeat}) => {
     return (
 
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 px-4 py-3">
-        <div  class="hover-scale row d-flex justify-content-center border border-secondary bg-dark border-2 rounded-3">
+        <div  class="hover-scale row d-flex justify-content-center border border-secondary bg-dark border-1 rounded-3">
             <div class="col-12 col-lg-6 px-2 auth-img-library-animation">
                 <img
                     alt='img'

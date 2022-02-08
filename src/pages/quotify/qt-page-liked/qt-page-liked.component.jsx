@@ -7,6 +7,8 @@ import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-t
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 import QuotifyMainLiked from '../../../components/quotify-components/qt-main-liked/qt-main-liked.component';
 
+import './qt-page-liked.styles.css';
+
 const LikedPageQuotify = ({ history, likedQuotesDB }) => {
 
     const [searchField, setSearchField] = useState('')
@@ -19,7 +21,7 @@ const LikedPageQuotify = ({ history, likedQuotesDB }) => {
         <div className="container-fluid">
             <div class='row'>
                 <QuotifyNavbar />
-                <div className="qt-main col-12 col-sm-10 overflow-scroll">
+                <div className="qt-page-liked qt-main col-12 col-sm-10 overflow-scroll">
                     <div class="row">
                         <QuotifyTopbar 
                             midPart={likedQuotesDB.length > 0 ? "searchBox" : "" }

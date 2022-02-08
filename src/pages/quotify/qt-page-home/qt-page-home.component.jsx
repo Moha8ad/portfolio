@@ -8,7 +8,7 @@ import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-f
 import QuotifyMainHome from '../../../components/quotify-components/qt-main-home/qt-main-home.component'
 
 import '../quotify.styles.scss';
-import './qt-page-home.styles.css';
+import './qt-page-home.styles.scss';
 
 const HomePageQuotify = ({ history, quotesDB, randomQuoteId }) => { 
 

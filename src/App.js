@@ -2,6 +2,9 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'; 
 
 import HomePage from './pages/homepage/homepage.component';
+
+import Test from './pages/test.component';
+
 import Rolodex from './pages/rolodex/rolodex.component';
 
 import QuotifyPageHome from './pages/quotify/qt-page-home/qt-page-home.component';
@@ -21,7 +24,9 @@ const App = () => (
       <Route exact path='/' component={HomePage} />
       
       <Route path='/rolodex' component={Rolodex} />
-      
+
+      <Route path='/test' component={Test} />
+
       <Route path='/qt/home' component={QuotifyPageHome} />
       <Route path='/qt/create' component={QuotifyMainCreate} />
       <Route path='/qt/library' component={QuotifyPageLibrary} />

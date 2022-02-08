@@ -1,0 +1,70 @@
+.wrapper{
+    padding: max(2vh, 2vw);
+    
+    @media screen and (min-width: 80em) {
+        padding: max(2vh, 2vw) max(15vh, 15vw);
+    }
+}
+.box-container {
+    display: grid;
+    gap: 1rem;
+    color: whitesmoke;
+
+    @media screen and (min-width: 50em) {
+        grid-template-columns: repeat(12, 1fr);
+
+        :first-child, :nth-child(4) {
+            grid-column: span 3;
+        }
+
+        :nth-child(2), :nth-child(3) {
+            grid-column: span 5;
+        }
+
+        :last-child {
+            grid-column-start: 9;
+            grid-column-end: span 4;
+            grid-row: 1 / span 2;
+        }
+
+    }
+}
+
+.box {
+    padding: max(2vh, 2vw);
+    border: 1px solid rgb(133, 133, 133);
+    box-shadow: -5px 3px .5em rgba(0, 0, 0, .6);
+    border-radius: 5px;
+    
+    background-color: rgb(32, 120, 60);
+    
+    &:first-child {
+        background-color: rgb(37, 17, 111);
+
+    }
+    &:nth-child(2) {
+        background-color: rgb(121, 50, 25);
+
+    }
+    &:nth-child(4) {
+        background-color: rgb(139, 35, 126);
+    }
+
+    img {
+        width: 3.5rem;
+        border-radius: 50%;
+        background-color: blanchedalmond;
+    }
+}
+
+.card-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2rem;
+    padding-bottom: 1.5rem;
+}
+

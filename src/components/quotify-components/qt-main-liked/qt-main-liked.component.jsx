@@ -15,13 +15,13 @@ class QuotifyMainLiked extends React.Component {
             <div>
                 {likedQuotesDB.length < 1 ?
                     <div class="p-4 text-center">
-                        <div class="pb-4 text-secondary">
-                            <span class="fs-2">Quotes you like will appear hear</span>
+                        <div class="pb-4" style={{color: "#474D5E"}}>
+                            <span class="fs-3">Quotes you like will appear hear</span>
                             <br />
-                            <span class="fs-4">Save quotes by tapping the heart icon.</span>
+                            <span class="fs-5">Save quotes by tapping the heart icon.</span>
                             <br />
                         </div>
-                        <button class="btn btn-primary fs-5" type="button">
+                        <button class="btn btn-primary fs-6" type="button">
                             <Link to='library' class="link-light">Find Quotes</Link>
                         </button>
                     </div>

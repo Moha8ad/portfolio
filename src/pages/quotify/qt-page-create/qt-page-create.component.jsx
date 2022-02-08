@@ -49,7 +49,7 @@ const  SearchPageQuotify = ({ history, addedQuoteCard, addQuoteCard }) => {
         <div className="container-fluid">
             <div class='row'>
                 <QuotifyNavbar />
-                <div className="qt-main col-12 col-sm-10 overflow-scroll">
+                <div className="qt-page-create qt-main col-12 col-sm-10 overflow-scroll">
                     <div class="row">
                          <QuotifyTopbar 
                             midPart= { addedQuoteCard.length > 0 ? "searchBox" : null }
