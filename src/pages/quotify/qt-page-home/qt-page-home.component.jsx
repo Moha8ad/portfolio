@@ -23,9 +23,7 @@ const HomePageQuotify = ({ history, quotesDB, randomQuoteId }) => {
                         <QuotifyTopbar 
                             forward={() => history.goForward()}
                         />
-                        <QuotifyMainHome
-                            randomQuote = {randomQuote}
-                        />         
+                        <QuotifyMainHome />
                     </div>
                 </div>
                 <QuotifyFooter />

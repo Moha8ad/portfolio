@@ -1,10 +1,5 @@
 import QuoteActionTypes from './quote.types';
 
-export const generateRandomQuoteId = randomQuoteId => ({
-    type: QuoteActionTypes.GENERATE_RANDOM_QUOTE_ID,
-    payload: randomQuoteId
-})
-
 export const setLikedQuote = likedQuote => ({
     type: QuoteActionTypes.SET_LIKED_QUOTE,
     payload: likedQuote

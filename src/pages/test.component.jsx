@@ -7,7 +7,7 @@ import './test.styles.scss';
 const Test = ({randomQuoteId, quotesDB}) => {
 
     const randomQuote = 
-        quotesDB.length - 5 >= randomQuoteId 
+        102 - 5 <= 102 
         ? 
         quotesDB.filter(card => card.quoteId <= randomQuoteId && card.quoteId > (randomQuoteId - 5)) 
         :

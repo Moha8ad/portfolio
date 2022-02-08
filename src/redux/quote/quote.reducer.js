@@ -5,7 +5,6 @@ import { toggleQuote } from './quote.utils';
 import QUOTES_DATA from '../../pages/quotify/quotify-data';
 
 const INITIAL_STATE = {
-    randomQuoteId: Math.floor(Math.random()*50),
     quotesDB: QUOTES_DATA,
     likedQuotesDB: [],
     inspirationalList: [],
@@ -15,11 +14,6 @@ const INITIAL_STATE = {
 
 const quoteReducer = (state= INITIAL_STATE , action) => {
     switch (action.type) {
-        case QuoteActionTypes.GENERATE_RANDOM_QUOTE_ID:
-            return {
-                ...state,
-                randomQuoteId: action.payload
-            }
         case QuoteActionTypes.SET_LIKED_QUOTE:
             return {
                 ...state,

@@ -1,25 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { setLikedQuote, setInspirationalQuote, setInsightfulQuote, addQuoteCard, generateRandomQuoteId } from "../../../redux/quote/quote.actions";
+import { setLikedQuote, setInspirationalQuote, setInsightfulQuote, addQuoteCard } from "../../../redux/quote/quote.actions";
 
 import { removeQuote } from "./qt-button.utils";
 
 import './qt-button-panel.styles.scss'
 
-const QuotifyButtonPanel = ({ generateRandomQuoteId, repeat, trash, item, quotesDB, addQuoteCard, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList, setInsightfulQuote, insightfulList }) => (
+const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList, setInsightfulQuote, insightfulList }) => (
     
     <div id="to-hover"  className="col-6 ms-auto d-flex justify-content-around align-items-center hover-change">
-    
-        {/* Repeat Button */}
-        {repeat ?
-            <span onClick={() => generateRandomQuoteId((Math.floor(Math.random()*quotesDB.length)))}
-                >
-                <i class="bi bi-arrow-repeat"></i>
-            </span>
-            :
-            null
-        }
 
         {/* Remove Button */}
         { trash ?
@@ -143,7 +133,6 @@ const mapDispatchToProps = dispatch => ({
     addQuoteCard: (author, quote, quoteId, authorId) => dispatch(addQuoteCard(author, quote, quoteId, authorId) ),
     setInspirationalQuote: inspirationalQuote => dispatch(setInspirationalQuote(inspirationalQuote)),
     setInsightfulQuote: insightfulQuote => dispatch(setInsightfulQuote(insightfulQuote)),
-    generateRandomQuoteId: randomQuoteId => dispatch(generateRandomQuoteId(randomQuoteId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuotifyButtonPanel);

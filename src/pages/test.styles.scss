@@ -1,7 +1,7 @@
 .wrapper{
     padding: max(2vh, 2vw);
     
-    @media screen and (min-width: 80em) {
+    @media screen and (min-width: 90em) {
         padding: max(2vh, 2vw) max(15vh, 15vw);
     }
 }
@@ -14,7 +14,7 @@
         grid-template-columns: repeat(12, 1fr);
 
         :first-child, :nth-child(4) {
-            grid-column: span 3;
+            grid-column: span 4;
         }
 
         :nth-child(2), :nth-child(3) {
@@ -22,7 +22,8 @@
         }
 
         :last-child {
-            grid-column-start: 9;
+            min-height: 100%;
+            grid-column-start: 10;
             grid-column-end: span 4;
             grid-row: 1 / span 2;
         }
@@ -31,29 +32,31 @@
 }
 
 .box {
-    padding: max(2vh, 2vw);
+
+    max-height: 35VH;
+    overflow: scroll;
     border: 1px solid rgb(133, 133, 133);
     box-shadow: -5px 3px .5em rgba(0, 0, 0, .6);
     border-radius: 5px;
-    
-    background-color: rgb(32, 120, 60);
-    
-    &:first-child {
-        background-color: rgb(37, 17, 111);
-
-    }
-    &:nth-child(2) {
-        background-color: rgb(121, 50, 25);
-
-    }
-    &:nth-child(4) {
-        background-color: rgb(139, 35, 126);
-    }
 
     img {
         width: 3.5rem;
         border-radius: 50%;
         background-color: blanchedalmond;
+    }
+}
+
+.box-shadow {
+    color: rgba(240, 222, 222, 0.7);
+    box-shadow: 0 0 40px rgba(17, 17, 17, 0.5);
+    background-size: 300% auto;
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.0) 0%, rgba(255, 255, 255, 0.2) 60%,rgba(0, 0, 0, 0.0) 100%);
+    transition:  all 0.6s ease-in-out;
+    padding: max(2vh, 2vw);
+    
+    &:hover {
+        background-position: right center; /* change the direction of the change here */
+        text-decoration: none;
     }
 }
 
