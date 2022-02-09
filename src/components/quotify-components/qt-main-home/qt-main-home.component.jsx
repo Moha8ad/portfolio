@@ -18,8 +18,7 @@ const QuotifyMainHome = ({quotesDB}) => {
         :
         quotesDB.filter(card => card.quoteId >= randomQuoteId && card.quoteId < (randomQuoteId + 5)) 
 
-return (
-    <div class="d-flex justify-content-center align-items-start">
+    return (
         <div className="wrapper">
             <div className="box-container">
                 {randomQuote.map(cardItem =>
@@ -48,8 +47,7 @@ return (
                 )}
             </div>
         </div>
-    </div>
-)
+    )
 }
 
 const mapStateToProps = ({ quote: { quotesDB }}) => ({

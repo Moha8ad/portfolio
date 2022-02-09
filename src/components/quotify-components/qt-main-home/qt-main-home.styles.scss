@@ -38,39 +38,40 @@
     box-shadow: -5px 3px .5em rgba(0, 0, 0, .6);
     border-radius: 5px;
 
+    background-size: 200%;
+    background-position: bottom right;
+    background-image: 
+    linear-gradient(5deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.2) 50%  ),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.3) 10%, rgb(11, 136, 0, 0) 10%  ),
+    linear-gradient(-2deg, rgba(0, 0, 0, 0) 84%, rgba(0, 0, 0, 0.3) 84%  );
+
+    &:last-child{
+            background-image: 
+            linear-gradient(5deg, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0.2) 50%  ),
+            linear-gradient(135deg, rgba(0, 0, 0, 0.3) 8%, rgb(11, 136, 0, 0) 8%  ),
+            linear-gradient(-2deg, rgba(0, 0, 0, 0) 92%, rgba(0, 0, 0, 0.3) 90%  );
+    }
+
+    transition: all 0.6s ease-out;    
+
     img {
         width: 3.5rem;
         border-radius: 50%;
         background-color: blanchedalmond;
     }
+
+    &:hover {
+        transform: scale(1.05);
+        background-position: top left;
+    }
 }
 
 .box-shadow {
-    color: rgba(240, 222, 222, 0.7);
-    box-shadow: 0 0 40px rgba(17, 17, 17, 0.5);
-    background-size: 150% auto;
-    background-image: 
-    linear-gradient(155deg, rgb(0, 0, 0, 0) 14.9%, rgba(0, 0, 0, 0.1) 0%, rgb(0, 0, 0, 0) 16.1%),
-
-    linear-gradient(155deg, rgb(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0.1) 0%, rgb(0, 0, 0, 0) 16%),
-    linear-gradient(155deg, rgb(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0.1) 0%, rgb(0, 0, 0, 0) 18%),
-
-   
-    linear-gradient(115deg, rgb(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.1) 0%,  rgb(0, 0, 0, 0) 62% ),
-    linear-gradient(115deg, rgb(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.1) 0%,  rgb(0, 0, 0, 0) 65% ),
-    linear-gradient(115deg, rgb(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.2) 0%,  rgb(0, 0, 0, 0) 68% ),
-    
-    linear-gradient(155deg, rgb(60, 80, 130) 15%, rgba(0, 0, 0, 0) 0%),
-    linear-gradient(135deg, rgb(191, 208, 255) 40%, rgba(0, 0, 0, 0) 0%),
-    linear-gradient(115deg, rgb(115, 152, 255, 0.7) 20%, rgba(69, 113, 231, 0.8) 60%, rgba(0, 0, 0, 0) 0%),
-    linear-gradient(115deg, rgba(0, 0, 0, 0) 60%, rgb(152, 166, 203) 0%)
-    ;
-
     padding: max(2vh, 2vw);
-    
-    &:hover {
-        background-position: right center; /* change the direction of the change here */
-    }
+    box-shadow: 0 0 40px rgba(17, 17, 17, 0.5);
+    color: rgba(240, 231, 231, 0.7);
+    font-weight: 400;
+    font-size: 1.04rem;
 }
 
 .card-info {
@@ -80,7 +81,7 @@
     gap: 1rem;
     justify-content: flex-start;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: .96rem;
     padding-bottom: 1.5rem;
 }
 
