@@ -15,7 +15,7 @@ const firebaseConfig = {
 
 export const createUserProfileDocument = async ( userAuth, additionalData ) => {
   if (!userAuth) return;
-  const userRef = firestore.doc(`users/icannotbelieve`);
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapShot = await userRef.get(); 
 
   console.log(snapShot)
@@ -26,8 +26,8 @@ export const createUserProfileDocument = async ( userAuth, additionalData ) => {
 
     try {
       await userRef.set({
-        displayName: 'finally',
-        email: 'this@ishappening.com',
+        displayName,
+        email,
         createdAt,
         ...additionalData
       });
