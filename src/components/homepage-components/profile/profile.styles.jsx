@@ -78,6 +78,7 @@ export const rollInRight = keyframes`
 `
 
 export const AsarLogo = styled.div`
+
     -webkit-animation: ${fadeInRight} 0.6s 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	animation: ${fadeInRight} 0.6s 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 `
@@ -100,6 +101,7 @@ export const AboutMe = styled.div`
     font-size: 1rem;
     font-weight: 400;
 
+
     -webkit-animation: ${fadeInLeft} 0.6s 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     animation: ${fadeInLeft} 0.6s 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 
@@ -120,7 +122,8 @@ export const SkillDev = styled.div`
     }
 `
 
-export const AboutMeBox = styled.div`  
+export const AboutMeBox = styled.div` 
+
     border-radius: 20px;
     box-shadow: 0px 0px 15px 1px rgba(255, 255, 255, .2);
     
@@ -189,15 +192,15 @@ export const MovingLogo = styled.span`
     let logo11 = `${86 - (mouseX - w) * 0.008}% ${60 - (mouseY - h) * -0.09}%`;
     let x = `${logo11}, ${logo10}, ${logo9}, ${logo8}, ${logo7}, ${logo6}, ${logo5}, ${logo4}, ${logo3}, ${logo2}, ${logo1}`;
     
-    if (document.querySelector(MovingLogo) != null){
+    if (document.querySelector(MovingLogo)){
         document.querySelector(MovingLogo).style.backgroundPosition = x;
     }
 }
     document.addEventListener("mousemove", parallax);
 
+
 export const AboutMeContent = styled.div`
 
-   
 `
 
 export const AboutMePage = styled.div`
@@ -206,7 +209,6 @@ export const AboutMePage = styled.div`
     background: linear-gradient(#000 0%, #04136e 80%);
     padding: max(4vh, 4vw) 0;
     min-height: 100vh;
-
 
     width: 100%;
     display: flex;

@@ -1,8 +1,8 @@
 .wrapper{
     padding: max(2vh, 2vw);
     
-    @media screen and (min-width: 90em) {
-        padding: max(2vh, 2vw) max(15vh, 15vw);
+    @media screen and (min-width: 91em) {
+        padding: max(2vh, 2vw) max(10vh, 10vw);
     }
 }
 .box-container {
@@ -27,7 +27,6 @@
             grid-column-end: span 4;
             grid-row: 1 / span 2;
         }
-
     }
 }
 
@@ -35,21 +34,22 @@
     max-height: 35VH;
     overflow: scroll;
     border: 1px solid rgb(133, 133, 133);
-    box-shadow: -5px 3px .5em rgba(0, 0, 0, .6);
     border-radius: 5px;
 
     background-size: 200%;
-    background-position: bottom right;
+    background-position: bottom left;
     background-image: 
-    linear-gradient(5deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.2) 50%  ),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.3) 10%, rgb(11, 136, 0, 0) 10%  ),
-    linear-gradient(-2deg, rgba(0, 0, 0, 0) 84%, rgba(0, 0, 0, 0.3) 84%  );
+    linear-gradient(358deg, rgba(0, 0, 0, 0) 83%, rgba(0, 0, 0, 0.2) 83%  ),
+    linear-gradient(359deg, rgba(0, 0, 0, 0) 81%, rgba(0, 0, 0, 0.2) 81%  ),
+    linear-gradient(360deg, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.2) 80%  );
+   
 
     &:last-child{
-            background-image: 
-            linear-gradient(5deg, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0.2) 50%  ),
-            linear-gradient(135deg, rgba(0, 0, 0, 0.3) 8%, rgb(11, 136, 0, 0) 8%  ),
-            linear-gradient(-2deg, rgba(0, 0, 0, 0) 92%, rgba(0, 0, 0, 0.3) 90%  );
+        background-image: 
+        linear-gradient(356deg, rgba(0, 0, 0, 0) 93%, rgba(0, 0, 0, 0.2) 93%  ),
+        linear-gradient(358deg, rgba(0, 0, 0, 0) 92%, rgba(0, 0, 0, 0.2) 92%  ),
+        linear-gradient(360deg, rgba(0, 0, 0, 0) 91%, rgba(0, 0, 0, 0.2) 91%  );
+   
     }
 
     transition: all 0.6s ease-out;    
@@ -62,13 +62,12 @@
 
     &:hover {
         transform: scale(1.05);
-        background-position: top left;
+        background-position: top right;
     }
 }
 
 .box-shadow {
     padding: max(2vh, 2vw);
-    box-shadow: 0 0 40px rgba(17, 17, 17, 0.5);
     color: rgba(240, 231, 231, 0.7);
     font-weight: 400;
     font-size: 1.04rem;

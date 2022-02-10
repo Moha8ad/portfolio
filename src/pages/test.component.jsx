@@ -1,44 +1,47 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import firestore from '../firebase/firebase.utils';
+import {useState} from 'react';
 
-import './test.styles.scss';
+const Firestore = () => {
+	const [name , Setname] = useState("");
+	const [age , Setage] = useState("");
+	const [course , Setcourse] = useState("");
+	const sub = (e) => {
+		e.preventDefault();
+		
+		// Add data to the store
+		firestore.collection("data").add({
+			Name: name,
+			Age: age,
+			CourseEnrolled: course
+		})
+		.then((docRef) => {
+			alert("Data Successfully Submitted");
+		})
+		.catch((error) => {
+			console.error("Error adding document: ", error);
+		});
+	}
 
-const Test = ({randomQuoteId, quotesDB}) => {
-
-    const randomQuote = 
-        102 - 5 <= 102 
-        ? 
-        quotesDB.filter(card => card.quoteId <= randomQuoteId && card.quoteId > (randomQuoteId - 5)) 
-        :
-        quotesDB.filter(card => card.quoteId >= randomQuoteId && card.quoteId < (randomQuoteId + 5)) 
-
-
-    return(
-    <div className="wrapper">
-    <div className="box-container">
-    {randomQuote.map(cardItem =>
-            <div className="box grid-column-span-2">
-                <div className="card-info">
-                    <div>
-                        <img src={`https://robohash.org/${[cardItem.authorId]}?&&size=180x180`} alt="author" />
-                    </div>
-                    <div>
-                        {cardItem.author}
-                    </div>
-                </div>
-                <p>
-                    {cardItem.quote}
-                </p>
-            </div>
-            )}
-        </div>
-    </div>
-)
+	return (
+		<div>
+			<center>
+				<form style={{marginTop:"200px" }}
+				onSubmit={(event) => {sub(event)}}>
+					<input type="text" placeholder="your name"
+					onChange={(e)=>{Setname(e.target.value)}} />
+					<br/><br/>
+					<input type="number" placeholder="your age"
+					onChange={(e)=>{Setage(e.target.value)}}/>
+					<br/><br/>
+					<input type="text" placeholder="Course Enrolled"
+					onChange={(e)=>{Setcourse(e.target.value)}}/>
+					<br/><br/>
+					<button type="submit">Submit</button>
+				</form>
+			</center>
+		</div>
+	);
 }
 
-const mapStateToProps = ({ quote: { quotesDB, randomQuoteId } }) => ({
-    quotesDB, randomQuoteId
-})
+export default Firestore;
 
-export default connect(mapStateToProps)(withRouter(Test));
