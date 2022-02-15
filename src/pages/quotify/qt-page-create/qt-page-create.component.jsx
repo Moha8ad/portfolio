@@ -8,7 +8,7 @@ import QuotifyTopbar from '../../../components/quotify-components/qt-topbar/qt-t
 import QuotifyFooter from '../../../components/quotify-components/qt-footer/qt-footer.component';
 import QuotifyMainCreate from '../../../components/quotify-components/qt-main-create/qt-main-create.component';
 
-const  SearchPageQuotify = ({ history, addedQuoteCard, addQuoteCard }) => {
+const SearchPageQuotify = ({ history, addedQuoteCard, addQuoteCard }) => {
     
     const [quoteInfo, setQuoteInfo] = useState({
             searchField: '',

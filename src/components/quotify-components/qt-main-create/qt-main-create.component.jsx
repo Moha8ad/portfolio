@@ -8,7 +8,7 @@ import './qt-main-create.styles.scss';
 const QuotifyMainCreate = ({ searchByNameAddedQuoteCard, handleChange, handleSubmit, authorInput, quoteInput, addedQuoteCard }) => (
     <div class="col-12 text-light">
         <div className='row'>
-            <div class="col-12 ">
+            <div class="col-12">
                 <div class="fs-5 py-2">Add Quote to your personal library</div>
             </div>
             <div class="col-12">
