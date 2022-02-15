@@ -5,18 +5,18 @@ import QuotifyButtonPanel from '../qt-button-panel/qt-button-panel.component';
 
 import COLOR_PALETTE from '../../all-reusable-components/random-color/random-color-component';
 
-import './qt-main-home.styles.scss'
+import './qt-main-home.styles.scss';
 
 const QuotifyMainHome = ({quotesDB}) => {
 
-    const randomQuoteId = (Math.floor(Math.random()*quotesDB.length))
+        const randomQuoteId = (Math.floor(Math.random()*quotesDB.length))
 
-    const randomQuote = 
-        quotesDB.length - 5 <= randomQuoteId 
-        ? 
-        quotesDB.filter(card => card.quoteId <= randomQuoteId && card.quoteId > (randomQuoteId - 5)) 
-        :
-        quotesDB.filter(card => card.quoteId >= randomQuoteId && card.quoteId < (randomQuoteId + 5)) 
+        const randomQuote = 
+            quotesDB.length - 5 <= randomQuoteId 
+            ? 
+            quotesDB.filter(card => card.quoteId <= randomQuoteId && card.quoteId > (randomQuoteId - 5)) 
+            :
+            quotesDB.filter(card => card.quoteId >= randomQuoteId && card.quoteId < (randomQuoteId + 5)) 
 
     return (
         <div className="wrapper">
@@ -48,6 +48,7 @@ const QuotifyMainHome = ({quotesDB}) => {
             </div>
         </div>
     )
+
 }
 
 const mapStateToProps = ({ quote: { quotesDB }}) => ({

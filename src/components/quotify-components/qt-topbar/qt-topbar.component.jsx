@@ -4,9 +4,11 @@ import { withRouter, Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-import { auth, signInWithGoogle, createUserProfileDocument } from '../../../firebase/firebase.utils';
+import { auth, signInWithGoogle, createUserProfileDocument, getQuotesDB } from '../../../firebase/firebase.utils';
 
 import { setCurrentUser } from '../../../redux/user/user.actions';
+
+import { setQuotesDataBase } from '../../../redux/quote/quote.actions';
 
 import SearchBox from '../../all-reusable-components/search-box/search-box.component';
 
@@ -17,21 +19,24 @@ class QuotifyTopbar extends React.Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
-    
-        const { setCurrentUser } = this.props;
+
+        const { setCurrentUser, setQuotesDataBase } = this.props;
         
         this.unsubscribeFromAuth =  auth.onAuthStateChanged(async userAuth => {
+                    
             if (userAuth) {
                 const userRef = await createUserProfileDocument(userAuth);
 
                 userRef.onSnapshot(snapShot => {
                     setCurrentUser({
                         id: snapShot.id,
-                        ...snapShot.data() 
+                        ...snapShot.data()
                     });
                 });
-            } 
-            setCurrentUser(userAuth)
+            }
+            setCurrentUser(userAuth);
+            setQuotesDataBase(await getQuotesDB(`quotes/F87Qww0qRNcZRr9OWyfJ23m1ykZ2`));
+            //addCollectionAndDocuments('Col', QUOTES_DATA.map(({quotes}) => ({quotes})));
         });
     }
 
@@ -42,6 +47,7 @@ class QuotifyTopbar extends React.Component {
     render() {
 
         const { handleChange, midPart, currentUser, back, forward } = this.props;
+
 
         return (
             <Topbar className="col-12 sticky-top me-auto py-2">
@@ -56,7 +62,7 @@ class QuotifyTopbar extends React.Component {
                     <div class="col-7 col-sm-6 col-md-auto me-auto">
                         { midPart === "searchBox" ?
                             <SearchBox placeholder={"Search for Authors"} handleChange={handleChange}/>
-                        : 
+                        :
                             null
                         }
                     </div>
@@ -70,7 +76,7 @@ class QuotifyTopbar extends React.Component {
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                 >
-                                    <div>Hello, {currentUser.displayName}</div>
+                                    <div>Hello, {currentUser.displayName}</div>                                      
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
                                     <li class="dropdown-item cursor-pointer" onClick={() => auth.signOut()}>Sign out</li>
@@ -103,7 +109,8 @@ class QuotifyTopbar extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    setCurrentUser: user => dispatch(setCurrentUser(user))
+    setCurrentUser: user => dispatch(setCurrentUser(user)),
+    setQuotesDataBase: quotesDB => dispatch(setQuotesDataBase(quotesDB))
 })
 
 const mapStateToProps = ( { user: { currentUser }} ) => ({

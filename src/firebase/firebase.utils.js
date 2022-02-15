@@ -2,7 +2,6 @@ import firebase from "firebase/compat/app";
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyCUyuyWKzCUNvrrdvbH7CrNNvRN23HU6q4",
   authDomain: "quotify-asar.firebaseapp.com",
@@ -13,16 +12,18 @@ const firebaseConfig = {
   measurementId: "G-3H36FEK7HE"
 };
 
+firebase.initializeApp(firebaseConfig);
+
 export const createUserProfileDocument = async ( userAuth, additionalData ) => {
   if (!userAuth) return;
-  const userRef = firestore.doc(`users/${userAuth.uid}`);
-  const snapShot = await userRef.get(); 
 
-  console.log(snapShot)
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+  const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
     const {displayName, email} = userAuth;
-    const createdAt = new Date();
+    const createdAt = new Date(); 
 
     try {
       await userRef.set({
@@ -38,7 +39,46 @@ export const createUserProfileDocument = async ( userAuth, additionalData ) => {
   return userRef;
 };
 
-firebase.initializeApp(firebaseConfig);
+export const getQuotesDB = async (key) => {
+  const userRef = firestore.doc(key);
+  const snapShot = await userRef.get();
+  return snapShot.data().quotes.map(i => i);
+}
+
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+
+  const collectionRef = firestore.collection(collectionKey);
+
+  const batch = firestore.batch();
+
+  objectsToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+
+    batch.set(newDocRef, obj);
+  });
+
+  return await batch.commit();
+
+};
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollection = collections.docs.map(doc => {
+    const {  quotes } = doc.data();
+
+    return {
+      id: doc.quoteId,
+      quotes 
+    };
+  });
+
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.quotes]= collection;
+    return accumulator;
+  }, {});
+}
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();

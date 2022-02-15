@@ -2,18 +2,21 @@ import QuoteActionTypes from './quote.types';
 
 import { toggleQuote } from './quote.utils'; 
 
-import QUOTES_DATA from '../../pages/quotify/quotify-data';
-
 const INITIAL_STATE = {
-    quotesDB: QUOTES_DATA,
+    quotesDB: [],
     likedQuotesDB: [],
     inspirationalList: [],
-    insightfulList: [],
+    insightfulList: [], 
     addedQuoteCard: []
 }
 
 const quoteReducer = (state= INITIAL_STATE , action) => {
     switch (action.type) {
+        case QuoteActionTypes.SET_QUOTES_DATA_BASE:
+            return {
+                ...state,
+                quotesDB: action.payload
+            }
         case QuoteActionTypes.SET_LIKED_QUOTE:
             return {
                 ...state,

@@ -37,7 +37,7 @@
     border-radius: 5px;
 
     background-size: 200%;
-    background-position: bottom left;
+    background-position: top left;
     background-image: 
     linear-gradient(358deg, rgba(0, 0, 0, 0) 83%, rgba(0, 0, 0, 0.2) 83%  ),
     linear-gradient(359deg, rgba(0, 0, 0, 0) 81%, rgba(0, 0, 0, 0.2) 81%  ),
@@ -62,7 +62,7 @@
 
     &:hover {
         transform: scale(1.05);
-        background-position: top right;
+        background-position: bottom right;
     }
 }
 
