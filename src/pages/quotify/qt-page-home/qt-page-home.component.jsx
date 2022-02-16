@@ -13,12 +13,12 @@ import './qt-page-home.styles.scss';
 
 const HomePageQuotify = ({history}) => (
     <div className="container-fluid">
-        <div class='row'>
+        <div className='row'>
             <QuotifyNavbar/>
             <div className="qt-page-home qt-main col-12 col-sm-10 overflow-scroll"
                 style={{backgroundColor: COLOR_PALETTE[Math.floor(Math.random() * 25)]}}
             > 
-                <div class="row">
+                <div className="row">
                     <QuotifyTopbar 
                         forward={() => history.goForward()}
                     />

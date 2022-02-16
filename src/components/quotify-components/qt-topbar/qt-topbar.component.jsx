@@ -35,7 +35,7 @@ class QuotifyTopbar extends React.Component {
                 });
             }
             setCurrentUser(userAuth);
-            setQuotesDataBase(await getQuotesDB(`quotes/F87Qww0qRNcZRr9OWyfJ23m1ykZ2`));
+            setQuotesDataBase(await getQuotesDB('quotes', 'F87Qww0qRNcZRr9OWyfJ23m1ykZ2'));
             //addCollectionAndDocuments('Col', QUOTES_DATA.map(({quotes}) => ({quotes})));
         });
     }

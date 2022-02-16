@@ -14,6 +14,9 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
 export const createUserProfileDocument = async ( userAuth, additionalData ) => {
   if (!userAuth) return;
 
@@ -39,10 +42,10 @@ export const createUserProfileDocument = async ( userAuth, additionalData ) => {
   return userRef;
 };
 
-export const getQuotesDB = async (key) => {
-  const userRef = firestore.doc(key);
-  const snapShot = await userRef.get();
-  return snapShot.data().quotes.map(i => i);
+export const getQuotesDB = async (collection, doc) => {
+  return await firestore.collection(collection).doc(doc).get().then((doc) => { 
+    return doc.data().quotes;
+  });
 }
 
 export const addCollectionAndDocuments = async (
@@ -80,8 +83,6 @@ export const convertCollectionsSnapshotToMap = (collections) => {
   }, {});
 }
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
