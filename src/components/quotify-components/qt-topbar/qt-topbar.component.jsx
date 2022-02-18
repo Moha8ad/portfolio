@@ -51,26 +51,26 @@ class QuotifyTopbar extends React.Component {
 
         return (
             <Topbar className="col-12 sticky-top me-auto py-2">
-                <div class="row d-flex flex-wrap align-items-center fs-5 fw-bold text-light ps-2">
-                    <div class="col-auto">
-                        <i class="bi bi-arrow-left-circle fs-2 cursor-pointer" 
+                <div className="row d-flex flex-wrap align-items-center fs-5 fw-bold text-light ps-2">
+                    <div className="col-auto">
+                        <i className="bi bi-arrow-left-circle fs-2 cursor-pointer" 
                         onClick={back}/>
-                        <i class="bi bi-arrow-right-circle fs-2 ps-3 cursor-pointer"
+                        <i className="bi bi-arrow-right-circle fs-2 ps-3 cursor-pointer"
                         onClick={forward}
                         />
                     </div>
-                    <div class="col-7 col-sm-6 col-md-auto me-auto">
+                    <div className="col-7 col-sm-6 col-md-auto me-auto">
                         { midPart === "searchBox" ?
                             <SearchBox placeholder={"Search for Authors"} handleChange={handleChange}/>
                         :
                             null
                         }
                     </div>
-                    <div class="col-auto ms-auto me-2">
+                    <div className="col-auto ms-auto me-2">
                         {currentUser ? (
-                            <div class="dropdown d-none d-sm-block">
+                            <div className="dropdown d-none d-sm-block">
                                 <button 
-                                    class="btn btn-sm btn-success"
+                                    className="btn btn-sm btn-success"
                                     type="button"
                                     id="dropdownMenuButton1"
                                     data-bs-toggle="dropdown"
@@ -78,14 +78,14 @@ class QuotifyTopbar extends React.Component {
                                 >
                                     <div>Hello, {currentUser.displayName}</div>                                      
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                                    <li class="dropdown-item cursor-pointer" onClick={() => auth.signOut()}>Sign out</li>
+                                <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                                    <li className="dropdown-item cursor-pointer" onClick={() => auth.signOut()}>Sign out</li>
                                 </ul>
                             </div>
                             ) : (
-                            <div class="dropdown d-none d-sm-block">
+                            <div className="dropdown d-none d-sm-block">
                                 <button 
-                                    class="btn btn-sm btn-dark" 
+                                    className="btn btn-sm btn-dark" 
                                     type="button" 
                                     id="dropdownMenuButton1" 
                                     data-bs-toggle="dropdown" 
@@ -93,10 +93,10 @@ class QuotifyTopbar extends React.Component {
                                 >
                                 <div>Hello, Sign in</div>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                                    <Link to="/qt/account"><li class="dropdown-item">Sign in/ Sign up</li></Link>
-                                    <li><hr class="dropdown-divider"/></li>
-                                    <li class="dropdown-item cursor-pointer" onClick={signInWithGoogle}>Login with <i class="bi bi-google"></i></li>
+                                <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                                    <Link to="/qt/account"><li className="dropdown-item">Sign in/ Sign up</li></Link>
+                                    <li><hr className="dropdown-divider"/></li>
+                                    <li className="dropdown-item cursor-pointer" onClick={signInWithGoogle}>Login with <i className="bi bi-google"></i></li>
                                 </ul>
                             </div>
                             )

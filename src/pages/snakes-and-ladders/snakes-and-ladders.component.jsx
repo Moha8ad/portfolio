@@ -1118,27 +1118,27 @@ class SnakesAndLadders extends React.Component {
 }
     render(){
         return(
-            <div class="snakes-and-ladders-page container-fluid">
-                <div class="page-shadow row d-flex justify-content-center align-items-center text-light">
+            <div className="snakes-and-ladders-page container-fluid">
+                <div className="page-shadow row d-flex justify-content-center align-items-center text-light">
 
                     {/* top panel */}
-                    <div class=" col-12 fixed-top box-cover-color text-center fs-4 py-2 p-0">        
-                        <div class="container-fluid">
-                            <div class="row">
+                    <div className=" col-12 fixed-top box-cover-color text-center fs-4 py-2 p-0">        
+                        <div className="container-fluid">
+                            <div className="row">
                                 {/* back button*/}
-                                <div class="col-3 d-flex justify-content-start">
+                                <div className="col-3 d-flex justify-content-start">
                                     <Link to="/">
-                                        <i class="bi bi-box-arrow-left fs-4 text-light"></i>
+                                        <i className="bi bi-box-arrow-left fs-4 text-light"></i>
                                     </Link>
                                 </div>
 
                                 {/* header  */}
-                                <div class="not-clickable col-6 text-flicker-in-glow">
+                                <div className="not-clickable col-6 text-flicker-in-glow">
                                     SNAKES AND LADDERS
                                 </div>
                                 <div className="col-3 d-flex justify-content-end p-0">
-                                    <div class='col-auto' id="soundIcon"  onClick={this.handleSound}>
-                                            <i class="bi bi-volume-mute-fill fs-4"></i>
+                                    <div className='col-auto' id="soundIcon"  onClick={this.handleSound}>
+                                            <i className="bi bi-volume-mute-fill fs-4"></i>
                                     </div>
                                 </div>
                             </div>
@@ -1155,22 +1155,22 @@ class SnakesAndLadders extends React.Component {
                                 {
                                     this.state.oneNameInput.length > 0 
                                     ? 
-                                    <label class="px-2 mx-2" style={{fontSize:'12px'}}>Your Name</label> 
+                                    <label className="px-2 mx-2" style={{fontSize:'12px'}}>Your Name</label> 
                                     : 
-                                    <label class="px-2 mx-2" style={{fontSize:'12px'}}></label>
+                                    <label className="px-2 mx-2" style={{fontSize:'12px'}}></label>
                                 }
                             </div>
-                            <div class={`${this.state.oneNamePanelDisplay} col-12 d-flex justify-content-center`}>
+                            <div className={`${this.state.oneNamePanelDisplay} col-12 d-flex justify-content-center`}>
                                 <input 
-                                    class="form-control text-info border-info rounded-2 m-2 p-2"
+                                className="form-control text-info border-info rounded-2 m-2 p-2"
                                     value={this.state.oneNameInput}
                                     onChange={this.oneNameHandleChange}
                                     placeholder='Enter Your Name'
                                     required
                                 />
                                 
-                                <button class="btn btn-outline-info m-2" type="button" onClick={this.oneNameHandleSubmit}>
-                                    <i class="bi bi-check-lg"></i>
+                                <button className="btn btn-outline-info m-2" type="button" onClick={this.oneNameHandleSubmit}>
+                                    <i className="bi bi-check-lg"></i>
                                 </button>
                             </div>
                             <div className="col-12 text-center fs-4 pb-5">
@@ -1180,7 +1180,7 @@ class SnakesAndLadders extends React.Component {
                             {/* player one hint */}
                             <div className="col-12 text-center text-flicker-in-glow-2 not-clickable">
                                 <div>
-                                    <i class="bi bi-person-fill">
+                                    <i className="bi bi-person-fill">
                                         {this.state.oneHint}
                                     </i>
                                 </div>
@@ -1188,15 +1188,15 @@ class SnakesAndLadders extends React.Component {
 
                             {/* player one dice */}
                             <div className="col-12 text-center py-2">
-                                <div id="111" class="fs-3 animated flip">
-                                    <i class="bi bi-box"></i>
+                                <div id="111" className="fs-3 animated flip">
+                                    <i className="bi bi-box"></i>
                                 </div>
                             </div>
                             
                             {/* player one control buttons */}
                             <div className="col-12 d-flex justify-content-center flex-wrap py-1">
-                                <button class="me-2 btn btn-outline-info" type="button" onClick={this.oneMove}>Move</button>
-                                <button class="btn btn-outline-info" type="button" onClick={this.oneDice}>Roll</button>
+                                <button className="me-2 btn btn-outline-info" type="button" onClick={this.oneMove}>Move</button>
+                                <button className="btn btn-outline-info" type="button" onClick={this.oneDice}>Roll</button>
                             </div>
                         </div>
                     </div>
@@ -1205,7 +1205,7 @@ class SnakesAndLadders extends React.Component {
                             
                             {/* game board  */}
                             <div className="not-clickable col-12 d-flex justify-content-center align-items-start">
-                                <div class="row snakes-and-ladders-board border border-2 rounded-2">   
+                                <div className="row snakes-and-ladders-board border border-2 rounded-2">   
                                 
                                     {/* game grid  */}
                                     <div className='snakes-and-ladders-box board-cover-color text-center'>
@@ -1317,16 +1317,16 @@ class SnakesAndLadders extends React.Component {
 
                             {/* game panel */}
                             <div className="col-12" style={{width: '65vh'}}>
-                                <div class="row p-0">
+                                <div className="row p-0">
                                     <div className="col-3">
 
-                                        <div class='row d-flex justify-content-start p-0 pt-3'>
-                                            <div class='col-1 text-flicker-in-glow-2' id="101">
-                                                <i class='bi bi-circle-fill text-info bg-dark p-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
+                                        <div className='row d-flex justify-content-start p-0 pt-3'>
+                                            <div className='col-1 text-flicker-in-glow-2' id="101">
+                                                <i className='bi bi-circle-fill text-info bg-dark p-1 border rounded-2 border-light fade-in-fwd box-shadow'></i>
                                             </div>
 
-                                            <div class='col-1 text-flicker-in-glow-2' id="202">
-                                                <i class='bi bi-circle-fill text-danger bg-dark p-1 ms-3 border rounded-2 border-light fade-in-fwd box-shadow'></i>
+                                            <div className='col-1 text-flicker-in-glow-2' id="202">
+                                                <i className='bi bi-circle-fill text-danger bg-dark p-1 ms-3 border rounded-2 border-light fade-in-fwd box-shadow'></i>
                                             </div>
                                         </div>
                                         
@@ -1334,7 +1334,7 @@ class SnakesAndLadders extends React.Component {
 
                                     <div className="col-6 d-flex justify-content-center my-3">
                                         <button
-                                        class={`${this.state.playAgainBtnDisplay} btn btn-success fs-4 text-flicker-in-glow`}
+                                        className={`${this.state.playAgainBtnDisplay} btn btn-success fs-4 text-flicker-in-glow`}
                                         type="button"
                                         onClick={this.handlePlayAgain}
                                         >
@@ -1360,20 +1360,20 @@ class SnakesAndLadders extends React.Component {
                             {
                                 this.state.twoNameInput.length > 0 
                                 ? 
-                                <label class="px-2 mx-2" style={{fontSize:'12px'}}>Your Name</label> 
+                                <label className="px-2 mx-2" style={{fontSize:'12px'}}>Your Name</label> 
                                 : 
-                                <label class="px-2 mx-2" style={{fontSize:'12px'}}></label>
+                                <label className="px-2 mx-2" style={{fontSize:'12px'}}></label>
                             }
                             </div>
-                            <div class={`${this.state.twoNamePanelDisplay} col-12 d-flex justify-content-center`}>
+                            <div className={`${this.state.twoNamePanelDisplay} col-12 d-flex justify-content-center`}>
                                 <input 
-                                    class="form-control text-danger border-danger rounded-2 m-2 p-2"
+                                className="form-control text-danger border-danger rounded-2 m-2 p-2"
                                     value={this.state.twoNameInput}
                                     onChange={this.twoNameHandleChange}
                                     placeholder='Enter Your Name'
                                 />
-                                <button class="btn btn-outline-danger m-2" type="button" onClick={this.twoNameHandleSubmit}>
-                                    <i class="bi bi-check-lg"></i>
+                                <button className="btn btn-outline-danger m-2" type="button" onClick={this.twoNameHandleSubmit}>
+                                    <i className="bi bi-check-lg"></i>
                                 </button>
                             </div>
                             <div className="col-12 text-center fs-4 pb-5">
@@ -1383,7 +1383,7 @@ class SnakesAndLadders extends React.Component {
                             {/* player two hint */}
                             <div className="col-12 text-center text-flicker-in-glow-2 not-clickable">
                                 <div>
-                                    <i class="bi bi-person-fill border-1 rounded-2">
+                                    <i className="bi bi-person-fill border-1 rounded-2">
                                         {this.state.twoHint}
                                     </i>
                                 </div>
@@ -1392,31 +1392,31 @@ class SnakesAndLadders extends React.Component {
 
                             {/* player two dice */}
                             <div className="col-12 text-center py-2">
-                                <div id="222" class="fs-3 animated flip">
-                                    <i class="bi bi-box"></i>
+                                <div id="222" className="fs-3 animated flip">
+                                    <i className="bi bi-box"></i>
                                 </div>
                             </div>
                             
                             {/* player two control buttons */}
                             <div className="col-12 d-flex justify-content-center flex-wrap py-1">
-                                <button class="me-2 btn btn-outline-danger" type="button" onClick={this.twoMove}>Move</button>
-                                <button class="btn btn-outline-danger" type="button" onClick={this.twoDice}>Roll</button>
+                                <button className="me-2 btn btn-outline-danger" type="button" onClick={this.twoMove}>Move</button>
+                                <button className="btn btn-outline-danger" type="button" onClick={this.twoDice}>Roll</button>
                             </div>
                         </div>
                     </div>
 
                     {/* display is set to none, exists only for the sake of functional calculation */}
-                    <div class="d-none" id="0"></div> 
+                    <div className="d-none" id="0"></div> 
                     
                     {/* as the name says, Footer */}
 
-                    <div class=" col-12 fixed-bottom p-2 d-flex align-items-center box-cover-color">        
-                        <div class="container-fluid">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
+                    <div className=" col-12 fixed-bottom p-2 d-flex align-items-center box-cover-color">        
+                        <div className="container-fluid">
+                            <div className="row justify-content-between align-items-center">
+                                <div className="col-auto">
                                     © 2021 AsAr Web Development
                                 </div>
-                                <div class="col-auto d-none d-md-block">
+                                <div className="col-auto d-none d-md-block">
                                     <AsArLogoLgWt />
                                 </div>
                             </div>

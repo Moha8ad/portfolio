@@ -1,0 +1,60 @@
+@mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.test-container {
+    @include flex-column-center();
+    min-height: 100vh;
+}
+
+.test-form {
+    width: 50%;
+    background-color: rgb(80, 7, 131);
+    padding: 1%;
+
+    > div {
+        padding: 2%;
+        display: flex;
+    }
+
+    .test-input {
+        background-color: rgb(27, 2, 43);
+        padding: 2%;
+        > * { 
+            margin-inline-end: 1%;
+        }
+    }
+}
+
+.test-presentational {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: scroll;
+    
+    height: 50vh;
+    
+    background-color: rgb(9, 94, 20);
+    color: beige;
+}
+
+.card-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw 2%;
+}
+
+.added-user-card {
+    background-color: rgb(57, 3, 39);
+    width: min(23.5%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1%;
+    font-size: 1.2rem;
+}

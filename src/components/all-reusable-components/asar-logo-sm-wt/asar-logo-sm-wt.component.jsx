@@ -8,7 +8,7 @@ import './asar-logo-sm-wt.styles.scss'
 const Header = () => (
     <div>
         <Link to="/">
-            <AsArLogoSmWt class="asar-logo-sm-wt"/>
+            <AsArLogoSmWt className="asar-logo-sm-wt"/>
         </Link>
     </div>
 );

@@ -43,7 +43,7 @@ export class Rolodex extends Component {
         <p className='blinking rolodex-title'>
         Character Rolodex
         </p>
-        <div class="offset-4 col-4 d-flex justify-content-center">
+        <div className="offset-4 col-4 d-flex justify-content-center">
           <SearchBox 
           placeholder="Search Characters"
           handleChange={this.handleChange}

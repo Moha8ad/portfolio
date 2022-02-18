@@ -9,7 +9,7 @@ const QuotifyMainLibrary = ({ searchByName, searchByQuote  }) => (
     
         {searchByName.length > 0 || searchByQuote.length > 0
         ?
-            <div class="row">
+            <div className="row">
                 {searchByName.map(cardItem => 
                     <QuotifyCard cardItem = {cardItem}/>
                 )}
@@ -18,7 +18,7 @@ const QuotifyMainLibrary = ({ searchByName, searchByQuote  }) => (
                 )}
             </div>
         :
-            <div class="fs-4 text-danger p-4">
+            <div className="fs-4 text-danger p-4">
                 Result Not Found
             </div>
         }

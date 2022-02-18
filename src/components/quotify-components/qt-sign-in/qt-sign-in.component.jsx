@@ -40,13 +40,13 @@ class SignIn extends React.Component {
   render() {
     return (
       <div className='row'>
-        <div class="col-12">
-          <div class="fs-4 py-2">I already have an account</div>
-          <div class="py-4 d-none d-sm-block ">Sign in with your email and password</div>
+        <div className="col-12">
+          <div className="fs-4 py-2">I already have an account</div>
+          <div className="py-4 d-none d-sm-block ">Sign in with your email and password</div>
         </div>
         
         <form onSubmit={this.handleSubmit}>
-          <div class="col-12">
+          <div className="col-12">
             <input
             name='email'
             type='email'
@@ -59,7 +59,7 @@ class SignIn extends React.Component {
           </div>
           <div className="col-12">
             <input
-              class="my-2"
+              className="my-2"
               name='password'
               type='password'
               value={this.state.password}
@@ -70,8 +70,8 @@ class SignIn extends React.Component {
             />
           </div>
           <div className='col-12 py-4'>
-            <button class="btn btn-success me-1 mb-1" type='submit'> Sign in </button>
-            <button class="btn btn-primary mb-1" type='button' onClick={signInWithGoogle} isGoogleSignIn>
+            <button className="btn btn-success me-1 mb-1" type='submit'> Sign in </button>
+            <button className="btn btn-primary mb-1" type='button' onClick={signInWithGoogle} isGoogleSignIn>
               Sign in with Google
             </button>
           </div>

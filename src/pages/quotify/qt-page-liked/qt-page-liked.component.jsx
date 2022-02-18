@@ -19,10 +19,10 @@ const LikedPageQuotify = ({ history, likedQuotesDB }) => {
 
     return (
         <div className="container-fluid">
-            <div class='row'>
+            <div className='row'>
                 <QuotifyNavbar />
                 <div className="qt-page-liked qt-main col-12 col-sm-10 overflow-scroll">
-                    <div class="row">
+                    <div className="row">
                         <QuotifyTopbar 
                             midPart={likedQuotesDB.length > 0 ? "searchBox" : "" }
                             back={() => history.goBack()}

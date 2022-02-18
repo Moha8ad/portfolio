@@ -50,17 +50,17 @@ class AccountPageQuotify extends React.Component {
             {
                 !this.props.currentUser ?
 
-                (<div class="container-fluid d-flex justify-content-center align-items-start bg-dark text-light p-5"
+                (<div className="container-fluid d-flex justify-content-center align-items-start bg-dark text-light p-5"
                     style={{minHeight: '100vh'}}
                 >
                     <div className="row ">
                         <div className="col-12 fixed-top p-3">
-                            <div class="row">
+                            <div className="row">
                                 <div>
                                     <i className="bi bi-box-arrow-left text-secondary fs-4 px-3" onClick={this.goBack}></i>                                </div>
                             </div>
                         </div>
-                        <div class="col-12 p-3"></div>
+                        <div className="col-12 p-3"></div>
 
                         <div className="col-12 col-sm-6 p-sm-5">
                             <SignIn />

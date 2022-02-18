@@ -12,112 +12,112 @@ import AsArLogoMdWt from '../../all-reusable-components/asar-logo-md-wt/asar-log
 import './qt-navbar.styles.scss';
 
 const QuotifyNavbar = ({ history, currentUser }) => (
-    <div class="qt-navbar col-12 col-sm-2 p-0 px-2">    
-        <div class="d-flex flex-row flex-sm-column flex-wrap justify-content-between">  
-            <div class="d-none d-lg-block pt-4 pb-3">
+    <div className="qt-navbar col-12 col-sm-2 p-0 px-2">    
+        <div className="d-flex flex-row flex-sm-column flex-wrap justify-content-between">  
+            <div className="d-none d-lg-block pt-4 pb-3">
                 <AsArLogoLgWt />
             </div>
-            <div class="d-none d-sm-block d-lg-none p-3 pt-sm-2 pb-sm-4">
+            <div className="d-none d-sm-block d-lg-none p-3 pt-sm-2 pb-sm-4">
                 <AsArLogoMdWt />
             </div>
-            <ul class="
+            <ul className="
                 nav flex-sm-column flex-row d-flex flex-wrap
                 align-items-center align-items-lg-start 
                 fw-bold py-2 p-sm-2"
             >
                 <li>
-                    <Link class="nav-link pb-sm-0 cursor-pointer"
+                    <Link className="nav-link pb-sm-0 cursor-pointer"
                     to='/qt/home'
                     >
-                        <i class="bi bi-house-door fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Home</span> 
+                        <i className="bi bi-house-door fs-4 text-light"></i>
+                        <span className="d-none d-lg-inline ms-3 text-secondary"> Home</span> 
                     </Link>
                 </li>
                 <li>
-                    <div class="nav-link pb-sm-0 cursor-pointer"
+                    <div className="nav-link pb-sm-0 cursor-pointer"
                     onClick={() => history.push('/qt/library')}
                     >
-                        <i class="bi bi-collection fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Library</span> 
+                        <i className="bi bi-collection fs-4 text-light"></i>
+                        <span className="d-none d-lg-inline ms-3 text-secondary"> Library</span> 
                     </div>
                 </li>
                 <li>
-                    <div class="nav-link cursor-pointer"
+                    <div className="nav-link cursor-pointer"
                         onClick={() => history.push('/qt/list')}
                     >
-                        <i class="bi bi-journal-bookmark-fill fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Lists</span> 
+                        <i className="bi bi-journal-bookmark-fill fs-4 text-light"></i>
+                        <span className="d-none d-lg-inline ms-3 text-secondary"> Lists</span> 
                     </div>
                 </li>
                 
                 <li>
-                    <div class="nav-link d-none d-sm-block pt-sm-4 pb-sm-0 cursor-pointer"
+                    <div className="nav-link d-none d-sm-block pt-sm-4 pb-sm-0 cursor-pointer"
                         onClick={() => history.push('/qt/create')}
                     >
-                        <i class="bi bi-plus-square-dotted fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Create</span>   
+                        <i className="bi bi-plus-square-dotted fs-4 text-light"></i>
+                        <span className="d-none d-lg-inline ms-3 text-secondary"> Create</span>   
                     </div>
                 </li>
                 <li>
-                    <div class="nav-link d-none d-sm-block cursor-pointer"
+                    <div className="nav-link d-none d-sm-block cursor-pointer"
                         onClick={() => history.push('/qt/liked')}
                     >
-                        <i class="bi bi-heart fs-4 text-light"></i>
-                        <span class="d-none d-lg-inline ms-3 text-secondary"> Liked</span>  
+                        <i className="bi bi-heart fs-4 text-light"></i>
+                        <span className="d-none d-lg-inline ms-3 text-secondary"> Liked</span>  
                     </div>
                 </li>
-                <li class="dropdown d-block d-sm-none">
+                <li className="dropdown d-block d-sm-none">
                         <i 
-                            class="bi bi-three-dots fs-4 text-light ms-3" 
+                            className="bi bi-three-dots fs-4 text-light ms-3" 
                             data-bs-toggle="dropdown" 
                             aria-expanded="false"
                         >
                         </i>
-                        <ul class="dropdown-menu dropdown-menu-dark" style={{zIndex: "10000"}}>
+                        <ul className="dropdown-menu dropdown-menu-dark" style={{zIndex: "10000"}}>
                             <Link to='qt/create'>
-                                <li class="dropdown-item cursor-pointer bi-plus-square-dotted"> Create</li>
+                                <li className="dropdown-item cursor-pointer bi-plus-square-dotted"> Create</li>
                             </Link>
                             <Link to='/qt/liked'>
-                                <li class="dropdown-item cursor-pointer bi bi-heart"> Liked</li>
+                                <li className="dropdown-item cursor-pointer bi bi-heart"> Liked</li>
                             </Link>
                         </ul>
                 </li>
             </ul>
-            <div class="d-flex justify-self-center align-self-center">
+            <div className="d-flex justify-self-center align-self-center">
                     {
                         currentUser
                         ?
-                        <div class="dropdown d-block d-sm-none">
+                        <div className="dropdown d-block d-sm-none">
                             <button 
-                                class="btn btn-sm btn-success mx-2" 
+                                className="btn btn-sm btn-success mx-2" 
                                 type="button" 
                                 id="dropdownMenuButton1" 
                                 data-bs-toggle="dropdown" 
                                 aria-expanded="false"
                             >
-                                <i class="d-block d-sm-none bi bi-person-fill"></i>
-                                <div class="d-none d-sm-block"> Hello, {currentUser.displayName}</div>
+                                <i className="d-block d-sm-none bi bi-person-fill"></i>
+                                <div className="d-none d-sm-block"> Hello, {currentUser.displayName}</div>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1"  style={{zIndex: "10000"}}>
-                                <li class="dropdown-item cursor-pointer" onClick={() => auth.signOut()}>Sign out</li>
+                            <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1"  style={{zIndex: "10000"}}>
+                                <li className="dropdown-item cursor-pointer" onClick={() => auth.signOut()}>Sign out</li>
                             </ul>
                         </div>
                         :
-                        <div class="dropdown d-block d-sm-none">
+                        <div className="dropdown d-block d-sm-none">
                             <button 
-                                class="btn btn-sm btn-dark mx-2" 
+                                className="btn btn-sm btn-dark mx-2" 
                                 type="button" 
                                 id="dropdownMenuButton1" 
                                 data-bs-toggle="dropdown" 
                                 aria-expanded="false"
                             >
-                            <i class="d-block d-sm-none bi bi-person-fill"></i>
-                            <div class="d-none d-sm-block"> Hello, Sign in</div>
+                            <i className="d-block d-sm-none bi bi-person-fill"></i>
+                            <div className="d-none d-sm-block"> Hello, Sign in</div>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1" style={{zIndex: "10000"}}>
-                                <Link to="/account"><li class="dropdown-item">Sign in/ Sign up</li></Link>
-                                <li><hr class="dropdown-divider"/></li>
-                                <li class="dropdown-item cursor-pointer" onClick={signInWithGoogle}>Login with <i class="bi bi-google"></i></li>
+                            <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1" style={{zIndex: "10000"}}>
+                                <Link to="/account"><li className="dropdown-item">Sign in/ Sign up</li></Link>
+                                <li><hr className="dropdown-divider"/></li>
+                                <li className="dropdown-item cursor-pointer" onClick={signInWithGoogle}>Login with <i className="bi bi-google"></i></li>
                             </ul>
                         </div>
                     }

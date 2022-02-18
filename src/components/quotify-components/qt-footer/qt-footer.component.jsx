@@ -6,13 +6,13 @@ import './qt-footer.styles.scss';
 
 const QuotifyFooter = () => (
     <div>        
-        <div class="qt-footer col-12 fixed-bottom p-2 d-flex align-items-center">        
-            <div class="container-fluid">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-auto d-none d-sm-block">
+        <div className="qt-footer col-12 fixed-bottom p-2 d-flex align-items-center">        
+            <div className="container-fluid">
+                <div className="row justify-content-between align-items-center">
+                    <div className="col-auto d-none d-sm-block">
                         © 2021-22 AsAr Web Development
                     </div>
-                    <div class="col-auto">
+                    <div className="col-auto">
                         <AsArLogoSmWt />
                     </div>
                 </div>

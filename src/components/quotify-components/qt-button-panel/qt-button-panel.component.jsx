@@ -19,7 +19,7 @@ const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuo
                 removeQuote(inspirationalList, setInspirationalQuote, item)
                 removeQuote(insightfulList, setInsightfulQuote, item)
             }}>
-                <i class="bi bi-trash"></i>
+                <i className="bi bi-trash"></i>
             </span>
             :
             null
@@ -32,14 +32,14 @@ const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuo
         {
             likedQuotesDB.find(likedQuote => likedQuote.quoteId === item.quoteId) 
         ?
-            <i class="bi bi-heart-fill text-danger" />
+            <i className="bi bi-heart-fill text-danger" />
         :
-            <i class="bi bi-heart" />
+            <i className="bi bi-heart" />
         }
         </span>
         {/* List Button */}
         <span 
-            class="dropdown"
+            className="dropdown"
         >
             {/* Journal Button */}
             <span
@@ -52,33 +52,33 @@ const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuo
                     insightfulList.find(itemQuote => itemQuote.quoteId === item.quoteId) 
                 ?
                 <i 
-                    class="bi bi-journal-bookmark-fill" 
+                    className="bi bi-journal-bookmark-fill" 
                     
                 ></i>
                 :
                 <i 
-                    class="bi bi-journal-bookmark" 
+                    className="bi bi-journal-bookmark" 
                 ></i>
                 }
             </span>
 
             {/* Inspirational List Buttons */}
-            <ul class="dropdown-menu dropdown-menu-dark text-light" style={{backgroundColor:'rgba(33, 37, 41, 0.95)'}}>
+            <ul className="dropdown-menu dropdown-menu-dark text-light" style={{backgroundColor:'rgba(33, 37, 41, 0.95)'}}>
                 {
                     inspirationalList.find(itemQuote => itemQuote.quoteId === item.quoteId) 
                 ?
                     <li 
-                        class="dropdown-item bi bi-bookmark-dash" 
+                        className="dropdown-item bi bi-bookmark-dash" 
                         onClick={() => setInspirationalQuote(item)}
                     > 
-                        <span class='px-2'>Inspirational List</span>
+                        <span className='px-2'>Inspirational List</span>
                     </li>
                 :
                     <li 
-                        class="dropdown-item bi bi-bookmark-plus" 
+                        className="dropdown-item bi bi-bookmark-plus" 
                         onClick={() => setInspirationalQuote(item)}
                     > 
-                        <span class='px-2'>Inspirational List</span>
+                        <span className='px-2'>Inspirational List</span>
                     </li>
                 }
 
@@ -87,17 +87,17 @@ const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuo
                     insightfulList.find(itemQuote => itemQuote.quoteId === item.quoteId) 
                 ?
                     <li 
-                        class="dropdown-item bi bi-bookmark-dash" 
+                        className="dropdown-item bi bi-bookmark-dash" 
                         onClick={() => setInsightfulQuote(item)}
                     > 
-                        <span class='px-2'>Insightful List</span>
+                        <span className='px-2'>Insightful List</span>
                     </li>
                 :
                     <li 
-                        class="dropdown-item bi bi-bookmark-plus" 
+                        className="dropdown-item bi bi-bookmark-plus" 
                         onClick={() => setInsightfulQuote(item)}
                     > 
-                        <span class='px-2'>Insightful List</span>
+                        <span className='px-2'>Insightful List</span>
                     </li>
                 }
             </ul>
@@ -107,7 +107,7 @@ const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuo
         <span
             onClick={() =>  navigator.clipboard.writeText(`${item.quote} --${item.author}`)}
         > 
-        <i class="bi bi-clipboard"/>
+        <i className="bi bi-clipboard"/>
         </span>
 
         {/* Share Button */}
@@ -117,7 +117,7 @@ const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuo
             target="_blank" 
             rel="noopener noreferrer"
             >
-                <i class="bi bi-twitter" />
+                <i className="bi bi-twitter" />
             </a>
         </span>
     </div>

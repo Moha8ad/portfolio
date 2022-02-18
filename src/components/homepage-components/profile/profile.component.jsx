@@ -17,7 +17,7 @@ const Profile = () => {
                     </AsarLogo>
                     <AboutMeContent>
                         <JobTitle>
-                            <i class="bi bi-terminal fs-6"></i> <i class="bi bi-code-square fs-5" /> Web Developer
+                            <i className="bi bi-terminal fs-6"></i> <i className="bi bi-code-square fs-5" /> Web Developer
                         </JobTitle>
                         <AboutMe>
                             Hi, I'm Mohammad.

@@ -23,10 +23,10 @@ const LibraryPageQuotify = ({ history, quotesDB }) => {
 
     return (
         <div className="container-fluid">
-            <div class='row'>
+            <div className='row'>
                 <QuotifyNavbar />
                 <div className="qt-page-library qt-main col-12 col-sm-10 overflow-scroll">
-                    <div class="row">
+                    <div className="row">
                         <QuotifyTopbar 
                             midPart={"searchBox"}
                             back={() => history.goBack()}

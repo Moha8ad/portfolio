@@ -54,9 +54,9 @@ class SignUp extends React.Component {
     const { displayName, email, password, confirmPassword } = this.state;
     return (
       <div className='row'>
-        <div class="col-12">
-          <div class="fs-4 py-2">I do not have an account</div>
-          <div class="py-4 d-none d-sm-block ">Sign up with your email and password</div>
+        <div className="col-12">
+          <div className="fs-4 py-2">I do not have an account</div>
+          <div className="py-4 d-none d-sm-block ">Sign up with your email and password</div>
         </div>
         <form onSubmit={this.handleSubmit}>
             <div className="col-12">
@@ -71,7 +71,7 @@ class SignUp extends React.Component {
             </div>
             <div className="col-12">
                 <input
-                    class="my-2"
+                    className="my-2"
                     type='email'
                     name='email'
                     value={email}
@@ -101,7 +101,7 @@ class SignUp extends React.Component {
                 />
             </div>
             <div className='col-12 py-4'>
-            <button class="btn btn-success me-1 mb-1" type='submit'> Sign up </button>
+            <button className="btn btn-success me-1 mb-1" type='submit'> Sign up </button>
             </div>
         </form>
       </div>

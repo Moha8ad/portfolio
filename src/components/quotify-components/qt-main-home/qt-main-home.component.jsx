@@ -21,8 +21,8 @@ const QuotifyMainHome = ({quotesDB}) => {
     return (
         <div className="wrapper">
             <div className="box-container">
-                {randomQuote.map(cardItem =>
-                    <div className="box grid-column-span-2" style={{backgroundColor: COLOR_PALETTE[Math.floor(Math.random() * 25)]}}>
+                {randomQuote.map((cardItem, index) =>
+                    <div key={index} className="box grid-column-span-2" style={{backgroundColor: COLOR_PALETTE[Math.floor(Math.random() * 25)]}}>
                         <div className="box-shadow">
                         <div className="card-info">
                             <div>
