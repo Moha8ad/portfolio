@@ -48,6 +48,12 @@ export const getQuotesDB = async (collection, doc) => {
   });
 }
 
+export const getDocumentData = async (collection) => {
+
+  
+}
+
+
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd

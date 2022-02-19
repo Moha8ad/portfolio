@@ -48,7 +48,6 @@ class QuotifyTopbar extends React.Component {
 
         const { handleChange, midPart, currentUser, back, forward } = this.props;
 
-
         return (
             <Topbar className="col-12 sticky-top me-auto py-2">
                 <div className="row d-flex flex-wrap align-items-center fs-5 fw-bold text-light ps-2">

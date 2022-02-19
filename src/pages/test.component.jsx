@@ -1,38 +1,60 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+
+import { addCollectionAndDocuments, firestore } from "../firebase/firebase.utils";
+
 
 import './test.styles.scss';
 
 const Test = () => {
-    const [userProfile, setUserProfile] = useState(
+
+    const [userToADD, setUserTOADD] = useState(
         {
             username: '',
             color: ''
         }
-    )
-    const [addedUser, setAddedUser] = useState([])
+    );
+
+    const [addedUser, setAddedUser] = useState([]);
     
+    useEffect(() => {
+
+        firestore.collection("test").get().then((querySnapshot) => {
+            
+            const users = []
+
+            querySnapshot.forEach((doc) => {
+                users.push(doc.data());
+            });
+
+            setAddedUser(users);
+
+        });
+        
+    });
+
     const handleChange = event => {
         const { name, value } = event.target;
-        setUserProfile(
+
+        setUserTOADD(
             { 
-                ...userProfile, 
-                [name]: value 
+                ...userToADD,
+                [name]: value,
             }
         );
     }
 
     const handleSubmit = event => {
         event.preventDefault();
-        setAddedUser([...addedUser, userProfile])
-        setUserProfile({
-            username: '',
-            color: ''
-        })
+        
+        addCollectionAndDocuments('test', [userToADD]);
+        
+        setUserTOADD(
+            {
+                username: '',
+                color: '',
+            }
+        )
     }
-
-    console.log(addedUser)
-
-
 
     return(
         <div className="test-container">
@@ -42,14 +64,14 @@ const Test = () => {
                     
                         type="text"
                         name="username"
-                        value={userProfile.username} 
+                        value={userToADD.username} 
                         placeholder="Enter Your Task"
                         onChange={handleChange}
                     />
                     <input 
                         type="text"
                         name="color"
-                        value={userProfile.color} 
+                        value={userToADD.color} 
                         placeholder="Enter Your Task"
                         onChange={handleChange}
                     />
@@ -59,12 +81,12 @@ const Test = () => {
                 </form>
                 <div className="test-presentational">
                 <div className="card-preview">
-                {addedUser.map(user => (
-                <div className="added-user-card">
-                    <div>name: {user.username}</div>
-                    <div>color: {user.color}</div>
-                </div>
-                ))}
+                    {addedUser.map((user, key) => 
+                    <div key={key} className="added-user-card">
+                        <div>{user.username}</div>
+                        <div>{user.color}</div>
+                    </div>
+                    )}    
                 </div>
                 </div>
             </div>
