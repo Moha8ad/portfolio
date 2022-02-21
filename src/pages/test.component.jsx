@@ -18,17 +18,17 @@ const Test = () => {
     
     useEffect(() => {
 
-        firestore.collection("test").get().then((querySnapshot) => {
+        // firestore.collection("test").get().then((querySnapshot) => {
             
-            const users = []
+        //     const users = []
 
-            querySnapshot.forEach((doc) => {
-                users.push(doc.data());
-            });
+        //     querySnapshot.forEach((doc) => {
+        //         users.push(doc.data());
+        //     });
 
-            setAddedUser(users);
+        //     setAddedUser(users);
 
-        });
+        // });
         
     });
 
