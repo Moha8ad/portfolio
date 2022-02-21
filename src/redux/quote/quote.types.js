@@ -1,5 +1,5 @@
 const QuoteActionTypes= {
-
+    
     SET_QUOTES_DATA_BASE: 'SET_QUOTES_DATA_BASE',
         
     SET_LIKED_QUOTE: 'SET_LIKED_QUOTE',

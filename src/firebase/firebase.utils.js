@@ -42,18 +42,6 @@ export const createUserProfileDocument = async ( userAuth, additionalData ) => {
   return userRef;
 };
 
-export const getQuotesDB = async (collection, doc) => {
-  return await firestore.collection(collection).doc(doc).get().then((doc) => { 
-    return doc.data().quotes;
-  });
-}
-
-export const getDocumentData = async (collection) => {
-
-  
-}
-
-
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd

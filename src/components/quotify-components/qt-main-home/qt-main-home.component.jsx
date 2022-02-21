@@ -7,7 +7,7 @@ import COLOR_PALETTE from '../../all-reusable-components/random-color/random-col
 
 import './qt-main-home.styles.scss';
 
-const QuotifyMainHome = ({quotesDB}) => {
+const QuotifyMainHome = ({quotesDB, isLoading}) => {
 
         const randomQuoteId = (Math.floor(Math.random()*quotesDB.length))
 
@@ -21,6 +21,7 @@ const QuotifyMainHome = ({quotesDB}) => {
     return (
         <div className="wrapper">
             <div className="box-container">
+                {isLoading && <div>Loading...</div> }
                 {randomQuote.map((cardItem, index) =>
                     <div key={index} className="box grid-column-span-2" style={{backgroundColor: COLOR_PALETTE[Math.floor(Math.random() * 25)]}}>
                         <div className="box-shadow">
@@ -51,8 +52,8 @@ const QuotifyMainHome = ({quotesDB}) => {
 
 }
 
-const mapStateToProps = ({ quote: { quotesDB }}) => ({
-    quotesDB
+const mapStateToProps = ({ quote: { quotesDB, isLoading }}) => ({
+    quotesDB, isLoading
 })
 
 export default connect(mapStateToProps, null)(QuotifyMainHome);

@@ -15,22 +15,28 @@ const Test = () => {
     );
 
     const [addedUser, setAddedUser] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
     
     useEffect(() => {
 
-        // firestore.collection("test").get().then((querySnapshot) => {
+        const unsubscribe = firestore.collection("test").onSnapshot(
+            snapshot => { 
+                const usersDB = snapshot.docs.map(doc => (
+                    {
+                        ...doc.data(), 
+                        id: doc.id 
+                    }
+                ))
+            setAddedUser(usersDB);
+            setIsLoading(false)
+            console.log(usersDB)
+        });
+
+        return () => {
+            unsubscribe()
+        }
             
-        //     const users = []
-
-        //     querySnapshot.forEach((doc) => {
-        //         users.push(doc.data());
-        //     });
-
-        //     setAddedUser(users);
-
-        // });
-        
-    });
+    }, []);
 
     const handleChange = event => {
         const { name, value } = event.target;
@@ -56,6 +62,16 @@ const Test = () => {
         )
     }
 
+    const handleDelete = (docId) => {
+    
+        firestore.collection("test").doc(docId).delete().then(() => {
+            console.log("Document successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+      };
+
+
     return(
         <div className="test-container">
             <div className="test-form">
@@ -80,11 +96,19 @@ const Test = () => {
                     </button>
                 </form>
                 <div className="test-presentational">
+                { isLoading && <div>Loading...</div> }
                 <div className="card-preview">
                     {addedUser.map((user, key) => 
                     <div key={key} className="added-user-card">
                         <div>{user.username}</div>
                         <div>{user.color}</div>
+                        <div>{}</div>
+                        <div onClick={() => handleDelete(user.id)} 
+                            className="d-flex justify-content-end"
+                            style={{cursor: "pointer"}}    
+                        >
+                            <i className="bi bi-x-circle"></i>                        
+                        </div>
                     </div>
                     )}    
                 </div>

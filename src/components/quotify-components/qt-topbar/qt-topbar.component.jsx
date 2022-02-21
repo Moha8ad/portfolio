@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-import { auth, signInWithGoogle, createUserProfileDocument, getQuotesDB } from '../../../firebase/firebase.utils';
+import { auth, signInWithGoogle, createUserProfileDocument, firestore } from '../../../firebase/firebase.utils';
 
 import { setCurrentUser } from '../../../redux/user/user.actions';
 
@@ -18,6 +18,7 @@ class QuotifyTopbar extends React.Component {
 
     unsubscribeFromAuth = null;
 
+    
     componentDidMount() {
 
         const { setCurrentUser, setQuotesDataBase } = this.props;
@@ -27,15 +28,27 @@ class QuotifyTopbar extends React.Component {
             if (userAuth) {
                 const userRef = await createUserProfileDocument(userAuth);
 
-                userRef.onSnapshot(snapShot => {
+                userRef.onSnapshot(snapshot => {
                     setCurrentUser({
-                        id: snapShot.id,
-                        ...snapShot.data()
+                        id: snapshot.id,
+                        ...snapshot.data()
                     });
                 });
             }
+
             setCurrentUser(userAuth);
-            setQuotesDataBase(await getQuotesDB('quotes', 'F87Qww0qRNcZRr9OWyfJ23m1ykZ2'));
+
+            firestore.collection("collections").onSnapshot(
+                snapshot => { 
+                    const quotesDataBase = snapshot.docs.map(doc => (
+                        {
+                            ...doc.data(), 
+                            id: doc.id 
+                        }
+                    ))
+                    setQuotesDataBase(quotesDataBase);
+                    
+                });
             //addCollectionAndDocuments('Col', QUOTES_DATA.map(({quotes}) => ({quotes})));
         });
     }
