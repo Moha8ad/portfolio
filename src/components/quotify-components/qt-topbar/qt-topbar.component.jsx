@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-import { auth, signInWithGoogle, createUserProfileDocument, firestore } from '../../../firebase/firebase.utils';
+import { auth, signInWithGoogle, createUserProfileDocument, db } from '../../../firebase/firebase.utils';
 
 import { setCurrentUser } from '../../../redux/user/user.actions';
 
@@ -24,7 +24,6 @@ class QuotifyTopbar extends React.Component {
         const { setCurrentUser, setQuotesDataBase } = this.props;
         
         this.unsubscribeFromAuth =  auth.onAuthStateChanged(async userAuth => {
-                    
             if (userAuth) {
                 const userRef = await createUserProfileDocument(userAuth);
 
@@ -38,7 +37,7 @@ class QuotifyTopbar extends React.Component {
 
             setCurrentUser(userAuth);
 
-            firestore.collection("collections").onSnapshot(
+            db.collection("collections").onSnapshot(
                 snapshot => { 
                     const quotesDataBase = snapshot.docs.map(doc => (
                         {
@@ -125,7 +124,7 @@ const mapDispatchToProps = dispatch => ({
     setQuotesDataBase: quotesDB => dispatch(setQuotesDataBase(quotesDB))
 })
 
-const mapStateToProps = ( { user: { currentUser }} ) => ({
+const mapStateToProps = ( { user: { currentUser }}  ) => ({
     currentUser
 })
 

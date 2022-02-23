@@ -1,4 +1,5 @@
 import React from "react";
+
 import { connect } from "react-redux";
 
 import { setLikedQuote, setInspirationalQuote, setInsightfulQuote, addQuoteCard } from "../../../redux/quote/quote.actions";

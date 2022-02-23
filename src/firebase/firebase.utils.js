@@ -15,20 +15,22 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+export const db = firebase.firestore();
 
 export const createUserProfileDocument = async ( userAuth, additionalData ) => {
   if (!userAuth) return;
 
-  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const userRef = db.doc(`users/${userAuth.uid}`);
 
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
     const {displayName, email} = userAuth;
-    const createdAt = new Date(); 
+    const createdAt = new Date();
+    
 
     try {
+       
       await userRef.set({
         displayName,
         email,
@@ -47,9 +49,9 @@ export const addCollectionAndDocuments = async (
   objectsToAdd
 ) => {
 
-  const collectionRef = firestore.collection(collectionKey);
+  const collectionRef = db.collection(collectionKey);
 
-  const batch = firestore.batch();
+  const batch = db.batch();
 
   objectsToAdd.forEach((obj) => {
     const newDocRef = collectionRef.doc();
@@ -60,6 +62,16 @@ export const addCollectionAndDocuments = async (
   return await batch.commit();
 
 };
+
+export const addLiked = (item) => {
+    db.collection("test").doc('F87Qww0qRNcZRr9OWyfJ23m1ykZ2').collection("liked").doc().set(
+      item
+  ).then(() => {                
+    console.log("Document successfully edited!");
+  }).catch((error) => {
+    console.error("Error editing document: ", error);
+  });
+}
 
 export const convertCollectionsSnapshotToMap = (collections) => {
   const transformedCollection = collections.docs.map(doc => {

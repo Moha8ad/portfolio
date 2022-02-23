@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-import { addCollectionAndDocuments, firestore } from "../firebase/firebase.utils";
-
+import { addCollectionAndDocuments, db } from "../firebase/firebase.utils";
 
 import './test.styles.scss';
 
@@ -10,23 +9,22 @@ const Test = () => {
     const [userToADD, setUserTOADD] = useState(
         {
             username: '',
-            color: ''
+            color: '',
         }
     );
-
     const [addedUser, setAddedUser] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
     
     useEffect(() => {
 
-        const unsubscribe = firestore.collection("test").onSnapshot(
+        const unsubscribe = db.collection("test").orderBy("createdAt", "desc").onSnapshot(
             snapshot => { 
                 const usersDB = snapshot.docs.map(doc => (
                     {
                         ...doc.data(), 
-                        id: doc.id 
+                        id: doc.id
                     }
-                ))
+                ));
             setAddedUser(usersDB);
             setIsLoading(false)
             console.log(usersDB)
@@ -40,11 +38,14 @@ const Test = () => {
 
     const handleChange = event => {
         const { name, value } = event.target;
+        const createdAt = new Date(); 
+
 
         setUserTOADD(
             { 
                 ...userToADD,
                 [name]: value,
+                createdAt
             }
         );
     }
@@ -64,20 +65,35 @@ const Test = () => {
 
     const handleDelete = (docId) => {
     
-        firestore.collection("test").doc(docId).delete().then(() => {
+        db.collection("test").doc(docId).delete().then(() => {
             console.log("Document successfully deleted!");
         }).catch((error) => {
             console.error("Error removing document: ", error);
         });
-      };
+    };
+
+    const handleEdit = (docId) => {
+    
+        db.collection("test").doc(docId).collection("liked").doc().set(
+            {
+                username: 'changed',
+                color: 'edited',
+            }
+        ).then(() => {                
+            console.log("Document successfully edited!");
+        }).catch((error) => {
+            console.error("Error editing document: ", error);
+        });
+    };
 
 
     return(
         <div className="test-container">
-            <div className="test-form">
+        <div className="test-form">
+        
+
                 <form className="test-input">
                     <input 
-                    
                         type="text"
                         name="username"
                         value={userToADD.username} 
@@ -102,12 +118,13 @@ const Test = () => {
                     <div key={key} className="added-user-card">
                         <div>{user.username}</div>
                         <div>{user.color}</div>
-                        <div>{}</div>
-                        <div onClick={() => handleDelete(user.id)} 
-                            className="d-flex justify-content-end"
-                            style={{cursor: "pointer"}}    
-                        >
-                            <i className="bi bi-x-circle"></i>                        
+                        <div className="button-panel">
+                            <div onClick={() => handleEdit(user.id)}>
+                                <i className="bi bi-pencil"></i>
+                            </div>
+                            <div onClick={() => handleDelete(user.id)}>
+                                <i className="bi bi-x-circle"></i>                        
+                            </div>
                         </div>
                     </div>
                     )}    
@@ -117,5 +134,6 @@ const Test = () => {
         </div>
     )
 }
+
 
 export default Test;
