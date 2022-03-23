@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import AsArLogoSmWt from '../../all-reusable-components/asar-logo-sm-wt/asar-logo-sm-wt.component';
+
 import './g5-navbar.styles.scss';
 
 const Navbar = () => {
@@ -12,6 +14,9 @@ const Navbar = () => {
             <Link to="/g5/box-four"><i className="bi bi-calendar-week"></i> Box Four</Link>
             <Link to="/g5/box-five"><i className="bi bi-calendar-week"></i> Box Five</Link>
             <Link to="/g5/archive"><i className="bi bi-archive"></i> Archive</Link>
+            <div className='back-to-homepage-logo'>
+                <AsArLogoSmWt />
+            </div>
         </div>
      );
 }
