@@ -4,16 +4,18 @@ import storage from 'redux-persist/lib/storage';
 
 import userReducer from "./user/user.reducer";
 import quoteReducer from "./quote/quote.reducer";
+import wordReducer from "./word/word.reducer"
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['']
+    whitelist: ['word']
 }
 
 const rootReducer = combineReducers({
     user: userReducer,
-    quote: quoteReducer
+    quote: quoteReducer,
+    word: wordReducer
 });
 
 export default persistReducer(persistConfig, rootReducer)

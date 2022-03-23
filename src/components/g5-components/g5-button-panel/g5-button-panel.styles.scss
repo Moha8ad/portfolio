@@ -1,0 +1,84 @@
+.g5-buttons {
+    justify-self: center;
+    align-self: center;
+    grid-area: btn;
+
+    .g5-conditional-btn {
+        display: flex;
+        justify-content: center;
+        gap: 0 5px;
+
+        > .g5-stay, .g5-next {
+            padding: 0 min(1vw, 1vh);
+            border: .5px solid rgb(68, 66, 66);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+
+    .g5-stay {
+        color: orange;
+        &:hover {
+            background-color: rgb(255, 140, 0);
+            color: whitesmoke;
+            transition: all .3s ease-in;
+        }
+    }
+
+    .g5-next {
+        color: green;
+        
+        &:hover {
+            background-color: green;
+            color: whitesmoke;
+            transition: all .3s ease-in;
+        }
+    }
+}
+
+.g5-delete {
+    justify-self: end;
+    align-self: start;
+    grid-area: x;
+
+    cursor: pointer;
+    color: rgba(245, 245, 245, .1);
+    transition: all .3s ease-in;
+
+    &:hover {
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        color: rgb(250, 0, 0);
+        transition: all .3s ease-in;
+        
+    }
+}
+
+.g5-word-reviewed {
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(0, 200, 0, 0.7);
+    transition: scale .3s ease-in;
+    cursor: pointer;
+    
+    &:hover {
+        color: rgb(0, 200, 0);
+    }
+
+    &:active {
+        color: rgba(0, 128, 0, 0);
+        
+        .g5-reviewed-info {
+            color: rgb(0, 200, 0);
+        }
+    }
+
+    .g5-reviewed-info {
+        font-size: .8rem;
+        margin-top: -28px;
+        padding: 0 20px;
+        color: rgba(240, 248, 255, 0);
+        transition: all .3s ease-in;
+    }
+}

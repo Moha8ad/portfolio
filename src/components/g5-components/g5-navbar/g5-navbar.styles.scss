@@ -1,0 +1,28 @@
+.g5-navbar { 
+    grid-area: g5-navbar; 
+    
+    display: flex;
+    flex-flow: row wrap;
+    gap: min(3vh, 3vw);
+    padding: 10px;
+    background: rgb(50, 3, 94);
+
+        > * {
+            color: whitesmoke;
+            padding: min(10px, 5vh);
+            transition: all .6s ease-out;
+            border-radius: 20px;
+
+            &:hover{
+                background-color: whitesmoke;
+                color: rgb(50, 3, 94);
+                cursor: pointer;
+            }
+        }
+
+    @media screen and (min-width: 50em) {
+        display: flex;
+        flex-flow: column wrap;
+        background: linear-gradient(105deg, rgb(27, 3, 50), rgb(50, 3, 94));   
+    }
+}

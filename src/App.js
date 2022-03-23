@@ -16,6 +16,15 @@ import QuotifyPageAccount from './pages/quotify/qt-page-account/qt-page-account.
 
 import SnakesAndLadders from './pages/snakes-and-ladders/snakes-and-ladders.component';
 
+import G5Homepage from './pages/g5/g5-homepage/g5-homepage';
+import BoxOne from './pages/g5/g5-box-one/g5-box-one';
+import BoxTwo from './pages/g5/g5-box-two/g5-box-two.jsx';
+import BoxThree from './pages/g5/g5-box-three/g5-box-three.jsx';
+import BoxFour from './pages/g5/g5-box-four/g5-box-four.jsx';
+import BoxFive from './pages/g5/g5-box-five/g5-box-five.jsx';
+import Archive from './pages/g5/g5-archive/g5-archive.jsx';
+
+
 import './App.css';
 
 const App = () => (
@@ -35,6 +44,14 @@ const App = () => (
       <Route path='/qt/account' component={QuotifyPageAccount} />
 
       <Route path='/snakes-and-ladders' component={SnakesAndLadders} />
+
+      <Route path='/g5/home' component={G5Homepage} />
+      <Route path='/g5/box-one' component={BoxOne} />
+      <Route path='/g5/box-two' component={BoxTwo} />
+      <Route path='/g5/box-three' component={BoxThree} />
+      <Route path='/g5/box-four' component={BoxFour} />
+      <Route path='/g5/box-five' component={BoxFive} />
+      <Route path='/g5/archive' component={Archive} />
 
     </Switch>
   </div>

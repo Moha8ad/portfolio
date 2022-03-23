@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;600;700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', serif;
+  margin: 0;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none; 
+  cursor: default;
+}
+
+a { 
+  text-decoration: none;
+}
+
+.g5-homepage { 
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: scroll;
+
+  grid-area: main; 
+
+  color: whitesmoke;
+  background: linear-gradient(180deg, rgb(27, 3, 50), rgb(50, 3, 94));
+
+  display: grid;
+  grid-template-columns: .6fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.1fr 0.1fr auto;
+  gap: 0px 0px;
+  grid-template-areas:
+    "g5-navbar homepage-header homepage-header homepage-header homepage-header homepage-header"
+    "g5-navbar add-new-word add-new-word add-new-word add-new-word add-new-word"
+    "g5-navbar g5-box g5-box g5-box g5-box g5-box";
+  
+  @media screen and (min-width: 50em) {
+      background: linear-gradient(180deg, rgb(27, 3, 50), rgb(50, 3, 94));
+  }
+}  

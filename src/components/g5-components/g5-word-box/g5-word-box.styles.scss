@@ -1,0 +1,86 @@
+.g5-word-card {
+    min-height: 25vh;
+    max-height: 25vh;
+    overflow: scroll;
+
+    background: linear-gradient(180deg, rgba(0, 0, 0, .4), rgb(0, 0, 0, .6));
+    margin: min(2vw, 2vh);
+    border: .5px solid rgb(90, 90, 90);
+    border-radius: 20px;
+    padding: min(1vw, 1vh);
+    transition: all .3s ease-out;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: .5fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . x"
+      "word-section word-section word-section"
+      ". btn .";
+
+    &:hover{
+        background: linear-gradient(0deg, rgba(0, 0, 0, .8), rgb(0, 0, 0, .8));
+        transform: scale(1.03);
+    }
+}
+
+.g5-word {
+    text-align: center;
+    grid-area: word-section;
+
+    color: rgba(0, 0, 0, 0);
+    font-weight: 600;
+    padding: min(2vw, 2vh) min(2vw, 2vh) min(3vw, 3vh);
+    cursor: help;
+    transition: all .4s ease-in;
+
+    &:hover {
+        
+        color: rgba(10, 232, 10);
+        
+        .g5-meaning {
+            color: rgba(0, 0, 0, 0);
+        }
+        .g5-example {
+            color: rgba(0, 0, 0, 0);
+        }
+        .g5-example-word {
+            color: rgba(0, 0, 0, 0) !important;
+        }
+    }
+
+    &:active {
+        color:rgba(0, 0, 0, 0);
+        .g5-meaning {
+            color: rgb(0, 217, 255);
+        }
+        .g5-example {
+            color: rgba(0, 0, 0, 0);
+        }
+        .g5-example-word {
+            color: rgba(0, 0, 0, 0) !important;
+        }
+    }
+}
+
+.g5-meaning {
+    text-align: center;
+    margin-top: -20px;
+    color: rgba(0, 0, 0, 0);
+    transition: all .5s ease-out;
+}
+
+.g5-example {
+    margin-top: -20px;
+    color: whitesmoke;
+    font-size: smaller;
+    text-align: start;
+    transition: all .5s ease-out;
+}
+
+.g5-example-word {
+    transition: all .5s ease-out;
+}
+

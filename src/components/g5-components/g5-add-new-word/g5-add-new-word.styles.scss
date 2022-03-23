@@ -1,0 +1,45 @@
+.g5-add-new-word { 
+    grid-area: add-new-word;
+    padding: min(4vw, 4vh) min(2vw, 2vh) min(2vw, 2vh);
+    background-color:  rgb(50, 3, 94);
+}
+
+.g5-form {
+    display: flex;
+}
+
+.g5-custom-input {
+    margin: min(.5vw, .5vh);
+    padding: min(1vw, 1vh);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.g5-custom-btn {
+    width: 80px;
+    padding: min(1vw, 1vh);
+    text-align: center;
+    margin: min(.5vw, .5vh);
+    color: rgb(215, 180, 255);
+
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgb(215, 180, 255);
+    border-radius: 100px;
+
+    transition: 0.5s;
+
+    &:hover {
+        background-color: green;
+        color: whitesmoke;
+        cursor: pointer;
+    }
+
+    &:active {
+        color: green;
+    }
+}
+
+.g5-form-info {
+    padding: min(2vw, 2vh) min(1vw, 1vh);
+    color: rgb(215, 180, 255);
+}

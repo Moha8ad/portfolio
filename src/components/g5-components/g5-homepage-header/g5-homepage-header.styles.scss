@@ -1,0 +1,15 @@
+.g5-homepage-header {
+    grid-area: homepage-header;
+
+    padding: min(4vw, 4vh);
+    text-align: center;
+    font-size: .9rem;
+    color: rgb(215, 180, 255);
+
+    background: linear-gradient(135deg,  rgb(38, 1, 73), rgb(114, 0, 222), rgb(50, 3, 94));   
+    
+    .g5-header-highlight {
+        font-size: 2rem;
+        color: whitesmoke;
+    }
+}
