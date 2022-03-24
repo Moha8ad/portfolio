@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import AsArLogoLgWt from '../../components/all-reusable-components/asar-logo-lg-wt/asar-logo-lg-wt.component';
 import CalendarHeader from '../../components/timed-components/calendar-header/calendar-header.component';
 import DeleteEventModal from '../../components/timed-components/deleteEventModal/deleteEventModal.component';
 import NewEventModal from '../../components/timed-components/newEventModal/newEventModal.component';
@@ -29,6 +29,7 @@ const Timed = () => {
     return ( 
         <div className='timed-body'>
             <div id="timed-container">
+                <AsArLogoLgWt />
                 <CalendarHeader
                     dateDisplay={dateDisplay}
                     onNext={() => setNav(nav + 1)}
