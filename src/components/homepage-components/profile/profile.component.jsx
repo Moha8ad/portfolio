@@ -21,7 +21,7 @@ const Profile = () => {
                         </JobTitle>
                         <AboutMe>
                             Hi, I'm Mohammad.
-                            I invite you to see the two react apps I built by using the below tools.
+                            I invite you to see the four react apps I built by using the below tools.
                             I'd be more than happy if you share your comments with me.
                         </AboutMe>
                     </AboutMeContent>
