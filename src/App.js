@@ -24,6 +24,7 @@ import BoxFour from './pages/g5/g5-box-four/g5-box-four.jsx';
 import BoxFive from './pages/g5/g5-box-five/g5-box-five.jsx';
 import Archive from './pages/g5/g5-archive/g5-archive.jsx';
 
+import Timed from './pages/timed/timed';
 
 import './App.css';
 
@@ -52,6 +53,8 @@ const App = () => (
       <Route path='/g5/box-four' component={BoxFour} />
       <Route path='/g5/box-five' component={BoxFive} />
       <Route path='/g5/archive' component={Archive} />
+
+      <Route path='/timed/home' component={Timed} />
 
     </Switch>
   </div>

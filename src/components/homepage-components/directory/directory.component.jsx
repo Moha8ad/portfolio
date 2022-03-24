@@ -29,6 +29,13 @@ const Directory = () => {
         linkUrl: 'g5/home',
         id: 1,
       },
+      {
+        title: 'Timed',
+        subtitle: "more than a calendar",
+        imageUrl: 'https://illlustrations.co/static/13fefd389e126b12f50282fc1f93b6df/day19-apple-watch.png',
+        linkUrl: 'timed/home',
+        id: 1,
+      },
     ]
   )
 

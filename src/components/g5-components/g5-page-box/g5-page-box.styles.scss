@@ -18,8 +18,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background: linear-gradient(225deg, rgba(77, 77, 77, 0.6), rgba(179, 178, 178, 0.5), rgba(77, 77, 77, 0.6));
+    color: whitesmoke;
+    background: linear-gradient(225deg, rgba(120, 120, 120, 0.6), rgba(220, 220, 220, 0.5), rgba(120, 120, 120, 0.6));
     padding: min(2vw, 2vh);
     font-size: 1.4rem;
     position: -webkit-sticky;
@@ -72,6 +72,7 @@
     justify-content: center;
     min-height: 70vh;
     font-size: 5rem;
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .g5-page-box-one {

@@ -1,0 +1,147 @@
+.timed-body {
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(180deg, rgb(255, 255, 255) 10%, rgba(36, 121, 158, 0.7) 100%);
+  }
+
+.timed-button {
+    width: 75px;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px gray;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+  
+#timed-header {
+    padding: 10px;
+    color: #d36c6c;
+    font-size: 26px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+}
+
+#timed-header button {
+    background-color:#92a1d1;
+    font-size: .8rem;
+    margin: 1px;
+}
+
+#timed-container {
+    width: 770px;
+}
+
+#timed-weekdays {
+    width: 100%;
+    display: flex;
+    color: #247BA0; 
+    font-weight: 600;
+}
+  
+#timed-weekdays div {
+    width: calc(100% / 7);
+    padding: 10px;
+    text-align: center;
+}
+
+#timed-calendar {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.timed-day {
+    width: 100px;
+    padding: 10px;
+    height: 100px;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: white;
+    margin: 5px;
+    box-shadow: 0px 0px 3px #CBD4C2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all .2s ease-out;  
+}
+  
+.timed-day:hover {
+    background-color: #e8faed;
+    scale: 1.05;
+}
+    
+.timed-day + .timed-currentDay {
+    background-color:#c3f8cb;
+} 
+
+.timed-event {
+    font-size: 10px;
+    padding: 3px;
+    background-color: #58bae4;
+    color: white;
+    border-radius: 5px;
+    max-height: 55px;
+    overflow: hidden;
+}  
+
+.timed-padding {
+    cursor: default !important;
+    background-color: #fffcff00 !important;
+    box-shadow: none !important;
+}
+    
+#timed-newEventModal, #timed-deleteEventModal {
+    z-index: 20;
+    padding: 25px;
+    background-color: rgba(232, 244, 250, 0.9);
+    box-shadow: 0px 0px 3px black;
+    border-radius: 5px;
+    width: 350px;
+    top: 150px;
+    left: calc(50% - 175px);
+    position: absolute;
+}
+
+#timed-eventTitleInput {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 3px gray;
+}
+
+#timed-eventTitleInput.timed-error {
+    border: 2px solid red;
+}
+
+#timed-cancelButton, #timed-deleteButton {
+    background-color: #d36c6c;
+}
+
+#timed-saveButton, #timed-closeButton {
+    background-color: #92a1d1;
+    margin: 5px;
+}
+
+#timed-eventText {
+    font-size: 14px;
+}
+
+#timed-modalBackDrop {
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0,0,0,0.8);
+}
