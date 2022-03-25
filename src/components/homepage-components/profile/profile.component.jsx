@@ -22,7 +22,7 @@ const Profile = () => {
                         <AboutMe>
                             Hi, I'm Mohammad.
                             I invite you to see the react apps I built by using the below tools.
-                            I'd be more than happy if you share your comments with <a href="asar.web.development@gmail.com" style={{color:'lightgreen'}}>me</a>.
+                            I'd be more than happy if you share your comments with <a href="mailto:asar.web.development@gmail.com" style={{color:'lightgreen'}}>me</a>.
                         </AboutMe>
                     </AboutMeContent>
                     <SkillDev>
