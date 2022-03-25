@@ -162,11 +162,12 @@ export const MovingLogo = styled.span`
     url(https://restfulapi.net/wp-content/uploads/rest.png),
     url(https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg), 
     url(https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg),
-    url(https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg),
+    url(https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg),
     url(https://upload.wikimedia.org/wikipedia/commons/6/62/Git-logo-orange.svg),
     url(https://nodejs.org/static/images/logo.svg),
     url(https://styled-components.com/logo.png),
-    url(https://static.requarks.io/logo/firebase.svg);
+    url(https://static.requarks.io/logo/firebase.svg),
+    url(https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg);
 
     padding: max(0.8vh, 0.8vw);
     background-size: max(4vh, 2vw) max(4vh, 2vw);
@@ -189,8 +190,9 @@ export const MovingLogo = styled.span`
     let logo8 = `${94 - (mouseX - w) * -0.05}% ${40 - (mouseY - h) * -0.04}%`;
     let logo9 = `${2 - (mouseX - w) * 0.07}% ${2 - (mouseY - h) * 0.14}%`;
     let logo10 = `${92 - (mouseX - w) * -0.06}% ${78 - (mouseY - h) * -0.08}%`;
-    let logo11 = `${86 - (mouseX - w) * 0.008}% ${60 - (mouseY - h) * -0.09}%`;
-    let x = `${logo11}, ${logo10}, ${logo9}, ${logo8}, ${logo7}, ${logo6}, ${logo5}, ${logo4}, ${logo3}, ${logo2}, ${logo1}`;
+    let logo11 = `${86 - (mouseX - w) * 0.008}% ${70 - (mouseY - h) * -0.09}%`;
+    let logo12 = `${89 - (mouseX - w) * 0.005}% ${55 - (mouseY - h) * 0.04}%`;
+    let x = `${logo12}, ${logo11}, ${logo10}, ${logo9}, ${logo8}, ${logo7}, ${logo6}, ${logo5}, ${logo4}, ${logo3}, ${logo2}, ${logo1}`;
     
     if (document.querySelector(MovingLogo)){
         document.querySelector(MovingLogo).style.backgroundPosition = x;
