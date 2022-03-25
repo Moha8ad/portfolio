@@ -35,24 +35,29 @@ const LOGO_URL = [
         delay: "1.8s"
     },
     {
-        url:"https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg",
-        alt: "wordpress",
+        url:"https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg",
+        alt: "html",
         delay: "1.9s"
+    },
+    {
+        url:"    https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg",
+        alt: "html",
+        delay: "2s"
     },
     {
         url:"https://static.requarks.io/logo/firebase.svg",
         alt: "firebase",
-        delay: "2s"
+        delay: "2.1s"
     },
     {
         url:"https://upload.wikimedia.org/wikipedia/commons/6/62/Git-logo-orange.svg",
         alt: "git",
-        delay: "2.1s"
+        delay: "2.2s"
     },
     {
         url:"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
         alt: "github",
-        delay: "2.2s"
+        delay: "2.3s"
     },
 ]
 
