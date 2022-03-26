@@ -7,6 +7,7 @@ import TimedDay from '../../components/timed-components/timed-day/timed-day.comp
 import { useDate } from '../../components/timed-components/timed-date-hook/timed-date-hook.component';
 
 import './timed.scss';
+import { updatedEvents } from './time.utils';
 
 const Timed = () => {
 
@@ -61,6 +62,16 @@ const Timed = () => {
                 </div>
             </div>
 
+            {clicked &&
+                <NewEventModal
+                    onClose={() => setClicked(null)}
+                    onSave={title => {
+                        setEvents(updatedEvents(events, title, clicked));
+                        setClicked(null);
+                    }} 
+                />
+            }
+            {/*
             {clicked && !eventForDate(clicked) &&
                 <NewEventModal
                     onClose={() => setClicked(null)}
@@ -80,6 +91,7 @@ const Timed = () => {
                     }} 
                 />
             }
+            */}
         </div>
     );
 }

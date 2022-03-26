@@ -15,8 +15,8 @@ const NewEventModal = ({ onSave, onClose }) => {
                     id="timed-eventTitleInput"
                     placeholder="Event Title "
                     value={title}
-                    onChange={e => setTitle(e.target.value)} />
-
+                    onChange={e => setTitle(e.target.value)} 
+                />
                 <button
                     className='timed-button'
                     id="timed-saveButton"

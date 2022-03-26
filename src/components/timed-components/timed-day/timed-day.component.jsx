@@ -9,9 +9,13 @@ const TimedDay = ({ day, onClick }) => {
 
             {day.event && 
                 <div className="timed-event">
-                    {day.event.title}
+                    {day.event.titles.map(item => 
+                        <div>
+                            {item}
+                        </div>
+                    )}
                 </div>
-            }
+            }    
         </div>
      );
 }
