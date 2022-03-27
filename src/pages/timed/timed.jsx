@@ -62,7 +62,7 @@ const Timed = () => {
                 </div>
             </div>
 
-            {clicked &&
+            {clicked && !eventForDate(clicked) &&
                 <NewEventModal
                     onClose={() => setClicked(null)}
                     onSave={title => {
@@ -71,19 +71,10 @@ const Timed = () => {
                     }} 
                 />
             }
-            {/*
-            {clicked && !eventForDate(clicked) &&
-                <NewEventModal
-                    onClose={() => setClicked(null)}
-                    onSave={title => {
-                        setEvents([...events, { title, date: clicked }]);
-                        setClicked(null);
-                    }} 
-                />
-            }
+            
             {clicked && eventForDate(clicked) &&
                 <DeleteEventModal
-                    eventText={eventForDate(clicked).title}
+                    eventText={eventForDate(clicked)}
                     onClose={() => setClicked(null)}
                     onDelete={() => {
                         setEvents(events.filter(e => e.date !== clicked));
@@ -91,7 +82,7 @@ const Timed = () => {
                     }} 
                 />
             }
-            */}
+            
         </div>
     );
 }

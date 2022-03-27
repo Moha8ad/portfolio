@@ -1,17 +1,20 @@
 const DeleteEventModal = ({ onDelete, eventText, onClose }) => {
+
     return ( 
         <div>
             <div id="timed-deleteEventModal">
                 <h6><i>Your Event for Today</i></h6>
-                <p id="timed-eventText">
+                <ol id="timed-eventText">
                 {eventText.titles.map(item => 
-                    <ul>
-                        <li>{item.title}</li>
-                    </ul>
+                    <li>
+                        {item}
+                        <i className="bi bi-check"></i> 
+                        <i className="bi bi-x"></i>
+                    </li>
                 )}
                 
-                </p>
-                <button onClick={onDelete} className='timed-button' id="timed-deleteButton">Delete</button>
+                </ol>
+                <button onClick={onDelete} className='timed-button' id="timed-deleteButton">Delete All</button>
                 <button onClick={onClose} className='timed-button' id="timed-closeButton">Close</button>
             </div>
             <div id="timed-modalBackDrop"></div>
