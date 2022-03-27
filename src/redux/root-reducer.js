@@ -4,7 +4,8 @@ import storage from 'redux-persist/lib/storage';
 
 import userReducer from "./user/user.reducer";
 import quoteReducer from "./quote/quote.reducer";
-import wordReducer from "./word/word.reducer"
+import wordReducer from "./word/word.reducer";
+import todoReducer from "./todo/todo.reducer";
 
 const persistConfig = {
     key: 'root',
@@ -15,7 +16,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     user: userReducer,
     quote: quoteReducer,
-    word: wordReducer
+    word: wordReducer,
+    toDoList: todoReducer
 });
 
 export default persistReducer(persistConfig, rootReducer)
