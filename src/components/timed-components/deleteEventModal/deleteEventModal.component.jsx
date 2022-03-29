@@ -34,11 +34,9 @@ const DeleteEventModal = ({ onSave, onDelete, eventText, onClose }) => {
                 <h2>--------------</h2>
                 <h6><i>Your Event for Today</i></h6>
                 <ol id="timed-eventText">
-                {eventText.titles.map(item => 
-                    <li>
+                {eventText.titles.map((item, key) => 
+                    <li key={key}>
                         {item}
-                        <i className="bi bi-check"></i> 
-                        <i className="bi bi-x"></i>
                     </li>
                 )}
                 

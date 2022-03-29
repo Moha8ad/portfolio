@@ -53,6 +53,7 @@ export const useDate = (events, nav) => {
     }
  
     setDays(daysArr);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [events, nav]);
 
   return {

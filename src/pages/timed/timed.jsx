@@ -6,8 +6,11 @@ import NewEventModal from '../../components/timed-components/newEventModal/newEv
 import TimedDay from '../../components/timed-components/timed-day/timed-day.component';
 import { useDate } from '../../components/timed-components/timed-date-hook/timed-date-hook.component';
 
+import { setToDoList } from '../../redux/todo/todo.actions.js';
+
 import './timed.scss';
 import { updatedEvents } from './time.utils';
+import { connect } from 'react-redux';
 
 const Timed = () => {
 
@@ -19,6 +22,9 @@ const Timed = () => {
         []
     );
 
+    console.log(events.map(item => item))
+
+
     const eventForDate = date => events.find(e => e.date === date);
 
     useEffect(() => {
@@ -27,6 +33,8 @@ const Timed = () => {
     
     const { days, dateDisplay } = useDate(events, nav);
  
+    console.log(clicked)
+    
     return ( 
         <div className='timed-body'>
             <div id="timed-container">
@@ -89,5 +97,10 @@ const Timed = () => {
         </div>
     );
 }
+
+
+const mapDispatchToProps = dispatch => ({
+    setToDoList: toDoList => dispatch(setToDoList(toDoList))
+ })
  
-export default Timed;
+export default connect(null, mapDispatchToProps)(Timed);

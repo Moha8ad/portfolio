@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const NewEventModal = ({ onSave, onClose }) => {
 
-    const [title, setTitle] = useState('');
+    const [toDoItem, setToDoItem] = useState('');
     const [error, setError] = useState(false);
 
     return ( 
@@ -14,16 +14,16 @@ const NewEventModal = ({ onSave, onClose }) => {
                     type="text"
                     id="timed-eventTitleInput"
                     placeholder="Event Title "
-                    value={title}
-                    onChange={e => setTitle(e.target.value)} 
+                    value={toDoItem}
+                    onChange={e => setToDoItem(e.target.value)} 
                 />
                 <button
                     className='timed-button'
                     id="timed-saveButton"
                     onClick={() => {
-                        if (title) {
+                        if (toDoItem) {
                             setError(false);
-                            onSave(title);
+                            onSave(toDoItem);
                         } else {
                             setError(true);
                         }
@@ -45,5 +45,6 @@ const NewEventModal = ({ onSave, onClose }) => {
 
     );
 }
+
  
 export default NewEventModal;

@@ -1,7 +1,5 @@
 import ToDoActionTypes from './todo.types';
 
-import { sortToDoList } from './todo.utils'; 
-
 const INITIAL_STATE = {
     toDoListDB: [],
 }
