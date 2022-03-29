@@ -24,6 +24,7 @@ const NewEventModal = ({ onSave, onClose }) => {
                         if (toDoItem) {
                             setError(false);
                             onSave(toDoItem);
+                            setToDoItem('');
                         } else {
                             setError(true);
                         }
