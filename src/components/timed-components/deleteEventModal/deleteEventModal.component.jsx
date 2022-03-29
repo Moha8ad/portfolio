@@ -24,6 +24,7 @@ const DeleteEventModal = ({ onSave, onDelete, eventText, onClose }) => {
                         if (title) {
                             setError(false);
                             onSave(title);
+                            setTitle('');
                         } else {
                             setError(true);
                         }
