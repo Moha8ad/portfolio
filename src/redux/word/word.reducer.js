@@ -8,7 +8,7 @@ const INITIAL_STATE = {
     wordsDayThree: [],
     wordsDayFour: [],
     wordsDayFive: [],
-    wordsArchive: []
+    wordsArchive: [],
 }
 
 const wordReducer = (state= INITIAL_STATE , action) => {

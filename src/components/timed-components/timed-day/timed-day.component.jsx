@@ -1,5 +1,3 @@
-import { connect } from "react-redux";
-
 const TimedDay = ({ day, onClick }) => {
     const timedClassName = `timed-day ${day.value === 'timed-padding' ? 'timed-padding' : ''} ${day.isCurrentDay ? 'timed-currentDay' : ''}`;
 
@@ -22,8 +20,4 @@ const TimedDay = ({ day, onClick }) => {
      );
 }
 
-const mapStateToProps = ({ toDoList: { toDoListDB }}) => ({
-    toDoListDB
-})
- 
-export default connect(mapStateToProps, null)(TimedDay);
+export default TimedDay;

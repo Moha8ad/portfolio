@@ -4,7 +4,7 @@ const WordActionTypes= {
     BOX_THREE: 'BOX_THREE',
     BOX_FOUR: 'BOX_FOUR',
     BOX_FIVE: 'BOX_FIVE',
-    BOX_ARCHIVE: 'BOX_ARCHIVE'
+    BOX_ARCHIVE: 'BOX_ARCHIVE',
 }
 
 export default WordActionTypes;

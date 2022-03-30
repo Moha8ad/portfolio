@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const DeleteEventModal = ({ onSave, onDelete, eventText, onClose }) => {
+const EventModal = ({ onSave, onDelete, eventText, onClose }) => {
 
     const [title, setTitle] = useState('');
     const [error, setError] = useState(false);
@@ -34,20 +34,26 @@ const DeleteEventModal = ({ onSave, onDelete, eventText, onClose }) => {
                 </button>
                 <h2>--------------</h2>
                 <h6><i>Your Event for Today</i></h6>
-                <ol id="timed-eventText">
-                {eventText.titles.map((item, key) => 
-                    <li key={key}>
-                        {item}
-                    </li>
-                )}
-                
-                </ol>
-                <button onClick={onDelete} className='timed-button' id="timed-deleteButton">Delete All</button>
-                <button onClick={onClose} className='timed-button' id="timed-closeButton">Close</button>
+                {!eventText ? 
+                    <div style={{padding: '10px 0 20px', fontSize: '.9rem'}}>Nothing!</div>
+                :
+                    <span>
+                        <ol id="timed-eventText">
+                        {eventText.titles.map((item, key) =>       
+                            <li key={key}>
+                                {item}
+                            </li>
+                        )}
+                        </ol>
+                        <button onClick={onDelete} className='timed-button' id="timed-deleteButton">Delete All</button>
+                    </span>
+                }
+                    <button onClick={onClose} className='timed-button' id="timed-closeButton">Close</button>
             </div>
             <div id="timed-modalBackDrop"></div>
         </div>
     );
 }
- 
-export default DeleteEventModal;
+
+
+export default EventModal;
