@@ -48,7 +48,7 @@
     "html-webpack-plugin": "4.5.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "26.6.0",
-    "jest-circus": "26.6.0",
+    "jest-circus": "^27.5.1",
     "jest-resolve": "26.6.0",
     "jest-watch-typeahead": "0.6.1",
     "jquery": "^3.6.0",
@@ -139,7 +139,7 @@
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
     ],
     "testEnvironment": "jsdom",
-    "testRunner": "C:\\Users\\Mohamad\\Desktop\\reactApp\\app-profile\\node_modules\\jest-circus\\runner.js",
+    "testRunner": "<rootDir>/node_modules/jest-circus/runner.js",
     "transform": {
       "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
