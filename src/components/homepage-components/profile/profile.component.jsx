@@ -26,8 +26,8 @@ const Profile = () => {
                         </AboutMe>
                     </AboutMeContent>
                     <SkillDev>
-                        {LOGO_URL.map( address =>
-                            <Image alt={address.alt} src={address.url} style={{height:"max(6vh, 4vw)", width:"max(6vh, 4vw)", padding: "max(0.8vh, 0.8vw)", animationDelay: `${address.delay}`}}/>
+                        {LOGO_URL.map((address, idx) =>
+                            <Image key={idx} alt={address.alt} src={address.url} style={{height:"max(6vh, 4vw)", width:"max(6vh, 4vw)", padding: "max(0.8vh, 0.8vw)", animationDelay: `${address.delay}`}}/>
                         )}
                     </SkillDev>
                 </AboutMeBox>

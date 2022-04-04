@@ -20,8 +20,8 @@ const PageBox = ({ box }) => {
                 </div>
                 {wordsToReview.length > 0 ?
                     <div>
-                        {wordsToReview.map((card, key) =>  
-                            <WordsBox key={key} box={box} card={card} />    
+                        {wordsToReview.map((card, idx) =>  
+                            <WordsBox key={idx} box={box} card={card} />    
                         )}
                     </div>
                 :

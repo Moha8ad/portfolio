@@ -1,5 +1,5 @@
 import ButtonPanel from '../g5-button-panel/g5-button-panel.component';
-import { highlight } from '../g5-box/g5-box.utils';
+import { highlight } from './g5-word-box.utils';
 
 import './g5-word-box.styles.scss';
 

@@ -43,13 +43,13 @@ const G5Box = ({ wordsDayOne, boxOne, wordsDayTwo, boxTwo, wordsDayThree, boxThr
 
     return (
         <div className='g5-box'>
-        {boxes.map((box, key) => 
-            <div key={key} className='g5-card-box'>
+        {boxes.map((box, index) => 
+            <div key={index} className='g5-card-box'>
                 <div className='g5-box-header'>
                     {box.title}
                 </div>                
                 {box.db.map((card, key) => 
-                    <WordsBox box={box} card={card} />
+                    <WordsBox key={key} box={box} card={card} />
                 )}
             </div>
         )}
