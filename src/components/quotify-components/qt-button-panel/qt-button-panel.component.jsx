@@ -2,13 +2,15 @@ import React from "react";
 
 import { connect } from "react-redux";
 
-import { setLikedQuote, setInspirationalQuote, setInsightfulQuote, addQuoteCard } from "../../../redux/quote/quote.actions";
+import { setLikedQuote, setInspirationalQuote, setInsightfulQuote, addQuoteCard, setLikedQuoteAsync } from "../../../redux/quote/quote.actions";
 
 import { removeQuote } from "./qt-button.utils";
 
+import { addDocumentToCollection, removeDocumentFromCollection } from "../../../firebase/firebase.utils";
+
 import './qt-button-panel.styles.scss'
 
-const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList, setInsightfulQuote, insightfulList }) => (
+const QuotifyButtonPanel = ({ currentUser, trash, item, addQuoteCard, quotesDB, setLikedQuote, likedQuotesDB, setInspirationalQuote, inspirationalList, setInsightfulQuote, insightfulList }) => (
     
     <div id="to-hover"  className="col-6 ms-auto d-flex justify-content-around align-items-center hover-change">
 
@@ -25,19 +27,34 @@ const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuo
             :
             null
         }
+        {/* Like Button 
+            likedQuotesDB.map(i => i.quoteId).includes(item.quoteId) === false
 
-        {/* Like Button */}
-        <span 
-            onClick={() => setLikedQuote(item)}
-        >
-        {
-            likedQuotesDB.find(likedQuote => likedQuote.quoteId === item.quoteId) 
-        ?
-            <i className="bi bi-heart-fill text-danger" />
-        :
-            <i className="bi bi-heart" />
-        }
+        */}    
+        
+        <span>
+            {
+                currentUser && likedQuotesDB.map(i => i.quoteId).includes(item.quoteId)
+            ?
+                <i
+                    className="bi bi-heart-fill text-danger" 
+                    onClick={() => {
+                        removeDocumentFromCollection(`users/${currentUser.id}/liked`, item.id)
+                        setLikedQuote(likedQuotesDB.filter(quote => quote.quoteId !== item.quoteId))
+
+                    }}
+                />
+            :
+                <i 
+                    className="bi bi-heart"
+                    onClick={() => {
+                        addDocumentToCollection(`users/${currentUser.id}/liked`, item.id, item)
+                        setLikedQuote([...likedQuotesDB, item])
+                    }}
+                />
+            }
         </span>
+        
         {/* List Button */}
         <span 
             className="dropdown"
@@ -70,14 +87,22 @@ const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuo
                 ?
                     <li 
                         className="dropdown-item bi bi-bookmark-dash" 
-                        onClick={() => setInspirationalQuote(item)}
+                        onClick={() => {
+                            setInspirationalQuote(item)
+                            currentUser && 
+                            removeDocumentFromCollection(`users/${currentUser.id}/inspirationalQuotes`, item.id)
+                        }}
                     > 
                         <span className='px-2'>Inspirational List</span>
                     </li>
                 :
                     <li 
                         className="dropdown-item bi bi-bookmark-plus" 
-                        onClick={() => setInspirationalQuote(item)}
+                        onClick={() => {
+                            setInspirationalQuote(item)
+                            currentUser && 
+                            addDocumentToCollection(`users/${currentUser.id}/inspirationalQuotes`, item.id, item)
+                        }}
                     > 
                         <span className='px-2'>Inspirational List</span>
                     </li>
@@ -125,8 +150,8 @@ const QuotifyButtonPanel = ({ trash, item, addQuoteCard, setLikedQuote, likedQuo
 )
 
 
-const mapStateToProps = ({ quote: { quotesDB, likedQuotesDB, inspirationalList, insightfulList }}) => ({
-    quotesDB, likedQuotesDB, inspirationalList, insightfulList
+const mapStateToProps = ({ user: { currentUser }, quote: { quotesDB, likedQuotesDB, inspirationalList, insightfulList }}) => ({
+    currentUser, quotesDB, likedQuotesDB, inspirationalList, insightfulList
 })
 
 const mapDispatchToProps = dispatch => ({

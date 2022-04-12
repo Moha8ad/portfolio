@@ -5,8 +5,8 @@ export const toggleQuote = ( QuotesDataBase, quoteToToggle ) => {
     );
   
     if (existingQuote) {
-        return QuotesDataBase.filter(quote => quote.quoteId !== quoteToToggle.quoteId)
+        return QuotesDataBase.filter(quote => quote.liked === quoteToToggle.quoteId)
     }
   
-    return [...QuotesDataBase, quoteToToggle];
+    return [...QuotesDataBase, quoteToToggle];   
   };

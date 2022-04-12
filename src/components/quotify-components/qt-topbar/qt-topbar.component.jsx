@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { withRouter, Link } from 'react-router-dom';
 
@@ -8,23 +8,20 @@ import { auth, signInWithGoogle, createUserProfileDocument, db } from '../../../
 
 import { setCurrentUser } from '../../../redux/user/user.actions';
 
-import { setQuotesDataBase } from '../../../redux/quote/quote.actions';
+import { setQuotesDataBase, setLikedQuote, setLikedQuoteAsync } from '../../../redux/quote/quote.actions';
 
 import SearchBox from '../../all-reusable-components/search-box/search-box.component';
 
 import { Topbar } from './qt-topbar.styles';
 
-class QuotifyTopbar extends React.Component {
+const QuotifyTopbar = ({ setLikedQuoteAsync, isFetching, setCurrentUser, setQuotesDataBase, setLikedQuote, handleChange, midPart, currentUser, back, forward }) => {
 
-    unsubscribeFromAuth = null;
 
-    
-    componentDidMount() {
-
-        const { setCurrentUser, setQuotesDataBase } = this.props;
-        
-        this.unsubscribeFromAuth =  auth.onAuthStateChanged(async userAuth => {
+    useEffect(() => {
+      
+        const unsubscribeFromAuth =  auth.onAuthStateChanged(async userAuth => {
             if (userAuth) {
+                
                 const userRef = await createUserProfileDocument(userAuth);
 
                 userRef.onSnapshot(snapshot => {
@@ -37,6 +34,10 @@ class QuotifyTopbar extends React.Component {
 
             setCurrentUser(userAuth);
 
+
+            userAuth ? setLikedQuoteAsync(userAuth.uid) : setLikedQuoteAsync(null);
+            
+            
             db.collection("collections").onSnapshot(
                 snapshot => { 
                     const quotesDataBase = snapshot.docs.map(doc => (
@@ -45,21 +46,19 @@ class QuotifyTopbar extends React.Component {
                             id: doc.id 
                         }
                     ))
-                    setQuotesDataBase(quotesDataBase);
-                    
-                });
+                    setQuotesDataBase(quotesDataBase); 
+                }
+            );
+
+
             //addCollectionAndDocuments('Col', QUOTES_DATA.map(({quotes}) => ({quotes})));
         });
-    }
-
-    componentWillUnmount() {
-        this.unsubscribeFromAuth();
-    }
-
-    render() {
-
-        const { handleChange, midPart, currentUser, back, forward } = this.props;
-
+        return () => {
+            unsubscribeFromAuth();
+        }
+    }, []);
+    
+    
         return (
             <Topbar className="col-12 sticky-top me-auto py-2">
                 <div className="row d-flex flex-wrap align-items-center fs-5 fw-bold text-light ps-2">
@@ -77,6 +76,7 @@ class QuotifyTopbar extends React.Component {
                             null
                         }
                     </div>
+                    {!isFetching && 'Loading'}
                     <div className="col-auto ms-auto me-2">
                         {currentUser ? (
                             <div className="dropdown d-none d-sm-block">
@@ -116,16 +116,18 @@ class QuotifyTopbar extends React.Component {
                 </div>
             </Topbar>
         )
-    }
+    
 }
 
 const mapDispatchToProps = dispatch => ({
     setCurrentUser: user => dispatch(setCurrentUser(user)),
-    setQuotesDataBase: quotesDB => dispatch(setQuotesDataBase(quotesDB))
+    setQuotesDataBase: quotesDB => dispatch(setQuotesDataBase(quotesDB)),
+    setLikedQuote: likedQuote => dispatch(setLikedQuote(likedQuote)),
+    setLikedQuoteAsync: (userId) => dispatch(setLikedQuoteAsync(userId))
 })
 
-const mapStateToProps = ( { user: { currentUser }}  ) => ({
-    currentUser
+const mapStateToProps = ( { user: { currentUser }, quote: { isFetching } }  ) => ({
+    currentUser, isFetching
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(QuotifyTopbar));

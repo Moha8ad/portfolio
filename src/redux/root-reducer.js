@@ -10,7 +10,7 @@ import timedReducer from "./timed/timed.reducer";
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['quote', 'word']
+    whitelist: ['word']
 }
 
 const rootReducer = combineReducers({

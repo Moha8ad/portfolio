@@ -46,6 +46,7 @@ export const createUserProfileDocument = async ( userAuth, additionalData ) => {
 
 export const addCollectionAndDocuments = async (
   collectionKey,
+  itemId,
   objectsToAdd
 ) => {
 
@@ -54,12 +55,31 @@ export const addCollectionAndDocuments = async (
   const batch = db.batch();
 
   objectsToAdd.forEach((obj) => {
-    const newDocRef = collectionRef.doc();
+    const newDocRef = collectionRef.doc(itemId);
 
     batch.set(newDocRef, obj);
   });
 
   return await batch.commit();
+
+};
+
+export const addDocumentToCollection = async (
+  collectionKey,
+  itemId,
+  documentToAdd
+) => {
+
+  db.collection(collectionKey).doc(itemId).set(documentToAdd)
+
+};
+
+export const removeDocumentFromCollection = async (
+  collectionKey,
+  documentToRemove
+) => {
+
+  db.collection(collectionKey).doc(documentToRemove).delete()
 
 };
 
