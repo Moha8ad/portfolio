@@ -32,7 +32,11 @@ const QuotifyButtonPanel = ({ currentUser, trash, item, addQuoteCard, quotesDB, 
 
         */}    
         
-        <span>
+        <span
+            onClick={() =>
+                !currentUser && alert('Please Sign in to Like Quotes!')
+            }
+        >
             {
                 currentUser && likedQuotesDB.map(i => i.quoteId).includes(item.quoteId)
             ?
